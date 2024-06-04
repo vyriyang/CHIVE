@@ -1,0 +1,17 @@
+{
+    "people": [
+        {
+            "name": "Alumni Name",
+            "title": "Alumni Title",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/alumni/alumni1.html"
+        },
+        {
+            "name": "Another Alumni",
+            "title": "Another Title",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/alumni/alumni2.html"
+        }
+    ]
+}
+

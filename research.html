@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Research</title>
+    <link rel="stylesheet" href="dist/css/scrollspy.css"/>
+    <link rel="stylesheet" href="dist/css/nav.css"/>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+          <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
+          <div class="logo-text">LSU Visualization Research Lab</div>
+      </div>
+      <nav class="scrollspy-nav">
+        <a class="scrollspy-link" href="index.html">Home</a>
+        <a class="scrollspy-link" href="research.html">Research</a>
+        <a class="scrollspy-link" href="people.html">People</a>
+        <a class="scrollspy-link" href="publications.html">Publications</a>
+        <a class="scrollspy-link" href="news.html">News</a>
+        <a class="scrollspy-link" href="activity.html">Activity</a>
+      </nav>   
+    </header>
+    
+    <section class="scrollspy-section" id="Research">
+      <div class="section_2">
+        <div class="title">Research Themes
+            <div class="line"></div>
+        </div>
+        <div class="grids" id="researchGrids"></div>
+      </div>
+    </section>
+
+    <section class="scrollspy-section" id="">
+      <div class="gray">
+        <div class="section_2">
+          <div class="title">Lorem Ipsum
+              <div class="line"></div>
+          </div>
+          <div class="sec_sub_title" style="margin-top: 60px;">What is Lorem Ipsum?</div>
+          <div class="sec_sub_title">Why do we use it?</div>
+          <div class="sec_sub_title" style="margin-bottom: 60px;">Where can I get some?</div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="footer">
+      <p>
+          <a href="#">About</a> | 
+          <a href="#">Contact Us</a> | 
+          <a href="#">Copyright</a> | 
+          <a href="#">Terms of Use</a> | 
+          <a href="#">Privacy Policy</a>
+      </p>
+      <p>© 2024 All rights reserved</p>
+    </div>
+    
+    <script src="dist/js/mn-accordion.js"></script>
+    <script src="dist/js/scrollspy.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        fetch('/json/research.json')
+          .then(response => response.json())
+          .then(data => {
+            const researchGrids = document.getElementById('researchGrids');
+            data.forEach(item => {
+              const researchList = document.createElement('div');
+              researchList.className = 'research_list';
+              researchList.innerHTML = `
+                <img src="${item.imgSrc}" alt="" class="list_img">
+                <div class="research_padding">
+                  <div class="sub-title">
+                    ${item.title} >
+                  </div>
+                  <div class="cont overflow">
+                    ${item.description}
+                  </div>
+                </div>
+              `;
+              researchList.addEventListener('click', function() {
+                window.open(item.link, '_blank');
+              });
+              researchGrids.appendChild(researchList);
+            });
+          });
+      });
+    </script>
+
+  </body>
+</html>
+
+

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications</title>
+  <link rel="stylesheet" href="dist/css/scrollspy.css"/>
+  <link rel="stylesheet" href="dist/css/nav.css"/>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+        <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
+        <div class="logo-text">LSU Visualization Research Lab</div>
+    </div>
+    <nav class="scrollspy-nav">
+      <a class="scrollspy-link" href="index.html">Home</a>
+      <a class="scrollspy-link" href="research.html">Research</a>
+      <a class="scrollspy-link" href="people.html">People</a>
+      <a class="scrollspy-link" href="publications.html">Publications</a>
+      <a class="scrollspy-link" href="news.html">News</a>
+      <a class="scrollspy-link" href="activity.html">Activity</a>
+    </nav>   
+  </header>
+  <div class="gray">
+    <div class="section_1">
+      <div class="title">Highlights
+        <div class="line"></div>
+      </div>
+      <div class="cont margin_left">
+        ● What is Lorem Ipsum?<br>
+        ● Lorem Ipsum is simply dummy text of the printing and typesetting industry. <a href="https://www.lipsum.com" 
+        style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
+        ● It has survived not only five centuries<a href="https://www.lipsum.com" 
+        style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+        but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
+      </div>
+    </div>
+  </div>
+  <section class="scrollspy-section" id="Publications">
+    <div class="section_2" >
+      <div class="title">Publications
+          <div class="line"></div>
+      </div>
+      <div class="mn-acc-app">
+        <div class="mn-accordion" id="accordion-2">
+          <!-- JSON data will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="scrollspy-section" id="">
+    <div class="gray">
+      <div class="section_2" >
+        <div class="title">Lorem Ipsum
+            <div class="line"></div>
+        </div>
+        <div class="sec_sub_title" style="margin-top: 60px;">What is Lorem Ipsum?</div>
+        <div class="sec_sub_title">Why do we use it?</div>
+        <div class="sec_sub_title" style="margin-bottom: 60px;">Where can I get some?</div>
+       </div>
+    </div>
+  </section>
+  <div class="footer">
+    <p>
+        <a href="#">About</a> | 
+        <a href="#">Contact Us</a> | 
+        <a href="#">Copyright</a> | 
+        <a href="#">Terms of Use</a> | 
+        <a href="#">Privacy Policy</a>
+    </p>
+    <p>© 2024 All rights reserved</p>
+  </div>
+  <script src="dist/js/mn-accordion.js"></script>
+  <script src="dist/js/scrollspy.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('/json/publications.json')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Data fetched successfully:', data);
+          const accordionContainer = document.getElementById('accordion-2');
+          data.years.forEach((year, index) => {
+            const accordionItem = document.createElement('div');
+            accordionItem.classList.add('accordion-item');
+
+            const accordionHeading = document.createElement('div');
+            accordionHeading.classList.add('accordion-heading');
+            accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
+            accordionItem.appendChild(accordionHeading);
+
+            const accordionContent = document.createElement('div');
+            accordionContent.classList.add('accordion-content');
+            if (index === 0) {
+              accordionContent.style.display = 'block'; // 默認展開第一項
+            }
+
+            year.publications.forEach(pub => {
+              const pubDiv = document.createElement('div');
+              pubDiv.style.paddingBottom = '30px';
+              pubDiv.innerHTML = `
+                <div class="sub-title_ss"><a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+                <div class="sec_sub_title_s">${pub.authors}</div>
+                <div class="sec_sub_title_s"><a style="font-weight: bold;">${pub.description}</a> | ${pub.date}</div>
+                <div class="sec_sub_title_a"><a href="${pub.url}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>
+              `;
+              accordionContent.appendChild(pubDiv);
+            });
+
+            accordionItem.appendChild(accordionContent);
+            accordionContainer.appendChild(accordionItem);
+          });
+
+          // Initialize accordion
+          var accordion_2 = new Accordion(accordionContainer, {
+            multiple: true,
+            defaultOpenedIndexes: [0]
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching publications data:', error);
+        });
+    });
+  </script>
+</body>
+</html>
+
+
+

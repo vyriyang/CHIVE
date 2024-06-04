@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Scholar Lab</title>
+    <style>
+        body {
+            font-family: 'PT Sans Narrow', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            height: 60px; /* 确定 header 的高度 */
+        }
+        header .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        header img {
+            height: 60px;
+        }
+        header .logo-text {
+            margin-left: 10px;
+            font-size: 22px;
+            white-space: nowrap;
+        }
+        nav {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: sticky;
+            top: 0;
+            left: 0;
+            background: #333;
+        }
+        .scrollspy-nav {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: sticky;
+            top: 0;
+            left: 0;
+            background: #333;
+        }
+        .scrollspy-nav .scrollspy-link {
+            text-decoration: none;
+            color:white;
+            font-family: 'PT Sans Narrow', sans-serif;
+            transition: 0.3s ease;
+            font-size: 18px;
+            margin: 0px 10px;
+            padding: 0px 5px;
+            cursor: pointer;
+        }
+        .scrollspy-nav .scrollspy-link:hover {
+            color: #f36f24;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-content {
+            background: #12163f;
+            height: 90px;
+            padding-left: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo-container img {
+            height: 100%; /* Make image height 100% of logo-container */
+            max-height: 90px; /* Ensure it doesn't exceed the height of logo-content */
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 33px;
+            margin-left: 15px;
+            white-space: nowrap; /* Prevent text from wrapping */
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('img/Home/19-1.webp'); /* replace with actual URL */
+            background-size: cover;
+            background-position: top;
+            color: white;
+            box-sizing: border-box;
+        }
+        .main-content-color {
+            background-color: rgba(18, 22, 63, 0.5);
+            padding: 30px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .main-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .main-content p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            margin-left: 90px;
+            margin-right: 90px;
+        }
+        .buttons a {
+            font-family: 'Oswald', sans-serif;
+            display: inline-block;
+            margin: 0 10px;
+            padding: 15px 25px;
+            font-size: 1em;
+            color: white;
+            background-color: #FF7F0E; /* Orange */
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .buttons a:hover{
+            background-color: #924603; /* Orange */
+
+        }
+        .buttons a.b2 {
+            font-family: 'Oswald', sans-serif;
+            background-color: #2CA02C; /* Green */
+        }
+        .buttons a.b2:hover {
+            background-color: #056105; /* Green */
+        } 
+
+        .buttons a.b3 {
+            font-family: 'Oswald', sans-serif;
+            background-color: #0300be; /* Green */
+        }
+        .buttons a.b3:hover {
+            background-color: #03025e; /* Green */
+        }
+        .fratures-title{
+            padding-left:80px;
+            padding-right:80px;
+            background-color: #f9f9f9;
+        }
+        .title {
+            width: fit-content;
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .line {
+            margin-top: 5px;
+            height: 2px;
+            background: linear-gradient(120deg, #f36f24, #12163f);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* 使图片显示为圆形 */
+            transition: transform 0.3s; /* 添加過渡效果 */
+        }
+
+        .feature h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 5px; /* 增加與 h3 之間的距離 */
+            transition: color 0.3s; /* 添加過渡效果 */
+        }
+
+        .feature h3 {
+            color: #8d8b8b;
+            margin-top: 0; /* 移除 h3 與 h2 之間的距離 */
+            margin-bottom: 10px; /* 可根據需要調整 */
+        }
+
+        .feature p {
+            word-break: break-word;
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* 設置顯示行數，這裡設置為3行，可以根據需要調整 */
+            -webkit-box-orient: vertical;
+        }
+
+        .feature:hover img {
+            transform: scale(1.1); /* 放大圖片 */
+        }
+
+        .feature:hover h2 {
+            color: #f36f24;
+        }
+
+
+        .features-a {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 縮小項目的最小寬度 */
+            padding-left:70px;
+            padding-right:70px;
+            gap: 10px; /* 減少間距 */
+            padding: 50px 80px;
+            background-color: #f9f9f9;
+        }
+
+        .feature-a {
+            text-align: center;
+        }
+        .feature-a img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%; /* 使图片显示为圆形 */
+        }
+
+        .feature-a h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 5px; /* 增加與 h3 之間的距離 */
+        }
+        .feature-a h3 {
+            color: #8d8b8b;
+            margin-top: 0; /* 移除 h3 與 h2 之間的距離 */
+            margin-bottom: 10px; /* 可根據需要調整 */
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px; /* Adjusted padding */
+            background-color: #333;
+            color: white;
+            max-height: 80px; /* Maximum height */
+            overflow: hidden; /* Hide overflow */
+        }
+        .footer p {
+            margin: 5px 0; /* Adjusted margin */
+        }
+        .footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        </div>
+        <nav class="scrollspy-nav">
+            <a class="scrollspy-link" href="index.html">Home</a>
+            <a class="scrollspy-link" href="research.html">Research</a>
+            <a class="scrollspy-link" href="people.html">People</a>
+            <a class="scrollspy-link" href="publications.html">Publications</a>
+            <a class="scrollspy-link" href="news.html">News</a>
+            <a class="scrollspy-link" href="activity.html">Activity</a>
+        </nav>   
+    </header>
+    <div class="logo-content">
+        <div class="logo-container">
+            <img src="img/logo/CHIVE-3.svg" alt="Logo"> 
+            <div class="logo-text">LSU Visualization Research Lab</div>
+        </div>
+    </div>
+
+    <div id="professors" class="features"></div>
+    <div id="students" class="features"></div>
+    <div class="fratures-title">
+        <div class="title">Alumni
+            <div class="line"></div>
+        </div>
+    </div>
+    <div id="alumni" class="features-a"></div>
+    
+    <div class="footer">
+        <p>
+            <a href="#">About</a> | 
+            <a href="#">Contact Us</a> | 
+            <a href="#">Copyright</a> | 
+            <a href="#">Terms of Use</a> | 
+            <a href="#">Privacy Policy</a>
+        </p>
+        <p>© 2024 All rights reserved</p>
+    </div>
+
+    <script>
+        function openInNewTab(url) {
+            window.open(url, '_blank').focus();
+        }
+
+        function createFeature(person) {
+            return `
+                <div class="feature" onclick="openInNewTab('${person.link}')">
+                    <img src="${person.image}" alt="${person.name}">
+                    <h2>${person.name}</h2>
+                    <h3>${person.title}</h3>
+                    <p>${person.description}</p>
+                </div>
+            `;
+        }
+
+        function createFeatureA(person) {
+            return `
+                <div class="feature-a" onclick="openInNewTab('${person.link}')">
+                    <img src="${person.image}" alt="${person.name}">
+                    <h2>${person.name}</h2>
+                    <h3>${person.title}</h3>
+                </div>
+            `;
+        }
+
+        function loadPeopleData() {
+            fetch('/json/professors.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('professors');
+                    data.people.forEach(person => {
+                        container.innerHTML += createFeature(person);
+                    });
+                })
+                .catch(error => console.error('Error loading professors data:', error));
+
+            fetch('/json/students.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('students');
+                    data.people.forEach(person => {
+                        container.innerHTML += createFeature(person);
+                    });
+                })
+                .catch(error => console.error('Error loading students data:', error));
+
+            fetch('/json/alumni.json')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('alumni');
+                    data.people.forEach(person => {
+                        container.innerHTML += createFeatureA(person);
+                    });
+                })
+                .catch(error => console.error('Error loading alumni data:', error));
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPeopleData);
+    </script>
+</body>
+</html>

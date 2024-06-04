@@ -1,0 +1,12 @@
+{
+    "people": [
+        {
+            "name": "Professor Name",
+            "title": "Professor Title",
+            "description": "Description of the professor.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/professors/name-1/people-1.html"
+        }
+    ]
+}
+

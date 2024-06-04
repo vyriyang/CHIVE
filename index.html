@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Scholar Lab</title>
+    <style>
+        body {
+            font-family: 'PT Sans Narrow', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+            height: 60px;
+        }
+        header .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        header img {
+            height: 60px;
+        }
+        header .logo-text {
+            margin-left: 10px;
+            font-size: 22px;
+            white-space: nowrap;
+        }
+        nav {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: sticky;
+            top: 0;
+            left: 0;
+            background: #333;
+        }
+        .scrollspy-nav {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: sticky;
+            top: 0;
+            left: 0;
+            background: #333;
+        }
+        .scrollspy-nav .scrollspy-link {
+            text-decoration: none;
+            color: white;
+            font-family: 'PT Sans Narrow', sans-serif;
+            transition: 0.3s ease;
+            font-size: 18px;
+            margin: 0px 10px;
+            padding: 0px 5px;
+            cursor: pointer;
+        }
+        .scrollspy-nav .scrollspy-link:hover {
+            color: #f36f24;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-content {
+            background: #12163f;
+            height: 90px;
+            padding-left: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo-container img {
+            height: 100%;
+            max-height: 90px;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 33px;
+            margin-left: 15px;
+            white-space: nowrap;
+        }
+
+        .section-1 {
+            min-height: calc(100vh - 60px); /* 最小高度為視窗高度減去60px */
+            height: auto; /* 高度根據內容自適應 */
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: 
+                linear-gradient(rgba(18, 22, 63, 0.7), rgba(18, 22, 63, 0.7)), 
+                url('img/Home/21.webp');
+            background-size: cover;
+            background-position: top;
+            animation: moveBg 280s infinite alternate;
+            color: white;
+            height: 50vh;
+            box-sizing: border-box;
+        }
+
+        @keyframes moveBg {
+            0% {
+                background-position: top;
+            }
+            50% {
+                background-position: bottom;
+            }
+            100% {
+                background-position: top;
+            }
+        }
+
+        .main-content-color {
+            padding: 30px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .main-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .main-content p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            margin-left: 90px;
+            margin-right: 90px;
+        }
+
+        .buttons a {
+            font-family: 'Oswald', sans-serif;
+            display: inline-block;
+            margin: 0 10px;
+            padding: 15px 25px;
+            font-size: 1em;
+            color: white;
+            background-color: #FF7F0E;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .buttons a:hover {
+            background-color: #924603;
+        }
+        .buttons a.b2 {
+            background-color: #2CA02C;
+        }
+        .buttons a.b2:hover {
+            background-color: #056105;
+        }
+        .buttons a.b3 {
+            background-color: #0300be;
+        }
+        .buttons a.b3:hover {
+            background-color: #03025e;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .features > * {
+            width: 100%;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .features {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+        .feature {
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .feature img {
+            width: 100px;
+            height: 100px;
+        }
+        .feature h2 {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .feature p {
+            word-break: break-word;
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+        .feature:hover img {
+            transform: scale(1.1);
+        }
+        .feature:hover h2 {
+            color: #f36f24;
+        }
+
+        .section-2 {
+            padding: 90px;
+            margin-bottom: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .title {
+            width: fit-content;
+            font-family: 'Oswald', sans-serif;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .line {
+            margin-top: 5px;
+            height: 2px;
+            background: linear-gradient(120deg, #f36f24, #12163f);
+        }
+
+        .scroll-container {
+            padding: 20px;
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: linear-gradient(120deg, #f36f24, #12163f);
+            border-radius: 4px;
+        }
+
+        .scroll-container::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        .research_list {
+            scroll-snap-align: start;
+            flex: 0 0 auto;
+            width: 430px;
+            height: 650px;
+            margin-right: 20px;
+            background: white;
+            box-shadow: 0 0 25px 0 rgba(0, 0, 0, .1);
+            border-bottom: 6px solid white;
+            overflow: hidden;
+        }
+
+        .research_list img {
+            width: 100%;
+            height: 300px;
+        }
+
+        .research_list_last {
+            display: flex; /* 使用彈性佈局 */
+            justify-content: center; /* 水平居中 */
+            align-items: center; /* 垂直居中 */
+            width: 100%; /* 根據需要設置div寬度 */
+            height: 100%; /* 根據需要設置div高度 */
+            overflow: hidden; /* 隱藏超出div的部分 */
+            position: relative; /* 確保子元素定位相對於此div */
+        }
+
+        .research_padding {
+            padding: 25px;
+        }
+
+        .sub-title {
+            text-align: left;
+            font-family: 'Oswald', sans-serif;
+            font-size: 28px;
+            margin-bottom: 40px;
+            color: #3f44b6;
+        }
+
+        .cont.overflow {
+            word-break: break-word;
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 8;
+            -webkit-box-orient: vertical;
+        }
+
+        .cont-researcher{
+            padding-top:20px;
+            color:#5d5d5d;
+            word-break: break-word;
+            white-space: normal;
+            overflow: hidden;
+
+        }
+
+        .cont-researcher-name{
+            color:#5d5d5d;
+        }
+
+        .cont-researcher-name:hover{
+            color:#f36f24;
+        }
+
+        .research_list:hover img {
+            transform: scale(1.1);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            max-height: 80px;
+            overflow: hidden;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+        </div>
+        <nav class="scrollspy-nav">
+            <a class="scrollspy-link" href="index.html">Home</a>
+            <a class="scrollspy-link" href="research.html">Research</a>
+            <a class="scrollspy-link" href="people.html">People</a>
+            <a class="scrollspy-link" href="publications.html">Publications</a>
+            <a class="scrollspy-link" href="news.html">News</a>
+            <a class="scrollspy-link" href="activity.html">Activity</a>
+        </nav>  
+    </header>
+    <section class="section-1">
+        <div class="logo-content">
+            <div class="logo-container">
+                <img src="img/logo/CHIVE-3.svg" alt="Logo"> 
+                <div class="logo-text">LSU Visualization Research Lab</div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="main-content-color">
+                <div>
+                    <h1>Introduction</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+            </div>
+        </div>
+        <div class="features">
+            <div class="feature" onclick="navigateTo('research.html')">
+                <img src="img/logo/research.png" alt="research">
+                <h2>Research</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+            <div class="feature" onclick="navigateTo('people.html')">
+                <img src="img/logo/people.png" alt="people">
+                <h2>People</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+            <div class="feature" onclick="navigateTo('publications.html')">
+                <img src="img/logo/publications.png" alt="publications">
+                <h2>Publications</h2>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+            </div>
+            <div class="feature" onclick="navigateTo('news.html')">
+                <img src="img/logo/news.png" alt="news">
+                <h2>News</h2>
+                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-2">
+        <div class="title">
+            Current Research
+            <div class="line"></div>
+        </div>
+        <div class="scroll-container" id="scroll-container">
+            <!-- JavaScript will inject research lists here -->
+        </div>
+    </section>
+
+    <div class="footer">
+        <p>
+            <a href="#">About</a> | 
+            <a href="#">Contact Us</a> | 
+            <a href="#">Copyright</a> | 
+            <a href="#">Terms of Use</a> | 
+            <a href="#">Privacy Policy</a>
+        </p>
+        <p>© 2024 All rights reserved</p>
+    </div>
+    <script>
+        function navigateTo(url) {
+            window.location.href = url;
+        }
+
+        function openInNewTab(url) {
+            window.open(url, '_blank').focus();
+        }
+
+        async function fetchResearchData() {
+            const response = await fetch('/json/currentresearch.json');
+            const data = await response.json();
+            return data;
+        }
+
+        function renderResearchData(data) {
+            const scrollContainer = document.getElementById('scroll-container');
+
+            data.forEach(research => {
+                const researchList = document.createElement('div');
+                researchList.classList.add('research_list');
+
+                if (research.title === "View All Research") {
+                        researchList.innerHTML = `
+                            <div class="research_list_last">
+                                <a href="research.html">
+                                    <img src="${research.img}" alt="" class="list_img_last">
+                                </a>
+                            </div>
+                        `;
+                    }else {
+                        researchList.innerHTML = `
+                            <div class="research_item">
+                                <a href="${research.link}" target="_blank">
+                                    <img src="${research.img}" alt="" class="list_img">
+                                </a>
+                                <div class="research_padding">
+                                    <div class="sub-title">
+                                        <a href="${research.link}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+                                        ${research.title} ></a>
+                                    </div>
+                                    <div class="cont overflow">
+                                        ${research.content}
+                                    </div>
+                                    <div class="cont-researcher overflow">
+                                        ${research.date}
+                                        <br>Researcher: ${research.researchers.map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`).join(', ')}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                scrollContainer.appendChild(researchList);
+            });
+        }
+
+        window.onload = async function() {
+            document.getElementById('scroll-container').scrollLeft = 0;
+            const researchData = await fetchResearchData();
+            renderResearchData(researchData);
+        };
+    </script>
+</body>
+</html>
+
+
+
+
+
+

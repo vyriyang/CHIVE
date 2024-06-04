@@ -1,0 +1,68 @@
+{
+    "people": [
+        {
+            "name": "Student Name",
+            "title": "Student Title",
+            "description": "Description of the student.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/students/student1.html"
+        },
+        {
+            "name": "Another Student",
+            "title": "Another Title",
+            "description": "Another description of the student.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/students/student2.html"
+        },
+        {
+            "name": "Another Student",
+            "title": "Another Title",
+            "description": "Another description of the student.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/students/student2.html"
+        },
+        {
+            "name": "Another Student",
+            "title": "Another Title",
+            "description": "Another description of the student.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/students/student2.html"
+        },
+        {
+            "name": "Another Student",
+            "title": "Another Title",
+            "description": "Another description of the student.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/students/student2.html"
+        },
+        {
+            "name": "Another Student",
+            "title": "Another Title",
+            "description": "Another description of the student.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/students/student2.html"
+        },
+        {
+            "name": "Another Student",
+            "title": "Another Title",
+            "description": "Another description of the student.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/students/student2.html"
+        },
+        {
+            "name": "Another Student",
+            "title": "Another Title",
+            "description": "Another description of the student.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/students/student2.html"
+        },
+        {
+            "name": "Another Student",
+            "title": "Another Title",
+            "description": "Another description of the student.",
+            "image": "img/people/people-1/peopledemo.jpg",
+            "link": "people/students/student2.html"
+        }
+    ]
+}
+

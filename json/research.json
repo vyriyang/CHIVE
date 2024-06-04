@@ -1,0 +1,33 @@
+[
+  {
+    "imgSrc": "img/people/people-1/data-1.png",
+    "title": "What is Lorem Ipsum?",
+    "link": "https://www.lipsum.com",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry..."
+  },
+  {
+    "imgSrc": "img/people/people-1/data-2.webp",
+    "title": "Where does it come from?",
+    "link": "https://scholar.google.com",
+    "description": "Contrary to popular belief, Lorem Ipsum is not simply random text..."
+  },
+  {
+    "imgSrc": "img/people/people-1/data-3.jpg",
+    "title": "Why do we use it?",
+    "link": "https://www.lipsum.com",
+    "description": "It is a long established fact that a reader will be distracted..."
+  },
+  {
+    "imgSrc": "img/people/people-1/data-1.png",
+    "title": "What is Lorem Ipsum?",
+    "link": "https://www.lipsum.com",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry..."
+  },
+  {
+    "imgSrc": "img/people/people-1/data-2.webp",
+    "title": "Where does it come from?",
+    "link": "https://scholar.google.com",
+    "description": "Contrary to popular belief, Lorem Ipsum is not simply random text..."
+  }
+]
+
