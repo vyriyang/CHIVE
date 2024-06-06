@@ -440,7 +440,7 @@
         }
 
         async function fetchResearchData() {
-            const response = await fetch('/json/currentresearch.json');
+            const response = await fetch('/json/research/currentresearch.json');
             const data = await response.json();
             return data;
         }
@@ -456,7 +456,7 @@
                         researchList.innerHTML = `
                             <div class="research_list_last">
                                 <a href="research.html">
-                                    <img src="${research.img}" alt="" class="list_img_last">
+                                    <img src="${research.imgSrc}" alt="" class="list_img_last">
                                 </a>
                             </div>
                         `;
@@ -464,7 +464,7 @@
                         researchList.innerHTML = `
                             <div class="research_item">
                                 <a href="${research.link}" target="_blank">
-                                    <img src="${research.img}" alt="" class="list_img">
+                                    <img src="${research.imgSrc}" alt="" class="list_img">
                                 </a>
                                 <div class="research_padding">
                                     <div class="sub-title">

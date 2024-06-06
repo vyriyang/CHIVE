@@ -1,8 +1,43 @@
 body {
+    font-family: 'PT Sans Narrow', sans-serif;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
 }
 
+header {
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    height: 60px; /* 确定 header 的高度 */
+}
+header .logo-container {
+    display: flex;
+    align-items: center;
+}
+header img {
+    height: 60px;
+}
+header .logo-text {
+    margin-left: 10px;
+    font-size: 22px;
+    white-space: nowrap;
+}
+nav {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background: #333;
+}
 .scrollspy-nav {
     height: 60px;
     display: flex;
@@ -11,12 +46,11 @@ body {
     position: sticky;
     top: 0;
     left: 0;
-    background: rgb(255, 255, 255);
+    background: #333;
 }
-
 .scrollspy-nav .scrollspy-link {
     text-decoration: none;
-    color: #333;
+    color:white;
     font-family: 'PT Sans Narrow', sans-serif;
     transition: 0.3s ease;
     font-size: 18px;
@@ -24,19 +58,38 @@ body {
     padding: 0px 5px;
     cursor: pointer;
 }
-
 .scrollspy-nav .scrollspy-link:hover {
     color: #f36f24;
 }
+nav a {
+    text-decoration: none;
+    color: white;
+}
 
-.scrollspy-nav .scrollspy-indicator {
-    position: absolute;
-    height: 2px;
-    width: 0;
-    background: linear-gradient(120deg, #f36f24, #12163f);
-    bottom: 0;
-    left: 0;
-    transition: width 0.3s, left 0.1s;
+.logo-content {
+    background: #12163f;
+    height: 90px;
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-container img {
+    height: 100%; /* Make image height 100% of logo-container */
+    max-height: 90px; /* Ensure it doesn't exceed the height of logo-content */
+}
+
+.logo-text {
+    color: white;
+    font-size: 33px;
+    margin-left: 15px;
+    white-space: nowrap; /* Prevent text from wrapping */
 }
 
 .main {
@@ -50,13 +103,17 @@ body {
     box-sizing: border-box;
 }
 
-.photo_img {
+.pic_img {
     width: 350px;
+    height: 466.67px; /* 確保比例為3:4 */
     background-color: #fff;
-    border-radius: 1000px;
-    border: 18px solid #fff;
+    border: 0px solid #fff;
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, .1);
-    border-radius: 50%;
+    border-radius: 0; /* 去掉圓角 */
+}
+
+.pic_img:hover{
+    transform: scale(1.1);
 }
 
 .about {
@@ -93,6 +150,25 @@ body {
     padding-bottom: auto;
     padding-left: 60px;
     padding-right: 60px;
+    background-color: white;
+    background: linear-gradient(white, white) padding-box, linear-gradient(120deg, #f36f24, #b1b1b2, #12163f) border-box;
+    border: 4px solid transparent;
+    font-size: 18px;
+    text-align: center;
+    color: #333;
+    cursor: pointer;
+}
+
+.label_btn {
+    margin-top: 20px;
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    height: 33px;
+    border-radius: 40px;
+    padding-top: 10px;
+    padding-bottom: auto;
+    padding-left: 40px;
+    padding-right: 40px;
     background-color: white;
     background: linear-gradient(white, white) padding-box, linear-gradient(120deg, #f36f24, #b1b1b2, #12163f) border-box;
     border: 4px solid transparent;
@@ -248,23 +324,6 @@ body {
     border-bottom: 1px solid #cacbcc;
 }
 
-.cont-researcher{
-    padding-top:20px;
-    color:#5d5d5d;
-    word-break: break-word;
-    white-space: normal;
-    overflow: hidden;
-
-}
-
-.cont-researcher-name{
-    color:#5d5d5d;
-}
-
-.cont-researcher-name:hover{
-    color:#f36f24;
-}
-
 .sec_sub_title {
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 20px;
@@ -299,6 +358,25 @@ body {
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 18px;
     color: #5f5d5d;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    max-height: 80px;
+    overflow: hidden;
+}
+
+.footer p {
+    margin: 5px 0;
+}
+
+.footer a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
 }
 
 .mn-accordion .accordion-item {
@@ -399,4 +477,3 @@ body {
         font-size: 2.4vw;
     }
 }
-

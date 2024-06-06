@@ -4,6 +4,7 @@
       "year": "2023",
       "publications": [
         {
+          "venues":"TVCG",
           "title": "What is Lorem Ipsum?",
           "authors": "name name name",
           "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
@@ -11,6 +12,7 @@
           "url": "https://www.lipsum.com"
         },
         {
+          "venues":"TVCG",
           "title": "Another Publication",
           "authors": "author1, author2",
           "description": "Short description of the publication.",
@@ -23,6 +25,7 @@
       "year": "2022",
       "publications": [
         {
+          "venues":"TVCG",
           "title": "Lorem Ipsum in 2022",
           "authors": "author name",
           "description": "Detailed description of the publication.",

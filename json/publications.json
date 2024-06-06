@@ -4,15 +4,26 @@
       "year": "2023",
       "publications": [
         {
+          "label": ["research2"],
+          "venues":"TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
           "title": "What is Lorem Ipsum?",
-          "authors": "name name name",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" }
+            ],
           "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
           "date": "May 2023",
           "url": "https://www.lipsum.com"
         },
         {
+          "label": ["research1"],
+          "venues":"TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
           "title": "Another Publication",
-          "authors": "author1, author2",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" },
+              { "name": "name", "link": "people/people-1.html" }
+            ],
           "description": "Short description of the publication.",
           "date": "June 2023",
           "url": "https://www.example.com"
@@ -23,8 +34,13 @@
       "year": "2022",
       "publications": [
         {
+          "label": ["research2","research1"],
+          "venues":"TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
           "title": "Lorem Ipsum in 2022",
-          "authors": "author name",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" }
+            ],
           "description": "Detailed description of the publication.",
           "date": "April 2022",
           "url": "https://www.example.com"

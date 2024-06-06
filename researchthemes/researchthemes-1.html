@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research-1</title>
+  <link rel="stylesheet" href="../dist/css/scrollspy.dark.css"/>
+  <style>
+    .hidden { display: none; }
+    .show-more { 
+      margin-top: 10px; 
+      cursor: pointer; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      padding: 10px; 
+      color:#386074;
+      font-size: 22px;
+    }
+    .show-more:hover{
+      color:#f36f24;
+    }
+    .arrow.right { border: solid white; border-width: 0 3px 3px 0; display: inline-block; padding: 3px; transform: rotate(-45deg); }
+    .arrow.down { transform: rotate(45deg); }
+
+    .section-1 {
+            min-height: 60vh; /* 最小高度為視窗高度減去60px */
+            height: auto; /* 高度根據內容自適應 */
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: 
+                linear-gradient(rgba(4, 83, 40, 0.7), rgba(4, 83, 40, 0.7)), 
+                url('../img/Home/19-1.webp');
+            background-size: cover;
+            background-position: top;
+            animation: moveBg 280s infinite alternate;
+            color: white;
+            min-height: 60vh;
+            box-sizing: border-box;
+        }
+
+        @keyframes moveBg {
+            0% {
+                background-position: top;
+            }
+            50% {
+                background-position: bottom;
+            }
+            100% {
+                background-position: top;
+            }
+        }
+
+        .main-content-color {
+            padding: 30px;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .main-content h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .main-content p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            margin-left: 90px;
+            margin-right: 90px;
+        }
+
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+        }
+
+        .features > * {
+            width: 100%;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .features {
+                flex-direction: row;
+                justify-content: space-around;
+            }
+        }
+        .feature {
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .feature img {
+            width: 100px;
+            height: 100px;
+        }
+        .feature h2 {
+            font-family: 'Oswald', sans-serif;
+        }
+
+        .feature p {
+            word-break: break-word;
+            white-space: normal;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+        }
+        .feature:hover img {
+            transform: scale(1.1);
+        }
+        .feature:hover h2 {
+            color: #f36f24;
+        }
+
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="../img/logo/CHIVE-3.svg" alt="Logo"> 
+      <div class="logo-text">LSU Visualization Research Lab</div>
+    </div>
+    <nav class="scrollspy-nav">
+        <a class="scrollspy-link" href="../index.html">Home</a>
+        <a class="scrollspy-link" href="../research.html">Research</a>
+        <a class="scrollspy-link" href="../people.html">People</a>
+        <a class="scrollspy-link" href="../publications.html">Publications</a>
+        <a class="scrollspy-link" href="../news.html">News</a>
+        <a class="scrollspy-link" href="../activity.html">Activity</a>
+    </nav>   
+  </header>
+
+  <section class="section-1">
+    <div class="main-content">
+        <div class="main-content-color">
+            <div>
+                <h1>Research Theme One</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>
+    </div>
+    
+</section>
+  <div class="gray">
+    <div class="section_1">
+        <div class="title">Latest News
+            <div class="line"></div>
+        </div>
+        <div class="cont margin_left">
+            ● What is Lorem Ipsum?<br>
+            ● Lorem Ipsum is simply dummy text of the printing and typesetting industry.  <a href="https://www.lipsum.com" 
+            style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
+            ● It has survived not only five centuries<a href="https://www.lipsum.com" 
+            style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+            but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
+        </div>
+    </div>
+  </div>
+
+  <section class="scrollspy-section" id="Research">
+    <div class="section_2">
+      <div class="title">Research
+          <div class="line"></div>
+      </div>
+      <div class="grids" id="researchGrids"></div>
+      <div class="show-more hidden" id="showMore">
+        <span>Show All Research</span>
+        <i class="arrow right"></i>
+      </div>
+    </div>
+  </section>
+
+  <section class="scrollspy-section" id="Publications">
+    <div class="section_2" >
+      <div class="title">Publications
+          <div class="line"></div>
+      </div>
+      <div class="mn-acc-app">
+        <div class="mn-accordion" id="accordion-2">
+          <!-- JSON data will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scrollspy-section" id="Videos">
+    <div class="section_2">
+      <div class="title">Videos
+          <div class="line"></div>
+      </div>
+      <div id="info-content">
+        <!-- JSON data will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <section class="scrollspy-section" id="Contact">
+    <div class="gray">
+      <div class="section_2">
+        <div class="title">Contact
+            <div class="line"></div>
+        </div>
+        <div class="sec_sub_title" style="margin-top: 60px;">Contact info</div>
+        <div class="sec_sub_title">Contact info</div>
+        <div class="sec_sub_title" style="margin-bottom: 60px;">Contact info</div>
+       </div>
+    </div>
+  </section>
+  
+  <div class="footer">
+    <p>
+        <a href="#">About</a> | 
+        <a href="#">Contact Us</a> | 
+        <a href="#">Copyright</a> | 
+        <a href="#">Terms of Use</a> | 
+        <a href="#">Privacy Policy</a>
+    </p>
+    <p>© 2024 All rights reserved</p>
+  </div>
+  
+  <script src="../../dist/js/mn-accordion.js"></script>
+  <script src="../../dist/js/scrollspy.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      fetch('../../json/research/research.json')  // 修改這裡的路徑
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const researchGrids = document.getElementById('researchGrids');
+          const showMore = document.getElementById('showMore');
+          const rows = Math.ceil(data.length / 3);
+          
+          data.forEach((item, index) => {
+            const researchList = document.createElement('div');
+            researchList.className = 'research_list';
+            researchList.innerHTML = `
+              <img src="${item.imgSrc}" alt="" class="list_img">
+              <div class="research_padding">
+                <div class="sub-title">
+                  ${item.title} >
+                </div>
+                <div class="cont overflow">
+                  ${item.date}
+                </div>
+                <div class="cont overflow">
+                  Researchers: ${item.researchers.map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`).join(', ')}
+                </div>
+              </div>
+            `;
+            if (index >= 6) { // 兩行以後的都隱藏
+              researchList.classList.add('hidden');
+            }
+            researchList.addEventListener('click', function() {
+                window.location.href = item.link;  // 同頁面跳轉
+            });
+            researchGrids.appendChild(researchList);
+          });
+
+          if (rows > 2) {
+            showMore.classList.remove('hidden');
+          }
+
+          showMore.addEventListener('click', function() {
+            const hiddenItems = document.querySelectorAll('.research_list.hidden');
+            if (showMore.querySelector('span').innerText === 'Show All Research') {
+              hiddenItems.forEach(item => item.classList.remove('hidden'));
+              showMore.querySelector('span').innerText = '';
+              showMore.querySelector('i').classList.add('down');
+            } 
+          });
+        })
+        .catch(error => {
+          console.error('Error fetching research data:', error);
+        });
+
+        fetch('/json/publications.json')
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok ' + response.statusText);
+              }
+              return response.json();
+          })
+          .then(data => {
+              console.log('Data fetched successfully:', data);
+              const accordionContainer = document.getElementById('accordion-2');
+              data.years.forEach((year, index) => {
+                  const accordionItem = document.createElement('div');
+                  accordionItem.classList.add('accordion-item');
+
+                  const accordionHeading = document.createElement('div');
+                  accordionHeading.classList.add('accordion-heading');
+                  accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
+                  accordionItem.appendChild(accordionHeading);
+
+                  const accordionContent = document.createElement('div');
+                  accordionContent.classList.add('accordion-content');
+                  if (index === 0) {
+                      accordionContent.style.display = 'block'; // 默認展開第一項
+                  }
+
+                  year.publications.forEach(pub => {
+                      if (pub.label.includes('research2')) {
+                          const pubDiv = document.createElement('div');
+                          pubDiv.style.paddingBottom = '30px';
+                          pubDiv.innerHTML = `
+                              <div class="sub-title_ss"><a style="color:#ab2d05 ;"><strong>${pub.venues}</strong></a> | <a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+                              <div class="cont-researche overflow">${pub.authors.map(author => `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
+                              <div class="sec_sub_title_s">${pub.venuesname} | ${pub.date}</div>
+                              <div class="sec_sub_title_s">${pub.description} </div>
+                              <div class="sec_sub_title_a"><a href="${pub.url}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>
+                          `;
+                          accordionContent.appendChild(pubDiv);
+                      }
+                  });
+
+                  accordionItem.appendChild(accordionContent);
+                  accordionContainer.appendChild(accordionItem);
+              });
+
+              // Initialize accordion
+              var accordion_2 = new Accordion(accordionContainer, {
+                  multiple: true,
+                  defaultOpenedIndexes: [0]
+              });
+          })
+          .catch(error => {
+              console.error('Error fetching publications data:', error);
+          });
+
+
+        fetch('../../json/info.json')  // 修改這裡的路徑
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+          })
+          .then(data => {
+            const infoContent = document.getElementById('info-content');
+            data.infoItem.forEach(infoItem => {
+              if (infoItem.label.includes("research2")) {
+                const infoDiv = document.createElement('div');
+                infoDiv.classList.add('news_card');
+                infoDiv.style.paddingTop = '30px';
+                infoDiv.innerHTML = `
+                  <div class="sec_sub_title">INFO | ${infoItem.venues}</div>
+                  <div class="sub-title_s">
+                    <a href="${infoItem.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+                    ${infoItem.title}</a>
+                  </div>
+                  <div class="cont overflow">${infoItem.date}</div>
+                  <div class="cont overflow">
+                    Speakers: ${infoItem.researchers.map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`).join(', ')}
+                  </div>
+                `;
+                infoContent.appendChild(infoDiv);
+              }
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching info data:', error);
+          });
+
+    });
+  </script>
+</body>
+</html>
+
+
+
+

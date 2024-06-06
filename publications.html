@@ -76,6 +76,10 @@
   <script src="dist/js/mn-accordion.js"></script>
   <script src="dist/js/scrollspy.min.js"></script>
   <script>
+    function openInNewTab(url) {
+      window.open(url, '_blank').focus();
+    }
+
     document.addEventListener("DOMContentLoaded", function() {
       fetch('/json/publications.json')
         .then(response => {
@@ -106,9 +110,10 @@
               const pubDiv = document.createElement('div');
               pubDiv.style.paddingBottom = '30px';
               pubDiv.innerHTML = `
-                <div class="sub-title_ss"><a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
-                <div class="sec_sub_title_s">${pub.authors}</div>
-                <div class="sec_sub_title_s"><a style="font-weight: bold;">${pub.description}</a> | ${pub.date}</div>
+                <div class="sub-title_ss"><a style="color:#ab2d05 ;"><strong>${pub.venues}</strong></a> | <a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+                <div class="cont-researche overflow">${pub.authors.map(author => `<a href="('${author.link}')" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
+                <div class="sec_sub_title_s">${pub.venuesname} | ${pub.date}</div>
+                <div class="sec_sub_title_s">${pub.description} </div>
                 <div class="sec_sub_title_a"><a href="${pub.url}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>
               `;
               accordionContent.appendChild(pubDiv);
@@ -131,6 +136,4 @@
   </script>
 </body>
 </html>
-
-
 

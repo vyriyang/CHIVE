@@ -1,0 +1,43 @@
+{
+  "infoItem": [
+    {
+      "label": ["research1"],
+      "venues":"TVCG",
+      "imgSrc": "../../img/people/people-1/data-1.png",
+      "title": "What is Lorem Ipsum?",
+      "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+      "date": "January 5, 2021",
+      "url": "https://www.lipsum.com",
+      "researchers": [
+        { "name": "name", "link": "people/people-1.html" }
+      ]
+    },
+    {
+      "label": ["research2"],
+      "venues":"CHI",
+      "imgSrc": "../../img/people/people-1/data-2.webp",
+      "title": "Lorem Ipsum",
+      "description": "Another description of the award...",
+      "date": "February 10, 2022",
+      "url": "https://www.example.com",
+      "researchers": [
+        { "name": "name", "link": "people/people-1.html" }
+      ]
+    },
+    {
+      "label": ["research2", "research1"],
+      "venues":"TVCG",
+      "imgSrc": "../../img/people/people-1/data-3.jpg",
+      "title": "Yet Another Award",
+      "description": "Yet another description of the award...",
+      "date": "March 15, 2023",
+      "url": "https://www.anotherexample.com",
+      "researchers": [
+        { "name": "name", "link": "people/people-1.html" }
+      ]
+    }
+  ]
+}
+
+
+

@@ -341,7 +341,7 @@
         }
 
         function loadPeopleData() {
-            fetch('/json/professors.json')
+            fetch('/json/people/professors.json')
                 .then(response => response.json())
                 .then(data => {
                     const container = document.getElementById('professors');
@@ -351,7 +351,7 @@
                 })
                 .catch(error => console.error('Error loading professors data:', error));
 
-            fetch('/json/students.json')
+            fetch('/json/people/students.json')
                 .then(response => response.json())
                 .then(data => {
                     const container = document.getElementById('students');
@@ -361,7 +361,7 @@
                 })
                 .catch(error => console.error('Error loading students data:', error));
 
-            fetch('/json/alumni.json')
+            fetch('/json/people/alumni.json')
                 .then(response => response.json())
                 .then(data => {
                     const container = document.getElementById('alumni');

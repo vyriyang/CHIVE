@@ -60,7 +60,7 @@
     <script src="dist/js/scrollspy.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        fetch('/json/research.json')
+        fetch('/json/research/researchthemes.json')
           .then(response => response.json())
           .then(data => {
             const researchGrids = document.getElementById('researchGrids');
@@ -79,8 +79,8 @@
                 </div>
               `;
               researchList.addEventListener('click', function() {
-                window.open(item.link, '_blank');
-              });
+                window.location.href = item.link;  // 同頁面跳轉
+               });
               researchGrids.appendChild(researchList);
             });
           });
