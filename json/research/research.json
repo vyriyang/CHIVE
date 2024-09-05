@@ -1,102 +1,140 @@
 [
-  {
-    "imgSrc": "../img/people/people-1/data-1.png",
-    "title": "What is Lorem Ipsum?",
-    "link": "../researchthemes/researchtopic.html",
-    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "date": "October 19, 2021",
+    {
+    "label": ["LINC", "current"],
+    "venues": "",
+    "info": "Current Research",
+    "imgSrc": "../img/research/LINC/LINC.png",
+    "imgMore":[""],
+    "title": "Language INdependent Collaboration(LINC) Evaluation Study",
+    "link": "../researchTopic/LINC.html",
+    "pdf": "",
+    "content": "English is the medium of communication, the lingua franca, for collaborative research among scholars in universities across the United States of America.  These universities have high ethnic diversity, with a large number of students and researchers from different countries. Most of these people are ESL speakers and have to face the difficulties of performing their tasks in a language that is not native to them. Research works from these universities are highly regarded and requires a high level of precision. However, the language barrier creates some challenges causing misunderstandings leading to mistakes that affect the accuracy and quality of research findings. These barriers do not only impact individual project results but can also hamper scientific advancements in general. It is important to note that by encouraging clear and concise language we can improve the quality of research and make academia a more welcoming place.",
+    "abstract": "The study will involve two phases:<br>In Phase 1, you will complete a pre-study survey to gather demographic information and insights into your experiences and strategies for effective collaboration. Following this, you will participate in a discussion session on an academic research topic. After the session, you will complete a post-study survey to provide feedback on the tool's usefulness and your overall experience.<br>In Phase 2, participants will be provided with meeting discussion data, such as transcriptions and summaries. You will conduct a post-meeting analysis and complete a follow-up survey. <br>Finally, there will be a 10 to 15-minute focus group discussion session held over Zoom.<br><br>",
+    "keywords": ["Case study"],
+    "description": "Yet another description of the award...",
+    "url": "",
+    "date": "Dec, 2024",
     "researchers": [
-        { "name": "name", "link": "people/people-1.html" }
-    ]
+        { "name": "Saramsh Gautam", "link": "people/people-1.html" },
+        { "name": "Mahmood Jasim", "link": "/people/professors/MahmoodJasim/MahmoodJasim.html" }
+    ],
+    "place":"USA",
+    "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+    "school": "Louisiana State University",
+    "num": "",
+    "email": "sgauta4@lsu.edu"
   },
   {
+    "label": ["AnimatingTheNarrative", "current"],
+    "venues": "VIS2024",
+    "info": "VIS2024 Short Papers",
+    "imgSrc": "../img/research/AnimatingTheNarrative/vis24b-sub1192-Animating the Narrative-Representative Image.png",
+    "imgMore":["../img/research/AnimatingTheNarrative/Animating the Narrative Representative Image and Caption.png"],
+    "title": "Animating the Narrative: A Review of Animation Styles in Narrative Visualization",
+    "link": "../researchTopic/AnimatingTheNarrative.html",
+    "pdf": "https://ieeevis.org/year/2024/program/paper_v-short-1192.html",
+    "content": "We explore the design space of narrative visualization, focusing on animation styles. We categorize 80 papers from top visualization venues into six categories, including Animation Style, Interactivity, Methodology, Technology, Evaluation Type , and Application Domain. We discuss the interplay between different visualization techniques and elements and the trend to focus on domain-specific visualizations.",
+    "abstract": "Narrative visualization has become a crucial tool in data presentation, merging storytelling with data visualization to convey complex information in an engaging and accessible manner. In this study, we review the design space for narrative visualizations, focusing on animation style, through a comprehensive analysis of 80 papers from key visualization venues. We categorize these papers into six broad themes: Animation Style, Interactivity, Technology Usage, Methodology Development, Evaluation Type, and Application Domain. Our findings reveal a significant evolution in the field, marked by a growing preference for animated and non-interactive techniques. This trend reflects a shift towards minimizing user interaction while enhancing the clarity and impact of data presentation. We also identified key trends and technologies shaping the field, highlighting the role of technologies, such as machine learn- ing in driving these changes. We offer insights into the dynamic interrelations within the narrative visualization domains, and suggest future research directions, including exploring non-interactive techniques, examining the interplay between different visualization elements, and developing domain-specific visualizations.<br><br>",
+    "keywords": ["Narrative visualizations", "Static and animated visualization", "Categorization", "Design space"],
+    "description": "We explore the design space of narrative visualization, focusing on animation styles.",
+    "url": "",
+    "date": "October 17, 2024",
+    "researchers": [
+        { "name": "Vyri Yang", "link": "/people/people-1.html" },
+        { "name": "Mahmood Jasim", "link": "/people/professors/MahmoodJasim/MahmoodJasim.html" }
+    ],
+    "place": "St. Pete Beach, Florida, USA",
+    "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+    "school": "Louisiana State University",
+    "num": "",
+    "email": "jyang44@lsu.edu"
+  },
+  {
+    "label": ["researchDemo","current"],
+    "venues": "CHI",
+    "info": "CHI2024",
     "imgSrc": "../img/people/people-1/data-2.webp",
-    "title": "Where does it come from?",
-    "link": "https://scholar.google.com",
-    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "imgMore":["../img/people/people-1/data-3.jpg","../img/people/people-1/data-1.png","../img/people/people-1/data-2.webp"],
+    "title": "Research Page Demo",
+    "link": "../researchTopic/researchtopic.html",
+    "pdf": "https://www.lipsum.com",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "abstract": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br><br>",
+    "keywords": ["Keyword", "Keyword"],
+    "description": "Another description of the award...",
+    "url": "https://www.youtube.com/watch?v=sYtE-qv4s_U",
     "date": "October 19, 2021",
     "researchers": [
+        { "name": "name", "link": "people/people-1.html" },
+        { "name": "name", "link": "people/people-1.html" },
         { "name": "name", "link": "people/people-1.html" }
-    ]
+    ],
+    "place":"USA",
+    "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+    "school": "Louisiana State University",
+    "num": "xxx.xxx.xxx",
+    "email": "xxx@xxx.com"
   },
   {
+    "label": ["research3"],
+    "venues": "TVCG",
+    "info": "TVCG",
     "imgSrc": "../img/people/people-1/data-3.jpg",
-    "title": "Why do we use it?",
-    "link": "https://www.lipsum.com",
-    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "date": "October 19, 2021",
-    "researchers": [
-        { "name": "name", "link": "people/people-1.html" }
-    ]
-  },
-  {
-    "imgSrc": "../img/people/people-1/data-2.webp",
+    "imgMore":[""],
     "title": "Where does it come from?",
-    "link": "https://scholar.google.com",
-    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "date": "October 19, 2021",
+    "link": "../researchTopic/researchtopic.html",
+    "pdf": "",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    "abstract": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "keywords": ["Keyword", "Keyword"],
+    "description": "Another description of the award...",
+    "url": "",
+    "date": "October 19, 2023",
     "researchers": [
+        { "name": "name", "link": "people/people-1.html" },
         { "name": "name", "link": "people/people-1.html" }
-    ]
+    ],
+    "place":"USA",
+    "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+    "school": "Louisiana State University",
+    "num": "https://www.youtube.com/watch?v=sYtE-qv4s_U",
+    "email": ""
   },
   {
-    "imgSrc": "../img/people/people-1/data-3.jpg",
-    "title": "Why do we use it?",
-    "link": "https://www.lipsum.com",
-    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    "date": "October 19, 2021",
-    "researchers": [
-        { "name": "name", "link": "people/people-1.html" }
-    ]
-  },{
-      "imgSrc": "../img/people/people-1/data-1.png",
-      "title": "What is Lorem Ipsum?",
-      "link": "https://www.lipsum.com",
-      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "date": "October 19, 2021",
-      "researchers": [
-          { "name": "name", "link": "people/people-1.html" }
-      ]
-    },
-    {
-      "imgSrc": "../img/people/people-1/data-2.webp",
-      "title": "Where does it come from?",
-      "link": "https://scholar.google.com",
-      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "date": "October 19, 2021",
-      "researchers": [
-          { "name": "name", "link": "people/people-1.html" }
-      ]
-    },
-    {
+      "label": ["research3","current"],
+      "venues": "TVCG",
+      "info": "TVCG",
       "imgSrc": "../img/people/people-1/data-3.jpg",
-      "title": "Why do we use it?",
-      "link": "https://www.lipsum.com",
-      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "date": "October 19, 2021",
-      "researchers": [
-          { "name": "name", "link": "people/people-1.html" }
-      ]
-    },
-    {
-      "imgSrc": "../img/people/people-1/data-2.webp",
+      "imgMore":[""],
       "title": "Where does it come from?",
-      "link": "https://scholar.google.com",
-      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "date": "October 19, 2021",
+      "link": "../researchTopic/researchtopic.html",
+      "pdf": "",
+      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "abstract": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      "keywords": ["Keyword", "Keyword"],
+      "description": "Another description of the award...",
+      "url": "",
+      "date": "October 19, 2023",
       "researchers": [
+          { "name": "name", "link": "people/people-1.html" },
           { "name": "name", "link": "people/people-1.html" }
-      ]
+      ],
+      "place":"USA",
+      "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+      "school": "Louisiana State University",
+      "num": "https://www.youtube.com/watch?v=sYtE-qv4s_U",
+      "email": ""
     },
-    {
-      "imgSrc": "../img/people/people-1/data-3.jpg",
-      "title": "Why do we use it?",
-      "link": "https://www.lipsum.com",
-      "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-      "date": "October 19, 2021",
+  {
+      "label": ["current", "last"],
+      "imgSrc": "img/explore/explore.png",
+      "link": "",
+      "title": "View All Research",
+      "content": "",
+      "date": "",
       "researchers": [
-          { "name": "name", "link": "people/people-1.html" }
+          { "name": "", "link": "" }
       ]
-    }
+  }
 ]
 

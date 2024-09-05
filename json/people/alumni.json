@@ -1,17 +1,20 @@
 {
     "people": [
         {
-            "name": "Alumni Name",
-            "title": "Alumni Title",
-            "image": "img/people/people-1/peopledemo.jpg",
-            "link": "people/alumni/alumni1.html"
-        },
+        "name": "Student name",
+        "title": "Title",
+        "description": "Description of the student.",
+        "image": "img/people/people-1/peopledemo.jpg",
+        "link": "people/students/student2.html"
+    },
         {
-            "name": "Another Alumni",
-            "title": "Another Title",
-            "image": "img/people/people-1/peopledemo.jpg",
-            "link": "people/alumni/alumni2.html"
-        }
+        "name": "Student name last",
+        "title": "Title",
+        "description": "Description of the student.",
+        "image": "img/people/people-1/peopledemo.jpg",
+        "link": "people/students/student2.html"
+    }
+        
     ]
 }
 

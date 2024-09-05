@@ -222,7 +222,7 @@ body {
 
 .list_img {
     width: 100%;
-    height: 300px;
+    height: auto;
 }
 .video_list:hover .list_img {
     transform: scale(1.1);

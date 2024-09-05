@@ -5,7 +5,6 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    
 }
 
 header {
@@ -16,18 +15,22 @@ header {
     padding: 0 10px;
     height: 60px; /* 确定 header 的高度 */
 }
+
 header .logo-container {
     display: flex;
     align-items: center;
 }
+
 header img {
     height: 60px;
 }
+
 header .logo-text {
     margin-left: 10px;
     font-size: 22px;
     white-space: nowrap;
 }
+
 nav {
     height: 60px;
     display: flex;
@@ -38,6 +41,7 @@ nav {
     left: 0;
     background: #333;
 }
+
 .scrollspy-nav {
     height: 60px;
     display: flex;
@@ -48,9 +52,10 @@ nav {
     left: 0;
     background: #333;
 }
+
 .scrollspy-nav .scrollspy-link {
     text-decoration: none;
-    color:white;
+    color: white;
     font-family: 'PT Sans Narrow', sans-serif;
     transition: 0.3s ease;
     font-size: 18px;
@@ -58,9 +63,11 @@ nav {
     padding: 0px 5px;
     cursor: pointer;
 }
+
 .scrollspy-nav .scrollspy-link:hover {
     color: #f36f24;
 }
+
 nav a {
     text-decoration: none;
     color: white;
@@ -105,14 +112,14 @@ nav a {
 
 .pic_img {
     width: 350px;
-    height: 466.67px; /* 確保比例為3:4 */
+    height: 466.67px; /* 确保比例为3:4 */
     background-color: #fff;
     border: 0px solid #fff;
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, .1);
-    border-radius: 0; /* 去掉圓角 */
+    border-radius: 0; /* 去掉圆角 */
 }
 
-.pic_img:hover{
+.pic_img:hover {
     transform: scale(1.1);
 }
 
@@ -124,6 +131,13 @@ nav a {
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 20px;
     color: #8d8b8b;
+    margin-bottom: 10px;
+}
+
+.intro_text_research {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 20px;
+    color: #eaeaea;
     margin-bottom: 10px;
 }
 
@@ -139,6 +153,7 @@ nav a {
     color: #5f5d5d;
     margin-bottom: 10px;
 }
+
 
 .download_btn {
     margin-top: 20px;
@@ -159,35 +174,84 @@ nav a {
     cursor: pointer;
 }
 
+.download_btn:hover {
+    color: #f36f24;
+}
+
 .label_btn {
     margin-top: 20px;
     display: inline-block;
     font-family: 'PT Sans Narrow', sans-serif;
-    height: 33px;
+    height: 19px;
     border-radius: 40px;
-    padding-top: 10px;
+    padding-top: 4px;
     padding-bottom: auto;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
     background-color: white;
     background: linear-gradient(white, white) padding-box, linear-gradient(120deg, #f36f24, #b1b1b2, #12163f) border-box;
-    border: 4px solid transparent;
-    font-size: 18px;
+    border: 2px solid transparent;
+    font-size: 14px;
     text-align: center;
     color: #333;
     cursor: pointer;
 }
 
-.download_btn:hover {
+.label_btn:hover {
     color: #f36f24;
 }
+
+.label_key_btn {
+    margin-top: 20px;
+    display: inline-block;
+    font-family: 'PT Sans Narrow', sans-serif;
+    height: 19px;
+    border-radius: 0px;
+    padding-top: 0px;
+    padding-bottom: auto;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color:rgba(255, 255, 255, 0);
+    border: 2px solid transparent;
+    font-size: 14px;
+    text-align: center;
+    color: #f5ba98;
+    cursor: pointer;
+}
+
+.label_key_btn:hover {
+    color: #b6baed;
+}
+
+.label_key {
+    color: #5d5d5d;
+    font-size: 20px; 
+    line-height: 1.6;
+    cursor: pointer;
+    white-space: nowrap; /* Prevents wrapping inside individual keywords */
+}
+
+.keywords-container {
+    display: inline-block; /* Make the container inline to avoid stretching */
+    width: 100%; /* Ensures that the container takes up all available width */
+    white-space: nowrap; /* Force all items to stay in one line unless overflow */
+    overflow-x: auto; /* Allow scrolling if the content exceeds the container width */
+}
+
+.download-container {
+    display: inline-block; /* Make the container inline to avoid stretching */
+    width: 100%; /* Ensures that the container takes up all available width */
+    white-space: nowrap; /* Force all items to stay in one line unless overflow */
+    overflow-x: auto; /* Allow scrolling if the content exceeds the container width */
+}
+
+
 
 .gray {
     background: #F7F9FC;
     padding-top: 30px;
     padding-bottom: 30px;
 }
-
 
 .section_1 {
     margin-left: 160px;
@@ -256,7 +320,7 @@ nav a {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 8; /* 設置顯示行數，這裡設置為10行，可以根據需要調整 */
+    -webkit-line-clamp: 8; /* 设置显示行数，这里设置为10行，可以根据需要调整 */
     -webkit-box-orient: vertical;
 }
 
@@ -274,17 +338,14 @@ nav a {
     border-image: linear-gradient(-120deg, #12163f, #f36f24) 1;
 }
 
-
 .list_img {
     width: 100%;
     height: 300px;
 }
 
-
 .video_list:hover .list_img {
     transform: scale(1.1);
-  }
-
+}
 
 .list_img_last {
     width: 100%;
@@ -296,14 +357,14 @@ nav a {
 }
 
 .research_list {
-    height: 650px; /* 確保這個高度與您想要的高度一致 */
+    height: 650px; /* 确保这个高度与您想要的高度一致 */
     position: relative;
     margin-bottom: 0px;
     cursor: pointer;
     background: white;
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, .1);
     border-bottom: 6px solid white;
-    overflow: hidden; /* 添加這行以確保文字超出部分會被截斷 */
+    overflow: hidden; /* 添加这行以确保文字超出部分会被截断 */
 }
 
 .research_list:hover img {
@@ -317,6 +378,14 @@ nav a {
 
 .research_padding {
     padding: 25px;
+}
+
+.abstract-container, 
+.abstract-container div, 
+.abstract-container p {
+  color: #5d5d5d;
+  font-size: 20px; 
+  line-height: 1.6;
 }
 
 .news_card {
@@ -477,3 +546,5 @@ nav a {
         font-size: 2.4vw;
     }
 }
+
+

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animating the Narrative</title>
+  <link rel="stylesheet" href="../dist/css/scrollspy.dark.css"/>
+  <style>
+    .main-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: 
+        linear-gradient(rgba(4, 55, 83, 0.7), rgba(4, 83, 40, 0.7)), 
+        url('../img/Home/19-1.webp');
+      background-size: cover;
+      background-position: top;
+      animation: moveBg 280s infinite alternate;
+      color: white;
+      min-height: 60vh;
+      box-sizing: border-box;
+    }
+
+    @keyframes moveBg {
+      0% {
+        background-position: top;
+      }
+      50% {
+        background-position: bottom;
+      }
+      100% {
+        background-position: top;
+      }
+    }
+
+    /* 父容器样式，居中显示图片 */
+    .img-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    /* 图片样式，固定宽度为1080px，自适应容器 */
+    .research-image {
+      width: 100%;
+      max-width: 1080px;
+      height: auto;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 悬停时图片放大 1.1 倍 */
+    .research-image:hover {
+      transform: scale(1.1);
+    }
+
+    /* 悬浮框样式 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(37, 37, 37, 0.6);
+    }
+
+    /* 原图显示在悬浮框中，上下左右居中 */
+    .modal-content {
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 80%;
+      max-width: 1080px;
+    }
+
+    /* 缩放功能 */
+    .modal-content.zoom-in {
+      transform: translate(-50%, -50%) scale(1.5);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-content.zoom-out {
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.3s ease;
+    }
+
+    /* 关闭按钮样式 */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+    </div>
+    <nav class="scrollspy-nav">
+      <a class="scrollspy-link" href="../index.html">Home</a>
+      <a class="scrollspy-link" href="../research.html">Research</a>
+      <a class="scrollspy-link" href="../people.html">People</a>
+      <a class="scrollspy-link" href="../publications.html">Publications</a>
+      <a class="scrollspy-link" href="../news.html">News</a>
+      <a class="scrollspy-link" href="../activity.html">Activity</a>
+    </nav>   
+  </header>
+
+  <section class="scrollspy-section main-content" id="">
+    <div class="main">
+      <div class="about">
+        <div class="intro_text_research" id="researchTitle"></div>
+        <div class="name" id="researchName" style="color:white"></div>
+        <div class="cont" id="researchContent" style="color:white"></div>
+        <div id="researchers-info" style="margin-bottom: 20px;"></div> <!-- 显示researchers信息 -->
+        <div class="keywords-container"></div>
+        <div class="download-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gray">
+    <div class="section_1">
+      <div class="title">Latest News
+        <div class="line"></div>
+      </div>
+      <div class="cont margin_left">
+        ● What is Lorem Ipsum?<br>
+        ● Lorem Ipsum is simply dummy text of the printing and typesetting industry.  <a href="https://www.lipsum.com" 
+        style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
+        ● It has survived not only five centuries<a href="https://www.lipsum.com" 
+        style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+        but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
+      </div>
+    </div>
+  </div>
+
+  <section class="scrollspy-section" id="Abstract">
+    <div class="section_2">
+      <div class="title">Abstract
+        <div class="line"></div>
+      </div>
+      <div class="abstract-container">
+        <div id="researchAbstract"></div>
+        <div class="img-container">
+          <img src="" id="mainImage" class="research-image" alt="Main Image"/>
+          <div id="imgMoreContainer"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 悬浮框结构 -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
+
+  <section class="scrollspy-section" id="Publications">
+    <div class="section_2">
+      <div class="title">Publications
+        <div class="line"></div>
+      </div>
+      <div class="mn-acc-app">
+        <div class="mn-accordion" id="accordion-2">
+          <!-- JSON data will be inserted here by JavaScript -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scrollspy-section" id="Videos">
+    <div class="section_2">
+      <div class="title">Videos
+        <div class="line"></div>
+      </div>
+      <div id="info-content">
+        <!-- JSON data will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <section class="scrollspy-section" id="Contact">
+    <div class="gray">
+      <div class="section_2">
+        <div class="title">Contact
+            <div class="line"></div>
+        </div>
+        <div class="sec_sub_title" id="contact-details">
+          <!-- Contact details will be loaded here by JavaScript -->
+        </div>
+       </div>
+    </div>
+  </section>
+  
+  <div class="footer">
+    <p>
+      <a href="#">About</a> | 
+      <a href="#">Contact Us</a> | 
+      <a href="#">Copyright</a> | 
+      <a href="#">Terms of Use</a> | 
+      <a href="#">Privacy Policy</a>
+    </p>
+    <p>© 2024 All rights reserved</p>
+  </div>
+
+  <script src="../../dist/js/mn-accordion.js"></script>
+  <script src="../../dist/js/scrollspy.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 点击 researchImage 显示悬浮框
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeBtn = document.getElementsByClassName("close")[0];
+        let zoomedIn = false;
+
+        // 加载 imgSrc 主图片
+        const mainImage = document.getElementById("mainImage");
+        fetch('/json/research/research.json')
+          .then(response => response.json())
+          .then(data => {
+              const research = data.find(item => item.label.includes("AnimatingTheNarrative"));
+              if (research) {
+                  // 设置主图像
+                  mainImage.src = research.imgSrc;
+                  
+                  // 点击图片时显示模态框
+                  mainImage.onclick = function() {
+                    modal.style.display = "block";
+                    modalImg.src = this.src;
+                    modalImg.classList.remove('zoom-in', 'zoom-out'); // 重置缩放状态
+                  }
+
+                  // 加载 imgMore 附加图片
+                  const imgMoreContainer = document.getElementById('imgMoreContainer');
+                  research.imgMore.forEach(imgSrc => {
+                      const img = document.createElement('img');
+                      img.src = imgSrc;
+                      img.className = 'research-image';
+                      img.onclick = function() {
+                        modal.style.display = "block";
+                        modalImg.src = imgSrc;
+                        modalImg.classList.remove('zoom-in', 'zoom-out');
+                      };
+                      imgMoreContainer.appendChild(img);
+                  });
+
+                  // 更新标题和内容
+                  document.getElementById('researchTitle').textContent = research.info;
+                  document.getElementById('researchName').textContent = research.title;
+                  document.getElementById('researchContent').textContent = research.content;
+
+                  // 更新研究者信息
+                  const researchersInfo = research.researchers.map(r => 
+                      `<span class="researcher-link" data-link="${r.link}" style="cursor:pointer;">${r.name}</span>`
+                  ).join(', ');
+                  document.getElementById('researchers-info').innerHTML = `Researchers: ${researchersInfo}`;
+
+                  // 为研究者名字添加 hover 效果和点击事件
+                  document.querySelectorAll('.researcher-link').forEach(item => {
+                      item.addEventListener('mouseover', function() {
+                          this.style.color = '#f36f24'; // 鼠标悬停时变色
+                      });
+                      item.addEventListener('mouseout', function() {
+                          this.style.color = ''; // 鼠标移出后恢复默认颜色
+                      });
+                      item.addEventListener('click', function() {
+                          const link = this.getAttribute('data-link');
+                          window.open(link, '_blank'); // 在新标签页中打开对应链接
+                      });
+                  });
+
+                  // 更新关键词
+                  const keywordsContainer = document.querySelector('.keywords-container');
+                  research.keywords.slice(0, 3).forEach(keyword => {
+                      const keywordDiv = document.createElement('div');
+                      keywordDiv.className = 'label_key_btn';
+                      keywordDiv.style.marginRight = '10px';
+                      keywordDiv.textContent = `#${keyword}`;
+                      keywordsContainer.appendChild(keywordDiv);
+                  });
+
+                  // 添加 "View Full Paper" 按钮
+                  const downloadContainer = document.querySelector('.download-container');
+                  if (research.pdf) {
+                    const viewFullPaperBtn = document.createElement('a');
+                    viewFullPaperBtn.className = 'label_btn';
+                    viewFullPaperBtn.href = research.pdf;
+                    viewFullPaperBtn.target = '_blank';
+                    viewFullPaperBtn.textContent = 'View Full Paper';
+                    viewFullPaperBtn.style.textDecoration = 'none';
+                    downloadContainer.appendChild(viewFullPaperBtn);
+                  }
+
+                  // 更新摘要和图片
+                  if (research.abstract) {
+                      const formattedAbstract = research.abstract.replace(/\n/g, '<br>');
+                      document.getElementById('researchAbstract').innerHTML = formattedAbstract;
+                  }
+
+                  // 更新 Contact 部分
+                  const contactDetails = document.getElementById('contact-details');
+                    const { office, school, num, email } = research;
+                    const contactSection = document.getElementById('Contact');
+
+                    let contactHTML = '';
+
+                    // Check if there's a researcher and add the name with a link
+                    if (research.researchers[0].name) {
+                        contactHTML += `
+                            <div>
+                                <a href="${research.researchers[0].link}" target="_blank" style="cursor:pointer; text-decoration: none;">
+                                    ${research.researchers[0].name}
+                                </a>
+                            </div>
+                        `;
+                    }
+
+                    // Check for office, school, number, and email, and add them to the contact details if available
+                    if (office) contactHTML += `<div>${office}</div>`;
+                    if (school) contactHTML += `<div>${school}</div>`;
+                    if (num) contactHTML += `<div>${num}</div>`;
+                    if (email) contactHTML += `<div><a href="mailto:${email}" style="color: #3f44b6;">${email}</a></div>`;
+
+                    // If there are contact details, display them. Otherwise, hide the contact section.
+                    if (contactHTML.trim()) {
+                        contactDetails.innerHTML = contactHTML;
+                    } else {
+                        contactSection.style.display = 'none';
+                    }
+
+                    // Add hover effect for the researcher's name link
+                    const style = document.createElement('style');
+                    style.innerHTML = `
+                        #contact-details a {
+                            color: #5f5d5d;
+                        }
+                        #contact-details a:hover {
+                            color: #3f44b6; /* Change hover color */
+                        }
+                    `;
+                    document.head.appendChild(style);
+              }
+
+              // 更新 Videos 部分的内容
+              const infoContent = document.getElementById('info-content');
+                const videoSection = document.getElementById('Videos');
+                const hasVideos = data.some(infoItem => infoItem.label.includes("research2") && infoItem.url);
+
+                if (!hasVideos) {
+                    videoSection.style.display = 'none';
+                    return;
+                }
+
+                data.forEach(infoItem => {
+                  if (infoItem.label.includes("research2") && infoItem.url) {
+                    const infoDiv = document.createElement('div');
+                    infoDiv.classList.add('news_card');
+                    infoDiv.style.paddingTop = '30px';
+
+                    // 限制显示的Speakers数量，设定最大显示数量为n
+                    const maxSpeakersToShow = 1;
+                    const displayedSpeakers = infoItem.researchers.slice(0, maxSpeakersToShow);
+                    const speakersHTML = displayedSpeakers.map(r => 
+                      `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`
+                    ).join(', ');
+
+                    // 如果有更多Speakers，显示“and more”
+                    const moreSpeakers = infoItem.researchers.length > maxSpeakersToShow ? '' : '';
+
+                    infoDiv.innerHTML = `
+                      <div class="sec_sub_title">${infoItem.info} | ${infoItem.place}</div>
+                      <div class="sub-title_s">
+                        <a href="${infoItem.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+                        ${infoItem.title}</a>
+                      </div>
+                      <div class="cont overflow">${infoItem.date}</div>
+                      <div class="cont overflow">
+                        Speakers: ${speakersHTML}${moreSpeakers}
+                      </div>
+                      ${infoItem.url.includes('youtube.com') ? `
+                        <div class="video-container" style="margin-top: 20px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
+                          <iframe src="${infoItem.url.replace('watch?v=', 'embed/')}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>` : ''}
+                    `;
+                    infoContent.appendChild(infoDiv);
+                  }
+                });
+          })
+          .catch(error => {
+              console.error('Error fetching research data:', error);
+          });
+
+          // Fetch publications data
+        fetch('/json/research/publications.json')
+          .then(response => {
+              if (!response.ok) {
+                  throw new Error('Network response was not ok ' + response.statusText);
+              }
+              return response.json();
+          })
+          .then(data => {
+              const accordionContainer = document.getElementById('accordion-2');
+              let firstAccordionOpened = false;
+
+              const hasPublications = data.years.some(year => year.publications.some(pub => pub.label.includes('research2')));
+
+              if (!hasPublications) {
+                  document.getElementById('Publications').style.display = 'none';
+                  return;
+              }
+
+              data.years.forEach((year, index) => {
+                  const filteredPublications = year.publications.filter(pub => pub.label.includes('research2'));
+
+                  if (filteredPublications.length === 0) {
+                      return;
+                  }
+
+                  const accordionItem = document.createElement('div');
+                  accordionItem.classList.add('accordion-item');
+
+                  const accordionHeading = document.createElement('div');
+                  accordionHeading.classList.add('accordion-heading');
+                  accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
+                  accordionItem.appendChild(accordionHeading);
+
+                  const accordionContent = document.createElement('div');
+                  accordionContent.classList.add('accordion-content');
+                  
+                  if (!firstAccordionOpened) {
+                      accordionContent.style.display = 'block'; 
+                      firstAccordionOpened = true;
+                  }
+
+                  filteredPublications.forEach(pub => {
+                      const pubDiv = document.createElement('div');
+                      pubDiv.style.paddingBottom = '30px';
+                      pubDiv.innerHTML = `
+                          <div class="sub-title_ss"><a style="color:#ab2d05 ;"><strong>${pub.venues}</strong></a> | <a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+                          <div class="cont-researche overflow">${pub.authors.map(author => `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
+                          <div class="sec_sub_title_s">${pub.venuesname} | ${pub.date}</div>
+                          <div class="sec_sub_title_s">${pub.description} </div>
+                          <div class="sec_sub_title_a"><a href="${pub.url}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>
+                      `;
+                      accordionContent.appendChild(pubDiv);
+                  });
+
+                  accordionItem.appendChild(accordionContent);
+                  accordionContainer.appendChild(accordionItem);
+              });
+
+              var accordion_2 = new Accordion(accordionContainer, {
+                  multiple: true,
+                  defaultOpenedIndexes: [0]
+              });
+          })
+          .catch(error => {
+              console.error('Error fetching publications data:', error);
+          });
+
+        // 关闭悬浮框
+        closeBtn.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // 点击图片进行缩放
+        modalImg.onclick = function() {
+          zoomedIn = !zoomedIn;
+          if (zoomedIn) {
+            modalImg.classList.add('zoom-in');
+            modalImg.classList.remove('zoom-out');
+          } else {
+            modalImg.classList.add('zoom-out');
+            modalImg.classList.remove('zoom-in');
+          }
+        }
+    });
+  </script>
+</body>
+</html>

@@ -1,93 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Research</title>
-    <link rel="stylesheet" href="dist/css/scrollspy.css"/>
-    <link rel="stylesheet" href="dist/css/nav.css"/>
-  </head>
-  <body>
-    <header>
-      <div class="logo-container">
-          <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
-          <div class="logo-text">LSU Visualization Research Lab</div>
-      </div>
-      <nav class="scrollspy-nav">
-        <a class="scrollspy-link" href="index.html">Home</a>
-        <a class="scrollspy-link" href="research.html">Research</a>
-        <a class="scrollspy-link" href="people.html">People</a>
-        <a class="scrollspy-link" href="publications.html">Publications</a>
-        <a class="scrollspy-link" href="news.html">News</a>
-        <a class="scrollspy-link" href="activity.html">Activity</a>
-      </nav>   
-    </header>
-    
-    <section class="scrollspy-section" id="Research">
-      <div class="section_2">
-        <div class="title">Research Themes
-            <div class="line"></div>
-        </div>
-        <div class="grids" id="researchGrids"></div>
-      </div>
-    </section>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research</title>
+  <link rel="stylesheet" href="dist/css/scrollspy.css"/>
+  <link rel="stylesheet" href="dist/css/nav.css"/>
+  <style>
+    /* 限制 content 显示的行数 */
+    .cont_bottom {
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* 限制显示4行 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-    <section class="scrollspy-section" id="">
-      <div class="gray">
-        <div class="section_2">
-          <div class="title">Lorem Ipsum
-              <div class="line"></div>
-          </div>
-          <div class="sec_sub_title" style="margin-top: 60px;">What is Lorem Ipsum?</div>
-          <div class="sec_sub_title">Why do we use it?</div>
-          <div class="sec_sub_title" style="margin-bottom: 60px;">Where can I get some?</div>
-        </div>
-      </div>
-    </section>
-    
-    <div class="footer">
-      <p>
-          <a href="#">About</a> | 
-          <a href="#">Contact Us</a> | 
-          <a href="#">Copyright</a> | 
-          <a href="#">Terms of Use</a> | 
-          <a href="#">Privacy Policy</a>
-      </p>
-      <p>© 2024 All rights reserved</p>
+    .cont-researcher {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* 添加 cursor 样式，表示标题和图片可以点击 */
+    .sub-title {
+      cursor: pointer;
+      color: #3f44b6;
+      text-decoration: none;
+    }
+
+    .list_img {
+      cursor: pointer;
+    }
+
+    /* 移除研究者姓名链接的下划线 */
+    .cont-researcher-name {
+      text-decoration: none;
+      color: #5f5d5d; /* 可选，设置颜色 */
+    }
+
+    /* 可选：悬停时显示不同颜色 */
+    .cont-researcher-name:hover {
+      color: #f36f24; /* 悬停时的颜色 */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
+      <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
+      <div class="logo-text">LSU Visualization Research Lab</div>
     </div>
-    
-    <script src="dist/js/mn-accordion.js"></script>
-    <script src="dist/js/scrollspy.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        fetch('/json/research/researchthemes.json')
-          .then(response => response.json())
-          .then(data => {
-            const researchGrids = document.getElementById('researchGrids');
-            data.forEach(item => {
-              const researchList = document.createElement('div');
-              researchList.className = 'research_list';
-              researchList.innerHTML = `
-                <img src="${item.imgSrc}" alt="" class="list_img">
-                <div class="research_padding">
-                  <div class="sub-title">
-                    ${item.title} >
-                  </div>
-                  <div class="cont overflow">
-                    ${item.description}
-                  </div>
+    <nav class="scrollspy-nav">
+      <a class="scrollspy-link" href="index.html">Home</a>
+      <a class="scrollspy-link" href="research.html">Research</a>
+      <a class="scrollspy-link" href="people.html">People</a>
+      <a class="scrollspy-link" href="publications.html">Publications</a>
+      <a class="scrollspy-link" href="news.html">News</a>
+      <a class="scrollspy-link" href="activity.html">Activity</a>
+    </nav>   
+  </header>
+  
+  <section class="scrollspy-section" id="Research">
+    <div class="section_2">
+      <div class="title">Research
+        <div class="line"></div>
+      </div>
+      <div class="grids" id="researchGrids"></div>
+    </div>
+  </section>
+
+  <section class="scrollspy-section" id="">
+    <div class="gray">
+      <div class="section_2">
+        <div class="title">Contact Us
+          <div class="line"></div>
+        </div>
+        <div class="sec_sub_title" style="margin-top: 60px;">2329 Patrick F Taylor Building, Baton Rouge, LA 70803</div>
+        <div class="sec_sub_title" style="margin-bottom: 60px;">Louisiana State University</div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="footer">
+    <p>
+      <a href="#">About</a> | 
+      <a href="#">Contact Us</a> | 
+      <a href="#">Copyright</a> | 
+      <a href="#">Terms of Use</a> | 
+      <a href="#">Privacy Policy</a>
+    </p>
+    <p>© 2024 All rights reserved</p>
+  </div>
+  
+  <script src="dist/js/mn-accordion.js"></script>
+  <script src="dist/js/scrollspy.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      fetch('/json/research/research.json')
+        .then(response => response.json())
+        .then(data => {
+          const researchGrids = document.getElementById('researchGrids');
+          
+          // 根据时间降序排序
+          data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+          data.forEach(item => {
+            // 检查 "label" 中是否包含 "last"
+            if (item.label.includes('last')) {
+              return;  // 跳过包含 "last" 的项目
+            }
+
+            const researchList = document.createElement('div');
+            researchList.className = 'research_list';
+            
+            // 获取 researchers 数据并处理超过两个时的逻辑
+            const displayedResearchers = item.researchers.slice(0, 2);
+            const moreResearchers = item.researchers.length > 2 ? 'and more' : '';
+            const researchersHTML = displayedResearchers.map(r => 
+              `<a href="${r.link}" target="_blank" class="cont-researcher-name">${r.name}</a>`
+            ).join(', ') + (moreResearchers ? `, ${moreResearchers}` : '');
+
+            researchList.innerHTML = `
+              <img src="${item.imgSrc}" alt="" class="list_img">
+              <div class="research_padding">
+                <div class="sub-title">
+                  ${item.title} >
                 </div>
-              `;
-              researchList.addEventListener('click', function() {
-                window.location.href = item.link;  // 同頁面跳轉
-               });
-              researchGrids.appendChild(researchList);
+                <div class="cont cont_bottom overflow">
+                  ${item.content}
+                </div>
+                <div class="cont-researcher overflow">
+                  ${item.date}
+                  <br>Researcher: ${researchersHTML}
+                </div>
+              </div>
+            `;
+
+            // 为图片和标题分别添加点击事件，跳转到 research 页面
+            researchList.querySelector('.list_img').addEventListener('click', function() {
+              window.location.href = item.link;  // 点击图片跳转
             });
+
+            researchList.querySelector('.sub-title').addEventListener('click', function() {
+              window.location.href = item.link;  // 点击标题跳转
+            });
+
+            researchList.querySelector('.cont_bottom').addEventListener('click', function() {
+              window.location.href = item.link;  // 点击标题跳转
+            });
+
+            researchGrids.appendChild(researchList);
           });
-      });
-    </script>
-
-  </body>
+        });
+    });
+  </script>
+</body>
 </html>
-
-

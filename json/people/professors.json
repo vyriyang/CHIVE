@@ -1,11 +1,11 @@
 {
     "people": [
         {
-            "name": "Professor Name",
-            "title": "Professor Title",
-            "description": "Description of the professor.",
-            "image": "img/people/people-1/peopledemo.jpg",
-            "link": "people/professors/name-1/people-1.html"
+            "name": "Mahmood Jasim",
+            "title": "Assistant Professor",
+            "description": "Human-Computer Interaction, Information Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.",
+            "image": "img/people/MahmoodJasim/2023jasimext.jpg",
+            "link": "people/professors/MahmoodJasim/MahmoodJasim.html"
         }
     ]
 }

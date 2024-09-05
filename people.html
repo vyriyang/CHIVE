@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Scholar Lab</title>
+    <title>People</title>
     <style>
         body {
             font-family: 'PT Sans Narrow', sans-serif;
@@ -21,7 +21,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 10px;
-            height: 60px; /* 确定 header 的高度 */
+            height: 60px;
         }
         header .logo-container {
             display: flex;
@@ -142,7 +142,6 @@
         }
         .buttons a:hover{
             background-color: #924603; /* Orange */
-
         }
         .buttons a.b2 {
             font-family: 'Oswald', sans-serif;
@@ -187,6 +186,7 @@
 
         .feature {
             text-align: center;
+            cursor: pointer;
         }
 
         .feature img {
@@ -194,6 +194,7 @@
             height: 100px;
             border-radius: 50%; /* 使图片显示为圆形 */
             transition: transform 0.3s; /* 添加過渡效果 */
+            cursor: pointer;
         }
 
         .feature h2 {
@@ -235,7 +236,13 @@
             gap: 10px; /* 減少間距 */
             padding: 50px 80px;
             background-color: #f9f9f9;
+            cursor: pointer;
         }
+
+        .feature-a:hover {
+            color: #f36f24;
+        }
+
 
         .feature-a {
             text-align: center;
@@ -244,6 +251,10 @@
             width: 100px;
             height: 100px;
             border-radius: 50%; /* 使图片显示为圆形 */
+        }
+
+        .feature-a:hover img {
+            transform: scale(1.1); /* 放大圖片 */
         }
 
         .feature-a h2 {
@@ -288,15 +299,14 @@
         </nav>   
     </header>
     <div class="logo-content">
-        <div class="logo-container">
+        <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
             <img src="img/logo/CHIVE-3.svg" alt="Logo"> 
             <div class="logo-text">LSU Visualization Research Lab</div>
         </div>
     </div>
 
-    <div id="professors" class="features"></div>
-    <div id="students" class="features"></div>
-    <div class="fratures-title">
+    <div id="people" class="features"></div>
+    <div class="fratures-title" id="alumni-title">
         <div class="title">Alumni
             <div class="line"></div>
         </div>
@@ -341,21 +351,19 @@
         }
 
         function loadPeopleData() {
-            fetch('/json/people/professors.json')
+            fetch('/json/people/people.json')
                 .then(response => response.json())
                 .then(data => {
-                    const container = document.getElementById('professors');
-                    data.people.forEach(person => {
-                        container.innerHTML += createFeature(person);
+                    const container = document.getElementById('people');
+                    
+                    // 对 people 数组按姓氏进行排序
+                    const sortedPeople = data.people.sort((a, b) => {
+                        const lastNameA = a.name.split(' ').slice(-1)[0]; // 获取姓氏
+                        const lastNameB = b.name.split(' ').slice(-1)[0]; // 获取姓氏
+                        return lastNameA.localeCompare(lastNameB);
                     });
-                })
-                .catch(error => console.error('Error loading professors data:', error));
 
-            fetch('/json/people/students.json')
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('students');
-                    data.people.forEach(person => {
+                    sortedPeople.forEach(person => {
                         container.innerHTML += createFeature(person);
                     });
                 })
@@ -364,15 +372,33 @@
             fetch('/json/people/alumni.json')
                 .then(response => response.json())
                 .then(data => {
-                    const container = document.getElementById('alumni');
-                    data.people.forEach(person => {
-                        container.innerHTML += createFeatureA(person);
-                    });
+                    const alumniContainer = document.getElementById('alumni');
+                    const alumniTitle = document.getElementById('alumni-title');
+                    
+                    if (data.people.length === 0) {
+                        alumniContainer.style.display = 'none';
+                        alumniTitle.style.display = 'none';
+                    } else {
+                        // 对 alumni 数组按姓氏进行排序
+                        const sortedAlumni = data.people.sort((a, b) => {
+                            const lastNameA = a.name.split(' ').slice(-1)[0]; // 获取姓氏
+                            const lastNameB = b.name.split(' ').slice(-1)[0]; // 获取姓氏
+                            return lastNameA.localeCompare(lastNameB);
+                        });
+
+                        sortedAlumni.forEach(person => {
+                            alumniContainer.innerHTML += createFeatureA(person);
+                        });
+                    }
                 })
                 .catch(error => console.error('Error loading alumni data:', error));
         }
 
         document.addEventListener('DOMContentLoaded', loadPeopleData);
+
     </script>
 </body>
 </html>
+
+
+

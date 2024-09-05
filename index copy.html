@@ -449,11 +449,7 @@
         function renderResearchData(data) {
             const scrollContainer = document.getElementById('scroll-container');
             const currentResearchSection = document.getElementById('current-research-section');
-            
-            // 对研究数据按照日期降序排序
-            const currentResearch = data
-                .filter(research => research.label.includes("current"))
-                .sort((a, b) => new Date(b.date) - new Date(a.date));
+            const currentResearch = data.filter(research => research.label.includes("current"));
 
             if (currentResearch.length > 0) {
                 currentResearchSection.style.display = 'block'; // 显示"Current Research"部分

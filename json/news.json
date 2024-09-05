@@ -1,0 +1,75 @@
+{
+  "years": [
+      {
+        "year": "2024",
+        "news": [
+          {
+            "label": ["researchDemo"],
+            "category":"Paper",
+            "content":"IEEE Transactions on Visualization and Computer Graphics",
+            "title": "What is Lorem Ipsum?",
+            "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+            "date": "May 2023",
+            "url": "https://www.lipsum.com"
+          },
+          {
+            "label": ["research3"],
+            "category":"TVCG",
+            "content":"IEEE Transactions on Visualization and Computer Graphics",
+            "title": "Another Publication",
+            "description": "Short description of the publication.",
+            "date": "June 2023",
+            "url": "https://www.example.com"
+          }
+        ]
+      },
+    {
+      "year": "2023",
+      "news": [
+        {
+          "label": ["research1"],
+          "venues":"TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "What is Lorem Ipsum?",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" }
+            ],
+          "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+          "date": "May 2023",
+          "url": "https://www.lipsum.com"
+        },
+        {
+          "label": ["researchDemo"],
+          "venues":"TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "Another Publication",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" },
+              { "name": "name", "link": "people/people-1.html" }
+            ],
+          "description": "Short description of the publication.",
+          "date": "June 2023",
+          "url": "https://www.example.com"
+        }
+      ]
+    },
+    {
+      "year": "2022",
+      "news": [
+        {
+          "label": ["researchDemo"],
+          "venues":"TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "Lorem Ipsum in 2022",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" }
+            ],
+          "description": "Detailed description of the publication.",
+          "date": "April 2022",
+          "url": "https://www.example.com"
+        }
+      ]
+    }
+  ]
+}
+

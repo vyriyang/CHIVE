@@ -1,10 +1,40 @@
 {
   "years": [
+      {
+        "year": "2024",
+        "publications": [
+          {
+            "label": ["researchDemo"],
+            "venues":"TVCG",
+            "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+            "title": "What is Lorem Ipsum?",
+            "authors": [
+                { "name": "name", "link": "people/people-1.html" }
+              ],
+            "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+            "date": "May 2023",
+            "url": "https://www.lipsum.com"
+          },
+          {
+            "label": ["research3"],
+            "venues":"TVCG",
+            "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+            "title": "Another Publication",
+            "authors": [
+                { "name": "name", "link": "people/people-1.html" },
+                { "name": "name", "link": "people/people-1.html" }
+              ],
+            "description": "Short description of the publication.",
+            "date": "June 2023",
+            "url": "https://www.example.com"
+          }
+        ]
+      },
     {
       "year": "2023",
       "publications": [
         {
-          "label": ["research2"],
+          "label": ["research1"],
           "venues":"TVCG",
           "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
           "title": "What is Lorem Ipsum?",
@@ -16,7 +46,7 @@
           "url": "https://www.lipsum.com"
         },
         {
-          "label": ["research1"],
+          "label": ["researchDemo"],
           "venues":"TVCG",
           "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
           "title": "Another Publication",
@@ -34,7 +64,7 @@
       "year": "2022",
       "publications": [
         {
-          "label": ["research2","research1"],
+          "label": ["researchDemo"],
           "venues":"TVCG",
           "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
           "title": "Lorem Ipsum in 2022",
