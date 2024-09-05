@@ -485,11 +485,13 @@
                                     ${research.title} ></a>
                                 </div>
                                 <div class="cont overflow">
-                                    ${research.content}
+                                    <a href="${research.link}" style="text-decoration: none; color:#5d5d5d; cursor: pointer;" rel="alternate bookmark" target="_blank">
+                                    ${research.content} ></a>
+                                    
                                 </div>
                                 <div class="cont-researcher overflow">
                                     ${research.date}
-                                    <br>Researcher: ${research.researchers.map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`).join(', ')}
+                                    <br>Researcher: ${research.researchers.map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`).join(', ')}
                                 </div>
                             </div>
                         </div>
