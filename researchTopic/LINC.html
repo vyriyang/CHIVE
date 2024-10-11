@@ -7,32 +7,30 @@
   <link rel="stylesheet" href="../dist/css/scrollspy.dark.css"/>
   <style>
     .main-content {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-image: 
-        linear-gradient(rgba(4, 55, 83, 0.7), rgba(4, 83, 40, 0.7)), 
-        url('../img/Home/19-1.webp');
-      background-size: cover;
-      background-position: top;
-      animation: moveBg 280s infinite alternate;
-      color: white;
-      min-height: 60vh;
-      box-sizing: border-box;
-    }
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:
+    linear-gradient(rgba(8, 25, 99, 0.7), rgba(8, 25, 99, 0.7)),
+    url('../img/research/LINC/LINC-home.webp');
+  background-size: 100% 100%; /* 确保动画从这个起始值开始 */
+  background-position: center top;
+  background-repeat: no-repeat;
+  animation: moveBg 180s infinite alternate;
+  color: white;
+  min-height: 60vh;
+  box-sizing: border-box;
+}
 
-    @keyframes moveBg {
-      0% {
-        background-position: top;
-      }
-      50% {
-        background-position: bottom;
-      }
-      100% {
-        background-position: top;
-      }
-    }
+@keyframes moveBg {
+  0% {
+    background-size: 100% 100%;
+  }
+  100% {
+    background-size: 180% 180%;
+  }
+}
 
     /* 父容器样式，居中显示图片 */
     .img-container {
@@ -208,7 +206,7 @@
     </div>
   </section>
 
-  <div class="gray">
+  <!--div class="gray">
     <div class="section_1">
       <div class="title">Latest News
         <div class="line"></div>
@@ -224,7 +222,7 @@
         but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
       </div>
     </div>
-  </div>
+  </div-->
 
   <section class="scrollspy-section" id="Abstract">
     <div class="section_2">
@@ -344,42 +342,70 @@
             };
 
             // 处理 imgMore 部分
-            const imgMoreContainer = document.getElementById('imgMoreContainer');
-            imgMoreList = research.imgMore;
+const imgMoreContainer = document.getElementById('imgMoreContainer');
 
-            if (imgMoreList.length === 1) {
-                const img = document.createElement('img');
-                img.src = imgMoreList[0];
-                img.className = 'research-image centered-img';
-                img.onclick = function() {
-                    modal.style.display = "block";
-                    modalImg.src = img.src;
-                    currentImgIndex = 0;
-                };
-                imgMoreContainer.appendChild(img);
-            } else if (imgMoreList.length > 1) {
-                imgMoreContainer.classList.add('img-more-container');
-                imgMoreList.forEach((imgSrc, index) => {
-                    const img = document.createElement('img');
-                    img.src = imgSrc;
-                    img.onclick = function() {
-                        modal.style.display = "block";
-                        modalImg.src = imgSrc;
-                        currentImgIndex = index;
-                    };
-                    imgMoreContainer.appendChild(img);
-                });
-            }
+// 将主图片作为 imgMoreList 的第一项，如果 imgMore 为空或只有空字符串，则不添加其他图片
+imgMoreList = [research.imgSrc, ...research.imgMore.filter(img => img)]; // 主图片加上有效的 imgMore 图片
 
-            // 悬浮窗左右箭头切换
-            document.querySelector('.prev').onclick = function() {
-                currentImgIndex = (currentImgIndex > 0) ? currentImgIndex - 1 : imgMoreList.length - 1;
-                modalImg.src = imgMoreList[currentImgIndex];
-            };
-            document.querySelector('.next').onclick = function() {
-                currentImgIndex = (currentImgIndex < imgMoreList.length - 1) ? currentImgIndex + 1 : 0;
-                modalImg.src = imgMoreList[currentImgIndex];
-            };
+// 检查是否需要禁用左右箭头
+function updateArrowState() {
+    const prevArrow = document.querySelector('.prev');
+    const nextArrow = document.querySelector('.next');
+    
+    if (imgMoreList.length <= 1) { // 如果只有主图片或没有额外图片
+        prevArrow.style.display = 'none'; // 隐藏左箭头
+        nextArrow.style.display = 'none'; // 隐藏右箭头
+    } else {
+        prevArrow.style.display = 'block'; // 显示左箭头
+        nextArrow.style.display = 'block'; // 显示右箭头
+    }
+}
+
+// 如果 imgMoreList 只有主图片或为空，则不显示 imgMore 图片
+if (imgMoreList.length === 2) { // 主图片和一张 imgMore 图片
+    const img = document.createElement('img');
+    img.src = imgMoreList[1]; // imgMore 的图片
+    img.className = 'research-image centered-img';
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        currentImgIndex = 1; // imgMore 图片的索引是 1
+    };
+    imgMoreContainer.appendChild(img);
+} else if (imgMoreList.length > 2) { // 主图片和多张 imgMore 图片
+    imgMoreContainer.classList.add('img-more-container');
+    imgMoreList.slice(1).forEach((imgSrc, index) => { // 从 imgMoreList 的第二项开始循环
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+            currentImgIndex = index + 1; // 当前图片的索引为 index + 1，因为主图片占用了第一个位置
+        };
+        imgMoreContainer.appendChild(img);
+    });
+}
+
+// 悬浮窗左右箭头切换
+document.querySelector('.prev').onclick = function() {
+    if (imgMoreList.length > 1) { // 只有在 imgMoreList 超过 1 时才能切换
+        currentImgIndex = (currentImgIndex > 0) ? currentImgIndex - 1 : imgMoreList.length - 1;
+        modalImg.src = imgMoreList[currentImgIndex];
+    }
+};
+document.querySelector('.next').onclick = function() {
+    if (imgMoreList.length > 1) { // 只有在 imgMoreList 超过 1 时才能切换
+        currentImgIndex = (currentImgIndex < imgMoreList.length - 1) ? currentImgIndex + 1 : 0;
+        modalImg.src = imgMoreList[currentImgIndex];
+    }
+};
+
+// 初始化时更新箭头状态
+updateArrowState();
+
+
+
+
 
             // 更新标题和内容
             document.getElementById('researchTitle').textContent = research.info;

@@ -5,42 +5,35 @@
             "title": "Assistant Professor",
             "description": "Human-Computer Interaction, Information Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.",
             "image": "img/people/MahmoodJasim/2023jasimext.jpg",
-            "link": "people/professors/MahmoodJasim/MahmoodJasim.html"
+            "link": "https://csc.lsu.edu/~mjasim/"
         },
         {
             "name": "Vyri Junhan Yang",
             "title": "PhD Researcher",
-            "description": "Description of the student.",
-            "image": "img/people/people-1/peopledemo.jpg",
-            "link": "people/students/student1.html"
+            "description": "HCI, Narrative Visualization, Applied Machine Learning, and data-driven interactive platforms.",
+            "image": "img/people/VyriYang/VyriYang.jpg",
+            "link": "people/students/VyriYang/VyriYang.html"
         },
         {
             "name": "Saramsh Gautam",
             "title": "PhD Researcher",
             "description": "Another description of the student.",
-            "image": "img/people/people-1/peopledemo.jpg",
-            "link": "people/students/student2.html"
+            "image": "img/people/SaramshGautam/SaramshGautam.jpg",
+            "link": "people/DemoPeoplePage/DemoPeoplePage.html"
         },
         {
             "name": "Nushrat Jahan Ria",
             "title": "PhD Researcher",
             "description": "Another description of the student.",
-            "image": "img/people/people-1/peopledemo.jpg",
-            "link": "people/students/student2.html"
+            "image": "img/people/NushratJahanRia/NushratJahanRia.jpg",
+            "link": "people/DemoPeoplePage/DemoPeoplePage.html"
         },
         {
             "name": "Vimal Thomas Joseph",
             "title": "PhD Researcher",
             "description": "Another description of the student.",
-            "image": "img/people/people-1/peopledemo.jpg",
-            "link": "people/students/student2.html"
-        },
-        {
-            "name": "Another Student",
-            "title": "Another Title",
-            "description": "Another description of the student.",
-            "image": "img/people/people-1/peopledemo.jpg",
-            "link": "people/students/student2.html"
+            "image": "img/people/VimalThomasJoseph/vimal_thomas_joseph.png",
+            "link": "people/DemoPeoplePage/DemoPeoplePage.html"
         }
     ]
 }

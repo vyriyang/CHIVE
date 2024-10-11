@@ -10,12 +10,14 @@
   <nav class="scrollspy-nav">
     <a class="scrollspy-link" href="../../../index.html">CHIVE Home</a>
     <a class="scrollspy-link" data-target="Name">Name</a>
-    <a class="scrollspy-link" data-target="Publications">Publications</a>
-    <a class="scrollspy-link" data-target="Videos">Videos</a>
-    <a class="scrollspy-link" data-target="Awards">Awards</a>
+    <a class="scrollspy-link" data-target="Publications" id="publications-link">Publications</a>
+    <a class="scrollspy-link" data-target="Videos" id="videos-link">Videos</a>
+    <a class="scrollspy-link" data-target="Awards" id="awards-link">Awards</a>
     <a class="scrollspy-link" data-target="Contact">Contact</a>
     <span class="scrollspy-indicator"></span>
   </nav>
+
+    <!-- Name Section -->
   <section class="scrollspy-section" id="Name">
     <div class="main">
       <div class="photo">
@@ -51,7 +53,7 @@
   </div>
 
  <!-- Publications Section -->
- <section class="scrollspy-section" id="Publications">
+ <section class="scrollspy-section" id="Publications" style="display: none;">
   <div class="section_2">
     <div class="title">Publications
       <div class="line"></div>
@@ -65,7 +67,7 @@
 </section>
 
 <!-- Videos Section -->
-<section class="scrollspy-section" id="Videos">
+<section class="scrollspy-section" id="Videos" style="display: none;">
   <div class="section_2">
     <div class="title">Videos
       <div class="line"></div>
@@ -75,7 +77,7 @@
 </section>
 
 <!-- Awards Section -->
-<section class="scrollspy-section" id="Awards">
+<section class="scrollspy-section" id="Awards" style="display: none;">
   <div class="section_2">
     <div class="title">Awards
       <div class="line"></div>
@@ -109,90 +111,169 @@
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Fetch Publications Data
-    fetch('json/MahmoodJasim-publications.json')
-      .then(response => response.json())
-      .then(data => {
-        if (data.years && data.years.length > 0) {
-          const accordionContainer = document.getElementById('accordion-2');
-          data.years.forEach((year, index) => {
-            const accordionItem = document.createElement('div');
-            accordionItem.classList.add('accordion-item');
-            const accordionHeading = document.createElement('div');
-            accordionHeading.classList.add('accordion-heading');
-            accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
-            accordionItem.appendChild(accordionHeading);
-            const accordionContent = document.createElement('div');
-            accordionContent.classList.add('accordion-content');
-            if (index === 0) accordionContent.style.display = 'block'; // 默認展開第一項
-            year.publications.forEach(pub => {
-              const pubDiv = document.createElement('div');
-              pubDiv.style.paddingBottom = '30px';
-              pubDiv.innerHTML = `
-                <div class="sub-title_ss"><a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
-                <div class="sec_sub_title_s">${pub.authors}</div>
-                <div class="sec_sub_title_s"><a style="font-weight: bold;">${pub.description}</a> | ${pub.date}</div>
-                <div class="sec_sub_title_a"><a href="${pub.url}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>
-              `;
-              accordionContent.appendChild(pubDiv);
-            });
-            accordionItem.appendChild(accordionContent);
-            accordionContainer.appendChild(accordionItem);
-          });
-          var accordion_2 = new Accordion(accordionContainer, {
-            multiple: true,
-            defaultOpenedIndexes: [0]
-          });
-        } else {
-          document.getElementById('Publications').style.display = 'none'; // 隐藏 Publications
-        }
+fetch('json/MahmoodJasim-publications.json')
+  .then(response => response.json())
+  .then(data => {
+    if (data.years && data.years.length > 0) {
+      document.getElementById('Publications').style.display = 'block';
+      document.getElementById('publications-link').style.display = 'inline';
+
+      const accordionContainer = document.getElementById('accordion-2');
+      data.years.forEach((year, index) => {
+        const accordionItem = document.createElement('div');
+        accordionItem.classList.add('accordion-item');
+
+        const accordionHeading = document.createElement('div');
+        accordionHeading.classList.add('accordion-heading');
+        accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
+        accordionItem.appendChild(accordionHeading);
+
+        const accordionContent = document.createElement('div');
+        accordionContent.classList.add('accordion-content');
+        if (index === 0) accordionContent.style.display = 'block';
+
+        const sortedPublications = year.publications.sort((a, b) => new Date(b.date) - new Date(a.date));
+        sortedPublications.forEach(pub => {
+          const pubDiv = document.createElement('div');
+          pubDiv.style.paddingBottom = '30px';
+
+          // 处理作者部分，检查是否是 "Mahmood Jasim" 并加粗
+          const authorsContent = pub.authors.map(author => {
+            const authorName = author.name === "Mahmood Jasim" 
+              ? `<strong>${author.name}</strong>` 
+              : author.name;
+            return `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${authorName}</a>`;
+          }).join(', ');
+
+          pubDiv.innerHTML = `
+            <div class="sub-title_ss">
+              <a style="color:#ab2d05;"><strong>${pub.venues}</strong></a> | 
+              <a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a>
+            </div>
+            <div class="sec_sub_title_aa" style="margin-top: 5px; margin-bottom: 5px;">
+              ${authorsContent}
+            </div>
+            <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">
+              ${pub.venues} | ${pub.date}
+            </div>
+            <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">
+              ${pub.description}
+            </div>
+            <div class="sec_sub_title_a" style="margin-top: 5px; margin-bottom: 5px;">
+              <a href="${pub.pdf}" style="color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a>
+            </div>
+          `;
+          accordionContent.appendChild(pubDiv);
+        });
+
+        accordionItem.appendChild(accordionContent);
+        accordionContainer.appendChild(accordionItem);
       });
 
-    // Fetch Awards Data
-    fetch('json/MahmoodJasim-awards.json')
-      .then(response => response.json())
-      .then(data => {
-        if (data.awards && data.awards.length > 0) {
-          const awardsContent = document.getElementById('awards-content');
-          data.awards.forEach(award => {
-            const awardDiv = document.createElement('div');
-            awardDiv.classList.add('news_card');
-            awardDiv.style.paddingTop = '30px';
-            awardDiv.innerHTML = `
-              <div class="sec_sub_title">AWARDS | ${award.title}</div>
-              <div class="sub-title_s">
-                <a href="${award.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-                ${award.description}</a>
-              </div>
-              <div class="cont overflow">${award.date}</div>
-            `;
-            awardsContent.appendChild(awardDiv);
-          });
-        } else {
-          document.getElementById('Awards').style.display = 'none'; // 隐藏 Awards
-        }
+      new Accordion(accordionContainer, {
+        multiple: true,
+        defaultOpenedIndexes: [0]
       });
+    } else {
+      document.getElementById('Publications').style.display = 'none';
+      document.getElementById('publications-link').style.display = 'none';
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching publications data:', error);
+    document.getElementById('Publications').style.display = 'none';
+    document.getElementById('publications-link').style.display = 'none';
+  });
+
+
+// Fetch Awards Data
+fetch('json/MahmoodJasim-awards.json')
+        .then(response => response.json())
+        .then(data => {
+          if (data.awards && data.awards.length > 0) {
+            document.getElementById('Awards').style.display = 'block';
+            document.getElementById('awards-link').style.display = 'inline';
+
+            const awardsContent = document.getElementById('awards-content');
+            const sortedAwards = data.awards.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            sortedAwards.forEach(award => {
+              const awardDiv = document.createElement('div');
+              awardDiv.classList.add('news_card');
+              awardDiv.style.paddingTop = '30px';
+
+              // 仅在 award.awards 存在时显示
+              const awardsContentHtml = award.awards
+                ? `<span style="color:#ab2d05;"><strong>${award.awards}</strong></span> | `
+                : '';
+
+              // 仅在 award.title 存在时显示，并根据是否有 url 决定是否生成链接
+              const titleContent = award.title
+                ? award.url
+                  ? `<a href="${award.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${award.title}</a>`
+                  : `<span style="color:#3f44b6;">${award.title}</span>`
+                : '';
+
+              // 仅在 award.description 存在时显示
+              const descriptionContent = award.description
+                  ? `<div class="sec_sub_title_a overflow">${award.description}</div>`
+                  : '';
+
+              // 仅在 award.place 存在时显示
+              const placeContent = award.place
+                ? `<div class="sec_sub_title_a overflow" style="margin-top: 5px;">${award.place}</div>`
+                : '';
+
+              // 仅在 award.date 存在时显示
+              const dateContent = award.date
+                ? `<div class="sec_sub_title_a overflow" style="margin-top: 5px;">${award.date}</div>`
+                : '';
+
+              // 构建 HTML 内容，仅显示非空的项
+              awardDiv.innerHTML = `
+                <div class="sub-title_ss">
+                  ${awardsContentHtml}${titleContent}
+                </div>
+                <div class="sec_sub_title_a">
+                  ${descriptionContent}
+                </div>
+                ${placeContent}
+                ${dateContent}
+              `;
+
+              awardsContent.appendChild(awardDiv);
+            });
+          } else {
+            document.getElementById('Awards').style.display = 'none';
+            document.getElementById('awards-link').style.display = 'none';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching awards data:', error);
+          document.getElementById('Awards').style.display = 'none';
+          document.getElementById('awards-link').style.display = 'none';
+        });
 
     // Fetch Videos Data
     fetch('json/MahmoodJasim-videos.json')
       .then(response => response.json())
       .then(data => {
         if (data && data.length > 0) {
+          document.getElementById('Videos').style.display = 'block';
+          document.getElementById('videos-link').style.display = 'inline';
+
           const videosGrids = document.getElementById('videosGrids');
-          data.forEach(item => {
+          const sortedVideos = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+          sortedVideos.forEach(item => {
             const videosList = document.createElement('div');
             videosList.className = 'video_list';
             videosList.innerHTML = `
               <img src="${item.imgSrc}" alt="" class="list_img">
               <div class="video_padding">
-                <div class="sub-title">
-                  ${item.title} >
-                </div>
-                <div class="cont overflow">
-                  ${item.date}
-                </div>
-                <div class="cont overflow">
-                  Researchers: ${item.researchers.map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`).join(', ')}
-                </div>
+                <div class="sub-title">${item.title} ></div>
+                <div class="cont overflow">${item.date}</div>
+                <div class="cont overflow">Researchers: ${item.researchers.map(r => `<a href="${r.link}" class="cont-researcher-name">${r.name}</a>`).join(', ')}</div>
               </div>
             `;
             videosList.addEventListener('click', function() {
@@ -201,8 +282,14 @@
             videosGrids.appendChild(videosList);
           });
         } else {
-          document.getElementById('Videos').style.display = 'none'; // 隐藏 Videos
+          document.getElementById('Videos').style.display = 'none';
+          document.getElementById('videos-link').style.display = 'none';
         }
+      })
+      .catch(error => {
+        console.error('Error fetching videos data:', error);
+        document.getElementById('Videos').style.display = 'none';
+        document.getElementById('videos-link').style.display = 'none';
       });
 
     // Fetch and Display Contact Data
@@ -221,10 +308,11 @@
         if (contactInfo) {
           contactDetails.innerHTML = contactInfo;
         } else {
-          document.getElementById('Contact').style.display = 'none'; // 隐藏 Contact
+          document.getElementById('Contact').style.display = 'none';
         }
       });
   });
 </script>
 </body>
 </html>
+

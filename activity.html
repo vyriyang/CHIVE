@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activity</title>
+  <link rel="stylesheet" href="dist/css/scrollspy.css"/>
+  <link rel="stylesheet" href="dist/css/nav.css"/>
+  <style>
+    /* 限制 content 显示的行数 */
+    .cont_bottom {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cont-activity {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 10px;
+    }
+
+    .sub-title {
+      cursor: pointer;
+      color: #3f44b6;
+      text-decoration: none;
+      margin-bottom: 10px;
+    }
+
+    .list_img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: top;
+      max-height: 300px;
+      object-position: top;
+      cursor: pointer;
+    }
+
+    .cont-activity-name {
+      text-decoration: none;
+      color: #5f5d5d;
+    }
+
+    /* 悬浮窗口样式 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(37, 37, 37, 0.6);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .modal-content {
+      margin: auto;
+      position: relative;
+      max-height: 80vh; /* 图片最大高度为视口高度的 80% */
+      width: auto;
+      height: auto;
+      text-align: center;
+    }
+
+    .modal img {
+      height: 80vh; /* 高度固定为视口高度的 80% */
+      width: auto;  /* 宽度根据高度自动调整 */
+      max-width: 80%; /* 确保宽度不会超过原始图片的大小 */
+      object-fit: contain;
+    }
+
+    /* 关闭按钮 */
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #bbb;
+    }
+
+    /* 左右箭头 */
+    .arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-size: 18px;
+      user-select: none;
+      transition: 0.6s ease;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    .arrow:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* 信息显示容器，背景通屏，但文字部分保持宽度 */
+    .modal-info {
+      position: relative; /* 将 .modal-info 设置为相对定位，避免覆盖图片 */
+      background-color: rgba(0, 0, 0, 0.7); /* 设置半透明深灰色背景 */
+      padding: 20px 0;
+      text-align: center;
+      width: 100%;
+      margin-top: 20px; /* 让信息部分位于图片下方 */
+    }
+
+    /* 用于限制文字宽度的内层容器 */
+    .modal-info-content {
+      margin: 0 auto;
+      width: 80%; /* 保持和图片相同的宽度 */
+      max-width: 1080px;
+      text-align: left;
+    }
+
+    .modal-info-content h2 {
+      font-size: 24px;
+      color: white;
+    }
+
+    .modal-info-content p {
+      font-size: 16px;
+      margin: 5px 0;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
+      <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
+      <div class="logo-text">Research Lab at LSU</div>
+    </div>
+    <nav class="scrollspy-nav">
+      <a class="scrollspy-link" href="index.html">Home</a>
+      <a class="scrollspy-link" href="research.html">Research</a>
+      <a class="scrollspy-link" href="people.html">People</a>
+      <a class="scrollspy-link" href="publications.html">Publications</a>
+      <a class="scrollspy-link" href="news.html">News</a>
+      <a class="scrollspy-link" href="activity.html">Activity</a>
+    </nav>   
+  </header>
+  
+  <section class="scrollspy-section" id="Research">
+    <div class="section_2">
+      <div class="title">Activity
+        <div class="line"></div>
+      </div>
+      <div class="grids" id="activityGrids"></div>
+    </div>
+  </section>
+
+  <section class="scrollspy-section" id="">
+    <div class="gray">
+      <div class="section_2">
+        <div class="title">Contact Us
+          <div class="line"></div>
+        </div>
+        <div class="sec_sub_title" style="margin-top: 60px;">2329 Patrick F Taylor Building, Baton Rouge, LA 70803</div>
+        <div class="sec_sub_title" style="margin-bottom: 60px;">Louisiana State University</div>
+      </div>
+    </div>
+  </section>
+  
+  <div class="footer">
+    <p>
+      <a href="#">About</a> | 
+      <a href="#">Contact Us</a> | 
+      <a href="#">Copyright</a> | 
+      <a href="#">Terms of Use</a> | 
+      <a href="#">Privacy Policy</a>
+    </p>
+    <p>© 2024 All rights reserved</p>
+  </div>
+
+  <!-- 悬浮窗口 -->
+  <div id="modal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+    <span class="arrow prev">&#10094;</span>
+    <span class="arrow next">&#10095;</span>
+    <!-- 新增信息容器 -->
+    <div class="modal-info" id="modalInfo">
+      <div class="modal-info-content">
+        <h2 id="modalTitle"></h2>
+        <p id="modalDate"></p>
+        <p id="modalContent"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="dist/js/mn-accordion.js"></script>
+  <script src="dist/js/scrollspy.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('modal');
+      const modalImage = document.getElementById('modalImage');
+      const closeBtn = document.querySelector('.close');
+      const prevArrow = document.querySelector('.prev');
+      const nextArrow = document.querySelector('.next');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalDate = document.getElementById('modalDate');
+      const modalContent = document.getElementById('modalContent');
+      let currentImageIndex = 0;
+      let images = [];
+      let imageDetails = [];  // 存储每张图片的详情信息
+
+      // 关闭按钮
+      closeBtn.onclick = function() {
+        modal.style.display = 'none';
+      };
+
+      // 处理长内容，最多显示三行，找到第三行的最后一个句号
+      function truncateContent(content) {
+        const maxLines = 3;
+        const words = content.split(' ');
+        let truncatedContent = '';
+        let lineCount = 0;
+        let sentenceEnd = '';
+
+        for (let i = 0; i < words.length; i++) {
+          truncatedContent += words[i] + ' ';
+
+          // 假设每 10 个单词为一行
+          if ((i + 1) % 10 === 0) {
+            lineCount++;
+          }
+
+          // 在第三行找到最后的句号
+          if (lineCount >= maxLines && words[i].includes('.')) {
+            sentenceEnd = truncatedContent.slice(0, truncatedContent.lastIndexOf('.') + 1);
+            break;
+          }
+        }
+
+        // 如果没有句号且行数超出三行，直接截断
+        if (lineCount >= maxLines && !sentenceEnd) {
+          return truncatedContent.trim();
+        }
+
+        // 返回截断后的句子或完整的内容
+        return sentenceEnd || truncatedContent.trim();
+      }
+
+      // 显示图片的悬浮窗口
+      function openModal(imageArray, detailsArray, index) {
+        images = imageArray;
+        imageDetails = detailsArray;
+        currentImageIndex = index;
+        modalImage.src = images[currentImageIndex];
+        modal.style.display = 'flex';
+
+        // 填充悬浮窗中的信息
+        const currentDetail = imageDetails[currentImageIndex];
+        modalTitle.textContent = currentDetail.title;
+        modalDate.textContent = currentDetail.date;
+        modalContent.textContent = truncateContent(currentDetail.content);
+
+        // 检查是否显示箭头
+        if (images.length > 1) {
+          prevArrow.style.display = 'block';
+          nextArrow.style.display = 'block';
+        } else {
+          prevArrow.style.display = 'none';
+          nextArrow.style.display = 'none';
+        }
+      }
+
+      // 左箭头
+      prevArrow.onclick = function() {
+        currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : images.length - 1;
+        modalImage.src = images[currentImageIndex];
+        updateModalContent(currentImageIndex);
+      };
+
+      // 右箭头
+      nextArrow.onclick = function() {
+        currentImageIndex = (currentImageIndex < images.length - 1) ? currentImageIndex + 1 : 0;
+        modalImage.src = images[currentImageIndex];
+        updateModalContent(currentImageIndex);
+      };
+
+      // 更新悬浮窗口内容
+      function updateModalContent(index) {
+        const currentDetail = imageDetails[index];
+        modalTitle.textContent = currentDetail.title;
+        modalDate.textContent = currentDetail.date;
+        modalContent.textContent = truncateContent(currentDetail.content);
+      }
+
+      // 获取 JSON 数据并填充活动列表
+      fetch('/json/activity.json')
+        .then(response => response.json())
+        .then(data => {
+          const activityGrids = document.getElementById('activityGrids');
+          
+          // 根据时间降序排序
+          data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+          const allImages = [];   // 用于存储所有图片
+          const allDetails = [];  // 用于存储每张图片对应的详情信息
+
+          data.forEach(item => {
+            if (item.label.includes('last')) {
+              return;
+            }
+
+            const activityList = document.createElement('div');
+            activityList.className = 'activity_list';
+            
+            activityList.innerHTML = `
+              <img src="${item.imgSrc}" alt="" class="list_img">
+              <div class="research_padding">
+                <div class="sub-title">${item.title}</div>
+                <div class="cont-activity-name">${item.date}</div>
+              </div>
+            `;
+
+            // 创建图片和其对应的详细信息
+            const activityImages = [item.imgSrc].concat(item.imgMore.filter(Boolean));  // 过滤掉空的 imgMore 值
+            activityImages.forEach((imgSrc, index) => {
+              allImages.push(imgSrc);
+              allDetails.push({
+                title: item.title,
+                date: item.date,
+                content: item.content || "No content available."
+              });
+            });
+
+            // 点击整个活动项，显示悬浮窗口
+            activityList.addEventListener('click', function() {
+              const firstImageIndex = allImages.indexOf(item.imgSrc);
+              openModal(allImages, allDetails, firstImageIndex);
+            });
+
+            activityGrids.appendChild(activityList);
+          });
+        });
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+

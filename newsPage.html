@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News Details</title>
+  <link rel="stylesheet" href="dist/css/scrollspy.css" />
+  <link rel="stylesheet" href="dist/css/nav.css" />
+</head>
+<body>
+  <header>
+    <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
+      <img src="img/logo/CHIVE-2.svg" alt="Logo" />
+      <div class="logo-text">Research Lab at LSU</div>
+    </div>
+    <nav class="scrollspy-nav">
+      <a class="scrollspy-link" href="index.html">Home</a>
+      <a class="scrollspy-link" href="research.html">Research</a>
+      <a class="scrollspy-link" href="people.html">People</a>
+      <a class="scrollspy-link" href="publications.html">Publications</a>
+      <a class="scrollspy-link" href="news.html">News</a>
+      <a class="scrollspy-link" href="activity.html">Activity</a>
+    </nav>
+  </header>
+
+  <section class="scrollspy-section" id="NewsDetails">
+    <div class="section_2">
+      <!-- Back to All News button -->
+      <div style="margin-bottom: 50px;"><a href="news.html" style="font-size: 20px; color: #777; text-decoration: none; ">
+        << Back to All News
+      </a></div>
+      <div class="title" id="news-title">
+      </div>
+      <div class="news-content">
+        <!-- JSON data will be displayed here -->
+      </div>
+      <div class="navigation-buttons" style="display: flex; justify-content: space-between; margin-top: 20px;">
+        <!-- Previous and Next buttons will be inserted here -->
+      </div>
+    </div>
+  </section>
+
+  <section class="scrollspy-section" id="">
+    <div class="gray">
+      <div class="section_2">
+        <div class="title">Contact Us
+          <div class="line"></div>
+        </div>
+        <div class="sec_sub_title" style="margin-top: 60px;">2329 Patrick F Taylor Building, Baton Rouge, LA 70803</div>
+        <div class="sec_sub_title" style="margin-bottom: 60px;">Louisiana State University</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <p>
+        <a href="#">About</a> | 
+        <a href="#">Contact Us</a> | 
+        <a href="#">Copyright</a> | 
+        <a href="#">Terms of Use</a> | 
+        <a href="#">Privacy Policy</a>
+    </p>
+    <p>© 2024 All rights reserved</p>
+  </div>
+
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const title = getQueryParam("title"); // 获取URL中的title参数
+      fetch("/json/news.json")
+        .then((response) => response.json())
+        .then((data) => {
+          // 将所有年份的数据整合到一个数组中，并进行扁平化处理
+          const allNews = data.years.flatMap((year) => year.news);
+          // 按日期排序，从最近的到最早的新闻
+          const sortedNews = allNews.sort((a, b) => new Date(b.date) - new Date(a.date));
+          // 查找当前新闻的索引
+          const currentIndex = sortedNews.findIndex((news) => news.title === title);
+          const newsData = sortedNews[currentIndex];
+
+          if (newsData) {
+            const newsContent = document.querySelector(".news-content");
+            const newsTitleElement = document.getElementById("news-title");
+
+            // 检查 newsData.imgSrc 是否存在
+            const imgContent = newsData.imgSrc
+              ? `<img src="${newsData.imgSrc}" alt="News Image" style="max-width: 100%; height: auto; object-fit: contain; margin-bottom: 20px;">`
+              : "";
+
+            // 检查 news.category 是否存在
+            const categoryContent = newsData.category
+                ? `<a style="color:#ab2d05;"><strong>${newsData.category}</strong></a> | `
+                : "";
+
+            // 设置标题内容
+            newsTitleElement.innerHTML += `
+              ${newsData.title}
+              <div class="line"></div>
+            `;
+
+            newsContent.innerHTML = `
+              <div class="abstract-container" style="margin-bottom: 5px;">${categoryContent}${newsData.description}</div>
+              <div class="abstract-container"style="margin-bottom: 15px;"><strong>Date:</strong> ${newsData.date || "N/A"}</div>
+              <div>${imgContent}</div>
+              <div class="abstract-container"><p>${newsData.news || ""}</p>
+              ${newsData.pdf ? `<a href="${newsData.pdf}" target="_blank">View Full Paper</a>` : ""}</div>
+            `;
+
+            // 设置上一页和下一页按钮
+            const navButtons = document.querySelector(".navigation-buttons");
+
+            // Previous button
+            if (currentIndex > 0) {
+              const prevNews = sortedNews[currentIndex - 1];
+              navButtons.innerHTML += `
+                <a href="newsPage.html?title=${encodeURIComponent(prevNews.title)}" style="font-size: 20px; color: #777; text-decoration: none;">
+                  << Previous
+                </a>
+              `;
+            }
+
+            // Next button
+            if (currentIndex < sortedNews.length - 1) {
+              const nextNews = sortedNews[currentIndex + 1];
+              navButtons.innerHTML += `
+                <a href="newsPage.html?title=${encodeURIComponent(nextNews.title)}" style="font-size: 20px; color: #777; text-decoration: none;">
+                  Next >>
+                </a>
+              `;
+            }
+          } else {
+            document.querySelector(".news-content").innerHTML = "<p>News not found.</p>";
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching news data:", error);
+        });
+    });
+  </script>
+</body>
+</html>

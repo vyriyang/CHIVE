@@ -30,7 +30,20 @@
     }
 
     .list_img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: top;
+      max-height: 300px;
+      object-position: top;
       cursor: pointer;
+    }
+
+    .list_video {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      max-height: 300px;
     }
 
     /* 移除研究者姓名链接的下划线 */
@@ -49,7 +62,7 @@
   <header>
     <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
       <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
-      <div class="logo-text">LSU Visualization Research Lab</div>
+      <div class="logo-text">Research Lab at LSU</div>
     </div>
     <nav class="scrollspy-nav">
       <a class="scrollspy-link" href="index.html">Home</a>
@@ -112,34 +125,81 @@
             }
 
             const researchList = document.createElement('div');
-            researchList.className = 'research_list';
-            
-            // 获取 researchers 数据并处理超过两个时的逻辑
-            const displayedResearchers = item.researchers.slice(0, 2);
-            const moreResearchers = item.researchers.length > 2 ? 'and more' : '';
-            const researchersHTML = displayedResearchers.map(r => 
-              `<a href="${r.link}" target="_blank" class="cont-researcher-name">${r.name}</a>`
-            ).join(', ') + (moreResearchers ? `, ${moreResearchers}` : '');
+researchList.className = 'research_list';
+
+// 判断研究者数量
+let displayedResearchers;
+let moreResearchers = ''; // 默认没有'and more'
+
+// 如果研究者数量超过 3 个，只显示前两个研究者，后面加上 'and more'
+if (item.researchers.length > 3) {
+    displayedResearchers = item.researchers.slice(0, 2); // 取前两个研究者
+    moreResearchers = 'and more'; // 超过 3 个时添加 'and more'
+} else {
+    // 不超过 3 个时，显示所有研究者
+    displayedResearchers = item.researchers;
+}
+
+// 生成显示的研究者 HTML
+const researchersHTML = displayedResearchers.map(r => 
+  `<a href="${r.link}" target="_blank" class="cont-researcher-name">${r.name}</a>`
+).join(', ') + (moreResearchers ? `, ${moreResearchers}` : '');
+
+// 将研究者内容插入到研究项的 HTML 中
+researchList.innerHTML = `
+  <img src="${item.imgSrc}" alt="" class="list_img">
+  <div class="research_padding">
+    <div class="sub-title">
+      ${item.title}
+    </div>
+    <div class="cont cont_bottom overflow">
+      ${item.content}
+    </div>
+    <div class="cont-researcher overflow">
+      ${item.date}
+      <br>Researcher: ${researchersHTML}
+    </div>
+  </div>
+`;
+
+
+            // 判断是否有 videoSrc
+            let mediaContent;
+            if (item.videoSrc) {
+              mediaContent = `
+                <video class="list_video" autoplay muted loop playsinline>
+                  <source src="${item.videoSrc}" type="video/mp4">
+                  <source src="${item.videoSrc}" type="video/webm">
+                  <source src="${item.videoSrc}" type="video/ogg">
+                  <source src="${item.videoSrc}" type="video/quicktime">
+                  Your browser does not support the video tag.
+                </video>
+              `;
+            } else {
+              mediaContent = `
+                <img src="${item.imgSrc}" alt="" class="list_img">
+              `;
+            }
 
             researchList.innerHTML = `
-              <img src="${item.imgSrc}" alt="" class="list_img">
+              ${mediaContent}
               <div class="research_padding">
                 <div class="sub-title">
-                  ${item.title} >
+                  ${item.title}
                 </div>
                 <div class="cont cont_bottom overflow">
                   ${item.content}
                 </div>
-                <div class="cont-researcher overflow">
+                <div class="cont-researcher">
                   ${item.date}
                   <br>Researcher: ${researchersHTML}
                 </div>
               </div>
             `;
 
-            // 为图片和标题分别添加点击事件，跳转到 research 页面
-            researchList.querySelector('.list_img').addEventListener('click', function() {
-              window.location.href = item.link;  // 点击图片跳转
+            // 为图片/视频和标题分别添加点击事件，跳转到 research 页面
+            researchList.querySelector('.list_img, .list_video').addEventListener('click', function() {
+              window.location.href = item.link;  // 点击图片/视频跳转
             });
 
             researchList.querySelector('.sub-title').addEventListener('click', function() {
@@ -147,7 +207,7 @@
             });
 
             researchList.querySelector('.cont_bottom').addEventListener('click', function() {
-              window.location.href = item.link;  // 点击标题跳转
+              window.location.href = item.link;  // 点击内容部分跳转
             });
 
             researchGrids.appendChild(researchList);
@@ -157,3 +217,4 @@
   </script>
 </body>
 </html>
+

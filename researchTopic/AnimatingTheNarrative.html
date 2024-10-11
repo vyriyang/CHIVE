@@ -13,7 +13,7 @@
       justify-content: center;
       background-image: 
         linear-gradient(rgba(4, 55, 83, 0.7), rgba(4, 83, 40, 0.7)), 
-        url('../img/Home/19-1.webp');
+        url('../img/research/AnimatingTheNarrative/AnimatingTheNarrative-home.webp');
       background-size: cover;
       background-position: top;
       animation: moveBg 280s infinite alternate;
@@ -214,14 +214,9 @@
         <div class="line"></div>
       </div>
       <div class="cont margin_left">
-        ● What is Lorem Ipsum?<br>
-        ● Lorem Ipsum is simply dummy text of the printing and typesetting industry.  <a href="https://www.lipsum.com" 
+        ● Our paper, 'Animating the Narrative: A Review of Animation Styles in Narrative Visualization,' has been accepted for presentation at<a href="https://ieeevis.org/year/2024/welcome" 
         style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
-        ● It has survived not only five centuries<a href="https://www.lipsum.com" 
-        style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-        but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
+       IEEE VIS2024</a>. Join us in Tampa, Florida, on October 17th, 2024!<br>
       </div>
     </div>
   </div>
@@ -315,6 +310,9 @@
             .then(data => {
                 const research = data.find(item => item.label.includes("AnimatingTheNarrative"));
                 if (research) {
+                    // 添加主图片到 imgMoreList 的第一项
+                    imgMoreList.push(research.imgSrc);
+
                     // 设置主图像
                     mainImage.src = research.imgSrc;
 
@@ -330,44 +328,67 @@
                     };
 
                     // 处理 imgMore 部分
-                    const imgMoreContainer = document.getElementById('imgMoreContainer');
-                    imgMoreList = research.imgMore;
+const imgMoreContainer = document.getElementById('imgMoreContainer');
 
-                    if (imgMoreList.length === 1) {
-                        // 单张图片，保持现有样式，居中显示
-                        const img = document.createElement('img');
-                        img.src = imgMoreList[0];
-                        img.className = 'research-image centered-img';
-                        img.onclick = function() {
-                            modal.style.display = "block";
-                            modalImg.src = img.src;
-                            currentImgIndex = 0;
-                        };
-                        imgMoreContainer.appendChild(img);
-                    } else if (imgMoreList.length > 1) {
-                        // 多张图片，左右拉动显示
-                        imgMoreContainer.classList.add('img-more-container');
-                        imgMoreList.forEach((imgSrc, index) => {
-                            const img = document.createElement('img');
-                            img.src = imgSrc;
-                            img.onclick = function() {
-                                modal.style.display = "block";
-                                modalImg.src = imgSrc;
-                                currentImgIndex = index;
-                            };
-                            imgMoreContainer.appendChild(img);
-                        });
-                    }
+// 将主图片作为 imgMoreList 的第一项，如果 imgMore 为空或只有空字符串，则不添加其他图片
+imgMoreList = [research.imgSrc, ...research.imgMore.filter(img => img)]; // 主图片加上有效的 imgMore 图片
 
-                    // 悬浮窗左右箭头切换
-                    document.querySelector('.prev').onclick = function() {
-                        currentImgIndex = (currentImgIndex > 0) ? currentImgIndex - 1 : imgMoreList.length - 1;
-                        modalImg.src = imgMoreList[currentImgIndex];
-                    };
-                    document.querySelector('.next').onclick = function() {
-                        currentImgIndex = (currentImgIndex < imgMoreList.length - 1) ? currentImgIndex + 1 : 0;
-                        modalImg.src = imgMoreList[currentImgIndex];
-                    };
+// 检查是否需要禁用左右箭头
+function updateArrowState() {
+    const prevArrow = document.querySelector('.prev');
+    const nextArrow = document.querySelector('.next');
+    
+    if (imgMoreList.length <= 1) { // 如果只有主图片或没有额外图片
+        prevArrow.style.display = 'none'; // 隐藏左箭头
+        nextArrow.style.display = 'none'; // 隐藏右箭头
+    } else {
+        prevArrow.style.display = 'block'; // 显示左箭头
+        nextArrow.style.display = 'block'; // 显示右箭头
+    }
+}
+
+// 如果 imgMoreList 只有主图片或为空，则不显示 imgMore 图片
+if (imgMoreList.length === 2) { // 主图片和一张 imgMore 图片
+    const img = document.createElement('img');
+    img.src = imgMoreList[1]; // imgMore 的图片
+    img.className = 'research-image centered-img';
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        currentImgIndex = 1; // imgMore 图片的索引是 1
+    };
+    imgMoreContainer.appendChild(img);
+} else if (imgMoreList.length > 2) { // 主图片和多张 imgMore 图片
+    imgMoreContainer.classList.add('img-more-container');
+    imgMoreList.slice(1).forEach((imgSrc, index) => { // 从 imgMoreList 的第二项开始循环
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+            currentImgIndex = index + 1; // 当前图片的索引为 index + 1，因为主图片占用了第一个位置
+        };
+        imgMoreContainer.appendChild(img);
+    });
+}
+
+// 悬浮窗左右箭头切换
+document.querySelector('.prev').onclick = function() {
+    if (imgMoreList.length > 1) { // 只有在 imgMoreList 超过 1 时才能切换
+        currentImgIndex = (currentImgIndex > 0) ? currentImgIndex - 1 : imgMoreList.length - 1;
+        modalImg.src = imgMoreList[currentImgIndex];
+    }
+};
+document.querySelector('.next').onclick = function() {
+    if (imgMoreList.length > 1) { // 只有在 imgMoreList 超过 1 时才能切换
+        currentImgIndex = (currentImgIndex < imgMoreList.length - 1) ? currentImgIndex + 1 : 0;
+        modalImg.src = imgMoreList[currentImgIndex];
+    }
+};
+
+// 初始化时更新箭头状态
+updateArrowState();
+
 
                     // 更新标题和内容
                     document.getElementById('researchTitle').textContent = research.info;
@@ -602,9 +623,8 @@
             });
 
     });
-</script>
+  </script>
 
 
 </body>
 </html>
-

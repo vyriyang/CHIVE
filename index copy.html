@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Scholar Lab</title>
+    <title>Computer Human Interaction and Visualization Experience Lab</title>
     <style>
         body {
             font-family: 'PT Sans Narrow', sans-serif;
@@ -110,7 +110,7 @@
             text-align: center;
             background-image: 
                 linear-gradient(rgba(18, 22, 63, 0.7), rgba(18, 22, 63, 0.7)), 
-                url('img/Home/21.webp');
+                url('img/Home/home.webp');
             background-size: cover;
             background-position: top;
             animation: moveBg 280s infinite alternate;
@@ -182,7 +182,7 @@
         .features {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: top;
             padding: 50px 20px;
             background-color: #f9f9f9;
         }
@@ -203,10 +203,12 @@
             max-width: 300px;
             text-align: center;
             margin-bottom: 30px;
+            cursor: pointer;
         }
         .feature img {
             width: 100px;
             height: 100px;
+            cursor: pointer;
         }
         .feature h2 {
             font-family: 'Oswald', sans-serif;
@@ -369,21 +371,21 @@
             <a class="scrollspy-link" href="people.html">People</a>
             <a class="scrollspy-link" href="publications.html">Publications</a>
             <a class="scrollspy-link" href="news.html">News</a>
-            <a class="scrollspy-link" href="activity.html">Activity</a>
+            <!--a class="scrollspy-link" href="activity.html">Activity</a-->
         </nav>  
     </header>
     <section class="section-1">
         <div class="logo-content">
-            <div class="logo-container">
+            <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
                 <img src="img/logo/CHIVE-3.svg" alt="Logo"> 
-                <div class="logo-text">LSU Visualization Research Lab</div>
+                <div class="logo-text">Research Lab at LSU</div>
             </div>
         </div>
         <div class="main-content">
             <div class="main-content-color">
                 <div>
-                    <h1>Introduction</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <h1>Computer Human Interaction and Visualization Experience</h1>
+                    <p>Welcome to the Computer Human Interaction and Visualization Experience (CHIVE) Lab at Louisiana State University. Our research focuses on the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.</p>
                 </div>
             </div>
         </div>
@@ -391,22 +393,22 @@
             <div class="feature" onclick="navigateTo('research.html')">
                 <img src="img/logo/research.png" alt="research">
                 <h2>Research</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p> Explore our lab's cutting-edge work in human-computer interaction, visualization, AI, ML, and etc.</p>
             </div>
             <div class="feature" onclick="navigateTo('people.html')">
                 <img src="img/logo/people.png" alt="people">
                 <h2>People</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                <p>Meet the diverse team of researchers driving innovation at the CHIVE Lab.</p>
             </div>
             <div class="feature" onclick="navigateTo('publications.html')">
                 <img src="img/logo/publications.png" alt="publications">
                 <h2>Publications</h2>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                <p>Discover our latest contributions to academic research through our published papers and conference presentations.</p>
             </div>
             <div class="feature" onclick="navigateTo('news.html')">
                 <img src="img/logo/news.png" alt="news">
                 <h2>News</h2>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</p>
+                <p>Stay updated on the latest happenings, achievements, and events in our lab.</p>
             </div>
         </div>
     </section>
@@ -449,7 +451,11 @@
         function renderResearchData(data) {
             const scrollContainer = document.getElementById('scroll-container');
             const currentResearchSection = document.getElementById('current-research-section');
-            const currentResearch = data.filter(research => research.label.includes("current"));
+            
+            // 对研究数据按照日期降序排序
+            const currentResearch = data
+                .filter(research => research.label.includes("current"))
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
 
             if (currentResearch.length > 0) {
                 currentResearchSection.style.display = 'block'; // 显示"Current Research"部分
@@ -481,11 +487,13 @@
                                     ${research.title} ></a>
                                 </div>
                                 <div class="cont overflow">
-                                    ${research.content}
+                                    <a href="${research.link}" style="text-decoration: none; color:#5d5d5d; cursor: pointer;" rel="alternate bookmark" target="_blank">
+                                    ${research.content} ></a>
+                                    
                                 </div>
                                 <div class="cont-researcher overflow">
                                     ${research.date}
-                                    <br>Researcher: ${research.researchers.map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`).join(', ')}
+                                    <br>Researcher: ${research.researchers.map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`).join(', ')}
                                 </div>
                             </div>
                         </div>
@@ -504,3 +512,5 @@
     </script>
 </body>
 </html>
+
+

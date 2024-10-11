@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DemoPeoplePage</title>
+  <link rel="stylesheet" href="../../../dist/css/scrollspy.min.css"/>
+</head>
+<body>
+  <nav class="scrollspy-nav">
+    <a class="scrollspy-link" href="../../../index.html">CHIVE Home</a>
+    <a class="scrollspy-link" data-target="Name">Name</a>
+    <a class="scrollspy-link" data-target="Publications" id="publications-link">Publications</a>
+    <a class="scrollspy-link" data-target="Videos" id="videos-link">Videos</a>
+    <a class="scrollspy-link" data-target="Awards" id="awards-link">Awards</a>
+    <a class="scrollspy-link" data-target="Contact">Contact</a>
+    <span class="scrollspy-indicator"></span>
+  </nav>
+
+    <!-- Name Section -->
+  <section class="scrollspy-section" id="Name">
+    <div class="main">
+      <div class="photo">
+          <img src="/img/people/DemoPeoplePage/DemoPeoplePage.jpg" alt="" class="photo_img">
+      </div>
+      <div class="about">
+          <div class="intro_text">DemoPeoplePage Title</div>
+          <div class="name">DemoPeoplePage</div>
+          <div class="cont">Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not 
+            only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+          <div class="download_btn">Download CV</div>
+      </div>
+    </div>
+  </section>
+  <div class="gray">
+    <div class="section_1">
+        <div class="title">Latest News
+            <div class="line"></div>
+        </div>
+        <div class="cont margin_left">
+            ● What is Lorem Ipsum?<br>
+            ● Lorem Ipsum is simply dummy text of the printing and typesetting industry.  <a href="https://www.lipsum.com" 
+            style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
+            when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
+            ● It has survived not only five centuries<a href="https://www.lipsum.com" 
+            style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+            but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
+        </div>
+    </div>
+  </div>
+
+ <!-- Publications Section -->
+ <section class="scrollspy-section" id="Publications" style="display: none;">
+  <div class="section_2">
+    <div class="title">Publications
+      <div class="line"></div>
+    </div>
+    <div class="mn-acc-app">
+      <div class="mn-accordion" id="accordion-2">
+        <!-- JSON data will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Videos Section -->
+<section class="scrollspy-section" id="Videos" style="display: none;">
+  <div class="section_2">
+    <div class="title">Videos
+      <div class="line"></div>
+    </div>
+    <div class="grids" id="videosGrids"></div>
+  </div>
+</section>
+
+<!-- Awards Section -->
+<section class="scrollspy-section" id="Awards" style="display: none;">
+  <div class="section_2">
+    <div class="title">Awards
+      <div class="line"></div>
+    </div>
+    <div id="awards-content">
+      <!-- JSON data will be inserted here by JavaScript -->
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section class="scrollspy-section" id="Contact">
+  <div class="gray">
+    <div class="section_2">
+      <div class="title">Contact
+        <div class="line"></div>
+      </div>
+      <div class="sec_sub_title" id="contact-details">
+        <!-- Contact details will be loaded here by JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="cont_footer">© 2024 All rights reserved</div>
+</div>
+
+<script src="../../../dist/js/mn-accordion.js"></script>
+<script src="../../../dist/js/scrollspy.min.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Fetch Publications Data
+fetch('json/DemoPeoplePage-publications.json')
+  .then(response => response.json())
+  .then(data => {
+    if (data.years && data.years.length > 0) {
+      document.getElementById('Publications').style.display = 'block';
+      document.getElementById('publications-link').style.display = 'inline';
+
+      const accordionContainer = document.getElementById('accordion-2');
+      data.years.forEach((year, index) => {
+        const accordionItem = document.createElement('div');
+        accordionItem.classList.add('accordion-item');
+
+        const accordionHeading = document.createElement('div');
+        accordionHeading.classList.add('accordion-heading');
+        accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
+        accordionItem.appendChild(accordionHeading);
+
+        const accordionContent = document.createElement('div');
+        accordionContent.classList.add('accordion-content');
+        if (index === 0) accordionContent.style.display = 'block';
+
+        const sortedPublications = year.publications.sort((a, b) => new Date(b.date) - new Date(a.date));
+        sortedPublications.forEach(pub => {
+          const pubDiv = document.createElement('div');
+          pubDiv.style.paddingBottom = '30px';
+
+          // 处理作者部分，检查是否是 "DemoPeoplePage" 并加粗
+          const authorsContent = pub.authors.map(author => {
+            const authorName = author.name === "DemoPeoplePage" 
+              ? `<strong>${author.name}</strong>` 
+              : author.name;
+            return `<a href="${author.link}" class="cont-researcher-name">${authorName}</a>`;
+          }).join(', ');
+
+          // 奖杯或奖牌图标逻辑
+          let awardIcon = '';
+              if (pub.venues.includes('Best Paper Award')) {
+                awardIcon = `<img src="../../../img/icons/trophy.png" alt="Trophy" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
+              } else if (pub.venues.includes('Best Paper Honorable Mention Award')) {
+                awardIcon = `<img src="../../../img/icons/medal.png" alt="Medal" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
+              }
+
+              // 如果 venues 存在，生成对应的 HTML，否则不生成
+              const venuesContent = pub.venues
+                ? `${awardIcon}<a href="${pub.url}" style="text-decoration: none; color:#ab2d05;" rel="alternate bookmark" target="_blank" ><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
+                : '';
+
+              // 检查 pub.pdf，如果存在则生成 "View Publication" 链接
+              const pdfContent = pub.pdf
+                ? `<div class="sec_sub_title_a" style="margin-top: 5px; margin-bottom: 5px;"><a href="${pub.pdf}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
+                : '';
+
+          pubDiv.innerHTML = `
+            <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+            <div class="sec_sub_title_aa" style="margin-top: 5px; margin-bottom: 5px;">
+              ${authorsContent}
+            </div>
+            <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">
+              ${pub.venuesname} | ${pub.date}
+            </div>
+            <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.description}</div>
+                ${pdfContent}  <!-- 仅当 pub.pdf 存在时才显示 -->
+          `;
+          accordionContent.appendChild(pubDiv);
+        });
+
+        accordionItem.appendChild(accordionContent);
+        accordionContainer.appendChild(accordionItem);
+      });
+
+      new Accordion(accordionContainer, {
+        multiple: true,
+        defaultOpenedIndexes: [0]
+      });
+    } else {
+      document.getElementById('Publications').style.display = 'none';
+      document.getElementById('publications-link').style.display = 'none';
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching publications data:', error);
+    document.getElementById('Publications').style.display = 'none';
+    document.getElementById('publications-link').style.display = 'none';
+  });
+
+
+      // Fetch Awards Data
+fetch('json/DemoPeoplePage-awards.json')
+  .then(response => response.json())
+  .then(data => {
+    if (data.awards && data.awards.length > 0) {
+      document.getElementById('Awards').style.display = 'block';
+      document.getElementById('awards-link').style.display = 'inline';
+
+      const awardsContent = document.getElementById('awards-content');
+      const sortedAwards = data.awards.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      sortedAwards.forEach(award => {
+        const awardDiv = document.createElement('div');
+        awardDiv.classList.add('news_card');
+        awardDiv.style.paddingTop = '30px';
+
+        // award.awards 和 award.title 如果 url 存在，放在同一个 div 中
+        let awardsTitleContent = '';
+        if (award.url) {
+          awardsTitleContent = `
+            <div class="sub-title_ss">
+              ${award.awards ? `<span style="color:#ab2d05;"><strong>${award.awards}</strong></span>` : ''}
+              ${award.awards && award.title ? '<span style="color:#3f44b6;"> | </span>' : ''}
+              <a href="${award.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${award.title}</a>
+            </div>
+          `;
+        } else {
+          // 如果没有 url，分别放在不同的 div 中
+          const awardContent = award.awards ? `<span style="color:#ab2d05;"><strong>${award.awards}</strong></span>` : '';
+          const titleContent = award.title ? `<span style="color:#3f44b6;">${award.title}</span>` : '';
+          awardsTitleContent = `${awardContent}${titleContent}`;
+        }
+
+        // 仅在 award.description 存在时显示
+        const descriptionContent = award.description
+          ? `<div class="sec_sub_title_a overflow">${award.description}</div>`
+          : '';
+
+        // 仅在 award.place 存在时显示
+        const placeContent = award.place
+          ? `<div class="sec_sub_title_a overflow" style="margin-top: 5px;">${award.place}</div>`
+          : '';
+
+        // 仅在 award.date 存在时显示
+        const dateContent = award.date
+          ? `<div class="sec_sub_title_a overflow" style="margin-top: 5px;">${award.date}</div>`
+          : '';
+
+        // 构建 HTML 内容，仅显示非空的项
+        awardDiv.innerHTML = `
+          <div class="sub-title_ssa">
+            ${awardsTitleContent}
+          </div>
+          <div class="sec_sub_title_a">
+            ${descriptionContent}
+          </div>
+          ${placeContent}
+          ${dateContent}
+        `;
+
+        awardsContent.appendChild(awardDiv);
+      });
+    } else {
+      document.getElementById('Awards').style.display = 'none';
+      document.getElementById('awards-link').style.display = 'none';
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching awards data:', error);
+    document.getElementById('Awards').style.display = 'none';
+    document.getElementById('awards-link').style.display = 'none';
+  });
+
+
+    // Fetch Videos Data
+    fetch('json/DemoPeoplePage-videos.json')
+      .then(response => response.json())
+      .then(data => {
+        if (data && data.length > 0) {
+          document.getElementById('Videos').style.display = 'block';
+          document.getElementById('videos-link').style.display = 'inline';
+
+          const videosGrids = document.getElementById('videosGrids');
+          const sortedVideos = data.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+          sortedVideos.forEach(item => {
+            const videosList = document.createElement('div');
+            videosList.className = 'video_list';
+            videosList.innerHTML = `
+              <img src="${item.imgSrc}" alt="" class="list_img">
+              <div class="video_padding">
+                <div class="sub-title">${item.title} ></div>
+                <div class="cont overflow">${item.date}</div>
+                <div class="cont overflow">Researchers: ${item.researchers.map(r => `<a href="${r.link}" class="cont-researcher-name">${r.name}</a>`).join(', ')}</div>
+              </div>
+            `;
+            videosList.addEventListener('click', function() {
+              window.open(item.link, '_blank');
+            });
+            videosGrids.appendChild(videosList);
+          });
+        } else {
+          document.getElementById('Videos').style.display = 'none';
+          document.getElementById('videos-link').style.display = 'none';
+        }
+      })
+      .catch(error => {
+        console.error('Error fetching videos data:', error);
+        document.getElementById('Videos').style.display = 'none';
+        document.getElementById('videos-link').style.display = 'none';
+      });
+
+    // Fetch and Display Contact Data
+    fetch('json/DemoPeoplePage-contact.json')
+      .then(response => response.json())
+      .then(data => {
+        const contactDetails = document.getElementById('contact-details');
+        const contact = data[0];
+        let contactInfo = '';
+
+        if (contact.office) contactInfo += `<div>${contact.office}</div>`;
+        if (contact.school) contactInfo += `<div>${contact.school}</div>`;
+        if (contact.num) contactInfo += `<div>${contact.num}</div>`;
+        if (contact.email) contactInfo += `<div><a href="mailto:${contact.email}" style="color: #3f44b6;">${contact.email}</a></div>`;
+
+        if (contactInfo) {
+          contactDetails.innerHTML = contactInfo;
+        } else {
+          document.getElementById('Contact').style.display = 'none';
+        }
+      });
+  });
+</script>
+</body>
+</html>
+

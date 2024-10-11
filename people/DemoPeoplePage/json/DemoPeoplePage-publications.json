@@ -1,0 +1,54 @@
+{
+  "years": [
+    {
+      "year": "2023",
+      "publications": [
+        {
+          "venues":"TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "What is Lorem Ipsum?",
+          "authors": [
+              { "name": "DemoPeoplePage", "link": "/people/DemoPeoplePage/DemoPeoplePage.html" },
+              { "name": "name", "link": "/people/DemoPeoplePage/DemoPeoplePage.html" }
+          ],
+          "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+          "date": "May 2023",
+          "url": "https://www.lipsum.com",
+          "pdf":"https://www.lipsum.com"
+        },
+        {
+          "venues":"[Best Paper Honorable Mention Award] TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "Another Publication",
+          "authors": [
+              { "name": "name", "link": "/people/DemoPeoplePage/DemoPeoplePage.html" },
+              { "name": "DemoPeoplePage", "link": "/people/DemoPeoplePage/DemoPeoplePage.html" }
+          ],
+          "description": "Short description of the publication.",
+          "date": "June 2023",
+          "url": "https://www.example.com",
+          "pdf":""
+        }
+      ]
+    },
+    {
+      "year": "2022",
+      "publications": [
+        {
+          "venues":" [Best Paper Award] TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "Lorem Ipsum in 2022",
+          "authors": [
+              { "name": "name", "link": "/people/DemoPeoplePage/DemoPeoplePage.html" },
+              { "name": "name", "link": "/people/DemoPeoplePage/DemoPeoplePage.html" }
+          ],
+          "description": "Detailed description of the publication.",
+          "date": "April 2022",
+          "url": "https://www.example.com",
+          "pdf":""
+        }
+      ]
+    }
+  ]
+}
+

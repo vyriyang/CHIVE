@@ -1,19 +1,6 @@
 {
     "people": [
-        {
-        "name": "Student name",
-        "title": "Title",
-        "description": "Description of the student.",
-        "image": "img/people/people-1/peopledemo.jpg",
-        "link": "people/students/student2.html"
-    },
-        {
-        "name": "Student name last",
-        "title": "Title",
-        "description": "Description of the student.",
-        "image": "img/people/people-1/peopledemo.jpg",
-        "link": "people/students/student2.html"
-    }
+        
         
     ]
 }

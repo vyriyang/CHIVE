@@ -5,28 +5,30 @@
         "publications": [
           {
             "label": ["researchDemo"],
-            "venues":"TVCG",
+            "venues":"[Best Paper Award] CHI",
             "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
             "title": "What is Lorem Ipsum?",
             "authors": [
                 { "name": "name", "link": "people/people-1.html" }
               ],
-            "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
+            "description": "",
             "date": "May 2023",
-            "url": "https://www.lipsum.com"
+            "url": "https://www.lipsum.com",
+            "pdf":""
           },
           {
-            "label": ["research3"],
-            "venues":"TVCG",
-            "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+            "label": ["Keywords"],
+            "venues":"the venue name in abbreviation",
+            "venuesname":"Full name of the venues",
             "title": "Another Publication",
             "authors": [
                 { "name": "name", "link": "people/people-1.html" },
                 { "name": "name", "link": "people/people-1.html" }
               ],
             "description": "Short description of the publication.",
-            "date": "June 2023",
-            "url": "https://www.example.com"
+            "date": "Month (Date), Year",
+            "url": "This is the link to the publication page",
+            "pdf":"This is the link of the pdf files."
           }
         ]
       },
@@ -35,7 +37,7 @@
       "publications": [
         {
           "label": ["research1"],
-          "venues":"TVCG",
+          "venues":"",
           "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
           "title": "What is Lorem Ipsum?",
           "authors": [
@@ -43,11 +45,12 @@
             ],
           "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
           "date": "May 2023",
-          "url": "https://www.lipsum.com"
+          "url": "https://www.lipsum.com",
+          "pdf":""
         },
         {
           "label": ["researchDemo"],
-          "venues":"TVCG",
+          "venues":"[Best Paper Honorable Mention Award] TVCG",
           "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
           "title": "Another Publication",
           "authors": [
@@ -56,7 +59,8 @@
             ],
           "description": "Short description of the publication.",
           "date": "June 2023",
-          "url": "https://www.example.com"
+          "url": "https://www.example.com",
+          "pdf":""
         }
       ]
     },
@@ -73,7 +77,8 @@
             ],
           "description": "Detailed description of the publication.",
           "date": "April 2022",
-          "url": "https://www.example.com"
+          "url": "https://www.example.com",
+          "pdf":""
         }
       ]
     }

@@ -6,7 +6,10 @@
         {
           "venues":"TVCG",
           "title": "What is Lorem Ipsum?",
-          "authors": "name name name",
+          "authors": [
+              { "name": "name", "link": "/people/professors/MahmoodJasim/MahmoodJasim.html" },
+              { "name": "name", "link": "/people/professors/MahmoodJasim/MahmoodJasim.html" }
+          ],
           "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
           "date": "May 2023",
           "url": "https://www.lipsum.com"
@@ -14,10 +17,14 @@
         {
           "venues":"TVCG",
           "title": "Another Publication",
-          "authors": "author1, author2",
+          "authors": [
+              { "name": "name", "link": "/people/professors/MahmoodJasim/MahmoodJasim.html" },
+              { "name": "name", "link": "/people/professors/MahmoodJasim/MahmoodJasim.html" }
+          ],
           "description": "Short description of the publication.",
           "date": "June 2023",
-          "url": "https://www.example.com"
+          "url": "https://www.example.com",
+          "pdf":""
         }
       ]
     },
@@ -27,10 +34,14 @@
         {
           "venues":"TVCG",
           "title": "Lorem Ipsum in 2022",
-          "authors": "author name",
+          "authors": [
+              { "name": "name", "link": "/people/professors/MahmoodJasim/MahmoodJasim.html" },
+              { "name": "name", "link": "/people/professors/MahmoodJasim/MahmoodJasim.html" }
+          ],
           "description": "Detailed description of the publication.",
           "date": "April 2022",
-          "url": "https://www.example.com"
+          "url": "https://www.example.com",
+          "pdf":""
         }
       ]
     }

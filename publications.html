@@ -11,7 +11,7 @@
   <header>
     <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
         <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
-        <div class="logo-text">LSU Visualization Research Lab</div>
+        <div class="logo-text">Research Lab at LSU</div>
     </div>
     <nav class="scrollspy-nav">
       <a class="scrollspy-link" href="index.html">Home</a>
@@ -113,12 +113,31 @@
             sortedPublications.forEach(pub => {
               const pubDiv = document.createElement('div');
               pubDiv.style.paddingBottom = '30px';
+
+              // 奖杯或奖牌图标逻辑
+              let awardIcon = '';
+              if (pub.venues.includes('Best Paper Award')) {
+                awardIcon = `<img src="img/icons/trophy.png" alt="Trophy" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
+              } else if (pub.venues.includes('Best Paper Honorable Mention Award')) {
+                awardIcon = `<img src="img/icons/medal.png" alt="Medal" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
+              }
+
+              // 如果 venues 存在，生成对应的 HTML，否则不生成
+              const venuesContent = pub.venues
+                ? `${awardIcon}<a href="${pub.url}" style="text-decoration: none; color:#ab2d05;" rel="alternate bookmark" target="_blank" ><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
+                : '';
+
+              // 检查 pub.pdf，如果存在则生成 "View Publication" 链接
+              const pdfContent = pub.pdf
+                ? `<div class="sec_sub_title_a" style="margin-top: 5px; margin-bottom: 5px;"><a href="${pub.pdf}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
+                : '';
+
               pubDiv.innerHTML = `
-                <div class="sub-title_ss"><a style="color:#ab2d05 ;"><strong>${pub.venues}</strong></a> | <a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
-                <div class="cont-researche overflow">${pub.authors.map(author => `<a href="('${author.link}')" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
-                <div class="sec_sub_title_s">${pub.venuesname} | ${pub.date}</div>
-                <div class="sec_sub_title_s">${pub.description} </div>
-                <div class="sec_sub_title_a"><a href="${pub.url}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>
+                <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+                <div class="overflow">${pub.authors.map(author => `<a href="('${author.link}')" class="cont-researcher-name" style="text-decoration: none;">${author.name}</a>`).join(', ')}</div>
+                <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.venuesname} | ${pub.date}</div>
+                <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.description}</div>
+                ${pdfContent}  <!-- 仅当 pub.pdf 存在时才显示 -->
               `;
               accordionContent.appendChild(pubDiv);
             });
@@ -138,7 +157,7 @@
         });
     });
   </script>
+
+
 </body>
 </html>
-
-

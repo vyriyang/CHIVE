@@ -357,7 +357,7 @@ nav a {
 }
 
 .research_list {
-    height: 650px; /* 确保这个高度与您想要的高度一致 */
+    height: auto; /* 确保这个高度与您想要的高度一致 */
     position: relative;
     margin-bottom: 0px;
     cursor: pointer;
@@ -378,6 +378,26 @@ nav a {
 
 .research_padding {
     padding: 25px;
+}
+
+.activity_list {
+    height: auto; /* 確保這個高度與您想要的高度一致 */
+    position: relative;
+    margin-bottom: 0px;
+    cursor: pointer;
+    background: white;
+    box-shadow: 0 0 25px 0 rgba(0, 0, 0, .1);
+    border-bottom: 6px solid white;
+    overflow: hidden; /* 添加這行以確保文字超出部分會被截斷 */
+}
+
+.activity_list:hover img {
+    transform: scale(1.1);
+}
+
+.activity_list:hover {
+    border-bottom: 6px solid;
+    border-image: linear-gradient(-120deg, #12163f, #f36f24) 1;
 }
 
 .abstract-container, 
@@ -416,6 +436,14 @@ nav a {
     color: #3f44b6;
 }
 
+.sub-title_ssa {
+    text-align: left;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    margin-bottom: 5px;
+    color: #3f44b6;
+}
+
 .sec_sub_title_s {
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 18px;
@@ -428,6 +456,31 @@ nav a {
     font-size: 18px;
     color: #5f5d5d;
 }
+
+.cont-researcher{
+    padding-top:20px;
+    color:#5d5d5d;
+    word-break: break-word;
+    white-space: normal;
+    overflow: hidden;
+
+}
+
+.cont-researcher-name{
+    color:#5d5d5d;
+}
+
+.cont-researcher-name:hover{
+    color:#f36f24;
+}
+
+.sub-title_ss:hover {
+    color: #f36f24;
+    transform: scale(1.1); /* 使用 transform 替代 scale */
+    transform-origin: left; /* 设置缩放的原点为左侧 */
+    transition: transform 0.3s ease, color 0.3s ease; /* 添加平滑过渡 */
+}
+
 
 .footer {
     text-align: center;
