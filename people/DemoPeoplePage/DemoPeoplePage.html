@@ -19,7 +19,7 @@
 
     <!-- Name Section -->
   <section class="scrollspy-section" id="Name">
-    <div class="main">
+    <div class="main_people">
       <div class="photo">
           <img src="/img/people/DemoPeoplePage/DemoPeoplePage.jpg" alt="" class="photo_img">
       </div>
@@ -290,7 +290,7 @@ fetch('json/DemoPeoplePage-awards.json')
               <div class="video_padding">
                 <div class="sub-title">${item.title} ></div>
                 <div class="cont overflow">${item.date}</div>
-                <div class="cont overflow">Researchers: ${item.researchers.map(r => `<a href="${r.link}" class="cont-researcher-name">${r.name}</a>`).join(', ')}</div>
+                <div class="cont overflow">Speakers: ${item.researchers.map(r => `<a href="${r.link}" class="cont-researcher-name">${r.name}</a>`).join(', ')}</div>
               </div>
             `;
             videosList.addEventListener('click', function() {

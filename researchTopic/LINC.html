@@ -81,7 +81,7 @@
       max-width: 1080px;
     }
 
-    /* 缩放功能 */
+    /* 缩放功能
     .modal-content.zoom-in {
       transform: translate(-50%, -50%) scale(1.5);
       transition: transform 0.3s ease;
@@ -91,7 +91,7 @@
       transform: translate(-50%, -50%) scale(1);
       transition: transform 0.3s ease;
     }
-
+ */
     /* 关闭按钮样式 */
     .close {
       position: absolute;
@@ -177,6 +177,10 @@
     .centered-img {
       display: block;
       margin: 0 auto;
+    }
+
+    .cursor:hover {
+      cursor: pointer;
     }
   </style>
 </head>
@@ -271,7 +275,7 @@
     </div>
   </section>
 
-  <section class="scrollspy-section" id="Contact">
+  <section class="scrollspy-section" id="Contact" style="margin-top: 20px;">
     <div class="gray">
       <div class="section_2">
         <div class="title">Contact
@@ -467,16 +471,24 @@ updateArrowState();
 
             let contactHTML = '';
 
-            // Check if there's a researcher and add the name with a link
-            if (research.researchers[0].name) {
-                contactHTML += `
-                    <div>
-                        <a href="${research.researchers[0].link}" target="_blank" style="cursor:pointer; text-decoration: none;">
-                            ${research.researchers[0].name}
-                        </a>
-                    </div>
-                `;
-            }
+// Check if there's a researcher and add the name with a link
+if (research.researchers && research.researchers.length > 0 && research.researchers[0].name) {
+    let researcherName = research.researchers[0].name;
+    let researcherLink = research.researchers[0].link;
+
+    // 检查是否为相对路径
+    if (!researcherLink.startsWith('http://') && !researcherLink.startsWith('https://')) {
+        researcherLink = `https://chive.cse.lsu.edu/${researcherLink}`;
+    }
+
+    contactHTML += `
+        <div>
+            <a href="${researcherLink}" target="_blank" style="cursor:pointer; text-decoration: none;">
+                ${researcherName}
+            </a>
+        </div>
+    `;
+}
 
             if (office) contactHTML += `<div>${office}</div>`;
             if (school) contactHTML += `<div>${school}</div>`;
@@ -529,7 +541,7 @@ updateArrowState();
                     ${research.title}</a>
                 </div>
                 <div class="cont overflow">${research.date}</div>
-                <div class="cont overflow">
+                <div class="cont overflow cursor">
                     Speakers: ${speakersHTML}${moreSpeakers}
                 </div>
                 ${research.url.includes('youtube.com') ? `
@@ -558,72 +570,99 @@ updateArrowState();
         };
 
         // Fetch publications data
-        fetch('/json/research/publications.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
+fetch('/json/research/publications.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        const accordionContainer = document.getElementById('accordion-2');
+        let firstAccordionOpened = false;
+
+        // 检查是否存在 "LINC" 标签的出版物
+        const hasPublications = data.years.some(year => year.publications.some(pub => pub.label.includes('LINC')));
+
+        if (!hasPublications) {
+            document.getElementById('Publications').style.display = 'none';
+            return;
+        }
+
+        // 遍历每一年
+        data.years.forEach((year, index) => {
+            // 筛选出含 "LINC" 标签的出版物
+            const filteredPublications = year.publications.filter(pub => pub.label.includes('LINC'));
+
+            if (filteredPublications.length === 0) {
+                return;
+            }
+
+            const accordionItem = document.createElement('div');
+            accordionItem.classList.add('accordion-item');
+
+            const accordionHeading = document.createElement('div');
+            accordionHeading.classList.add('accordion-heading');
+            accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
+            accordionItem.appendChild(accordionHeading);
+
+            const accordionContent = document.createElement('div');
+            accordionContent.classList.add('accordion-content');
+
+            // 默认展开第一个手风琴
+            if (!firstAccordionOpened) {
+                accordionContent.style.display = 'block';
+                firstAccordionOpened = true;
+            }
+
+            // 按照日期排序，最新的排在最前面
+            const sortedPublications = filteredPublications.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            sortedPublications.forEach(pub => {
+                const pubDiv = document.createElement('div');
+                pubDiv.style.paddingBottom = '30px';
+
+                // 奖杯或奖牌图标逻辑
+                let awardIcon = '';
+                if (pub.venues.includes('Best Paper Award')) {
+                    awardIcon = `<img src="../img/icons/trophy.png" alt="Trophy" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
+                } else if (pub.venues.includes('Best Paper Honorable Mention Award')) {
+                    awardIcon = `<img src="../img/icons/medal.png" alt="Medal" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
                 }
-                return response.json();
-            })
-            .then(data => {
-                const accordionContainer = document.getElementById('accordion-2');
-                let firstAccordionOpened = false;
 
-                const hasPublications = data.years.some(year => year.publications.some(pub => pub.label.includes('LINC')));
+                // 如果 venues 存在，生成对应的 HTML，否则不生成
+                const venuesContent = pub.venues
+                    ? `${awardIcon}<a href="${pub.url}" style="text-decoration: none; color:#ab2d05;" rel="alternate bookmark" target="_blank" ><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
+                    : '';
 
-                if (!hasPublications) {
-                    document.getElementById('Publications').style.display = 'none';
-                    return;
-                }
+                // 检查 pub.pdf，如果存在则生成 "View Publication" 链接
+                const pdfContent = pub.pdf
+                    ? `<div class="sec_sub_title_a" style="margin-top: 5px; margin-bottom: 5px;"><a href="${pub.pdf}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
+                    : '';
 
-                data.years.forEach((year, index) => {
-                    const filteredPublications = year.publications.filter(pub => pub.label.includes('LINC'));
-
-                    if (filteredPublications.length === 0) {
-                        return;
-                    }
-
-                    const accordionItem = document.createElement('div');
-                    accordionItem.classList.add('accordion-item');
-
-                    const accordionHeading = document.createElement('div');
-                    accordionHeading.classList.add('accordion-heading');
-                    accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
-                    accordionItem.appendChild(accordionHeading);
-
-                    const accordionContent = document.createElement('div');
-                    accordionContent.classList.add('accordion-content');
-
-                    if (!firstAccordionOpened) {
-                        accordionContent.style.display = 'block';
-                        firstAccordionOpened = true;
-                    }
-
-                    filteredPublications.forEach(pub => {
-                        const pubDiv = document.createElement('div');
-                        pubDiv.style.paddingBottom = '30px';
-                        pubDiv.innerHTML = `
-                            <div class="sub-title_ss"><a style="color:#ab2d05 ;"><strong>${pub.venues}</strong></a> | <a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
-                            <div class="cont-researche overflow">${pub.authors.map(author => `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
-                            <div class="sec_sub_title_s">${pub.venuesname} | ${pub.date}</div>
-                            <div class="sec_sub_title_s">${pub.description} </div>
-                            <div class="sec_sub_title_a"><a href="${pub.url}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>
-                        `;
-                        accordionContent.appendChild(pubDiv);
-                    });
-
-                    accordionItem.appendChild(accordionContent);
-                    accordionContainer.appendChild(accordionItem);
-                });
-
-                var accordion_2 = new Accordion(accordionContainer, {
-                    multiple: true,
-                    defaultOpenedIndexes: [0]
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching publications data:', error);
+                pubDiv.innerHTML = `
+                    <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+                    <div class="cont-researche overflow">${pub.authors.map(author => `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
+                    <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.venuesname} | ${pub.date}</div>
+                    <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.description}</div>
+                    ${pdfContent}  <!-- 仅当 pub.pdf 存在时才显示 -->
+                `;
+                accordionContent.appendChild(pubDiv);
             });
+
+            accordionItem.appendChild(accordionContent);
+            accordionContainer.appendChild(accordionItem);
+        });
+
+        // Initialize accordion
+        var accordion_2 = new Accordion(accordionContainer, {
+            multiple: true,
+            defaultOpenedIndexes: [0]
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching publications data:', error);
+    });
 
     });
 </script>

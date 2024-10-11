@@ -291,6 +291,14 @@ nav a {
     grid-auto-flow: dense;
 }
 
+.grids-news {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 40px;
+    grid-auto-flow: dense;
+}
+
 .list {
     height: 280px;
     margin-bottom: 36px;
@@ -325,7 +333,7 @@ nav a {
 }
 
 .video_list {
-    height: 550px;
+    height: auto;
     margin-bottom: 0px;
     cursor: pointer;
     background: white;
@@ -472,6 +480,14 @@ nav a {
 
 .cont-researcher-name:hover{
     color:#f36f24;
+}
+
+.cont-data{
+    color:#777;
+    word-break: break-word;
+    white-space: normal;
+    overflow: hidden;
+
 }
 
 .sub-title_ss:hover {

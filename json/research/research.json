@@ -8,16 +8,16 @@
       "videoSrc":"../img/research/ImmersiveTheNarrative/IMG_5127.mp4",
       "imgMore":[""],
       "title": "Application of Non-VR Immersive Technology in Narrative Visualization for Cyberbullying Data Representation",
-      "link": "",
+      "link": "../researchTopic/ImmersiveTheNarrative.html",
       "pdf": "",
       "content": "This research leverages Non-VR immersive technology and narrative-driven visualizations to effectively present cyberbullying data. By employing data-driven designs, the platform layers and categorizes various forms of bullying (verbal, physical, cyberbullying) and user responses, helping audiences better understand the information. The integration of real-life hybrid physical and digital experiences with data-driven content enhances the immersive experience, allowing users to make informed choices and explore different outcomes. Interactive sound and motion elements further engage users, fostering a deeper connection with the narratives.",
-      "abstract": "The research focuses on utilizing Non-VR immersive technology to explore how narrative-driven visualizations can effectively present cyberbullying data. The platform emphasizes data-driven designs, where layered data grouping and categorization illustrate the interactions between different forms of bullying (verbal, physical, cyberbullying), user responses, and behavior changes. Users engage with the platform through innovative data-driven designs, seamlessly integrated with narrative-driven technologies, aiming to explore how data can be more effectively communicated and understood by audiences. This approach enables users to dynamically explore how each form of bullying is represented, ensuring that the audience more effectively understands and absorbs the information through intuitive and engaging data visualizations. <br>The project integrates real-life hybrid physical and digital experiences with data-driven content, enriching the narrative visualization experience. By allowing users to make data-driven choices, the platform enables them to explore different outcomes and scenarios, fostering a deeper connection with the content. Sound and motion elements further enhance the immersive experience, responding to user interactions and deepening their engagement with the narratives presented. <br><br>",
+      "abstract": "The research focuses on utilizing Non-VR immersive technology to explore how narrative-driven visualizations can effectively present cyberbullying data. The platform emphasizes data-driven designs, where layered data grouping and categorization illustrate the interactions between different forms of bullying (verbal, physical, cyberbullying), user responses, and behavior changes. Users engage with the platform through innovative data-driven designs, seamlessly integrated with narrative-driven technologies, aiming to explore how data can be more effectively communicated and understood by audiences. This approach enables users to dynamically explore how each form of bullying is represented, ensuring that the audience more effectively understands and absorbs the information through intuitive and engaging data visualizations. <br><br>The project integrates real-life hybrid physical and digital experiences with data-driven content, enriching the narrative visualization experience. By allowing users to make data-driven choices, the platform enables them to explore different outcomes and scenarios, fostering a deeper connection with the content. Sound and motion elements further enhance the immersive experience, responding to user interactions and deepening their engagement with the narratives presented. <br><br>",
       "keywords": ["Narrative visualizations", "Static and animated visualization", "Categorization", "Design space"],
       "description": "",
-      "url": "USA",
+      "url": "",
       "date": "May, 2024",
       "researchers": [
-          { "name": "Vyri Yang", "link": "people/students/VyriYang/VyriYang.html" },
+          { "name": "Vyri Yang", "link": "https://chive.cse.lsu.edu/people/students/VyriYang/VyriYang.html" },
           { "name": "Fiona Ju", "link": "https://xjcomposer.com" },
           { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
       ],
@@ -35,7 +35,7 @@
         "videoSrc":"",
         "imgMore":[""],
         "title": "Understanding ASL Usage and Challanges in d/Deaf community",
-        "link": "",
+        "link": "../researchTopic/ASL.html",
         "pdf": "",
         "content": "Signers, like any population, have dialects, variations, and regional modifications, influenced by their choice of signs, speed, and experience. Effective ASL communication occurs when two signers share similar experience and dialects, though ideal scenarios are not always realistic. My research aims to identify communication challenges between signers and non-signers, designing user interfaces that leverage deep learning translation, data augmentation, and person embodiment to minimize these obstacles.",
         "abstract": "Like any other population, signers have dialects, show variations, allow regional modifications, and is bound and limited by the user’s choice of signs, speed of hands and experience. An effective and ideal ASL communication is possible when two signers with equal experience and have similar regional dialects converse. However, ideal scenarios exist to remind us that they are not always real. <br><br>My research focuses on finding out challenges faced by signers and non-signers during their communication between and among them. The focus is to design user interfaces to minimize if not eliminate, these challenges using deep learning translation, data augmentation and person embodiment.",
@@ -44,7 +44,7 @@
         "url": "",
         "date": "June, 2024",
         "researchers": [
-            { "name": "Vimal Thomas Joseph", "link": "people/DemoPeoplePage/DemoPeoplePage.html" },
+            { "name": "Vimal Joseph", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" },
             { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
         ],
         "place":"USA",
@@ -61,7 +61,7 @@
       "videoSrc":"",
       "imgMore":[""],
       "title": "Redefining Product Review Video Navigation with Personalized Features",
-      "link": "",
+      "link": "../researchTopic/ReviewVideo.html",
       "pdf": "",
       "content": "This research aims to give an unique user experience to the consumers who watched product review videos. This experience will help them to make a mindful purchase decision and having the insights of the watched videos in their mind.",
       "abstract": "",
@@ -70,7 +70,7 @@
       "url": "",
       "date": "July, 2024",
       "researchers": [
-          { "name": "Nushrat Jahan Ria", "link": "people/DemoPeoplePage/DemoPeoplePage.html" },
+          { "name": "Nushrat Ria", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" },
           { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
       ],
       "place":"USA",
@@ -96,7 +96,7 @@
     "url": "",
     "date": "Dec, 2024",
     "researchers": [
-        { "name": "Saramsh Gautam", "link": "people/DemoPeoplePage/DemoPeoplePage.html" },
+        { "name": "Saramsh Gautam", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" },
         { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
     ],
     "place":"USA",
@@ -122,7 +122,7 @@
     "url": "",
     "date": "October 17, 2024",
     "researchers": [
-        { "name": "Vyri Yang", "link": "people/students/VyriYang/VyriYang.html" },
+        { "name": "Vyri Yang", "link": "https://chive.cse.lsu.edu/people/students/VyriYang/VyriYang.html" },
         { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
     ],
     "place": "St. Pete Beach, Florida, USA",
@@ -130,6 +130,32 @@
     "school": "Louisiana State University",
     "num": "",
     "email": "jyang44@lsu.edu"
+  },
+  {
+    "label": ["researchDemo", "last"],
+    "venues": "VENUES",
+    "info": "VENUES Full Name",
+    "imgSrc": "../img/demo/Demo-5.jpg",
+    "videoSrc":"",
+    "imgMore":["../img/demo/demo-1.jpeg"],
+    "title": "Research Demo",
+    "link": "https://www.lipsum.com",
+    "pdf": "https://www.lipsum.com",
+    "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "abstract": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 'de Finibus Bonorum et Malorum' (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, 'Lorem ipsum dolor sit amet..', comes from a line in section 1.10.32.<br><br>The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from 'de Finibus Bonorum et Malorum' by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.<br><br>",
+    "keywords": ["research demo"],
+    "description": "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain...",
+    "url": "https://www.youtube.com/watch?v=YZ84iQrbYjw",
+    "date": "June, 2024",
+    "researchers": [
+        { "name": "Name", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" },
+        { "name": "Name", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" }
+    ],
+    "place": "place demo, USA",
+    "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+    "school": "Louisiana State University",
+    "num": "",
+    "email": ""
   },
 
   

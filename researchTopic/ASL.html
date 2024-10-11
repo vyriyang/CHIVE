@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Animating the Narrative</title>
+  <title>ASL</title>
   <link rel="stylesheet" href="../dist/css/scrollspy.dark.css"/>
   <style>
     .main-content {
@@ -12,8 +12,8 @@
       align-items: center;
       justify-content: center;
       background-image: 
-        linear-gradient(rgba(4, 55, 83, 0.7), rgba(4, 83, 40, 0.7)), 
-        url('../img/research/AnimatingTheNarrative/AnimatingTheNarrative-home.webp');
+        linear-gradient(rgba(83, 18, 4, 0.7), rgba(83, 36, 4, 0.7)), 
+        url('../img/research/ASL/ASL-home.png');
       background-size: cover;
       background-position: top;
       animation: moveBg 280s infinite alternate;
@@ -213,18 +213,23 @@
     </div>
   </section>
 
-  <div class="gray">
+  <!--div class="gray">
     <div class="section_1">
       <div class="title">Latest News
         <div class="line"></div>
       </div>
       <div class="cont margin_left">
-        ● Our paper, 'Animating the Narrative: A Review of Animation Styles in Narrative Visualization,' has been accepted for presentation at<a href="https://ieeevis.org/year/2024/welcome" 
+        ● What is Lorem Ipsum?<br>
+        ● Lorem Ipsum is simply dummy text of the printing and typesetting industry.  <a href="https://www.lipsum.com" 
         style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-       IEEE VIS2024</a>. Join us in Tampa, Florida, on October 17th, 2024!<br>
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
+        ● It has survived not only five centuries<a href="https://www.lipsum.com" 
+        style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+        but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
       </div>
     </div>
-  </div>
+  </div-->
 
   <section class="scrollspy-section" id="Abstract">
     <div class="section_2">
@@ -313,7 +318,7 @@
         fetch('/json/research/research.json')
             .then(response => response.json())
             .then(data => {
-                const research = data.find(item => item.label.includes("AnimatingTheNarrative"));
+                const research = data.find(item => item.label.includes("ASL"));
                 if (research) {
                     // 添加主图片到 imgMoreList 的第一项
                     imgMoreList.push(research.imgSrc);
@@ -495,6 +500,7 @@ if (research.researchers && research.researchers.length > 0 && research.research
                         }
                         #contact-details a:hover {
                             color: #3f44b6; /* Change hover color */
+                            cursor: pointer;
                         }
                     `;
                     document.head.appendChild(style);
@@ -502,7 +508,7 @@ if (research.researchers && research.researchers.length > 0 && research.research
                     // 更新 Videos 部分的内容
                     const infoContent = document.getElementById('info-content');
                     const videoSection = document.getElementById('Videos');
-                    const hasVideos = data.some(infoItem => infoItem.label.includes("AnimatingTheNarrative") && infoItem.url);
+                    const hasVideos = data.some(infoItem => infoItem.label.includes("ASL") && infoItem.url);
 
                     if (!hasVideos) {
                         videoSection.style.display = 'none';
@@ -510,7 +516,7 @@ if (research.researchers && research.researchers.length > 0 && research.research
                     }
 
                     data.forEach(infoItem => {
-                        if (infoItem.label.includes("AnimatingTheNarrative") && infoItem.url) {
+                        if (infoItem.label.includes("ASL") && infoItem.url) {
                             const infoDiv = document.createElement('div');
                             infoDiv.classList.add('news_card');
                             infoDiv.style.paddingTop = '30px';
@@ -567,7 +573,7 @@ if (research.researchers && research.researchers.length > 0 && research.research
             }
         };
 
-        // Fetch publications data
+// Fetch publications data
 fetch('/json/research/publications.json')
     .then(response => {
         if (!response.ok) {
@@ -579,8 +585,8 @@ fetch('/json/research/publications.json')
         const accordionContainer = document.getElementById('accordion-2');
         let firstAccordionOpened = false;
 
-        // 检查是否存在 "AnimatingTheNarrative" 标签的出版物
-        const hasPublications = data.years.some(year => year.publications.some(pub => pub.label.includes('AnimatingTheNarrative')));
+        // 检查是否存在 "ASL" 标签的出版物
+        const hasPublications = data.years.some(year => year.publications.some(pub => pub.label.includes('ASL')));
 
         if (!hasPublications) {
             document.getElementById('Publications').style.display = 'none';
@@ -589,8 +595,8 @@ fetch('/json/research/publications.json')
 
         // 遍历每一年
         data.years.forEach((year, index) => {
-            // 筛选出含 "AnimatingTheNarrative" 标签的出版物
-            const filteredPublications = year.publications.filter(pub => pub.label.includes('AnimatingTheNarrative'));
+            // 筛选出含 "ASL" 标签的出版物
+            const filteredPublications = year.publications.filter(pub => pub.label.includes('ASL'));
 
             if (filteredPublications.length === 0) {
                 return;
@@ -661,6 +667,7 @@ fetch('/json/research/publications.json')
     .catch(error => {
         console.error('Error fetching publications data:', error);
     });
+
 
     });
   </script>

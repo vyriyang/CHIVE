@@ -50,6 +50,22 @@ body {
     box-sizing: border-box;
 }
 
+.main_people {
+    height: 800px;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.photo {
+    margin-left: 5%; /* 預設的邊距 */
+    flex-shrink: 0; /* 防止圖片被壓縮 */
+  }
+
 .photo_img {
     width: 350px;
     background-color: #fff;
@@ -122,6 +138,14 @@ body {
     color: #f36f24; /* 当鼠标悬停时改变颜色 */
   }
 
+  .cont-data{
+    color:#777;
+    word-break: break-word;
+    white-space: normal;
+    overflow: hidden;
+
+}
+
 .footer {
     background: #dfe2e7;
     margin: 0px;
@@ -178,6 +202,14 @@ body {
     grid-auto-flow: dense;
 }
 
+.grids-news {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 40px;
+    grid-auto-flow: dense;
+}
+
 .list {
     height: 280px;
     margin-bottom: 36px;
@@ -212,7 +244,7 @@ body {
 }
 
 .video_list {
-    height: 550px;
+    height: auto;
     margin-bottom: 0px;
     cursor: pointer;
     background: white;

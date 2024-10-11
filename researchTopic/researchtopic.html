@@ -13,7 +13,7 @@
       justify-content: center;
       background-image: 
         linear-gradient(rgba(4, 55, 83, 0.7), rgba(4, 83, 40, 0.7)), 
-        url('../img/Home/19-1.webp');
+        url('../img/Home/17.webp');
       background-size: cover;
       background-position: top;
       animation: moveBg 280s infinite alternate;
@@ -71,50 +71,29 @@
       background-color: rgba(37, 37, 37, 0.6);
     }
 
-/* 原图显示在悬浮框中，上下左右居中 */
-.modal-content {
-  margin: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  width: 1080px; /* 宽度根据内容调整 */
-  height: auto; /* 高度根据内容调整 */
-  max-width: 90vw; /* 将最大宽度限制为视窗宽度的90% */
-  max-height: 90vh; /* 将最大高度限制为视窗高度的90% */
-  object-fit: contain; /* 保证图片在最大宽高范围内保持比例 */
-  overflow: hidden; /* 防止溢出 */
-}
+    /* 原图显示在悬浮框中，上下左右居中 */
+    .modal-content {
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 80%;
+      max-width: 1080px;
+    }
 
-
-/* 增加缩放时允许图片拖动 */
-.modal-content {
-  cursor: grab;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: center; /* 确保图片缩放时仍以中心为基点 */
-  max-width: none;
-  max-height: none;
-}
-
-/* 缩放后的图片样式 */
-.modal-content.zoom-in {
-  transform: translate(-50%, -50%) scale(1.5); /* 保持居中并放大 */
-  transition: transform 0.3s ease;
-  cursor: grab;
-}
-
-/* 在缩放时禁止图片选择文字（避免文字拖动时不流畅） */
-.modal-content.zoom-in img {
-  user-select: none;
-}
+    /* 缩放功能 
+    .modal-content.zoom-in {
+      transform: translate(-50%, -50%) scale(1.5);
+      transition: transform 0.3s ease;
+    }
 
     .modal-content.zoom-out {
       transform: translate(-50%, -50%) scale(1);
       transition: transform 0.3s ease;
     }
+      */
 
     /* 关闭按钮样式 */
     .close {
@@ -201,6 +180,10 @@
     .centered-img {
       display: block;
       margin: 0 auto;
+    }
+
+    .cursor:hover {
+      cursor: pointer;
     }
   </style>
 </head>
@@ -295,7 +278,7 @@
     </div>
   </section>
 
-  <section class="scrollspy-section" id="Contact">
+  <section class="scrollspy-section" id="Contact" style="margin-top: 20px;">
     <div class="gray">
       <div class="section_2">
         <div class="title">Contact
@@ -329,256 +312,249 @@
         let zoomedIn = false;
         let currentImgIndex = 0;
         let imgMoreList = [];
-        let researchData = null; // 存储第一次匹配的 "label" 数据
-
-// 初始化拖动变量
-let isDragging = false;
-let startX, startY, scrollLeft, scrollTop;
-
-// 当鼠标按下时开始拖动
-modalImg.addEventListener('mousedown', function(e) {
-  if (zoomedIn) {  // 仅在缩放时启用拖动
-    isDragging = true;
-    modalImg.style.cursor = 'grabbing';
-    startX = e.pageX - modalImg.offsetLeft;
-    startY = e.pageY - modalImg.offsetTop;
-    scrollLeft = modal.scrollLeft;
-    scrollTop = modal.scrollTop;
-    e.preventDefault();
-  }
-});
-
-// 当鼠标移动时进行拖动
-modalImg.addEventListener('mousemove', function(e) {
-  if (!isDragging) return;
-  const x = e.pageX - modalImg.offsetLeft;
-  const y = e.pageY - modalImg.offsetTop;
-  const walkX = (x - startX); // 计算拖动的水平距离
-  const walkY = (y - startY); // 计算拖动的垂直距离
-  
-  // 更新 modal 的滚动位置，以便查看溢出的部分
-  modal.scrollLeft = scrollLeft - walkX;
-  modal.scrollTop = scrollTop - walkY;
-});
-
-// 当鼠标抬起时停止拖动
-modalImg.addEventListener('mouseup', function() {
-  isDragging = false;
-  modalImg.style.cursor = 'grab';
-});
-
-// 当鼠标移出时停止拖动
-modalImg.addEventListener('mouseleave', function() {
-  isDragging = false;
-  modalImg.style.cursor = 'grab';
-});
-
-
 
         // 加载 imgSrc 主图片
         const mainImage = document.getElementById("mainImage");
         fetch('/json/research/research.json')
             .then(response => response.json())
             .then(data => {
-                // 只进行一次匹配
-                researchData = data.find(item => item.label.includes("researchDemo"));
-                if (researchData) {
-                    console.log("Matched research label:", researchData.label); // 调试输出
-                    initializeResearch(researchData);
-                    // 调用 fetch publications 数据
-                    fetchPublications(researchData.label);
-                } else {
-                    console.error("No matching label found for 'researchDemo'");
+                const research = data.find(item => item.label.includes("researchDemo"));
+                if (research) {
+                    // 添加主图片到 imgMoreList 的第一项
+                    imgMoreList.push(research.imgSrc);
+
+                    // 设置主图像
+                    mainImage.src = research.imgSrc;
+
+                    // 单张图片居中
+                    mainImage.classList.add("centered-img");
+
+                    // 点击图片时显示模态框
+                    mainImage.onclick = function() {
+                        modal.style.display = "block";
+                        modalImg.src = this.src;
+                        currentImgIndex = 0;
+                        modalImg.classList.remove('zoom-in', 'zoom-out');
+                    };
+
+                    // 处理 imgMore 部分
+const imgMoreContainer = document.getElementById('imgMoreContainer');
+
+// 将主图片作为 imgMoreList 的第一项，如果 imgMore 为空或只有空字符串，则不添加其他图片
+imgMoreList = [research.imgSrc, ...research.imgMore.filter(img => img)]; // 主图片加上有效的 imgMore 图片
+
+// 检查是否需要禁用左右箭头
+function updateArrowState() {
+    const prevArrow = document.querySelector('.prev');
+    const nextArrow = document.querySelector('.next');
+    
+    if (imgMoreList.length <= 1) { // 如果只有主图片或没有额外图片
+        prevArrow.style.display = 'none'; // 隐藏左箭头
+        nextArrow.style.display = 'none'; // 隐藏右箭头
+    } else {
+        prevArrow.style.display = 'block'; // 显示左箭头
+        nextArrow.style.display = 'block'; // 显示右箭头
+    }
+}
+
+// 如果 imgMoreList 只有主图片或为空，则不显示 imgMore 图片
+if (imgMoreList.length === 2) { // 主图片和一张 imgMore 图片
+    const img = document.createElement('img');
+    img.src = imgMoreList[1]; // imgMore 的图片
+    img.className = 'research-image centered-img';
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+        currentImgIndex = 1; // imgMore 图片的索引是 1
+    };
+    imgMoreContainer.appendChild(img);
+} else if (imgMoreList.length > 2) { // 主图片和多张 imgMore 图片
+    imgMoreContainer.classList.add('img-more-container');
+    imgMoreList.slice(1).forEach((imgSrc, index) => { // 从 imgMoreList 的第二项开始循环
+        const img = document.createElement('img');
+        img.src = imgSrc;
+        img.onclick = function() {
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+            currentImgIndex = index + 1; // 当前图片的索引为 index + 1，因为主图片占用了第一个位置
+        };
+        imgMoreContainer.appendChild(img);
+    });
+}
+
+// 悬浮窗左右箭头切换
+document.querySelector('.prev').onclick = function() {
+    if (imgMoreList.length > 1) { // 只有在 imgMoreList 超过 1 时才能切换
+        currentImgIndex = (currentImgIndex > 0) ? currentImgIndex - 1 : imgMoreList.length - 1;
+        modalImg.src = imgMoreList[currentImgIndex];
+    }
+};
+document.querySelector('.next').onclick = function() {
+    if (imgMoreList.length > 1) { // 只有在 imgMoreList 超过 1 时才能切换
+        currentImgIndex = (currentImgIndex < imgMoreList.length - 1) ? currentImgIndex + 1 : 0;
+        modalImg.src = imgMoreList[currentImgIndex];
+    }
+};
+
+// 初始化时更新箭头状态
+updateArrowState();
+
+
+                    // 更新标题和内容
+                    document.getElementById('researchTitle').textContent = research.info;
+                    document.getElementById('researchName').textContent = research.title;
+                    document.getElementById('researchContent').textContent = research.content;
+
+                    // 更新研究者信息
+                    const researchersInfo = research.researchers.map(r =>
+                        `<span class="researcher-link" data-link="${r.link}" style="cursor:pointer;">${r.name}</span>`
+                    ).join(', ');
+                    document.getElementById('researchers-info').innerHTML = `Researchers: ${researchersInfo}`;
+
+                    // 为研究者名字添加 hover 效果和点击事件
+                    document.querySelectorAll('.researcher-link').forEach(item => {
+                        item.addEventListener('mouseover', function() {
+                            this.style.color = '#f36f24'; // 鼠标悬停时变色
+                        });
+                        item.addEventListener('mouseout', function() {
+                            this.style.color = ''; // 鼠标移出后恢复默认颜色
+                        });
+                        item.addEventListener('click', function() {
+                            const link = this.getAttribute('data-link');
+                            window.open(link, '_blank'); // 在新标签页中打开对应链接
+                        });
+                    });
+
+                    // 更新关键词
+                    const keywordsContainer = document.querySelector('.keywords-container');
+                    research.keywords.slice(0, 3).forEach(keyword => {
+                        const keywordDiv = document.createElement('div');
+                        keywordDiv.className = 'label_key_btn';
+                        keywordDiv.style.marginRight = '10px';
+                        keywordDiv.textContent = `#${keyword}`;
+                        keywordsContainer.appendChild(keywordDiv);
+                    });
+
+                    // 添加 "View Full Paper" 按钮
+                    const downloadContainer = document.querySelector('.download-container');
+                    if (research.pdf) {
+                        const viewFullPaperBtn = document.createElement('a');
+                        viewFullPaperBtn.className = 'label_btn';
+                        viewFullPaperBtn.href = research.pdf;
+                        viewFullPaperBtn.target = '_blank';
+                        viewFullPaperBtn.textContent = 'View Full Paper';
+                        viewFullPaperBtn.style.textDecoration = 'none';
+                        downloadContainer.appendChild(viewFullPaperBtn);
+                    }
+
+                    // 更新摘要和图片
+                    if (research.abstract) {
+                        const formattedAbstract = research.abstract.replace(/\n/g, '<br>');
+                        document.getElementById('researchAbstract').innerHTML = formattedAbstract;
+                    }
+
+                    // 更新 Contact 部分
+                    const contactDetails = document.getElementById('contact-details');
+                    const { office, school, num, email } = research;
+                    const contactSection = document.getElementById('Contact');
+
+                    let contactHTML = '';
+
+// Check if there's a researcher and add the name with a link
+if (research.researchers && research.researchers.length > 0 && research.researchers[0].name) {
+    let researcherName = research.researchers[0].name;
+    let researcherLink = research.researchers[0].link;
+
+    // 检查是否为相对路径
+    if (!researcherLink.startsWith('http://') && !researcherLink.startsWith('https://')) {
+        researcherLink = `https://chive.cse.lsu.edu/${researcherLink}`;
+    }
+
+    contactHTML += `
+        <div>
+            <a href="${researcherLink}" target="_blank" style="cursor:pointer; text-decoration: none;">
+                ${researcherName}
+            </a>
+        </div>
+    `;
+}
+
+                    // Check for office, school, number, and email, and add them to the contact details if available
+                    if (office) contactHTML += `<div>${office}</div>`;
+                    if (school) contactHTML += `<div>${school}</div>`;
+                    if (num) contactHTML += `<div>${num}</div>`;
+                    if (email) contactHTML += `<div><a href="mailto:${email}" style="color: #3f44b6;">${email}</a></div>`;
+
+                    // If there are contact details, display them. Otherwise, hide the contact section.
+                    if (contactHTML.trim()) {
+                        contactDetails.innerHTML = contactHTML;
+                    } else {
+                        contactSection.style.display = 'none';
+                    }
+
+                    // Add hover effect for the researcher's name link
+                    const style = document.createElement('style');
+                    style.innerHTML = `
+                        #contact-details a {
+                            color: #5f5d5d;
+                        }
+                        #contact-details a:hover {
+                            color: #3f44b6; /* Change hover color */
+                            cursor: pointer;
+                        }
+                    `;
+                    document.head.appendChild(style);
+
+                    // 更新 Videos 部分的内容
+                    const infoContent = document.getElementById('info-content');
+                    const videoSection = document.getElementById('Videos');
+                    const hasVideos = data.some(infoItem => infoItem.label.includes("researchDemo") && infoItem.url);
+
+                    if (!hasVideos) {
+                        videoSection.style.display = 'none';
+                        return;
+                    }
+
+                    data.forEach(infoItem => {
+                        if (infoItem.label.includes("researchDemo") && infoItem.url) {
+                            const infoDiv = document.createElement('div');
+                            infoDiv.classList.add('news_card');
+                            infoDiv.style.paddingTop = '30px';
+
+                            // 限制显示的Speakers数量，设定最大显示数量为n
+                            const maxSpeakersToShow = 2;
+                            const displayedSpeakers = infoItem.researchers.slice(0, maxSpeakersToShow);
+                            const speakersHTML = displayedSpeakers.map(r =>
+                                `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`
+                            ).join(', ');
+
+                            // 如果有更多Speakers，显示“and more”
+                            const moreSpeakers = infoItem.researchers.length > maxSpeakersToShow ? '' : '';
+
+                            infoDiv.innerHTML = `
+                                <div class="sec_sub_title">${infoItem.info} | ${infoItem.place}</div>
+                                <div class="sub-title_s">
+                                    <a href="${infoItem.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+                                    ${infoItem.title}</a>
+                                </div>
+                                <div class="cont overflow">${infoItem.date}</div>
+                                <div class="cont overflow cursor">
+                                    Speakers: ${speakersHTML}${moreSpeakers}
+                                </div>
+                                ${infoItem.url.includes('youtube.com') ? `
+                                    <div class="video-container" style="margin-top: 20px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
+                                        <iframe src="${infoItem.url.replace('watch?v=', 'embed/')}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>` : ''}
+                            `;
+                            infoContent.appendChild(infoDiv);
+                        }
+
+                    });
                 }
             })
             .catch(error => {
                 console.error('Error fetching research data:', error);
             });
-
-        // 初始化 research 数据的函数
-        function initializeResearch(research) {
-            // 设置主图像
-            mainImage.src = research.imgSrc;
-            mainImage.classList.add("centered-img");
-
-            // 点击图片时显示模态框
-            mainImage.onclick = function() {
-                modal.style.display = "block";
-                modalImg.src = this.src;
-                currentImgIndex = 0;
-                modalImg.classList.remove('zoom-in', 'zoom-out');
-            };
-
-            // 处理 imgMore 部分
-            const imgMoreContainer = document.getElementById('imgMoreContainer');
-            imgMoreList = research.imgMore;
-
-            if (imgMoreList.length === 1) {
-                const img = document.createElement('img');
-                img.src = imgMoreList[0];
-                img.className = 'research-image centered-img';
-                img.onclick = function() {
-                    modal.style.display = "block";
-                    modalImg.src = img.src;
-                    currentImgIndex = 0;
-                };
-                imgMoreContainer.appendChild(img);
-            } else if (imgMoreList.length > 1) {
-                imgMoreContainer.classList.add('img-more-container');
-                imgMoreList.forEach((imgSrc, index) => {
-                    const img = document.createElement('img');
-                    img.src = imgSrc;
-                    img.onclick = function() {
-                        modal.style.display = "block";
-                        modalImg.src = imgSrc;
-                        currentImgIndex = index;
-                    };
-                    imgMoreContainer.appendChild(img);
-                });
-            }
-
-            // 悬浮窗左右箭头切换
-            document.querySelector('.prev').onclick = function() {
-                currentImgIndex = (currentImgIndex > 0) ? currentImgIndex - 1 : imgMoreList.length - 1;
-                modalImg.src = imgMoreList[currentImgIndex];
-            };
-            document.querySelector('.next').onclick = function() {
-                currentImgIndex = (currentImgIndex < imgMoreList.length - 1) ? currentImgIndex + 1 : 0;
-                modalImg.src = imgMoreList[currentImgIndex];
-            };
-
-            // 更新标题和内容
-            document.getElementById('researchTitle').textContent = research.info;
-            document.getElementById('researchName').textContent = research.title;
-            document.getElementById('researchContent').textContent = research.content;
-
-            // 更新研究者信息
-            const researchersInfo = research.researchers.map(r =>
-                `<span class="researcher-link" data-link="${r.link}" style="cursor:pointer;">${r.name}</span>`
-            ).join(', ');
-            document.getElementById('researchers-info').innerHTML = `Researchers: ${researchersInfo}`;
-
-            // 为研究者名字添加 hover 效果和点击事件
-            document.querySelectorAll('.researcher-link').forEach(item => {
-                item.addEventListener('mouseover', function() {
-                    this.style.color = '#f36f24'; // 鼠标悬停时变色
-                });
-                item.addEventListener('mouseout', function() {
-                    this.style.color = ''; // 鼠标移出后恢复默认颜色
-                });
-                item.addEventListener('click', function() {
-                    const link = this.getAttribute('data-link');
-                    window.open(link, '_blank'); // 在新标签页中打开对应链接
-                });
-            });
-
-            // 更新关键词
-            const keywordsContainer = document.querySelector('.keywords-container');
-            research.keywords.slice(0, 3).forEach(keyword => {
-                const keywordDiv = document.createElement('div');
-                keywordDiv.className = 'label_key_btn';
-                keywordDiv.style.marginRight = '10px';
-                keywordDiv.textContent = `#${keyword}`;
-                keywordsContainer.appendChild(keywordDiv);
-            });
-
-            // 添加 "View Full Paper" 按钮
-            const downloadContainer = document.querySelector('.download-container');
-            if (research.pdf) {
-                const viewFullPaperBtn = document.createElement('a');
-                viewFullPaperBtn.className = 'label_btn';
-                viewFullPaperBtn.href = research.pdf;
-                viewFullPaperBtn.target = '_blank';
-                viewFullPaperBtn.textContent = 'View Full Paper';
-                viewFullPaperBtn.style.textDecoration = 'none';
-                downloadContainer.appendChild(viewFullPaperBtn);
-            }
-
-            // 更新摘要和图片
-            if (research.abstract) {
-                const formattedAbstract = research.abstract.replace(/\n/g, '<br>');
-                document.getElementById('researchAbstract').innerHTML = formattedAbstract;
-            }
-
-            // 更新 Contact 部分
-            const contactDetails = document.getElementById('contact-details');
-            const { office, school, num, email } = research;
-            const contactSection = document.getElementById('Contact');
-
-            let contactHTML = '';
-
-            // Check if there's a researcher and add the name with a link
-            if (research.researchers[0].name) {
-                contactHTML += `
-                    <div>
-                        <a href="${research.researchers[0].link}" target="_blank" style="cursor:pointer; text-decoration: none;">
-                            ${research.researchers[0].name}
-                        </a>
-                    </div>
-                `;
-            }
-
-            if (office) contactHTML += `<div>${office}</div>`;
-            if (school) contactHTML += `<div>${school}</div>`;
-            if (num) contactHTML += `<div>${num}</div>`;
-            if (email) contactHTML += `<div><a href="mailto:${email}" style="color: #3f44b6;">${email}</a></div>`;
-
-            if (contactHTML.trim()) {
-                contactDetails.innerHTML = contactHTML;
-            } else {
-                contactSection.style.display = 'none';
-            }
-
-            const style = document.createElement('style');
-            style.innerHTML = `
-                #contact-details a {
-                    color: #5f5d5d;
-                }
-                #contact-details a:hover {
-                    color: #3f44b6; /* Change hover color */
-                }
-            `;
-            document.head.appendChild(style);
-
-            // 更新 Videos 部分的内容
-            const infoContent = document.getElementById('info-content');
-            const videoSection = document.getElementById('Videos');
-            const hasVideos = research.url;
-
-            if (!hasVideos) {
-                videoSection.style.display = 'none';
-                return;
-            }
-
-            const infoDiv = document.createElement('div');
-            infoDiv.classList.add('news_card');
-            infoDiv.style.paddingTop = '30px';
-
-            const maxSpeakersToShow = 2;
-            const displayedSpeakers = research.researchers.slice(0, maxSpeakersToShow);
-            const speakersHTML = displayedSpeakers.map(r =>
-                `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`
-            ).join(', ');
-
-            const moreSpeakers = research.researchers.length > maxSpeakersToShow ? '' : '';
-
-            infoDiv.innerHTML = `
-                <div class="sec_sub_title">${research.info} | ${research.place}</div>
-                <div class="sub-title_s">
-                    <a href="${research.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-                    ${research.title}</a>
-                </div>
-                <div class="cont overflow">${research.date}</div>
-                <div class="cont overflow">
-                    Speakers: ${speakersHTML}${moreSpeakers}
-                </div>
-                ${research.url.includes('youtube.com') ? `
-                    <div class="video-container" style="margin-top: 20px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
-                        <iframe src="${research.url.replace('watch?v=', 'embed/')}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>` : ''}
-            `;
-            infoContent.appendChild(infoDiv);
-        }
 
         // 关闭悬浮框
         closeBtn.onclick = function() {
@@ -597,78 +573,105 @@ modalImg.addEventListener('mouseleave', function() {
             }
         };
 
-        // Fetch publications data
-        fetch('/json/research/publications.json')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
+// Fetch publications data
+fetch('/json/research/publications.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        const accordionContainer = document.getElementById('accordion-2');
+        let firstAccordionOpened = false;
+
+        // 检查是否存在 "researchDemo" 标签的出版物
+        const hasPublications = data.years.some(year => year.publications.some(pub => pub.label.includes('researchDemo')));
+
+        if (!hasPublications) {
+            document.getElementById('Publications').style.display = 'none';
+            return;
+        }
+
+        // 遍历每一年
+        data.years.forEach((year, index) => {
+            // 筛选出含 "researchDemo" 标签的出版物
+            const filteredPublications = year.publications.filter(pub => pub.label.includes('researchDemo'));
+
+            if (filteredPublications.length === 0) {
+                return;
+            }
+
+            const accordionItem = document.createElement('div');
+            accordionItem.classList.add('accordion-item');
+
+            const accordionHeading = document.createElement('div');
+            accordionHeading.classList.add('accordion-heading');
+            accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
+            accordionItem.appendChild(accordionHeading);
+
+            const accordionContent = document.createElement('div');
+            accordionContent.classList.add('accordion-content');
+
+            // 默认展开第一个手风琴
+            if (!firstAccordionOpened) {
+                accordionContent.style.display = 'block';
+                firstAccordionOpened = true;
+            }
+
+            // 按照日期排序，最新的排在最前面
+            const sortedPublications = filteredPublications.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            sortedPublications.forEach(pub => {
+                const pubDiv = document.createElement('div');
+                pubDiv.style.paddingBottom = '30px';
+
+                // 奖杯或奖牌图标逻辑
+                let awardIcon = '';
+                if (pub.venues.includes('Best Paper Award')) {
+                    awardIcon = `<img src="../img/icons/trophy.png" alt="Trophy" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
+                } else if (pub.venues.includes('Best Paper Honorable Mention Award')) {
+                    awardIcon = `<img src="../img/icons/medal.png" alt="Medal" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
                 }
-                return response.json();
-            })
-            .then(data => {
-                const accordionContainer = document.getElementById('accordion-2');
-                let firstAccordionOpened = false;
 
-                const hasPublications = data.years.some(year => year.publications.some(pub => pub.label.includes('researchDemo')));
+                // 如果 venues 存在，生成对应的 HTML，否则不生成
+                const venuesContent = pub.venues
+                    ? `${awardIcon}<a href="${pub.url}" style="text-decoration: none; color:#ab2d05;" rel="alternate bookmark" target="_blank" ><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
+                    : '';
 
-                if (!hasPublications) {
-                    document.getElementById('Publications').style.display = 'none';
-                    return;
-                }
+                // 检查 pub.pdf，如果存在则生成 "View Publication" 链接
+                const pdfContent = pub.pdf
+                    ? `<div class="sec_sub_title_a" style="margin-top: 5px; margin-bottom: 5px;"><a href="${pub.pdf}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
+                    : '';
 
-                data.years.forEach((year, index) => {
-                    const filteredPublications = year.publications.filter(pub => pub.label.includes('researchDemo'));
-
-                    if (filteredPublications.length === 0) {
-                        return;
-                    }
-
-                    const accordionItem = document.createElement('div');
-                    accordionItem.classList.add('accordion-item');
-
-                    const accordionHeading = document.createElement('div');
-                    accordionHeading.classList.add('accordion-heading');
-                    accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
-                    accordionItem.appendChild(accordionHeading);
-
-                    const accordionContent = document.createElement('div');
-                    accordionContent.classList.add('accordion-content');
-
-                    if (!firstAccordionOpened) {
-                        accordionContent.style.display = 'block';
-                        firstAccordionOpened = true;
-                    }
-
-                    filteredPublications.forEach(pub => {
-                        const pubDiv = document.createElement('div');
-                        pubDiv.style.paddingBottom = '30px';
-                        pubDiv.innerHTML = `
-                            <div class="sub-title_ss"><a style="color:#ab2d05 ;"><strong>${pub.venues}</strong></a> | <a href="${pub.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
-                            <div class="cont-researche overflow">${pub.authors.map(author => `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
-                            <div class="sec_sub_title_s">${pub.venuesname} | ${pub.date}</div>
-                            <div class="sec_sub_title_s">${pub.description} </div>
-                            <div class="sec_sub_title_a"><a href="${pub.url}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>
-                        `;
-                        accordionContent.appendChild(pubDiv);
-                    });
-
-                    accordionItem.appendChild(accordionContent);
-                    accordionContainer.appendChild(accordionItem);
-                });
-
-                var accordion_2 = new Accordion(accordionContainer, {
-                    multiple: true,
-                    defaultOpenedIndexes: [0]
-                });
-            })
-            .catch(error => {
-                console.error('Error fetching publications data:', error);
+                pubDiv.innerHTML = `
+                    <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+                    <div class="cont-researche overflow">${pub.authors.map(author => `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
+                    <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.venuesname} | ${pub.date}</div>
+                    <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.description}</div>
+                    ${pdfContent}  <!-- 仅当 pub.pdf 存在时才显示 -->
+                `;
+                accordionContent.appendChild(pubDiv);
             });
 
+            accordionItem.appendChild(accordionContent);
+            accordionContainer.appendChild(accordionItem);
+        });
+
+        // Initialize accordion
+        var accordion_2 = new Accordion(accordionContainer, {
+            multiple: true,
+            defaultOpenedIndexes: [0]
+        });
+    })
+    .catch(error => {
+        console.error('Error fetching publications data:', error);
     });
-</script>
+
+
+    });
+  </script>
 
 
 </body>
 </html>
-

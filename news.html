@@ -3,15 +3,71 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News</title>
+  <title>CHIVE &bull; News</title>
   <link rel="stylesheet" href="dist/css/scrollspy.css"/>
   <link rel="stylesheet" href="dist/css/nav.css"/>
+  <style>
+    /* 限制 content 显示的行数 */
+    .cont_bottom {
+      display: -webkit-box;
+      -webkit-line-clamp: 4; /* 限制显示4行 */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* 添加 cursor 样式，表示标题和图片可以点击 */
+    .sub-title {
+      cursor: pointer;
+      color: #3f44b6;
+      text-decoration: none;
+      margin-bottom: 5px; /* 减少标题和内容之间的间距 */
+    }
+
+    .list_img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      object-position: top;
+      max-height: 300px;
+      cursor: pointer;
+    }
+
+    /* 移除研究者姓名链接的下划线 */
+    .cont-researcher-name {
+      text-decoration: none;
+      color: #5f5d5d;
+    }
+
+    /* 悬停时显示不同颜色 */
+    .cont-researcher-name:hover {
+      color: #f36f24;
+    }
+
+    .list_video {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      max-height: 300px;
+    }
+
+    /* 调整研究项的填充，使间距更紧凑 */
+    .research_padding {
+      padding: 10px; /* 调整 padding 值以减少间距 */
+    }
+
+    /* 减少内容和日期之间的间距 */
+    .cont {
+      margin-bottom: 5px; /* 减少内容和日期之间的间距 */
+    }
+
+  </style>
 </head>
 <body>
   <header>
     <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
-        <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
-        <div class="logo-text">Research Lab at LSU</div>
+      <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
+      <div class="logo-text">Research Lab at LSU</div>
     </div>
     <nav class="scrollspy-nav">
       <a class="scrollspy-link" href="index.html">Home</a>
@@ -22,18 +78,16 @@
       <a class="scrollspy-link" href="activity.html">Activity</a>
     </nav>   
   </header>
+  
   <section class="scrollspy-section" id="News">
-    <div class="section_2" >
+    <div class="section_2">
       <div class="title">News
-          <div class="line"></div>
+        <div class="line"></div>
       </div>
-      <div class="mn-acc-app">
-        <div class="mn-accordion" id="accordion-2">
-          <!-- JSON data will be inserted here by JavaScript -->
-        </div>
-      </div>
+      <div class="grids-news"></div> <!-- 修改后的 class -->
     </div>
   </section>
+
   <section class="scrollspy-section" id="">
     <div class="gray">
       <div class="section_2">
@@ -45,109 +99,70 @@
       </div>
     </div>
   </section>
+  
   <div class="footer">
     <p>
-        <a href="#">About</a> | 
-        <a href="#">Contact Us</a> | 
-        <a href="#">Copyright</a> | 
-        <a href="#">Terms of Use</a> | 
-        <a href="#">Privacy Policy</a>
+      <a href="#">About</a> | 
+      <a href="#">Contact Us</a> | 
+      <a href="#">Copyright</a> | 
+      <a href="#">Terms of Use</a> | 
+      <a href="#">Privacy Policy</a>
     </p>
     <p>© 2024 All rights reserved</p>
   </div>
-  <script src="dist/js/mn-accordion.js"></script>
+  
   <script src="dist/js/scrollspy.min.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function() {
       fetch("/json/news.json")
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Network response was not ok " + response.statusText);
-          }
-          return response.json();
-        })
+        .then((response) => response.json())
         .then((data) => {
-          console.log("Data fetched successfully:", data);
-          const accordionContainer = document.getElementById("accordion-2");
-  
-          // 遍历每个年份的数据
-          data.years.forEach((year, index) => {
-            const accordionItem = document.createElement("div");
-            accordionItem.classList.add("accordion-item");
-  
-            const accordionHeading = document.createElement("div");
-            accordionHeading.classList.add("accordion-heading");
-            accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
-            accordionItem.appendChild(accordionHeading);
-  
-            const accordionContent = document.createElement("div");
-            accordionContent.classList.add("accordion-content");
-            if (index === 0) {
-              accordionContent.style.display = "block"; // 默认展开第一项
-            }
-  
-            // 按照日期排序，最新的排在最前面
-            const sortedNews = year.news.sort(
-              (a, b) => new Date(b.date) - new Date(a.date)
-            );
-  
-            sortedNews.forEach((news) => {
-              const newsDiv = document.createElement("div");
-              newsDiv.classList.add("news-item");
-              newsDiv.style.display = "flex";
-              newsDiv.style.justifyContent = "space-between";
-              newsDiv.style.paddingBottom = "30px";
-  
-              // 检查 news.category 是否存在
-              const categoryContent = news.category
-                ? `<a style="color:#ab2d05;"><strong>${news.category}</strong></a> | `
+          const newsGrids = document.querySelector(".grids-news"); // 使用新的 class 选择器
+
+          // 根据时间降序排序
+          data.years.forEach((year) => {
+            year.news.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            year.news.forEach((newsItem) => {
+              const newsList = document.createElement("div");
+              newsList.className = "research_list";
+
+              const imgContent = newsItem.imgSrc
+                ? `<img src="${newsItem.imgSrc}" alt="News Image" class="list_img">`
                 : "";
-  
-              // 生成跳转链接，点击时传递 title 作为 URL 参数
-              const titleContent = news.title
-                ? `<a href="newsPage.html?title=${encodeURIComponent(
-                    news.title
-                  )}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark">${news.title}</a>`
+
+              const categoryContent = newsItem.category
+                ? `<a style="color:#ab2d05;"><strong>${newsItem.category}</strong></a> | `
                 : "";
-  
-              // 仅在存在时显示其他内容
-              const contentContent = news.content ? `${news.content} | ` : "";
-              const imgContent = news.imgSrc
-                ? `<img src="${news.imgSrc}" alt="News Image" style="max-width: 20%; height: auto; object-fit: contain; margin-left: 20px;">`
+
+              const contentContent = newsItem.content
+                ? `${newsItem.content}`
                 : "";
-              const dateContent = news.date ? `${news.date}` : "";
-              const descriptionContent = news.description
-                ? `<div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${news.description}</div>`
-                : "";
-  
-              newsDiv.innerHTML = `
-                <div style="flex: 1;">
-                  <div class="sub-title_ss" style="margin-bottom: 5px;">${categoryContent}${titleContent}</div>
-                  <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${contentContent}${dateContent}</div>
-                  ${descriptionContent}
-                </div>
+
+              newsList.innerHTML = `
                 ${imgContent}
+                <div class="research_padding">
+                  <div class="sub-title-news">${newsItem.title}</div>
+                  <div class="cont cont_bottom">
+                    ${categoryContent}${contentContent}
+                  </div>
+                  <div class="cont-date">
+                    ${newsItem.date}
+                  </div>
+                </div>
               `;
-  
-              accordionContent.appendChild(newsDiv);
+
+              // 添加点击事件，跳转到 newsPage.html
+              newsList.addEventListener("click", function () {
+                window.location.href = `newsPage.html?title=${encodeURIComponent(newsItem.title)}`;
+              });
+
+              newsGrids.appendChild(newsList);
             });
-  
-            accordionItem.appendChild(accordionContent);
-            accordionContainer.appendChild(accordionItem);
-          });
-  
-          // Initialize accordion
-          var accordion_2 = new Accordion(accordionContainer, {
-            multiple: true,
-            defaultOpenedIndexes: [0],
           });
         })
-        .catch((error) => {
-          console.error("Error fetching news data:", error);
-        });
+        .catch((error) => console.error("Error fetching news data:", error));
     });
   </script>
-  
-
 </body>
 </html>

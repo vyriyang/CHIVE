@@ -3,10 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News Details</title>
+  <title>CHIVE &bull; News</title>
   <link rel="stylesheet" href="dist/css/scrollspy.css" />
   <link rel="stylesheet" href="dist/css/nav.css" />
 </head>
+<style>
+    .back_link {
+      font-size: 20px;
+      color: #777;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .back_link:hover {
+      color: #f36f24; /* 悬停时的颜色 */
+    }
+
+    .paper_link {
+      font-size: 20px;
+      color: #777;
+      cursor: pointer;
+    }
+
+    .paper_link:hover {
+      color: #3f44b6; /* 悬停时的颜色 */
+    }
+
+
+    .space {
+      margin-top: 10px; 
+      margin-bottom: 20px;
+    }
+</style>
 <body>
   <header>
     <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
@@ -26,7 +54,7 @@
   <section class="scrollspy-section" id="NewsDetails">
     <div class="section_2">
       <!-- Back to All News button -->
-      <div style="margin-bottom: 50px;"><a href="news.html" style="font-size: 20px; color: #777; text-decoration: none; ">
+      <div style="margin-bottom: 50px;"><a href="news.html" class="back_link">
         << Back to All News
       </a></div>
       <div class="title" id="news-title">
@@ -99,15 +127,16 @@
             // 设置标题内容
             newsTitleElement.innerHTML += `
               ${newsData.title}
-              <div class="line"></div>
+              
             `;
 
             newsContent.innerHTML = `
               <div class="abstract-container" style="margin-bottom: 5px;">${categoryContent}${newsData.description}</div>
               <div class="abstract-container"style="margin-bottom: 15px;"><strong>Date:</strong> ${newsData.date || "N/A"}</div>
+             <div class="line" style="margin-top:10px; margin-bottom:20px;"></div>
               <div>${imgContent}</div>
               <div class="abstract-container"><p>${newsData.news || ""}</p>
-              ${newsData.pdf ? `<a href="${newsData.pdf}" target="_blank">View Full Paper</a>` : ""}</div>
+              ${newsData.pdf ? `<a href="${newsData.pdf}" target="_blank" class="paper_link">View Full Paper</a>` : ""}</div>
             `;
 
             // 设置上一页和下一页按钮
@@ -117,7 +146,7 @@
             if (currentIndex > 0) {
               const prevNews = sortedNews[currentIndex - 1];
               navButtons.innerHTML += `
-                <a href="newsPage.html?title=${encodeURIComponent(prevNews.title)}" style="font-size: 20px; color: #777; text-decoration: none;">
+                <a href="newsPage.html?title=${encodeURIComponent(prevNews.title)}" class="back_link">
                   << Previous
                 </a>
               `;
@@ -127,7 +156,7 @@
             if (currentIndex < sortedNews.length - 1) {
               const nextNews = sortedNews[currentIndex + 1];
               navButtons.innerHTML += `
-                <a href="newsPage.html?title=${encodeURIComponent(nextNews.title)}" style="font-size: 20px; color: #777; text-decoration: none;">
+                <a href="newsPage.html?title=${encodeURIComponent(nextNews.title)}" class="back_link">
                   Next >>
                 </a>
               `;
