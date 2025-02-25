@@ -11,23 +11,10 @@
             "description": "Short description of the News.",
             "imgSrc": "../img/research/AnimatingTheNarrative/vis24b-sub1192-Animating the Narrative-Representative Image.png",
             "imgMore":["../img/research/AnimatingTheNarrative/Animating the Narrative Representative Image and Caption.png"],
-            "news":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+            "news":"",
             "date": "June 15, 2024",
             "url": "https://ieeevis.org/year/2024/welcome",
             "pdf":""
-          },
-          {
-            "label": [""],
-            "category":"Demo",
-            "content":"This is the demo content",
-            "title": "This is a news demo",
-            "description": "Short description of the news.",
-            "imgSrc": "../img/demo/Demo-5.jpg",
-            "imgMore":[""],
-            "news":"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. <br><br>It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-            "date": "October 2024",
-            "url": "",
-            "pdf":"https://www.lipsum.com"
           }
         ]
       },
@@ -42,7 +29,7 @@
             "description": "Short description of the publication.",
             "imgSrc": "../img/logo/CHIVE-4Full.png",
             "imgMore":[""],
-            "news":"This is the demo welcome imformation for CHIVE.",
+            "news":"Welcome imformation for CHIVE.",
             "date": "August, 2023",
             "url": "",
             "pdf":""

@@ -19,7 +19,7 @@
       <a class="scrollspy-link" href="publications.html">Publications</a>
       <a class="scrollspy-link" href="people.html">People</a>     
       <a class="scrollspy-link" href="news.html">News</a>
-      <a class="scrollspy-link" href="activity.html">Activity</a>
+       <!-- <a class="scrollspy-link" href="activity.html">Activity</a> -->
     </nav>   
   </header>
   <div class="gray">
@@ -33,9 +33,9 @@
         style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
         when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
-        ● It has survived not only five centuries<a href="https://www.lipsum.com" 
+        ● Our paper, 'Animating the Narrative: A Review of Animation Styles in Narrative Visualization,' has been accepted for presentation at<a href="https://ieeevis.org/year/2024/welcome" 
         style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-        but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
+       IEEE VIS2024</a>. Join us in Tampa, Florida, on October 17th, 2024!<br></a> <br>
       </div>
     </div>
   </div>
@@ -103,7 +103,7 @@
 
             const accordionContent = document.createElement('div');
             accordionContent.classList.add('accordion-content');
-            if (index === 0) {
+            if (index < 3) {
               accordionContent.style.display = 'block'; // 默认展开第一项
             }
 
@@ -132,14 +132,36 @@
                 ? `<div class="sec_sub_title_a" style="margin-top: 5px; margin-bottom: 5px;"><a href="${pub.pdf}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
                 : '';
 
-              pubDiv.innerHTML = `
-                <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
-                <div class="overflow">${pub.authors.map(author => `<a href="('${author.link}')" class="cont-researcher-name" style="text-decoration: none;">${author.name}</a>`).join(', ')}</div>
-                <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.venuesname} | ${pub.date}</div>
-                <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.description}</div>
+                pubDiv.innerHTML = `
+                <div class="sub-title_ss">
+                    ${venuesContent}
+                    <a href="${pub.url}" style="text-decoration: none; color: #3f44b6;" rel="alternate bookmark" target="_blank">
+                        ${pub.title}
+                    </a>
+                </div>
+                <div class="overflow">
+                    ${pub.authors.map(author => {
+                        // 需要加粗的作者名单
+                        const boldAuthors = ["Mahmood Jasim", "Vyri Yang", "Saramsh Gautam", "Nushrat Ria", "Vimal Joseph"];
+                        // 检查是否需要加粗
+                        const authorName = boldAuthors.includes(author.name) ? `<strong>${author.name}</strong>` : author.name;
+
+                        return author.link 
+                            ? `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none;" target="_blank">${authorName}</a>` 
+                            : `<span class="cont-researcher-name" style="color: inherit; pointer-events: none;">${authorName}</span>`;
+                    }).join(', ')}
+                </div>
+                <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">
+                    ${pub.venuesname} | ${pub.date}
+                </div>
+                <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">
+                    ${pub.description}
+                </div>
                 ${pdfContent}  <!-- 仅当 pub.pdf 存在时才显示 -->
-              `;
-              accordionContent.appendChild(pubDiv);
+            `;
+            accordionContent.appendChild(pubDiv);
+
+
             });
 
             accordionItem.appendChild(accordionContent);
@@ -149,7 +171,7 @@
           // Initialize accordion
           var accordion_2 = new Accordion(accordionContainer, {
             multiple: true,
-            defaultOpenedIndexes: [0]
+            defaultOpenedIndexes: [0, 1, 2]
           });
         })
         .catch(error => {

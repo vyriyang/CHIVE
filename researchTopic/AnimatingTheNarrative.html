@@ -196,7 +196,7 @@
       <a class="scrollspy-link" href="../publications.html">Publications</a>
       <a class="scrollspy-link" href="../people.html">People</a>    
       <a class="scrollspy-link" href="../news.html">News</a>
-      <a class="scrollspy-link" href="../activity.html">Activity</a>
+      <!-- <a class="scrollspy-link" href="../activity.html">Activity</a> -->
     </nav>   
   </header>
 
@@ -640,7 +640,7 @@ fetch('/json/research/publications.json')
 
                 pubDiv.innerHTML = `
                     <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
-                    <div class="cont-researche overflow">${pub.authors.map(author => `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
+                    <div class="cont-researche overflow">${pub.authors.map(author => `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none;">${author.name}</a>`).join(', ')}</div>
                     <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.venuesname} | ${pub.date}</div>
                     <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.description}</div>
                     ${pdfContent}  <!-- 仅当 pub.pdf 存在时才显示 -->
@@ -655,7 +655,7 @@ fetch('/json/research/publications.json')
         // Initialize accordion
         var accordion_2 = new Accordion(accordionContainer, {
             multiple: true,
-            defaultOpenedIndexes: [0]
+            defaultOpenedIndexes: [0, 1, 2]
         });
     })
     .catch(error => {

@@ -4,84 +4,90 @@
         "year": "2024",
         "publications": [
           {
-            "label": ["researchDemo"],
-            "venues":"[Best Paper Award] CHI",
-            "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
-            "title": "What is Lorem Ipsum?",
+            "label": ["AnimatingTheNarrative"],
+            "venues":"IEEE VIS2024",
+            "venuesname":"2024 IEEE Visualization and Visual Analytics (VIS)",
+            "title": "Animating the Narrative: A Review of Animation Styles in Narrative Visualization",
             "authors": [
-                { "name": "name", "link": "people/people-1.html" }
-              ],
-            "description": "",
-            "date": "May 2023",
-            "url": "https://www.lipsum.com",
-            "pdf":""
-          },
+                { "name": "Vyri Yang", "link": "../people/students/VyriYang/VyriYang.html" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+            ],
+            "description": "We explore the design space of narrative visualization, focusing on animation styles. We categorize 80 papers from top visualization venues into six categories, including Animation Style, Interactivity, Methodology, Technology, Evaluation Type , and Application Domain. We discuss the interplay between different visualization techniques and elements and the trend to focus on domain-specific visualizations.",
+            "date": "Oct, 2024",
+            "url": "https://ieeevis.org/year/2024/program/paper_v-short-1192.html",
+            "pdf":"https://ieeevis.b-cdn.net/vis_2024/pdfs/v-short-1192.pdf"
+          }
+        ]
+      },
+    
+    {
+      "year": "2022",
+      "publications": [
+        {
+          "label": [""],
+          "venues":"[Best Paper Award] EuroVis",
+          "venuesname":"Eurographics Conference on Visualization",
+          "title": "Of Course it’s Political! A Critical Inquiry into Underemphasized Dimensions in Civic Text Visualization",
+          "authors": [
+              { "name": "Eric P. S. Baumer" },
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+              { "name": "Ali Sarvghad"},
+              { "name": "Narges Mahyar"}
+            ],
+          "description": "Supporting Serendipitous Discovery and Balanced Analysis of Online Product Reviews with Interaction-Driven Metrics and Bias-Mitigating Suggestions. Mahmood Jasim, Christopher Collins, Ali Sarvghad, Narges Mahyar. 2022. CHI Conference on Human Factors in Computing Systems.",
+          "date": "2022",
+          "url": "https://csc.lsu.edu/~mjasim/publications/Publication-baumer2022political.pdf",
+          "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-baumer2022political.pdf"
+        }
+      ]
+    },
+    {
+        "year": "2021",
+        "publications": [
+            {
+              "label": ["researchDemo"],
+              "venues":"[Best Paper Honorable Mention Award] TVCG",
+              "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+              "title": "Another Publication",
+              "authors": [
+                  { "name": "name", "link": "people/people-1.html" },
+                  { "name": "name", "link": "people/people-1.html" }
+                ],
+              "description": "Short description of the publication.",
+              "date": "June 2023",
+              "url": "https://www.example.com",
+              "pdf":""
+            },
           {
-            "label": ["Keywords"],
-            "venues":"the venue name in abbreviation",
-            "venuesname":"Full name of the venues",
+            "label": ["researchDemo"],
+            "venues":"[Best Paper Honorable Mention Award] TVCG",
+            "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
             "title": "Another Publication",
             "authors": [
                 { "name": "name", "link": "people/people-1.html" },
                 { "name": "name", "link": "people/people-1.html" }
               ],
             "description": "Short description of the publication.",
-            "date": "Month (Date), Year",
-            "url": "This is the link to the publication page",
-            "pdf":"This is the link of the pdf files."
+            "date": "June 2023",
+            "url": "https://www.example.com",
+            "pdf":""
+          },
+          {
+            "label": ["researchDemo"],
+            "venues":"[Best Paper Honorable Mention Award] TVCG",
+            "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+            "title": "Another Publication",
+            "authors": [
+                { "name": "name", "link": "people/people-1.html" },
+                { "name": "name", "link": "people/people-1.html" }
+              ],
+            "description": "Short description of the publication.",
+            "date": "June 2023",
+            "url": "https://www.example.com",
+            "pdf":""
           }
         ]
-      },
-    {
-      "year": "2023",
-      "publications": [
-        {
-          "label": ["research1"],
-          "venues":"",
-          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
-          "title": "What is Lorem Ipsum?",
-          "authors": [
-              { "name": "name", "link": "people/people-1.html" }
-            ],
-          "description": "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...",
-          "date": "May 2023",
-          "url": "https://www.lipsum.com",
-          "pdf":""
-        },
-        {
-          "label": ["researchDemo"],
-          "venues":"[Best Paper Honorable Mention Award] TVCG",
-          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
-          "title": "Another Publication",
-          "authors": [
-              { "name": "name", "link": "people/people-1.html" },
-              { "name": "name", "link": "people/people-1.html" }
-            ],
-          "description": "Short description of the publication.",
-          "date": "June 2023",
-          "url": "https://www.example.com",
-          "pdf":""
-        }
-      ]
-    },
-    {
-      "year": "2022",
-      "publications": [
-        {
-          "label": ["researchDemo"],
-          "venues":"TVCG",
-          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
-          "title": "Lorem Ipsum in 2022",
-          "authors": [
-              { "name": "name", "link": "people/people-1.html" }
-            ],
-          "description": "Detailed description of the publication.",
-          "date": "April 2022",
-          "url": "https://www.example.com",
-          "pdf":""
-        }
-      ]
-    }
+      }
   ]
 }
 

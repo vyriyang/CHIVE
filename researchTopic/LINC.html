@@ -193,7 +193,7 @@
       <a class="scrollspy-link" href="../publications.html">Publications</a>
       <a class="scrollspy-link" href="../people.html">People</a>      
       <a class="scrollspy-link" href="../news.html">News</a>
-      <a class="scrollspy-link" href="../activity.html">Activity</a>
+      <!-- <a class="scrollspy-link" href="../activity.html">Activity</a> -->
     </nav>   
   </header>
 
@@ -657,7 +657,7 @@ fetch('/json/research/publications.json')
         // Initialize accordion
         var accordion_2 = new Accordion(accordionContainer, {
             multiple: true,
-            defaultOpenedIndexes: [0]
+            defaultOpenedIndexes: [0, 1, 2]
         });
     })
     .catch(error => {
