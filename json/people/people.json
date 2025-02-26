@@ -10,28 +10,28 @@
         {
             "name": "Vyri Junhan Yang",
             "title": "PhD Researcher",
-            "description": "HCI, Narrative Visualization, Applied Machine Learning, and data-driven interactive platforms.",
+            "description": "Human Computer Interaction, Narrative Visualization, Applied Machine Learning, and data-driven interactive platforms.",
             "image": "img/people/VyriYang/VyriYang.jpg",
             "link": "people/students/VyriYang/VyriYang.html"
         },
         {
             "name": "Saramsh Gautam",
             "title": "PhD Researcher",
-            "description": "Another description of the student.",
+            "description": "Human Computer Interaction.",
             "image": "img/people/SaramshGautam/SaramshGautam.jpg",
-            "link": "people/DemoPeoplePage/DemoPeoplePage.html"
+            "link": ""
         },
         {
             "name": "Nushrat Jahan Ria",
             "title": "PhD Researcher",
-            "description": "Another description of the student.",
+            "description": "Human Computer Interaction, Applied Machine Science, Computer Vision.",
             "image": "img/people/NushratJahanRia/NushratJahanRia.jpg",
             "link": "people/students/NushratJahanRia/nush.html"
         },
         {
             "name": "Vimal Thomas Joseph",
             "title": "PhD Researcher",
-            "description": "Another description of the student.",
+            "description": "Human Computer Interaction.",
             "image": "img/people/VimalThomasJoseph/vimal_thomas_joseph.png",
             "link": "people/students/VimalThomasJoseph/VimalThomasJoseph.html"
         }

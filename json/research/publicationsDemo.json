@@ -79,6 +79,63 @@
           "date": "April 2022",
           "url": "https://www.example.com",
           "pdf":""
+        },
+        
+        {
+          "label": [""],
+          "venues":"[Best Paper Honorable Mention Award] TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "Another Publication",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" },
+              { "name": "name", "link": "people/people-1.html" }
+            ],
+          "description": "",
+          "date": "June 2023",
+          "url": "https://www.example.com",
+          "pdf":""
+        },
+        {
+          "label": [""],
+          "venues":"[Best Paper Honorable Mention Award] TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "Another Publication",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" },
+              { "name": "name", "link": "people/people-1.html" }
+            ],
+          "description": "",
+          "date": "June 2023",
+          "url": "https://www.example.com",
+          "pdf":""
+        },
+        {
+          "label": [""],
+          "venues":"[Best Paper Honorable Mention Award] TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "Another Publication",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" },
+              { "name": "name", "link": "people/people-1.html" }
+            ],
+          "description": "",
+          "date": "June 2023",
+          "url": "https://www.example.com",
+          "pdf":""
+        },
+        {
+          "label": [""],
+          "venues":"[Best Paper Honorable Mention Award] TVCG",
+          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
+          "title": "Another Publication",
+          "authors": [
+              { "name": "name", "link": "people/people-1.html" },
+              { "name": "name", "link": "people/people-1.html" }
+            ],
+          "description": "",
+          "date": "June 2023",
+          "url": "https://www.example.com",
+          "pdf":""
         }
       ]
     }

@@ -116,76 +116,20 @@
           "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2020cclickfull.pdf"
         },
         {
-          "label": [""],
-          "venues":"IEEE Computer Graphics and Applications",
-          "venuesname":"IEEE Computer Graphics and Applications",
-          "title": "Designing Technology for Sociotechnical Problems: Challenges and Considerations",
-          "authors": [
-              { "name": "Narges Mahyar" },
-              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
-              { "name": "Ali Sarvghad" }
-            ],
-          "description": "",
-          "date": "December 2020",
-          "url": "https://csc.lsu.edu/~mjasim/publications/Publication-nmahyar2020social.pdf",
-          "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-nmahyar2020social.pdf"
-        },
-        {
-          "label": [""],
-          "venues":"[Best Paper Honorable Mention Award] TVCG",
-          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
-          "title": "Another Publication",
-          "authors": [
-              { "name": "name", "link": "people/people-1.html" },
-              { "name": "name", "link": "people/people-1.html" }
-            ],
-          "description": "",
-          "date": "June 2023",
-          "url": "https://www.example.com",
-          "pdf":""
-        },
-        {
-          "label": [""],
-          "venues":"[Best Paper Honorable Mention Award] TVCG",
-          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
-          "title": "Another Publication",
-          "authors": [
-              { "name": "name", "link": "people/people-1.html" },
-              { "name": "name", "link": "people/people-1.html" }
-            ],
-          "description": "",
-          "date": "June 2023",
-          "url": "https://www.example.com",
-          "pdf":""
-        },
-        {
-          "label": [""],
-          "venues":"[Best Paper Honorable Mention Award] TVCG",
-          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
-          "title": "Another Publication",
-          "authors": [
-              { "name": "name", "link": "people/people-1.html" },
-              { "name": "name", "link": "people/people-1.html" }
-            ],
-          "description": "",
-          "date": "June 2023",
-          "url": "https://www.example.com",
-          "pdf":""
-        },
-        {
-          "label": [""],
-          "venues":"[Best Paper Honorable Mention Award] TVCG",
-          "venuesname":"IEEE Transactions on Visualization and Computer Graphics",
-          "title": "Another Publication",
-          "authors": [
-              { "name": "name", "link": "people/people-1.html" },
-              { "name": "name", "link": "people/people-1.html" }
-            ],
-          "description": "",
-          "date": "June 2023",
-          "url": "https://www.example.com",
-          "pdf":""
-        }
+            "label": [""],
+            "venues":"IEEE Computer Graphics and Applications",
+            "venuesname":"IEEE Computer Graphics and Applications",
+            "title": "Designing Technology for Sociotechnical Problems: Challenges and Considerations",
+            "authors": [
+                { "name": "Narges Mahyar" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Ali Sarvghad" }
+              ],
+            "description": "",
+            "date": "December 2020",
+            "url": "https://csc.lsu.edu/~mjasim/publications/Publication-nmahyar2020social.pdf",
+            "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-nmahyar2020social.pdf"
+          }
       ]
     }
   ]
