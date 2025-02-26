@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nushrat Jahan Ria</title>
+<link rel="icon" type="image/png" href="logo2.png"> <!-- Favicon added -->
+<link rel="apple-touch-icon" sizes="180x180" href="logo.png"> 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+    /* Makes the favicon round if supported */
+    link[rel="icon"] {
+    border-radius: 50%;
+    overflow: hidden;
+    }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.6;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #f0f8ff;
+}
+.header h1 {
+    margin: 0;
+    color: #22657f;
+}
+.nav {
+    display: flex;
+    gap: 15px;
+}
+.nav a {
+    color: #2a9d8f;
+    text-decoration: none;
+    font-weight: bold;
+}
+.nav a:hover {
+    color: #e76f51;
+}
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+.profile img {
+    border-radius: 50%;
+    width: 350px;
+    height: 350px;
+    flex-shrink: 0;
+}
+.profile div {
+    max-width: 600px;
+}
+.profile h2 {
+    margin: 0 0 10px;
+    color: #2b2d42;
+}
+.profile p {
+    margin: 0;
+    color: #6a6a6a;
+}
+.section-title {
+    font-size: 24px;
+    color: #264653;
+    border-bottom: 2px solid #2a9d8f;
+    margin-bottom: 10px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.card {
+    background-color: #e9f5f8;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-height: 400px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card img {
+    width: 100%;
+    height: 250px; 
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.card h3 {
+    margin: 0 0 10px;
+    color: #2b2d42;
+}
+.card p {
+    margin: 0;
+    color: #5a5a5a;
+}
+footer {
+    background-color: #f0f8ff;
+    text-align: center;
+    padding: 10px 0;
+    color: #5a5a5a;
+}
+
+
+
+
+
+#social-links {
+    text-align: center;
+    margin: 30px 0;
+}
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.social-icons a img {
+    width: 130px;  /* Uniform icon size */
+    height: 130px; /* Adjust for consistency */
+    object-fit: contain; /* Maintains aspect ratio */
+    border-radius: 12px; /* Optional: Slight rounded corners */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.social-icons a img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+</style>
+</head>
+<body>
+<header class="header">
+    <a href="nush.html"><h1>Nushrat Jahan Ria</h1></a>
+<nav class="nav">
+    <a href="#news">News</a>
+    <a href="#projects">Projects</a>
+    <a href="#publications">Publications</a>
+    <a href="cv.pdf" target="_blank">CV</a>
+    <!-- <a href="#teaching">Teaching</a> -->
+    <a href="#contact">Contact</a>
+</nav>
+</header>
+
+<div class="container">
+<section class="profile">
+    <img src="riaa.png" alt="Nushrat Jahan Ria" />
+    <div>
+    <h2>Hello, I am Nushrat Jahan Ria</h2>
+    <p>
+        A Ph.D. student, researcher, and graduate assistant in the Division of Computer Science and Engineering at Louisiana State University (LSU). My research focuses on designing and developing decision-support systems to tackle complex socio-technical problems and enhance data-driven decision-making, including Human-Computer Interaction (HCI), Applied Machine Learning, Computer Vision, and Information Visualization.
+        I have published multiple papers in IEEE Xplorer, Springer, and Scopus-indexed conferences and journals, contributing to machine learning, NLP, and computer vision research.
+        Driven by innovation and inclusivity, my mission is to advance HCI, applied machine learning, and computer vision while inspiring the next generation of programmers and researchers.
+    </p>
+    </div>
+</section>
+
+<!-- Social Links Section -->
+<section id="social-links">
+    <h2 class="section-title">Connect with Me</h2>
+    <div class="social-icons">
+        <a href="https://scholar.google.com/citations?user=UCzPAWAAAAAJ&hl=en&oi=ao" target="_blank">
+            <img src="google_scholar.png" alt="Google Scholar" />
+        </a>
+        <a href="https://www.researchgate.net/profile/Nushrat-Ria?ev=hdr_xprf" target="_blank">
+            <img src="rg.png" alt="ResearchGate" />
+        </a>
+        <a href="https://orcid.org/my-orcid?orcid=0000-0001-5340-8673" target="_blank">
+            <img src="orcid.png" alt="ORCID" />
+        </a>
+        <a href="https://www.scopus.com/authid/detail.uri?authorId=57220035056" target="_blank">
+            <img src="Scopus.png" alt="Scopus" />
+        </a>
+        <a href="hhttps://www.linkedin.com/in/nushrat-jahan-ria/" target="_blank">
+            <img src="Linkedin.png" alt="LinkedIn" />
+        </a>
+    </div>
+</section>
+
+<!-- News Section -->
+<section id="news">
+    <h2 class="section-title">News</h2>
+    <ul class="news-list">
+        <li><strong>[Feb'25]</strong> Our paper has been accepted to be published in the Extended Abstracts of the 2025 Conference on Human Factors in Computing Systems.</li>
+        <li><strong>[Jan'24]</strong> Started working as a Graduate assistant at Louisiana State University (LSU).</li>
+        <li><strong>[Jan'24]</strong> Joined Louisiana State University (LSU) as a PhD student.</li>
+        
+    </ul>
+</section>
+
+
+<section id="projects">
+<h2 class="section-title">Featured Projects</h2>
+<div class="grid">
+    <div class="card">
+        <img src="synoptic.png" alt="Project 1">
+        <h3>Synoptic</h3>
+        <p>A personalized system that can create multimodal video review summaries.</p>
+    </div>
+    <div class="card">
+        <img src="eda.png" alt="Project 2">
+        <h3>Early EDA</h3>
+        <p>Exploring different types of interaction while working with early step exploratory data analysis.</p>
+    </div>
+    <div class="card">
+        <img src="tba.png" alt="Project 3">
+        <h3>TBA</h3>
+        <p>Will be shared soon.</p>
+    </div>
+</div>
+</section>
+
+<!-- <section id="publications">
+    <h2 class="section-title">Featured Publications</h2>
+    <div class="grid">
+        <div class="card">
+            <img src="paper1.jpg" alt="Publication 1">
+            <h3>Critical Inquiry in Civic Text Visualization</h3>
+            <p>2022, EuroVis</p>
+        </div>
+        <div class="card">
+            <img src="paper2.jpg" alt="Publication 2">
+            <h3>Facilitating Community Input Analysis</h3>
+            <p>2021, DIS</p>
+        </div>
+        <div class="card">
+            <img src="paper3.jpg" alt="Publication 3">
+            <h3>RisingEMOTIONS</h3>
+            <p>2021, Creativity & Cognition</p>
+        </div>
+    </div>
+</section> -->
+<section id="publications">
+    <h2 class="section-title">Featured Publications</h2>
+
+    <h3>2025</h3>
+    <p><strong>Synoptic: Query-Driven Multimodal Product Review Summarization System</strong> <br>
+    Nushrat Jahan Ria, Mahmood Jasim <br>
+    <em>In Extended Abstracts of the 2025 Conference on Human Factors in Computing Systems</em></p>
+
+
+    <h3>2023</h3>
+    <p><strong>Machine Learning Technique Based Fake News Detection</strong> <br>
+    BK Sundaram, M Znoon, Nushrat Jahan Ria, SH Noori <br>
+    <em>AIP Conference Proceedings 2938, 2nd Online International Conference on Artificial Intelligence and Sustainable Computing for Smart Cities</em></p>
+
+    <p><strong>Comparative Evaluation of Transfer Learning for Classification of Brain Tumor Using MRI</strong> <br>
+    AM Masum, S Badhon, SSH Badhon, Nushrat Jahan Ria, S Asique, AM Syed <br>
+    <em>2023 International Conference on Machine Learning and Applications (ICMLA)</em></p>
+
+    <p><strong>Satellite Imageries for Detection of Bangladesh’s Rural and Urban Areas Using YOLOv5 and CNN</strong> <br>
+    Mirajul Islam, Nushrat Jahan Ria, Jannatul Ferdous Ani <br>
+    <em>Journal of Mobile Information System</em> <br>
+    Index: Hindawi (Accepted)</p>
+
+    <h3>2022</h3>
+    <!-- <p><strong>Deep learning based classification system for recognizing local spinach</strong> <br>
+        Mirajul Islam, Nushrat Jahan Ria, Jannatul Ferdous Ani, Abu Kaisar Mohammad Masum, Sheikh Abujar, Syed Akhter Hossain <br>
+        <em>Advances in Deep Learning, Artificial Intelligence and Robotics: Proceedings of the 2nd International Conference on Deep Learning, Artificial Intelligence and Robotics,(ICDLAIR) </em> <br>
+        Published on: IEEE Xplorer (Scopus Indexed)
+    </p> -->
+
+    <p><strong>Survey-based Machine Learning Approaches to Diagnosis of Hair Fall Disorder in Bangladeshi Community</strong> <br>
+    Farhana Khatun, Moshfiqur Rahman Ajmain, Sharun Akter Khushbu, Nushrat Jahan Ria, Sheak Rashed Haider Noori <br>
+    <em>13th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+    Published on: IEEE Xplorer (Scopus Indexed)</p>
+
+    <p><strong>HYBRID-CNN: For Identification of Rohu Fish Disease</strong> <br>
+    Md Abdullah Al Noman, Md Shakil Hossen, Mirajul Islam, Jannatul Ferdous Ani, Nushrat Jahan Ria, Aniruddha Rakshit <br>
+    <em>13th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+    Published on: IEEE Xplorer (Scopus Indexed)</p>
+
+    <p><strong>3a comparative study on sentiment analysis for bengali language based on lstm in f-commerce</strong> <br>
+        Mahafozur Rahman, Md Faysal Wahid, Md Ariful Islam, Nushrat Jahan Ria, Sheak Rashed Haider Noori <br>
+        <em>13th International Conference on Computing Communication and Networking Technologies (ICCCNT)</em> <br>
+        Published on: IEEE Xplorer (Scopus Indexed)
+    </p>
+    
+    <p><strong>Enhancing Sentiment Analysis using Machine Learning Predictive Models to Analyze Social Media Reviews on Junk Food</strong> <br>
+        Moshfiqur Rahman Ajmain, Mst Farhana Khatun, Sheikh Sadi Bandan, Arifur Rahman Rejuan, Nushrat Jahan Ria, Sheak Rashed Haider Noori <br>
+        <em>13th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+        Published on: IEEE Xplorer (Scopus Indexed)
+    </p>
+
+        
+
+    <h3>2021</h3>
+    <p><strong>Transformer Based Bengali Chatbot using General Knowledge Dataset</strong> <br>
+    Abu Kaisar Mohammad Masum, Sheikh Abujar, Sharmin Akter, Nushrat Jahan Ria, Syed Akhter Hossain <br>
+    <em>ICMLA 2021: 20th IEEE International Conference on Machine Learning and Applications</em>, Pasadena, California, USA <br>
+    (Scopus Indexed)</p>
+
+    <p><strong>NPABT: Naming Pattern Analysis of Bengali Text to Detect Various Community Using Machine Learning Approach</strong> <br>
+    Nushrat Jahan Ria, Jannatul Ferdous Ani, Mirajul Islam, Abu Kaisar Mohammad Masum, Sheikh Abujar <br>
+    <em>12th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+    Published on: IEEE Xplorer (Scopus Indexed)</p>
+
+    <p><strong>Estimating Gender Based on Bengali Conventional Full Name with Various Machine Learning Techniques</strong> <br>
+    Jannatul Ferdous Ani, Mirajul Islam, Nushrat Jahan Ria, Sharmin Akter, Abu Kaisar Mohammad Masum, Sharmin Akter <br>
+    <em>12th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+    Published on: IEEE Xplorer (Scopus Indexed)</p>
+
+    <p><strong>Symptoms analysis based chronic obstructive pulmonary disease prediction in Bangladesh using machine learning approach</strong> <br>
+        Mridul Das Joshe, Nazmul Hassan Emon, Mirajul Islam, Nushrat Jahan Ria, Abu Kaisar Mohammad Masum, Sheikh Rashed Haider Noori <br>
+        <em>12th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+        Published on: IEEE Xplorer (Scopus Indexed)
+    </p>
+
+    <p><strong>Standardization of rainfall prediction in bangladesh using machine learning approach</strong> <br>
+        Nushrat Jahan Ria, Jannatul Ferdous Ani, Mirajul Islam, Abu Kaisar Mohammad Masum <br>
+        <em>12th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+        Published on: IEEE Xplorer (Scopus Indexed)
+    </p>
+
+    <p><strong>State of art research in edible and poisonous mushroom recognition</strong> <br>
+        Nushrat Jahan Ria, SM Saiful Islam Badhon, Sharun Akter Khushbu, Sharmin Akter, Syed Akhter Hossain <br>
+        <em>12th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+        Published on: IEEE Xplorer (Scopus Indexed)
+    </p>
+
+    <p><strong>Performance comparison of multiple supervised learning algorithms for Youtube exaggerated Bangla titles classification</strong> <br>
+        Mirajul Islam, Nushrat Jahan Ria, Abu Kaisar Mohammad Masum, Jannatul Ferdous Ani <br>
+        <em>12th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+        Published on: IEEE Xplorer (Scopus Indexed)
+    </p>
+
+    <p><strong>A process of finding common symptoms and diagnosis age among pcos patients through a survey</strong> <br>
+        Sumiya Islam, Nusrat Nabi, Sharun Akter Khushbu, Nushrat Jahan Ria, Abu Kaisar Mohammad Masum <br>
+        <em>12th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+        Published on: IEEE Xplorer (Scopus Indexed)
+    </p>
+
+    <h3>2020</h3>
+    <p><strong>Deep Learning Based Classification System for Recognizing Local Spinach</strong> <br>
+    Mirajul Islam, Nushrat Jahan Ria, Jannatul Ferdous Ani, Abu Kaisar Mohammad Masum, Sheikh Abujar, Syed Akhter Hossain <br>
+    <em>International Conference on Recent Trends in Advanced Computing - ICDLAIR-2020</em>, University of Salerno, Italy <br>
+    Published on: IEEE Xplorer (Scopus Indexed)</p>
+
+    <p><strong>Toward an Enhanced Bengali Text Classification Using Saint and Common Form</strong> <br>
+    Nushrat Jahan Ria, Sharun Akter Khushbu, Mohammad Abu Yousuf, Abu Kaisar Mohammad Masum, Sheikh Abujar, Syed Akhter Hossain <br>
+    <em>11th International Conference on Computing, Communication and Networking Technologies (ICCCNT)</em> <br>
+    Published on: IEEE Xplorer (Scopus Indexed)</p>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <p><strong>Reach out to me through njria99@gmail.com<br>
+    </p>
+    </section>
+
+
+
+</div>
+
+<footer>
+<p>© 2025 Nushrat Jahan Ria | All Rights Reserved</p>
+</footer>
+</body>
+</html>

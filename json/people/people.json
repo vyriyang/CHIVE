@@ -26,14 +26,14 @@
             "title": "PhD Researcher",
             "description": "Another description of the student.",
             "image": "img/people/NushratJahanRia/NushratJahanRia.jpg",
-            "link": "people/DemoPeoplePage/DemoPeoplePage.html"
+            "link": "people/students/NushratJahanRia/nush.html"
         },
         {
             "name": "Vimal Thomas Joseph",
             "title": "PhD Researcher",
             "description": "Another description of the student.",
             "image": "img/people/VimalThomasJoseph/vimal_thomas_joseph.png",
-            "link": "people/DemoPeoplePage/DemoPeoplePage.html"
+            "link": "people/students/VimalThomasJoseph/VimalThomasJoseph.html"
         }
     ]
 }

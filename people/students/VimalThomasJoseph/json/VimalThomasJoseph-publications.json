@@ -1,0 +1,22 @@
+{
+    "years": [
+      {
+        "year": "2025",
+        "publications": [
+          {
+            "venues":"CHI LBW 2025",
+            "venuesname":"",
+            "title": "Voice of the Unheard: Conversational Challenges Between Signers and Non-Signers and Design Interventions for Adaptive SLT Systems",
+            "authors": [
+                { "name": "Vimal Thomas Joseph", "link": "people/students/VimalThomasJoseph/VimalThomasJoseph.html" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+            ],
+            "description": "A research paper on conversational challenges between signers and non-signers, providing insights into design interventions for adaptive SLT systems.",
+            "date": "2025",
+            "url": "",
+            "pdf":""
+          }
+        ]
+      }
+    ]
+  }

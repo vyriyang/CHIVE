@@ -28,14 +28,12 @@
         <div class="line"></div>
       </div>
       <div class="cont margin_left">
-        ● What is Lorem Ipsum?<br>
-        ● Lorem Ipsum is simply dummy text of the printing and typesetting industry. <a href="https://www.lipsum.com" 
+        ● Three of our papers have been accepted to be published in the Extended Abstracts of the <a href="https://chi2025.acm.org" 
         style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
+        2025 Conference on Human Factors in Computing Systems</a>. <br>
         ● Our paper, 'Animating the Narrative: A Review of Animation Styles in Narrative Visualization,' has been accepted for presentation at<a href="https://ieeevis.org/year/2024/welcome" 
         style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-       IEEE VIS2024</a>. Join us in Tampa, Florida, on October 17th, 2024!<br></a> <br>
+        2024 IEEE Visualization and Visual Analytics (VIS)</a>. Join us in Tampa, Florida, on October 17th, 2024!<br></a> <br>
       </div>
     </div>
   </div>
@@ -103,7 +101,7 @@
 
             const accordionContent = document.createElement('div');
             accordionContent.classList.add('accordion-content');
-            if (index < 3) {
+            if (index < 4) {
               accordionContent.style.display = 'block'; // 默认展开第一项
             }
 
@@ -171,7 +169,7 @@
           // Initialize accordion
           var accordion_2 = new Accordion(accordionContainer, {
             multiple: true,
-            defaultOpenedIndexes: [0, 1, 2]
+            defaultOpenedIndexes: [0, 1, 2, 3]
           });
         })
         .catch(error => {
