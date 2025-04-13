@@ -440,6 +440,14 @@
         font-weight: bold;
       }
       
+      .cont-researcher-name-v{
+          color:#5d5d5d;
+      }
+
+      .cont-researcher-name-v:hover{
+          color:#EBBA4D;
+      }
+      
       .sec_sub_title_v {
           font-size: 20px;
           color: #5f5d5d;
@@ -502,8 +510,8 @@
         width: 100%;
         height: 100%;
         background: linear-gradient(to right,
-                    rgba(91, 141, 176, 0.5) 0%,
-                    rgba(91, 141, 176, 0.5) 50%,
+                    rgba(74, 104, 72, 0.5) 0%,
+                    rgba(74, 104, 72, 0.5) 50%,
                     rgba(153, 153, 153, 0.7) 50%,
                     rgba(153, 153, 153, 0.7) 100%);
         z-index: 1;
@@ -522,7 +530,7 @@
 
       .banner-left {
         width: 48%;
-        color: #2f2f2f;
+        color: #23711f;
       }
 
       
@@ -536,7 +544,7 @@
         font-weight: bold;
         letter-spacing: 2px;
         line-height: 1.3;
-        color: #2e3d54;
+        color: #155712;
       }
 
       .banner-subtitle {
@@ -899,7 +907,7 @@
                  const authorName = author.name === "Vyri Yang"
                    ? `<strong>${author.name}</strong>`
                    : author.name;
-                 return `<a href="${author.link}" class="cont-researcher-name">${authorName}</a>`;
+                 return `<a href="${author.link}" class="cont-researcher-name-v">${authorName}</a>`;
                }).join(', ');
 
                // 奖杯或奖牌图标逻辑
@@ -912,16 +920,16 @@
 
                    // 如果 venues 存在，生成对应的 HTML，否则不生成
                    const venuesContent = pub.venues
-                     ? `${awardIcon}<a href="${pub.url}" style="text-decoration: none; color:#ab2d05;" rel="alternate bookmark" target="_blank" ><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
+                     ? `${awardIcon}<a href="${pub.url}" style="text-decoration: none; color:#EBBA4D;" rel="alternate bookmark" target="_blank" ><strong>${pub.venues}</strong></a> <a style="color:#357132;"> | `
                      : '';
 
                    // 检查 pub.pdf，如果存在则生成 "View Publication" 链接
                    const pdfContent = pub.pdf
-                     ? `<div class=".sec_sub_title_v_a" style="margin-top: 5px; margin-bottom: 5px;"><a href="${pub.pdf}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
+                     ? `<div class=".sec_sub_title_v_a" style="margin-top: 5px; margin-bottom: 5px;"><a href="${pub.pdf}" style=" color:#357132;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
                      : '';
 
                pubDiv.innerHTML = `
-                 <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+                 <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #357132;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
                  <div class=".sec_sub_title_v_aa" style="margin-top: 5px; margin-bottom: 5px;">
                    ${authorsContent}
                  </div>
@@ -976,15 +984,15 @@
              if (award.url) {
                awardsTitleContent = `
                  <div class="sub-title_ss">
-                   ${award.awards ? `<span style="color:#ab2d05;"><strong>${award.awards}</strong></span>` : ''}
-                   ${award.awards && award.title ? '<span style="color:#3f44b6;"> | </span>' : ''}
-                   <a href="${award.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">${award.title}</a>
+                   ${award.awards ? `<span style="color:#EBBA4D;"><strong>${award.awards}</strong></span>` : ''}
+                   ${award.awards && award.title ? '<span style="color:#357132;"> | </span>' : ''}
+                   <a href="${award.url}" style="text-decoration: none; color:#357132;" rel="alternate bookmark" target="_blank">${award.title}</a>
                  </div>
                `;
              } else {
                // 如果没有 url，分别放在不同的 div 中
-               const awardContent = award.awards ? `<span style="color:#ab2d05;"><strong>${award.awards}</strong></span>` : '';
-               const titleContent = award.title ? `<span style="color:#3f44b6;">${award.title}</span>` : '';
+               const awardContent = award.awards ? `<span style="color:#EBBA4D;"><strong>${award.awards}</strong></span>` : '';
+               const titleContent = award.title ? `<span style="color:#357132;">${award.title}</span>` : '';
                awardsTitleContent = `${awardContent}${titleContent}`;
              }
 
@@ -1079,7 +1087,7 @@
                if (contact.office) contactInfo += `<div>${contact.office}</div>`;
                if (contact.school) contactInfo += `<div>${contact.school}</div>`;
                if (contact.num) contactInfo += `<div>${contact.num}</div>`;
-               if (contact.email) contactInfo += `<div><a href="mailto:${contact.email}" style="color: #3f44b6;">${contact.email}</a></div>`;
+               if (contact.email) contactInfo += `<div><a href="mailto:${contact.email}" style="color: #357132;">${contact.email}</a></div>`;
 
                if (contactInfo) {
                  contactDetails.innerHTML = contactInfo;
