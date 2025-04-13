@@ -448,22 +448,57 @@
           color:#EBBA4D;
       }
       
+      .sub-title_v_s {
+          text-align: left;
+          font-size: 24px;
+          margin-bottom: 20px;
+          color: #3f44b6;
+      }
+
+      .sub-title_v_ss {
+          text-align: left;
+          font-size: 18px;
+          margin-bottom: 5px;
+          color: #3f44b6;
+      }
+      
+      .sub-title_v_ssa {
+          text-align: left;
+          font-size: 18px;
+          margin-bottom: 5px;
+          color: #3f44b6;
+      }
+      
+      .sub-title_v_ss:hover {
+          color: #f36f24;
+          transform: scale(1.1); /* 使用 transform 替代 scale */
+          transform-origin: left; /* 设置缩放的原点为左侧 */
+          transition: transform 0.3s ease, color 0.3s ease; /* 添加平滑过渡 */
+      }
+      
       .sec_sub_title_v {
-          font-size: 20px;
+          font-size: 18px;
           color: #5f5d5d;
           margin-bottom: 10px;
+          line-height: 1.6;
       }
       
       .sec_sub_title_v_s {
-          font-size: 18px;
+          font-size: 12px;
           color: #5f5d5d;
           margin-bottom: 1px;
+          line-height: 2;
       }
 
       .sec_sub_title_v_a {
-          font-size: 18px;
+          font-size: 12px;
           color: #5f5d5d;
+          line-height: 2;
       }
+      
+      .sec_sub_title_v_a:hover {
+          color: #EBBA4D;
+        }
       
       .sec_sub_title_v, .sec_sub_title_v_s, .sec_sub_title_v_a {
           font-size: 1.6vw;
@@ -929,7 +964,7 @@
                      : '';
 
                pubDiv.innerHTML = `
-                 <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #357132;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
+                 <div class="sub-title_v_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #357132;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
                  <div class=".sec_sub_title_v_aa" style="margin-top: 5px; margin-bottom: 5px;">
                    ${authorsContent}
                  </div>
@@ -983,7 +1018,7 @@
              let awardsTitleContent = '';
              if (award.url) {
                awardsTitleContent = `
-                 <div class="sub-title_ss">
+                 <div class="sub-title_v_ss">
                    ${award.awards ? `<span style="color:#EBBA4D;"><strong>${award.awards}</strong></span>` : ''}
                    ${award.awards && award.title ? '<span style="color:#357132;"> | </span>' : ''}
                    <a href="${award.url}" style="text-decoration: none; color:#357132;" rel="alternate bookmark" target="_blank">${award.title}</a>
@@ -1013,10 +1048,10 @@
 
              // 构建 HTML 内容，仅显示非空的项
              awardDiv.innerHTML = `
-               <div class="sub-title_ssa">
+               <div class="sub-title_v_ssa">
                  ${awardsTitleContent}
                </div>
-               <div class="sec_sub_title_a">
+               <div class="sec_sub_title_v_a">
                  ${descriptionContent}
                </div>
                ${placeContent}
