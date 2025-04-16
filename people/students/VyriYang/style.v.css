@@ -591,6 +591,76 @@ body, html {
       color: #2e3d54;
   }
 
+.fashion-designer-section {
+  width: 100%;
+  height: 90vh;
+  background-color: rgba(219, 219, 219, 0.2);
+  position: relative;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* 左上角介紹文字 */
+.fashion-intro {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  color: #333;
+  max-width: 500px;
+  font-size: 14px;
+  line-height: 1.6;
+  display: flex;
+  gap: 40px;
+}
+
+/* 主標題區域 - 靠近 bottom third */
+.fashion-title {
+  position: absolute;
+  bottom: 5vw;
+  left: 40px;
+  color: black;
+}
+
+.fashion-title h1 {
+  font-size: 12vw;
+  font-weight: bold;
+  line-height: 1.1;
+  margin: 0;
+}
+
+/* 右下圓形箭頭提示 */
+.scroll-down-indicator {
+  position: absolute;
+  right: 100px;
+  bottom: 16vw;
+}
+
+.scroll-down-indicator .circle {
+  width: 20vw;
+  height: 20vw;
+  background-color: rgba(235, 186, 77, 0.3); /* 柔和黃色圓圈，可自行替換顏色 */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-down-indicator .circle span {
+  font-size: 3vw;
+  color: white;
+  line-height: 1;
+}
+
+.scroll-down-indicator .circle:hover {
+  opacity: 0.8;
+}
+
+
+
+
+
 
 /* 小於1200px：3欄 */
 @media (max-width: 1200px) {
