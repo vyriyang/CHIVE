@@ -628,6 +628,13 @@ body, html {
   margin: 0;
 }
 
+.fashion-subtitle {
+  font-size: 7vw;
+  font-weight: bold;
+  line-height: 1.1;
+  margin: 0;
+}
+
 /* 右下圓形箭頭提示 */
 .scroll-down-indicator {
   position: absolute;
