@@ -1,0 +1,627 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Helvetica Neue', sans-serif;
+  background: white no-repeat center center/cover;
+}
+
+.clean-navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+  display: none; /* 初始隱藏 */
+  padding: 12px 40px;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.clean-navbar.show {
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: normal;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #EBBA4D;
+}
+
+
+  .homesection {
+    height: 100vh;
+    min-height: 650px;
+    width: 100%;
+    position: relative;
+    color: black;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  /* 背景圖片容器 */
+  .portrait-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .portrait-bg img {
+    height: 70vh;
+    max-height:500px;
+    width: auto;
+    height: auto;
+    display: block;
+  }
+
+  /* 疊加在圖片上的內容 */
+  .content-overlay {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 180px;
+    width: 100%;
+    margin-top: 260px; /* 加入這一行設定上邊距 */
+  }
+
+  /* 左側垂直文字 */
+  .vertical-text {
+    position: absolute;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    letter-spacing: 0.2em;
+    font-weight: bold;
+    color: #333;
+    z-index: 3;
+    text-decoration: none; /* ✅ 去除下劃線 */
+    color: inherit;         /* ✅ 保持繼承父元素顏色 */
+  }
+
+  .vertical-text:hover {
+    color: #EBBA4D;
+    text-decoration: none; /* ✅ hover 時也不顯示下劃線 */
+  }
+
+  .vertical-text.left {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none; /* ✅ 去除下劃線 */
+    color: inherit;         /* ✅ 保持繼承父元素顏色 */
+  }
+  
+  .vertical-text.left:hover {
+      color: #EBBA4D;
+      text-decoration: none; /* ✅ hover 時也不顯示下劃線 */
+    }
+
+  .vertical-text.right {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none; /* ✅ 去除下劃線 */
+    color: inherit;         /* ✅ 保持繼承父元素顏色 */
+  }
+  
+  .vertical-text.right:hover {
+      color: #EBBA4D;
+      text-decoration: none; /* ✅ hover 時也不顯示下劃線 */
+    }
+
+  /* 上方標題 */
+  .top-nav {
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.3em;
+    font-weight: bold;
+    z-index: 3;
+    text-decoration: none; /* ✅ 去除下劃線 */
+    color: inherit;         /* ✅ 保持繼承父元素顏色 */
+  }
+
+  .top-nav:hover {
+    color: #EBBA4D;
+    text-decoration: none; /* ✅ hover 時也不顯示下劃線 */
+  }
+
+  .bottom-nav {
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 0.3em;
+    font-weight: bold;
+    z-index: 3;
+    text-decoration: none; /* ✅ 去除下劃線 */
+    color: inherit;         /* ✅ 保持繼承父元素顏色 */
+  }
+  .bottom-nav:hover {
+    color: #EBBA4D;
+    text-decoration: none; /* ✅ hover 時也不顯示下劃線 */
+  }
+
+
+  /* 左側文字區 */
+  .text-left {
+    position: relative;
+    width: 400px;
+    height: 180px;
+  }
+
+  .text-left .text-line {
+    position: absolute;
+    font-size: 12px;
+    letter-spacing: 2px;
+    padding-left: 30px;
+  }
+
+  /* 左側每行位置 */
+  .word1 {
+    top: 0px;
+    left: 0px;
+  }
+  .word2 {
+    top: 20px;
+    left: 60px;
+  }
+  .word3 {
+    top: 60px;
+    left: 35px;
+  }
+  .word4 {
+    top: 90px;
+    left: 70px;
+  }
+  .word5 {
+    top: 120px;
+    left: 55px;
+  }
+
+  /* 右側文字區 */
+  .text-right {
+    position: relative;
+    width: 300px;
+    height: 360px;
+  }
+
+  .text-right .text-line {
+    position: absolute;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+  }
+
+  /* 右側每行位置 */
+  .r-word1 {
+    top: 170px;
+    left: 60px;
+  }
+  .r-word2 {
+    top: 200px;
+    left: 30px;
+  }
+  .r-word3 {
+    top: 220px;
+    left: 55px;
+  }
+  .r-word4 {
+    top: 240px;
+    left: 25px;
+  }
+  .r-word5 {
+    top: 260px;
+    left: 35px;
+  }
+  .r-word6 {
+    top: 280px;
+    left: 35px;
+  }
+  .r-word7 {
+    top: 300px;
+    left: 35px;
+  }
+  .r-word8 {
+    top: 330px;
+    left: 50px;
+  }
+  .r-word9 {
+    top: 350px;
+    left: 20px;
+  }
+
+  /* 高亮盒子樣式 */
+  .highlight-box {
+    background-color: black;
+    color: white;
+    padding: 2px 4px;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  /* 刪除線樣式 */
+  .strikethrough {
+    text-decoration: line-through;
+  }
+  
+  .homesection {
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+  }
+
+  .homesection.fade-out {
+    opacity: 0;
+  }
+
+
+  
+.divider {
+    width: 100%;
+    height: 10px;
+    background-color: black;
+}
+  
+  .video-section {
+    width: 100%;
+    height: 400px;    /* 無論螢幕多小，至少保證200px高 */
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    position: relative;   /* 若你有 gradient overlay 或其他疊層用 */
+  }
+
+
+  .video-section video {
+    width: 100%;
+    max-width:1440px;
+    height: auto;
+    object-fit: cover;
+    opacity: 0.3;
+  }
+
+  
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background: linear-gradient(to bottom, rgba(219, 219, 219, 0.2), rgba(219, 219, 219, 0));
+    pointer-events: none; /* 讓滑鼠可以點擊到底下影片 */
+  }
+  
+  .video-news {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #979797; /* ✅ 稍深一點的灰色 */
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    z-index: 3;
+    text-align: center; /* ✅ 讓文字本身居中對齊 */
+    pointer-events: none;
+  }
+
+  .content-section {
+    width: 100%;
+    height:auto;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    padding: 0;
+    margin-top: 70px;
+    margin-bottom: 0;
+  }
+
+  .section-inner {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 auto;
+    display: flex;               /* ✅ 讓它成為 column layout */
+    flex-direction: column;
+    justify-content: flex-start; /* ✅ 防止整塊拉伸 */
+  }
+
+  .section-title-text {
+    font-size: 18px;
+    text-align: center;
+    margin: 40px 0 60px 0;
+    letter-spacing: 0.3em;
+    font-weight: bold;
+  }
+  .title_v{
+      width: fit-content;
+  }
+
+  .card-grid {
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  .card-text {
+    font-size: 14px;
+    color: #5f5d5d;
+    line-height: 1.6;
+  }
+  
+  .card {
+    padding: 0 24px 24px 24px; /* 保留左右和底部 padding */
+    text-align: center;
+    font-family: 'Helvetica Neue', sans-serif;
+    transition: all 0.3s ease;
+    overflow: hidden; /* 防止 hover 放大溢出邊界 */
+    background-color: white; /* 建議加白底讓陰影更明顯 */
+    /*box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  加入柔和陰影 */
+    border: none; /* 移除原邊框 */
+    /*border-radius: 8px;  可選：增加一點圓角讓卡片更柔和 */
+  }
+
+  .card-image-wrapper {
+    width: calc(100% + 48px); /* 補回 padding 被移除的寬度 */
+    margin-left: -24px;
+    margin-right: -24px;
+    margin-bottom: 16px;
+    margin-top: 0;
+    overflow: hidden;
+    position: relative; /* 讓 overlay 層可以定位在圖片上 */
+  }
+
+  .card-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+    display: block;
+    z-index: 1; /* 圖片在較下層 */
+  }
+
+  .card:hover .card-image {
+    transform: scale(1.3);
+  }
+
+  .card:hover .card-title-text {
+    color: #EBBA4D;
+  }
+
+/* 新增 overlay 層 */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #EBBA4D 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none; /* 確保不影響滑鼠事件 */
+  z-index: 2; /* 疊加在圖片上方 */
+}
+
+/* hover 時顯示 overlay */
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+  .card-title-text {
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: bold;
+    letter-spacing: 0.3px;
+    transition: color 0.3s ease;
+  }
+  
+  .section-title-text-data {
+    font-size: 18px;
+    text-align: center;
+    margin: 40px 0 20px 0;
+    letter-spacing: 0.3em;
+    font-weight: bold;
+  }
+  
+  .cont-researcher-name-v{
+      color:#5d5d5d;
+  }
+
+  .cont-researcher-name-v:hover{
+      color:#EBBA4D;
+  }
+  
+  .line_v {
+      width: fit-content;
+      margin-top: 5px;
+      height: 2px;
+      background: linear-gradient(120deg, #f36f24, #12163f);
+  }
+  
+  .footer_v {
+      background: black;
+      margin: 0px;
+      padding: 5px 40px 5px 40px; /* 上右下左 */
+      display: flex;
+      align-items: center;           /* 垂直居中 */
+      justify-content: flex-end;     /* 文字靠右 */
+      height: 40px;                  /* 建議設定明確高度來確保垂直對齊 */
+  }
+
+  .cont_footer_v {
+      font-size: 14px;
+      color: white;
+      line-height: 1.4;
+  }
+  
+  .banner-section {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: url('img/EUGRAbackground3.jpg') center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+                rgba(74, 104, 72, 0.5) 0%,
+                rgba(74, 104, 72, 0.5) 50%,
+                rgba(153, 153, 153, 0.7) 50%,
+                rgba(153, 153, 153, 0.7) 100%);
+    z-index: 1;
+  }
+
+
+
+  .banner-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2;
+  }
+
+  .banner-left {
+    width: 48%;
+    color: #23711f;
+  }
+
+  
+  .banner-right{
+      width: 48%;
+      color: #2f2f2f;
+  }
+
+  .banner-title {
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    line-height: 1.3;
+    color: #155712;
+  }
+
+  .banner-subtitle {
+    font-size: 16px;
+    margin-top: 30px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: #2e3d54;
+  }
+
+  .banner-description {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #ffffffd9;
+  }
+  
+  .banner-description-left {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #ffffffd9;
+  }
+
+  .banner-social-icons {
+    margin-top: 60px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .banner-social-icons img {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.3s ease;
+  }
+
+  .banner-social-icons a:hover img {
+    opacity: 0.7;
+  }
+  
+  .contact-info a {
+    display: block;
+    margin-bottom: 6px;
+
+    /* 移除超鏈接樣式 */
+    text-decoration: none;
+    color: inherit;
+    font: inherit;  /* ✅ 繼承父層所有字體屬性，包括 font-family, font-size 等 */
+  }
+  
+  .contact-info a:hover{
+      color: #2e3d54;
+  }
+
+
+/* 小於1200px：3欄 */
+@media (max-width: 1200px) {
+    
+  .card-grid {
+      padding: 0 20px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 小於900px：2欄 */
+@media (max-width: 900px) {
+  .card-grid {
+      padding: 0 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .banner-section{
+      height:auto;
+      padding: 20px 20px;
+  }
+}
+
+/* 小於600px：1欄 */
+@media (max-width: 600px) {
+    
+  .card-grid {
+      padding: 0 20px;
+    grid-template-columns: 1fr;
+  }
+  .banner-section{
+      height:auto;
+      padding: 20px 20px;
+  }
+}

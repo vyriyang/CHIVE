@@ -1,0 +1,137 @@
+{
+  "years": [
+      {
+        "year": "2024",
+        "publications": [
+          {
+            "label": ["AnimatingTheNarrative"],
+            "venues":"IEEE VIS2024",
+            "venuesname":"2024 IEEE Visualization and Visual Analytics (VIS)",
+            "title": "Animating the Narrative: A Review of Animation Styles in Narrative Visualization",
+            "authors": [
+                { "name": "Vyri Yang", "link": "../people/students/VyriYang/VyriYang.html" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+            ],
+            "description": "We explore the design space of narrative visualization, focusing on animation styles. We categorize 80 papers from top visualization venues into six categories, including Animation Style, Interactivity, Methodology, Technology, Evaluation Type , and Application Domain. We discuss the interplay between different visualization techniques and elements and the trend to focus on domain-specific visualizations.",
+            "date": "Oct, 2024",
+            "url": "https://ieeevis.org/year/2024/program/paper_v-short-1192.html",
+            "pdf":"https://ieeevis.b-cdn.net/vis_2024/pdfs/v-short-1192.pdf"
+          }
+        ]
+      },
+    
+    {
+      "year": "2022",
+      "publications": [
+        {
+          "label": [""],
+          "venues":"[Best Paper Award] EuroVis",
+          "venuesname":"Eurographics Conference on Visualization",
+          "title": "Of Course it’s Political! A Critical Inquiry into Underemphasized Dimensions in Civic Text Visualization",
+          "authors": [
+              { "name": "Eric P. S. Baumer" },
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+              { "name": "Ali Sarvghad"},
+              { "name": "Narges Mahyar"}
+            ],
+          "description": "",
+          "date": "2022",
+          "url": "https://csc.lsu.edu/~mjasim/publications/Publication-baumer2022political.pdf",
+          "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-baumer2022political.pdf"
+        },
+        {
+          "label": [""],
+          "venues":"CHI’22",
+          "venuesname":"ACM (Association of Computing Machinery) CHI conference on Human Factors in Computing Systems",
+          "title": "Supporting Serendipitous Discovery and Balanced Analysis of Online Product Reviews with Interaction-Driven Metrics and Bias-Mitigating Suggestions.",
+          "authors": [
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html"  },
+              { "name": "Christopher Collins"},
+              { "name": "Ali Sarvghad"},
+              { "name": "Narges Mahyar"}
+            ],
+          "description": "",
+          "date": "April 2022",
+          "url": "https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2022serendyze.pdf",
+          "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2022serendyze.pdf"
+        }
+      ]
+    },
+    {
+        "year": "2021",
+        "publications": [
+            {
+              "label": [""],
+              "venues":"[Best Paper Honorable Mention Award] DIS’21",
+              "venuesname":"ACM Designing Interactive Systems Conference (DIS)",
+              "title": "CommunityPulse: Facilitating Community Input Analysis by Surfacing Hidden Insights, Reflections, and Priorities",
+              "authors": [
+                  { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                  { "name": "Enamul Hoque"},
+                  { "name": "Ali Sarvghad"},
+                  { "name": "Narges Mahyar"}
+                ],
+              "description": "",
+              "date": "June 2021",
+              "url": "https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2021cpulse.pdf",
+              "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2021cpulse.pdf"
+            },
+          {
+            "label": [""],
+            "venues":"[Nominated for 2020 CODAwards] C&C’21",
+            "venuesname":"ACM Creativity and Cognition",
+            "title": "RisingEMOTIONS: Bridging Art and Technology to Visualize Public’s Emotions about Climate Change",
+            "authors": [
+                
+                { "name": "Carolina Aragón"},
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html"  },
+                { "name": "Narges Mahyar"}
+              ],
+            "description": "",
+            "date": "June 2021",
+            "url": "https://csc.lsu.edu/~mjasim/publications/Publication-aragon2021re.pdf",
+            "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-aragon2021re.pdf"
+          }
+        ]
+      },
+    {
+      "year": "2020",
+      "publications": [
+        {
+          "label": [""],
+          "venues":"[Best Paper Award] CSCW2020",
+          "venuesname":"ACM Conference on Computer-Supported Cooperative Work and Social Computing",
+          "title": "CommunityClick: Capturing and Reporting Community Feedback from Town Halls to Improve Inclusivity",
+          "authors": [
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+              { "name": "Pooya Khaloo" },
+                { "name": "Somin Wadhwa" },
+                { "name": "Amy X. Zhang" },
+                { "name": "Ali Sarvghad" },
+                { "name": "Narges Mahyar" }
+            ],
+          "description": "",
+          "date": "December 2020",
+          "url": "https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2020cclickfull.pdf",
+          "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2020cclickfull.pdf"
+        },
+        {
+            "label": [""],
+            "venues":"IEEE Computer Graphics and Applications",
+            "venuesname":"IEEE Computer Graphics and Applications",
+            "title": "Designing Technology for Sociotechnical Problems: Challenges and Considerations",
+            "authors": [
+                { "name": "Narges Mahyar" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Ali Sarvghad" }
+              ],
+            "description": "",
+            "date": "December 2020",
+            "url": "https://csc.lsu.edu/~mjasim/publications/Publication-nmahyar2020social.pdf",
+            "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-nmahyar2020social.pdf"
+          }
+      ]
+    }
+  ]
+}
+
