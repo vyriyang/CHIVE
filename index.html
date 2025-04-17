@@ -375,6 +375,91 @@
             margin: 0 10px;
             text-decoration: none;
         }
+
+        .banner-section {
+        width: 100%;
+        height: 90vh;
+        background-color:#f9f9f9;
+        ;
+        position: relative;
+        overflow: hidden;
+        font-family: 'Helvetica Neue', sans-serif;
+        }
+        @media (max-height: 800px) {
+        .banner-section {
+            height: 800px;
+        }
+        }
+
+        /* 左上角介紹文字 */
+        .banner-intro {
+        font-family: 'PT Sans Narrow', sans-serif;
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        color: #333;
+        max-width: 500px;
+        font-size: 14px;
+        line-height: 1.6;
+        display: flex;
+        gap: 40px;
+        }
+
+        /* 主標題區域 - 靠近 bottom third */
+        .banner-title {
+        position: absolute;
+        bottom: 5vw;
+        left: 40px;
+        color: black;
+        z-index: 1;
+        }
+
+        .banner-title h1 {
+        font-size: 10vw;
+        font-weight: bold;
+        line-height: 1.1;
+        margin: 0;
+        }
+
+        .banner-subtitle {
+        font-size: 7vw;
+        font-weight: bold;
+        line-height: 1.1;
+        margin: 0;
+        }
+
+        /* 右下圓形箭頭提示 */
+        .scroll-down-indicator {
+        position: absolute;
+        right: 100px;
+        bottom: 16vw;
+        }
+
+        .scroll-down-indicator .circle {
+        width: 20vw;
+        height: 20vw;
+        background-color: rgba(243, 111, 36, 0.5); /* 柔和圓圈，可自行替換顏色 */
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+        z-index: 2;
+        }
+
+        .scroll-down-indicator .circle span {
+        font-family: 'PT Sans Narrow', sans-serif;
+        padding:1vw;
+        font-size: 1vw;
+        color: white;
+        line-height: 1.3;
+        }
+
+        .scroll-down-indicator .circle:hover {
+        opacity: 0.8;
+        }
+
     </style>
 </head>
 <body>
@@ -398,14 +483,57 @@
                 <div class="logo-text">Research Lab at LSU</div>
             </div>
         </div>
-        <div class="main-content">
+        <!--div class="main-content">
             <div class="main-content-color">
                 <div>
                     <h1>Computer Human Interaction and Visualization Experience</h1>
                     <p>Welcome to the Computer Human Interaction and Visualization Experience (CHIVE) Lab at Louisiana State University. Our research focuses on the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.</p>
                 </div>
             </div>
-        </div>
+        </div-->
+        <!--div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
+            <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
+        </div-->
+
+        <section class="banner-section">
+           
+                
+            <!-- 左上角介紹 -->
+            <div class="banner-intro">
+                
+              <p>Welcome to the Computer Human Interaction and Visualization Experience (CHIVE) Lab at Louisiana State University.</p>
+              <p>Our research focuses on the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.</p>
+            </div>
+
+            <div class="banner-title">
+            <!-- 下方主標題 -->
+            
+              <!--div class="banner-subtitle">CROSSFIELD</div-->
+              <div class="banner-subtitle">Computer Human</div>
+              <div class="banner-subtitle">Interaction and Visualization Experience</div>
+              <!--div class="banner-subtitle">Research Lab at LSU</div-->
+              <!--h1>Research Lab at LSU</h1-->
+              
+         
+            </div>
+        
+            <!-- 右下圓圈箭頭 -->
+            <div class="scroll-down-indicator">
+              <div class="circle">
+                <!--span>&rarr;</span-->
+                <span>● Our next group meeting will be on <br>Friday, April 16, 2025, at 1:00 PM.<br>
+                    Topic: How to make a good interview.<br><br>
+                    ● Important submission deadline:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CHI2026, September, 2025<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIS, January<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIS, March<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSCW, May<br>
+                </span>
+
+              </div>
+            </div>
+          </section>
+
         <div class="features">
             <div class="feature" onclick="navigateTo('research.html')">
                 <img src="img/logo/research.png" alt="research">
@@ -448,7 +576,7 @@
             <a href="#">Terms of Use</a> | 
             <a href="#">Privacy Policy</a>
         </p>
-        <p>© 2024 All rights reserved</p>
+        <p>© 2025 All rights reserved</p>
     </div>
     <script>
         function navigateTo(url) {
