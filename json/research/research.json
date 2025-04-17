@@ -1,23 +1,49 @@
 [
     
-    {
+  {
+    "label": ["AINEWs","current"],
+    "venues": "CHI2025",
+    "info": "CHI2025 Late-breaking Work",
+    "imgSrc": "../img/research/AINEWs/AINEWs.jpg",
+    "videoSrc":"",
+    "imgMore":[""],
+    "title": "Combining AI and Crowdsourcing to Identify Misinformation in Online News",
+    "link": "",
+    "pdf": "",
+    "content": "Misinformation in online news presents a critical challenge as it can influence individuals' assessment of news articles and impact decision-making. Existing approaches to combat misinformation rely on either automated AI-based systems or human-centered methods, such as crowdsourcing. However, AI systems often struggle to interpret subjective opinions and remain up to date, while human approaches can be biased. To address these, we designed and developed AI and People News Evaluation (APNE), a system that combines both AI and human assessment to identify misinformation. An initial evaluation of our system suggests that participants valued AI for offering factual information but sometimes felt it was biased. On the other hand, humans, despite having subjective opinions, shared facts and alternative sources that improved the information quality. We also found that participants' assessments were shaped by external factors including their distrust of AI and their opinions about other readers.",
+    "abstract": "Misinformation in online news presents a critical challenge as it can influence individuals' assessment of news articles and impact decision-making. Existing approaches to combat misinformation rely on either automated AI-based systems or human-centered methods, such as crowdsourcing. However, AI systems often struggle to interpret subjective opinions and remain up to date, while human approaches can be biased. To address these, we designed and developed AI and People News Evaluation (APNE), a system that combines both AI and human assessment to identify misinformation. An initial evaluation of our system suggests that participants valued AI for offering factual information but sometimes felt it was biased. On the other hand, humans, despite having subjective opinions, shared facts and alternative sources that improved the information quality. We also found that participants' assessments were shaped by external factors including their distrust of AI and their opinions about other readers.",
+    "keywords": ["AI"],
+    "description": "",
+    "url": "",
+    "date": "April 29, 2025",
+    "researchers": [
+        { "name": "Mehrasa Amiri", "link": "" },
+        { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
+    ],
+    "place":"USA",
+    "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+    "school": "Louisiana State University",
+    "num": "",
+    "email": "mamiri2@lsu.edu"
+  },
+  {
       "label": ["ImmersiveTheNarrative", "current"],
       "venues": "",
       "info": "Innovative Research to Enhance User Immersion",
       "imgSrc": "../img/research/ImmersiveTheNarrative/ImmersiveTheNarrative.webp",
       "videoSrc":"../img/research/ImmersiveTheNarrative/IMG_5127.mp4",
       "imgMore":[""],
-      "title": "Application of Non-VR Immersive Technology in Narrative Visualization for Cyberbullying Data Representation",
+      "title": "Application Narrative Visualization for Complex Data Representation and A Visualization-based Critical Incident Survey System",
       "link": "../researchTopic/ImmersiveTheNarrative.html",
       "pdf": "",
-      "content": "This research leverages Non-VR immersive technology and narrative-driven visualizations to effectively present cyberbullying data. By employing data-driven designs, the platform layers and categorizes various forms of bullying (verbal, physical, cyberbullying) and user responses, helping audiences better understand the information. The integration of real-life hybrid physical and digital experiences with data-driven content enhances the immersive experience, allowing users to make informed choices and explore different outcomes. Interactive sound and motion elements further engage users, fostering a deeper connection with the narratives.",
-      "abstract": "The research focuses on utilizing Non-VR immersive technology to explore how narrative-driven visualizations can effectively present cyberbullying data. The platform emphasizes data-driven designs, where layered data grouping and categorization illustrate the interactions between different forms of bullying (verbal, physical, cyberbullying), user responses, and behavior changes. Users engage with the platform through innovative data-driven designs, seamlessly integrated with narrative-driven technologies, aiming to explore how data can be more effectively communicated and understood by audiences. This approach enables users to dynamically explore how each form of bullying is represented, ensuring that the audience more effectively understands and absorbs the information through intuitive and engaging data visualizations. <br><br>The project integrates real-life hybrid physical and digital experiences with data-driven content, enriching the narrative visualization experience. By allowing users to make data-driven choices, the platform enables them to explore different outcomes and scenarios, fostering a deeper connection with the content. Sound and motion elements further enhance the immersive experience, responding to user interactions and deepening their engagement with the narratives presented. <br><br>",
+      "content": "This research leverages narrative-driven visualizations to effectively present cyberbullying data. By employing data-driven designs, the platform layers and categorizes various forms of bullying (verbal, physical, cyberbullying) and user responses, helping audiences better understand the information. The integration of real-life hybrid physical and digital experiences with data-driven content enhances the immersive experience, allowing users to make informed choices and explore different outcomes. Interactive sound and motion elements further engage users, fostering a deeper connection with the narratives.",
+      "abstract": "The project blends hybrid physical-digital experiences with data-driven storytelling, enabling users to explore multiple outcomes through interactive choices. Sound and motion elements amplify immersion, enhancing user engagement with dynamic narratives. It's also including an interactive survey platform that combines critical incident methodology with dynamic visual feedback to elicit more accurate, context-rich responses. Through scenario-driven narratives and reflection prompts, it enhances recall and improves the reliability of self-reported data in complex domains. <br><br>",
       "keywords": ["Narrative visualizations", "Static and animated visualization", "Categorization", "Design space"],
       "description": "",
       "url": "",
       "date": "May, 2024",
       "researchers": [
-          { "name": "Vyri Yang", "link": "https://chive.cse.lsu.edu/people/students/VyriYang/VyriYang.html" },
+          { "name": "Vyri Yang", "link": "https://vyriyang.com" },
           { "name": "Fiona Ju", "link": "https://xjcomposer.com" },
           { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
       ],
@@ -29,8 +55,8 @@
     },
     {
         "label": ["ASL","current"],
-        "venues": "",
-        "info": "",
+        "venues": "CHI2025",
+        "info": "CHI2025 Late-breaking Work",
         "imgSrc": "../img/research/ASL/ASL.jpeg",
         "videoSrc":"",
         "imgMore":[""],
@@ -38,13 +64,13 @@
         "link": "../researchTopic/ASL.html",
         "pdf": "",
         "content": "Signers, like any population, have dialects, variations, and regional modifications, influenced by their choice of signs, speed, and experience. Effective ASL communication occurs when two signers share similar experience and dialects, though ideal scenarios are not always realistic. My research aims to identify communication challenges between signers and non-signers, designing user interfaces that leverage deep learning translation, data augmentation, and person embodiment to minimize these obstacles.",
-        "abstract": "Like any other population, signers have dialects, show variations, allow regional modifications, and is bound and limited by the user’s choice of signs, speed of hands and experience. An effective and ideal ASL communication is possible when two signers with equal experience and have similar regional dialects converse. However, ideal scenarios exist to remind us that they are not always real. <br><br>We explore communication needs and conversational challenges of signers and non-signers by conducting a cross-sectional study between the two populations. Our exclusive qualitative analysis reveals that while the D/deaf community utilizes technology for communication, challenges including limited translation accuracy, higher costs, and a lack of learning options persist. Additionally, varied proficiency levels, regional dialects, and the lack of visual cues further complicate interactions. Our study identifies key barriers and design approaches that emphasize inclusivity, adaptability, and usability.",
+        "abstract": "Communication barriers remain a significant challenge for the D/deaf community, affecting social interactions, access to services, and overall quality of life. Despite advancements in sign language technology, existing solutions fall short of addressing the unique needs of the D/deaf community. We explore these needs and challenges by conducting a survey with 200 signers and non-signers. Our findings reveal that while the D/deaf community utilizes technology for communication, obstacles including limited translation accuracy, higher costs, and a lack of learning options persist. Additionally, varied proficiency levels, regional dialects, and the lack of visual cues further complicate interactions. We identified key barriers and design approaches that emphasize inclusivity, adaptability, and usability. By incorporating feedback from the D/deaf community, our work provides insights for developing user-centered sign language systems. Our study highlights the importance of bridging the gap between technological innovation and real-world application, paving the way for accessible and transformative communication tools.",
         "keywords": ["ASL"],
         "description": "Another description of the award...",
         "url": "",
-        "date": "June, 2024",
+        "date": "April 29, 2025",
         "researchers": [
-            { "name": "Vimal Joseph", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" },
+            { "name": "Vimal Joseph", "link": "https://chive.cse.lsu.edu/people/students/VimalThomasJoseph/VimalThomasJoseph.html" },
             { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
         ],
         "place":"USA",
@@ -55,22 +81,22 @@
       },
     {
       "label": ["ReviewVideo","current"],
-      "venues": "",
-      "info": "",
+      "venues": "CHI2025",
+      "info": "CHI2025 Late-breaking Work",
       "imgSrc": "../img/research/ReviewVideo/ReviewVideo.png",
       "videoSrc":"",
       "imgMore":[""],
-      "title": "Redefining Product Review Video Navigation with Personalized Features",
+      "title": "Synoptic: Query-Driven Multimodal Product Review Summarization System",
       "link": "../researchTopic/ReviewVideo.html",
       "pdf": "",
       "content": "This research aims to give an unique user experience to the consumers who watched product review videos. This experience will help them to make a mindful purchase decision and having the insights of the watched videos in their mind.",
-      "abstract": "",
+      "abstract": "Product reviews play a critical role in making purchase decisions. A recent shift toward multimodal reviews highlights the preference for visual and audio information over texts. While long-form review videos are information-rich, viewers often skip to find what they need, resulting in missing information. Moreover, videos are difficult to search for specific content, leading to ineffective information gathering. In this work, we surveyed 177 people to learn about the challenges and strategies to gather information from product review videos before making purchase decisions. Based on our findings, we designed and developed Synoptic, an interactive multimodal video player that allows users to search within videos and generate video summaries based on customized queries. Our initial evaluation with 40 participants suggests that Synoptic helped viewers gather personalized information from product review videos effectively and efficiently. It also enables purchase decision-making while maintaining user agency and prioritizing their preferences.",
       "keywords": ["ReviewVideo"],
       "description": "",
       "url": "",
-      "date": "July, 2024",
+      "date": "April 29, 2025",
       "researchers": [
-          { "name": "Nushrat Ria", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" },
+          { "name": "Nushrat Ria", "link": "https://chive.cse.lsu.edu/people/students/NushratJahanRia/nush.html" },
           { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
       ],
       "place":"USA",
@@ -96,7 +122,7 @@
     "url": "",
     "date": "Dec, 2024",
     "researchers": [
-        { "name": "Saramsh Gautam", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" },
+        { "name": "Saramsh Gautam", "link": "https://chive.cse.lsu.edu/people/students/SaramshGautam/Saramsh.html" },
         { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
     ],
     "place":"USA",
@@ -122,7 +148,7 @@
     "url": "",
     "date": "October 17, 2024",
     "researchers": [
-        { "name": "Vyri Yang", "link": "https://chive.cse.lsu.edu/people/students/VyriYang/VyriYang.html" },
+        { "name": "Vyri Yang", "link": "https://vyriyang.com" },
         { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
     ],
     "place": "St. Pete Beach, Florida, USA",

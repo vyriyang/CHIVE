@@ -1,6 +1,24 @@
 {
   "years": [
-      {
+    {
+      "year": "2025",
+      "news": [
+        {
+          "label": ["Publications"],
+          "category":"Publications",
+          "content":"CHI2025",
+          "title": "Three of our papers have been accepted to be published in the Extended Abstracts of the 2025 Conference on Human Factors in Computing Systems.",
+          "description": "CHI2025",
+          "imgSrc": "../img/news/CHI2025.png",
+          "imgMore":[""],
+          "news":"",
+          "date": "April 26, 2024",
+          "url": "https://chi2025.acm.org",
+          "pdf":""
+        }
+      ]
+    },
+    {
         "year": "2024",
         "news": [
           {
@@ -8,7 +26,7 @@
             "category":"Publications",
             "content":"IEEE VIS2024",
             "title": "Our paper, 'Animating the Narrative: A Review of Animation Styles in Narrative Visualization,' has been accepted for presentation at IEEE VIS2024",
-            "description": "Short description of the News.",
+            "description": "IEEE VIS2024",
             "imgSrc": "../img/research/AnimatingTheNarrative/vis24b-sub1192-Animating the Narrative-Representative Image.png",
             "imgMore":["../img/research/AnimatingTheNarrative/Animating the Narrative Representative Image and Caption.png"],
             "news":"",
@@ -26,10 +44,10 @@
             "category":"",
             "content":"",
             "title": "Welcome to CHIVE",
-            "description": "Short description of the publication.",
+            "description": "",
             "imgSrc": "../img/logo/CHIVE-4Full.png",
             "imgMore":[""],
-            "news":"Welcome imformation for CHIVE.",
+            "news":"We are excited to announce the official launch of the Computer Human Interaction and Visualization Experience (CHIVE) Lab, established in August 2023 at the Division of Computer Science and Engineering, Louisiana State University.<br><br> Under the guidance of Dr. Mahmood Jasim, our lab explores cutting-edge research at the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.<br><br> At CHIVE, we aim to design impactful, user-centered technologies that bridge the gap between data, people, and society.<br><br> Stay tuned for updates, projects, and opportunities to collaborate!",
             "date": "August, 2023",
             "url": "",
             "pdf":""

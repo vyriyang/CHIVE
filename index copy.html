@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computer Human Interaction and Visualization Experience Lab</title>
+    <title>CHIVE &bull; Computer Human Interaction and Visualization Experience Lab</title>
     <style>
         body {
             font-family: 'PT Sans Narrow', sans-serif;
@@ -275,7 +275,7 @@
             scroll-snap-align: start;
             flex: 0 0 auto;
             width: 430px;
-            height: 650px;
+            height: auto;
             margin-right: 20px;
             background: white;
             box-shadow: 0 0 25px 0 rgba(0, 0, 0, .1);
@@ -285,7 +285,19 @@
 
         .research_list img {
             width: 100%;
-            height: 300px;
+            height: auto;
+            object-fit: cover;
+            object-position: top;
+            max-height: 250px;
+        }
+
+        .list_video{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            object-position: top;
+            max-height: 250px;
+
         }
 
         .research_list_last {
@@ -316,7 +328,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 4;
+            -webkit-line-clamp: 6;
             -webkit-box-orient: vertical;
         }
 
@@ -338,6 +350,10 @@
         }
 
         .research_list:hover img {
+            transform: scale(1.1);
+        }
+
+        .research_list:hover video {
             transform: scale(1.1);
         }
 
@@ -368,10 +384,11 @@
         <nav class="scrollspy-nav">
             <a class="scrollspy-link" href="index.html">Home</a>
             <a class="scrollspy-link" href="research.html">Research</a>
-            <a class="scrollspy-link" href="people.html">People</a>
             <a class="scrollspy-link" href="publications.html">Publications</a>
+            <a class="scrollspy-link" href="people.html">People</a>            
             <a class="scrollspy-link" href="news.html">News</a>
-            <!--a class="scrollspy-link" href="activity.html">Activity</a-->
+            <!-- <a class="scrollspy-link" href="activity.html">Activity</a> -->
+            <a class="scrollspy-link" href="resource.html">Resource</a>
         </nav>  
     </header>
     <section class="section-1">
@@ -395,15 +412,15 @@
                 <h2>Research</h2>
                 <p> Explore our lab's cutting-edge work in human-computer interaction, visualization, AI, ML, and etc.</p>
             </div>
-            <div class="feature" onclick="navigateTo('people.html')">
-                <img src="img/logo/people.png" alt="people">
-                <h2>People</h2>
-                <p>Meet the diverse team of researchers driving innovation at the CHIVE Lab.</p>
-            </div>
             <div class="feature" onclick="navigateTo('publications.html')">
                 <img src="img/logo/publications.png" alt="publications">
                 <h2>Publications</h2>
                 <p>Discover our latest contributions to academic research through our published papers and conference presentations.</p>
+            </div>
+            <div class="feature" onclick="navigateTo('people.html')">
+                <img src="img/logo/people.png" alt="people">
+                <h2>People</h2>
+                <p>Meet the diverse team of researchers driving innovation at the CHIVE Lab.</p>
             </div>
             <div class="feature" onclick="navigateTo('news.html')">
                 <img src="img/logo/news.png" alt="news">
@@ -449,66 +466,104 @@
         }
 
         function renderResearchData(data) {
-            const scrollContainer = document.getElementById('scroll-container');
-            const currentResearchSection = document.getElementById('current-research-section');
-            
-            // 对研究数据按照日期降序排序
-            const currentResearch = data
-                .filter(research => research.label.includes("current"))
-                .sort((a, b) => new Date(b.date) - new Date(a.date));
+    const scrollContainer = document.getElementById('scroll-container');
+    const currentResearchSection = document.getElementById('current-research-section');
+    
+    // 对研究数据按照日期降序排序
+    const currentResearch = data
+        .filter(research => research.label.includes("current"))
+        .sort((a, b) => new Date(b.date) - new Date(a.date));
 
-            if (currentResearch.length > 0) {
-                currentResearchSection.style.display = 'block'; // 显示"Current Research"部分
+    if (currentResearch.length > 0) {
+        currentResearchSection.style.display = 'block'; // 显示"Current Research"部分
+    } else {
+        return; // 没有"current"标签的研究时，直接返回
+    }
+
+    currentResearch.forEach(research => {
+        const researchList = document.createElement('div');
+        researchList.classList.add('research_list');
+
+        // "View All Research" 不进行视频或图片的判定
+        if (research.title === "View All Research") {
+            researchList.innerHTML = `
+                <div class="research_list_last">
+                    <a href="research.html">
+                        <img src="${research.imgSrc}" alt="" class="list_img_last">
+                    </a>
+                </div>
+            `;
+        } else {
+            // 判断 videoSrc 是否为空，决定是显示图片还是视频
+            let mediaContent;
+            if (research.videoSrc) {
+                mediaContent = `
+                    <video class="list_video" autoplay muted loop playsinline>
+                        <source src="${research.videoSrc}" type="video/mp4">
+                        <source src="${research.videoSrc}" type="video/webm">
+                        <source src="${research.videoSrc}" type="video/ogg">
+                        <source src="${research.videoSrc}" type="video/quicktime">
+                        Your browser does not support the video tag.
+                    </video>
+                `;
             } else {
-                return; // 没有"current"标签的研究时，直接返回
+                mediaContent = `
+                    <a href="${research.link}" target="_blank">
+                        <img src="${research.imgSrc}" alt="" class="list_img">
+                    </a>
+                `;
             }
 
-            currentResearch.forEach(research => {
-                const researchList = document.createElement('div');
-                researchList.classList.add('research_list');
+// 判断研究者的数量
+let researchersHTML;
 
-                if (research.title === "View All Research") {
-                    researchList.innerHTML = `
-                        <div class="research_list_last">
-                            <a href="research.html">
-                                <img src="${research.imgSrc}" alt="" class="list_img_last">
-                            </a>
-                        </div>
-                    `;
-                } else {
-                    researchList.innerHTML = `
-                        <div class="research_item">
-                            <a href="${research.link}" target="_blank">
-                                <img src="${research.imgSrc}" alt="" class="list_img">
-                            </a>
-                            <div class="research_padding">
-                                <div class="sub-title">
-                                    <a href="${research.link}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-                                    ${research.title} ></a>
-                                </div>
-                                <div class="cont overflow">
-                                    <a href="${research.link}" style="text-decoration: none; color:#5d5d5d; cursor: pointer;" rel="alternate bookmark" target="_blank">
-                                    ${research.content} ></a>
-                                    
-                                </div>
-                                <div class="cont-researcher overflow">
-                                    ${research.date}
-                                    <br>Researcher: ${research.researchers.map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`).join(', ')}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
+if (research.researchers.length > 3) {
+    // 超过 3 个时，只显示前 2 个研究者名字，并添加 ", and more"
+    researchersHTML = research.researchers
+        .slice(0, 2)
+        .map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`)
+        .join(', ') + ', and more';
+} else {
+    // 不超过 3 个时，显示所有研究者名字
+    researchersHTML = research.researchers
+        .slice(0, 3)  // 显示最多 3 个研究者
+        .map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`)
+        .join(', ');
+}
 
-                scrollContainer.appendChild(researchList);
-            });
+
+            researchList.innerHTML = `
+                <div class="research_item">
+                    ${mediaContent}
+                    <div class="research_padding">
+                        <div class="sub-title">
+                            <a href="${research.link}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+                            ${research.title}</a>
+                        </div>
+                        <div class="cont overflow">
+                            <a href="${research.link}" style="text-decoration: none; color:#5d5d5d; cursor: pointer;" rel="alternate bookmark" target="_blank">
+                            ${research.content}</a>
+                        </div>
+                        <div class="cont-researcher overflow">
+                            ${research.date}
+                            <br>Researcher: ${researchersHTML}
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
-        window.onload = async function() {
-            document.getElementById('scroll-container').scrollLeft = 0;
-            const researchData = await fetchResearchData();
-            renderResearchData(researchData);
-        };
+        scrollContainer.appendChild(researchList);
+    });
+}
+
+
+window.onload = async function() {
+    document.getElementById('scroll-container').scrollLeft = 0;
+    const researchData = await fetchResearchData();
+    renderResearchData(researchData);
+};
+
     </script>
 </body>
 </html>

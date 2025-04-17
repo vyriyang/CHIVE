@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CHIVE &bull; News</title>
+  <title>CHIVE &bull; Resource</title>
   <link rel="stylesheet" href="dist/css/scrollspy.css"/>
   <link rel="stylesheet" href="dist/css/nav.css"/>
   <style>
@@ -82,10 +82,18 @@
   
   <section class="scrollspy-section" id="News">
     <div class="section_2">
-      <div class="title">News
+      <div class="title">Resource
         <div class="line"></div>
       </div>
-      <div class="grids-news"></div> <!-- 修改后的 class -->
+      <!-- Updated resource content with ZIP download -->
+    <!-- Resource content with direct ZIP download -->
+    <!-- Resource content with direct ZIP download -->
+    <div class="sec_sub_title" style="margin-top: 30px;">
+      You can download the CHIVE logo package here for use in any conference presentations or posters:<br>
+      <a href="download/logoCHIVE-final.zip" download style="color: #3f44b6; text-decoration: underline;">
+        Click here to download <code>logoCHIVE-final.zip</code>
+      </a>
+    </div>
     </div>
   </section>
 
@@ -114,56 +122,6 @@
   
   <script src="dist/js/scrollspy.min.js"></script>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      fetch("/json/news.json")
-        .then((response) => response.json())
-        .then((data) => {
-          const newsGrids = document.querySelector(".grids-news"); // 使用新的 class 选择器
-
-          // 根据时间降序排序
-          data.years.forEach((year) => {
-            year.news.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-            year.news.forEach((newsItem) => {
-              const newsList = document.createElement("div");
-              newsList.className = "research_list";
-
-              const imgContent = newsItem.imgSrc
-                ? `<img src="${newsItem.imgSrc}" alt="News Image" class="list_img">`
-                : "";
-
-              const categoryContent = newsItem.category
-                ? `<a style="color:#ab2d05;"><strong>${newsItem.category}</strong></a> | `
-                : "";
-
-              const contentContent = newsItem.content
-                ? `${newsItem.content}`
-                : "";
-
-              newsList.innerHTML = `
-                ${imgContent}
-                <div class="research_padding">
-                  <div class="sub-title-news">${newsItem.title}</div>
-                  <div class="cont cont_bottom">
-                    ${categoryContent}${contentContent}
-                  </div>
-                  <div class="cont-date">
-                    ${newsItem.date}
-                  </div>
-                </div>
-              `;
-
-              // 添加点击事件，跳转到 newsPage.html
-              newsList.addEventListener("click", function () {
-                window.location.href = `newsPage.html?title=${encodeURIComponent(newsItem.title)}`;
-              });
-
-              newsGrids.appendChild(newsList);
-            });
-          });
-        })
-        .catch((error) => console.error("Error fetching news data:", error));
-    });
   </script>
 </body>
 </html>

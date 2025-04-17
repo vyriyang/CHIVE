@@ -1,6 +1,53 @@
 {
   "years": [
-      {
+    {
+      "year": "2025",
+      "publications": [
+        {
+          "label": ["ReviewVideo"],
+          "venues":"CHI2025",
+          "venuesname":"2025 Conference on Human Factors in Computing Systems(CHI)",
+          "title": "Synoptic: Query-Driven Multimodal Product Review Summarization System",
+          "authors": [
+              {  "name": "Nushrat Ria", "link": "https://chive.cse.lsu.edu/people/students/NushratJahanRia/nush.html" },
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+          ],
+          "description": "",
+          "date": "April 29, 2025",
+          "url": "https://programs.sigchi.org/chi/2025/program/content/194230",
+          "pdf":""
+        },
+        {
+          "label": ["ASL"],
+          "venues":"CHI2025",
+          "venuesname":"2025 Conference on Human Factors in Computing Systems(CHI)",
+          "title": "Voice of the Unheard: Conversational Challenges Between Signers and Non-Signers and Design Interventions for Adaptive SLT Systems",
+          "authors": [
+              { "name": "Vimal Joseph", "link": "https://chive.cse.lsu.edu/people/students/VimalThomasJoseph/VimalThomasJoseph.html" },
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+          ],
+          "description": "A research paper on conversational challenges between signers and non-signers, providing insights into design interventions for adaptive SLT systems.",
+          "date": "April 29, 2025",
+          "url": "https://programs.sigchi.org/chi/2025/program/content/194683",
+          "pdf":""
+        },
+        {
+          "label": ["AINEWs"],
+          "venues":"CHI2025",
+          "venuesname":"2025 Conference on Human Factors in Computing Systems(CHI)",
+          "title": "Combining AI and Crowdsourcing to Identify Misinformation in Online News",
+          "authors": [
+              { "name": "Mehrasa Amiri", "link": "" },
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+          ],
+          "description": "",
+          "date": "April 29, 2025",
+          "url": "",
+          "pdf":""
+        }
+      ]
+    },
+    {
         "year": "2024",
         "publications": [
           {
@@ -9,7 +56,7 @@
             "venuesname":"2024 IEEE Visualization and Visual Analytics (VIS)",
             "title": "Animating the Narrative: A Review of Animation Styles in Narrative Visualization",
             "authors": [
-                { "name": "Vyri Yang", "link": "../people/students/VyriYang/VyriYang.html" },
+                { "name": "Vyri Yang", "link": "https://vyriyang.com" },
                 { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
             ],
             "description": "We explore the design space of narrative visualization, focusing on animation styles. We categorize 80 papers from top visualization venues into six categories, including Animation Style, Interactivity, Methodology, Technology, Evaluation Type , and Application Domain. We discuss the interplay between different visualization techniques and elements and the trend to focus on domain-specific visualizations.",
