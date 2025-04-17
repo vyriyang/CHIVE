@@ -582,117 +582,115 @@
         function navigateTo(url) {
             window.location.href = url;
         }
-
+    
         function openInNewTab(url) {
             window.open(url, '_blank').focus();
         }
-
+    
         async function fetchResearchData() {
             const response = await fetch('/json/research/research.json');
             const data = await response.json();
             return data;
         }
-
-        function renderResearchData(data) {
-    const scrollContainer = document.getElementById('scroll-container');
-    const currentResearchSection = document.getElementById('current-research-section');
     
-    // 对研究数据按照日期降序排序
-    const currentResearch = data
-        .filter(research => research.label.includes("current"))
-        .sort((a, b) => new Date(b.date) - new Date(a.date));
-
-    if (currentResearch.length > 0) {
-        currentResearchSection.style.display = 'block'; // 显示"Current Research"部分
-    } else {
-        return; // 没有"current"标签的研究时，直接返回
-    }
-
-    currentResearch.forEach(research => {
-        const researchList = document.createElement('div');
-        researchList.classList.add('research_list');
-
-        // "View All Research" 不进行视频或图片的判定
-        if (research.title === "View All Research") {
-            researchList.innerHTML = `
-                <div class="research_list_last">
-                    <a href="research.html">
-                        <img src="${research.imgSrc}" alt="" class="list_img_last">
-                    </a>
-                </div>
-            `;
-        } else {
-            // 判断 videoSrc 是否为空，决定是显示图片还是视频
-            let mediaContent;
-            if (research.videoSrc) {
-                mediaContent = `
-                    <video class="list_video" autoplay muted loop playsinline>
-                        <source src="${research.videoSrc}" type="video/mp4">
-                        <source src="${research.videoSrc}" type="video/webm">
-                        <source src="${research.videoSrc}" type="video/ogg">
-                        <source src="${research.videoSrc}" type="video/quicktime">
-                        Your browser does not support the video tag.
-                    </video>
-                `;
+        function renderResearchData(data) {
+            const scrollContainer = document.getElementById('scroll-container');
+            const currentResearchSection = document.getElementById('current-research-section');
+            
+            // 对研究数据按照日期降序排序
+            const currentResearch = data
+                .filter(research => research.label.includes("current"))
+                .sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+            if (currentResearch.length > 0) {
+                currentResearchSection.style.display = 'block'; // 显示"Current Research"部分
             } else {
-                mediaContent = `
-                    <a href="${research.link}" target="_blank">
-                        <img src="${research.imgSrc}" alt="" class="list_img">
-                    </a>
-                `;
+                return; // 没有"current"标签的研究时，直接返回
             }
-
-// 判断研究者的数量
-let researchersHTML;
-
-if (research.researchers.length > 3) {
-    // 超过 3 个时，只显示前 2 个研究者名字，并添加 ", and more"
-    researchersHTML = research.researchers
-        .slice(0, 2)
-        .map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`)
-        .join(', ') + ', and more';
-} else {
-    // 不超过 3 个时，显示所有研究者名字
-    researchersHTML = research.researchers
-        .slice(0, 3)  // 显示最多 3 个研究者
-        .map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`)
-        .join(', ');
-}
-
-
-            researchList.innerHTML = `
-                <div class="research_item">
-                    ${mediaContent}
-                    <div class="research_padding">
-                        <div class="sub-title">
-                            <a href="${research.link}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-                            ${research.title}</a>
+    
+            currentResearch.forEach(research => {
+                const researchList = document.createElement('div');
+                researchList.classList.add('research_list');
+    
+                // "View All Research" 不进行视频或图片的判定
+                if (research.title === "View All Research") {
+                    researchList.innerHTML = `
+                        <div class="research_list_last">
+                            <a href="research.html">
+                                <img src="${research.imgSrc}" alt="" class="list_img_last">
+                            </a>
                         </div>
-                        <div class="cont overflow">
-                            <a href="${research.link}" style="text-decoration: none; color:#5d5d5d; cursor: pointer;" rel="alternate bookmark" target="_blank">
-                            ${research.content}</a>
+                    `;
+                } else {
+                    // 判断 videoSrc 是否为空，决定是显示图片还是视频
+                    let mediaContent;
+                    if (research.videoSrc) {
+                        mediaContent = `
+                            <video class="list_video" autoplay muted loop playsinline>
+                                <source src="${research.videoSrc}" type="video/mp4">
+                                <source src="${research.videoSrc}" type="video/webm">
+                                <source src="${research.videoSrc}" type="video/ogg">
+                                <source src="${research.videoSrc}" type="video/quicktime">
+                                Your browser does not support the video tag.
+                            </video>
+                        `;
+                    } else {
+                        mediaContent = `
+                            <a href="${research.link}">
+                                <img src="${research.imgSrc}" alt="" class="list_img">
+                            </a>
+                        `;
+                    }
+    
+                    // 判断研究者的数量
+                    let researchersHTML;
+    
+                    if (research.researchers.length > 3) {
+                        // 超过 3 个时，只显示前 2 个研究者名字，并添加 ", and more"
+                        researchersHTML = research.researchers
+                            .slice(0, 2)
+                            .map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`)
+                            .join(', ') + ', and more';
+                    } else {
+                        // 不超过 3 个时，显示所有研究者名字
+                        researchersHTML = research.researchers
+                            .slice(0, 3)  // 显示最多 3 个研究者
+                            .map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`)
+                            .join(', ');
+                    }
+    
+                    researchList.innerHTML = `
+                        <div class="research_item">
+                            ${mediaContent}
+                            <div class="research_padding">
+                                <div class="sub-title">
+                                    <a href="${research.link}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark">
+                                    ${research.title}</a>
+                                </div>
+                                <div class="cont overflow">
+                                    <a href="${research.link}" style="text-decoration: none; color:#5d5d5d; cursor: pointer;" rel="alternate bookmark">
+                                    ${research.content}</a>
+                                </div>
+                                <div class="cont-researcher overflow">
+                                    ${research.date}
+                                    <br>Researcher: ${researchersHTML}
+                                </div>
+                            </div>
                         </div>
-                        <div class="cont-researcher overflow">
-                            ${research.date}
-                            <br>Researcher: ${researchersHTML}
-                        </div>
-                    </div>
-                </div>
-            `;
+                    `;
+                }
+    
+                scrollContainer.appendChild(researchList);
+            });
         }
-
-        scrollContainer.appendChild(researchList);
-    });
-}
-
-
-window.onload = async function() {
-    document.getElementById('scroll-container').scrollLeft = 0;
-    const researchData = await fetchResearchData();
-    renderResearchData(researchData);
-};
-
+    
+        window.onload = async function() {
+            document.getElementById('scroll-container').scrollLeft = 0;
+            const researchData = await fetchResearchData();
+            renderResearchData(researchData);
+        };
     </script>
+    
 </body>
 </html>
 
