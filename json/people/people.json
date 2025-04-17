@@ -10,7 +10,7 @@
         {
             "name": "Vyri Junhan Yang",
             "title": "PhD Researcher",
-            "description": "Human Computer Interaction, Narrative Visualization, Applied Machine Learning, and data-driven interactive platforms.",
+            "description": "Human Computer Interaction, Narrative Visualization, Applied Machine Learning, and Data-driven Interactive Platforms.",
             "image": "img/people/VyriYang/VyriYang.jpg",
             "link": "people/students/VyriYang/VyriYang.html"
         },
@@ -34,6 +34,13 @@
             "description": "Human Computer Interaction.",
             "image": "img/people/VimalThomasJoseph/vimal_thomas_joseph.png",
             "link": "people/students/VimalThomasJoseph/VimalThomasJoseph.html"
+        },
+        {
+            "name": "Mehrasa Amiri",
+            "title": "PhD Researcher",
+            "description": "Human Computer Interaction.",
+            "image": "img/people/MehrasaAmiri/MehrasaAmiri.jpg",
+            "link": ""
         }
     ]
 }
