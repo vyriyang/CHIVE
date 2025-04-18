@@ -5,7 +5,7 @@
       "publications": [
         {
           "label": ["ReviewVideo"],
-          "venues":"CHI2025",
+          "venues":"CHI'25",
           "venuesname":"2025 Conference on Human Factors in Computing Systems(CHI)",
           "title": "Synoptic: Query-Driven Multimodal Product Review Summarization System",
           "authors": [
@@ -19,7 +19,7 @@
         },
         {
           "label": ["ASL"],
-          "venues":"CHI2025",
+          "venues":"CHI'25",
           "venuesname":"2025 Conference on Human Factors in Computing Systems(CHI)",
           "title": "Voice of the Unheard: Conversational Challenges Between Signers and Non-Signers and Design Interventions for Adaptive SLT Systems",
           "authors": [
@@ -33,7 +33,7 @@
         },
         {
           "label": ["AINEWs"],
-          "venues":"CHI2025",
+          "venues":"CHI'25",
           "venuesname":"2025 Conference on Human Factors in Computing Systems(CHI)",
           "title": "Combining AI and Crowdsourcing to Identify Misinformation in Online News",
           "authors": [
@@ -88,7 +88,7 @@
         },
         {
           "label": [""],
-          "venues":"CHI’22",
+          "venues":"CHI'22",
           "venuesname":"ACM (Association of Computing Machinery) CHI conference on Human Factors in Computing Systems",
           "title": "Supporting Serendipitous Discovery and Balanced Analysis of Online Product Reviews with Interaction-Driven Metrics and Bias-Mitigating Suggestions.",
           "authors": [
@@ -109,7 +109,7 @@
         "publications": [
             {
               "label": [""],
-              "venues":"[Best Paper Honorable Mention Award] DIS’21",
+              "venues":"[Best Paper Honorable Mention Award] DIS'21",
               "venuesname":"ACM Designing Interactive Systems Conference (DIS)",
               "title": "CommunityPulse: Facilitating Community Input Analysis by Surfacing Hidden Insights, Reflections, and Priorities",
               "authors": [
