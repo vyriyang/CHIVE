@@ -74,7 +74,7 @@
           "label": [""],
           "venues":"[Best Paper Award] EuroVis",
           "venuesname":"Eurographics Conference on Visualization",
-          "title": "Of Course it’s Political! A Critical Inquiry into Underemphasized Dimensions in Civic Text Visualization",
+          "title": "Of Course it's Political! A Critical Inquiry into Underemphasized Dimensions in Civic Text Visualization",
           "authors": [
               { "name": "Eric P. S. Baumer" },
               { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
@@ -125,9 +125,9 @@
             },
           {
             "label": [""],
-            "venues":"[Nominated for 2020 CODAwards] C&C’21",
+            "venues":"[Nominated for 2020 CODAwards] C&C'21",
             "venuesname":"ACM Creativity and Cognition",
-            "title": "RisingEMOTIONS: Bridging Art and Technology to Visualize Public’s Emotions about Climate Change",
+            "title": "RisingEMOTIONS: Bridging Art and Technology to Visualize Public's Emotions about Climate Change",
             "authors": [
                 
                 { "name": "Carolina Aragón"},
