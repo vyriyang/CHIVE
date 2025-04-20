@@ -436,8 +436,8 @@
         }
 
         .scroll-down-indicator .circle {
-        width: 20vw;
-        height: 20vw;
+        width: clamp(250px, 20vw, 400px);
+        height: clamp(250px, 20vw, 400px);
         background-color: rgba(243, 111, 36, 0.5); /* 柔和圓圈，可自行替換顏色 */
         border-radius: 50%;
         display: flex;
@@ -451,7 +451,7 @@
         .scroll-down-indicator .circle span {
         font-family: 'PT Sans Narrow', sans-serif;
         padding:1vw;
-        font-size: 1vw;
+        font-size: clamp(14px, 1vw, 16px);
         color: white;
         line-height: 1.3;
         }
@@ -521,13 +521,14 @@
             <div class="scroll-down-indicator">
               <div class="circle">
                 <!--span>&rarr;</span-->
-                <span>● Our next group meeting will be on <br>Friday, April 18, 2025, at 1:00 PM.<br>
+                <span>● Our latest group meeting was on <br>Friday, April 18, 2025, at 1:00 PM.<br>
                     Topic: Designing a Good Interview <br>in a Formative Study.<br><br>
                     ● Important submission deadline:<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSCW, May 13, 2025<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CHI2026, September, 2025<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DIS, January<br>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VIS, March<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CSCW, May<br>
+                    
                 </span>
 
               </div>

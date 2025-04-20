@@ -5,8 +5,8 @@
       "publications": [
         {
           "label": ["ReviewVideo"],
-          "venues":"CHI'25",
-          "venuesname":"2025 Conference on Human Factors in Computing Systems(CHI)",
+          "venues":"CHI'25 Extended Abstracts",
+          "venuesname":"Extended Abstracts of the 2025 CHI Conference on Human Factors in Computing Systems",
           "title": "Synoptic: Query-Driven Multimodal Product Review Summarization System",
           "authors": [
               {  "name": "Nushrat Ria", "link": "https://chive.cse.lsu.edu/people/students/NushratJahanRia/nush.html" },
@@ -19,8 +19,8 @@
         },
         {
           "label": ["ASL"],
-          "venues":"CHI'25",
-          "venuesname":"2025 Conference on Human Factors in Computing Systems(CHI)",
+          "venues":"CHI'25 Extended Abstracts",
+          "venuesname":"Extended Abstracts of the 2025 CHI Conference on Human Factors in Computing Systems",
           "title": "Voice of the Unheard: Conversational Challenges Between Signers and Non-Signers and Design Interventions for Adaptive SLT Systems",
           "authors": [
               { "name": "Vimal Joseph", "link": "https://chive.cse.lsu.edu/people/students/VimalThomasJoseph/VimalThomasJoseph.html" },
@@ -33,8 +33,8 @@
         },
         {
           "label": ["AINEWs"],
-          "venues":"CHI'25",
-          "venuesname":"2025 Conference on Human Factors in Computing Systems(CHI)",
+          "venues":"CHI'25 Extended Abstracts",
+          "venuesname":"Extended Abstracts of the 2025 CHI Conference on Human Factors in Computing Systems",
           "title": "Combining AI and Crowdsourcing to Identify Misinformation in Online News",
           "authors": [
               { "name": "Mehrasa Amiri", "link": "" },
@@ -44,6 +44,23 @@
           "date": "April 29, 2025",
           "url": "https://programs.sigchi.org/chi/2025/program/content/194588",
           "pdf":""
+        },
+        {
+          "label": [""],
+          "venues":"IUI'25",
+          "venuesname":"ACM Conference on Intelligent User Interfaces (ACM IUI)",
+          "title": "Coalesce: An Accessible Mixed-Initiative System for Designing Community-Centric Questionnaires",
+          "authors": [
+              { "name": "Cassandra Overney", "link": "" },
+              { "name": "Daniel T Kessler", "link": "" },
+              { "name": "Suyash Pradeep Fulay", "link": "" },
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+              { "name": "Deb Roy", "link": "" }
+          ],
+          "description": "",
+          "date": "March, 2025",
+          "url": "https://dl.acm.org/doi/pdf/10.1145/3708359.3712118",
+          "pdf":"https://dl.acm.org/doi/pdf/10.1145/3708359.3712118"
         }
       ]
     },
@@ -63,13 +80,152 @@
             "date": "Oct, 2024",
             "url": "https://ieeevis.org/year/2024/program/paper_v-short-1192.html",
             "pdf":"https://ieeevis.b-cdn.net/vis_2024/pdfs/v-short-1192.pdf"
+          },
+          {
+            "label": [""],
+            "venues":"DIS'24",
+            "venuesname":"ACM Conference on Designing Interactive Systems 2024",
+            "title": "Beyond text and speech in conversational agents: Mapping the design space of avatars",
+            "authors": [
+                { "name": "Mashrur Rashik", "link": "" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Kostiantyn Kucher", "link": "" },
+                { "name": "Ali Sarvghad", "link": "" },
+                { "name": "Narges Mahyar", "link": "" }
+            ],
+            "description": "",
+            "date": "July, 2024",
+            "url": "https://dl.acm.org/doi/pdf/10.1145/3643834.3661563",
+            "pdf":"https://dl.acm.org/doi/pdf/10.1145/3643834.3661563"
           }
+        ]
+      },
+      {
+        "year": "2023",
+        "publications": [
+          {
+            "label": [""],
+            "venues":"VIS4Good",
+            "venuesname":"2023 IEEE Workshop on Visualization for Social Good (VIS4Good)",
+            "title": "Bridging the Divide: Promoting Serendipitous Discovery of Opposing Viewpoints with Visual Analytics in Social Media",
+            "authors": [
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Mumtaz Fatima", "link": "" },
+                { "name": "Sagarika Ramesh Sonni", "link": "" },
+                { "name": "Narges Mahyar", "link": "" }
+            ],
+            "description": "",
+            "date": "December, 2023",
+            "url": "https://ieeexplore.ieee.org/abstract/document/10339932",
+            "pdf":"https://vis4good.github.io/papers/2023/jasim.pdf"
+          },
+          {
+            "label": [""],
+            "venues":"SIGIR'23",
+            "venuesname":"Proceedings of the 46th International ACM SIGIR Conference on Research and Development in Information Retrieval",
+            "title": "Editable user profiles for controllable text recommendations",
+            "authors": [
+                { "name": "Sheshera Mysore", "link": "" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Andrew McCallum", "link": "" },
+                { "name": "Hamed Zamani", "link": "" }
+            ],
+            "description": "",
+            "date": "July, 2023",
+            "url": "https://dl.acm.org/doi/abs/10.1145/3539618.3591677",
+            "pdf":"https://dl.acm.org/doi/pdf/10.1145/3539618.3591677"
+          },
+          {
+            "label": [""],
+            "venues":"",
+            "venuesname":"",
+            "title": "A Qualitative Exploration of People's Experiences on Social Media",
+            "authors": [
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Foroozan Daneshzand", "link": "" },
+                { "name": "Sheelagh Carpendale", "link": "" },
+                { "name": "Narges Mahyar", "link": "" }
+            ],
+            "description": "",
+            "date": "May, 2023",
+            "url": "https://www.researchsquare.com/article/rs-2856084/v1",
+            "pdf":"https://assets-eu.researchsquare.com/files/rs-2856084/v1/b5ce3881-8eaa-452f-9649-dd7ea0d3d0af.pdf?c=1700065349"
+          },
+          {
+            "label": [""],
+            "venues":" CSCW1",
+            "venuesname":"Proceedings of the ACM on Human-Computer Interaction",
+            "title": "CommunityBots: creating and evaluating A multi-agent chatbot platform for public input elicitation",
+            "authors": [
+                { "name": "Zhiqiu Jiang", "link": "" },
+                { "name": "Mashrur Rashik", "link": "" },
+                { "name": "Kunjal Panchal", "link": "" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Ali Sarvghad", "link": "" },
+                { "name": "Pari Riahi", "link": "" },
+                { "name": "Erica DeWitt", "link": "" },
+                { "name": "Fey Thurber", "link": "" },
+                { "name": "Narges Mahyar", "link": "" }
+            ],
+            "description": "",
+            "date": "April, 2023",
+            "url": "https://dl.acm.org/doi/abs/10.1145/3579469",
+            "pdf":"https://dl.acm.org/doi/pdf/10.1145/3579469"
+          },
+          {
+            "label": [""],
+            "venues":"(CHIIR'23",
+            "venuesname":"Proceedings of the 2023 Conference on Human Information Interaction and Retrieval",
+            "title": "How data scientists review the scholarly literature",
+            "authors": [
+                { "name": "Sheshera Mysore", "link": "" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Haoru Song", "link": "" },
+                { "name": "Sarah Akbar", "link": "" },
+                { "name": "Andre Kenneth Chase Randall", "link": "" },
+                { "name": "Narges Mahyar", "link": "" }
+            ],
+            "description": "",
+            "date": "March, 2023",
+            "url": "https://dl.acm.org/doi/abs/10.1145/3576840.3578309",
+            "pdf":"https://dl.acm.org/doi/pdf/10.1145/3576840.3578309"
+          },
+          {
+            "label": [""],
+            "venues":"",
+            "venuesname":"",
+            "title": "Human-Centered Technologies for Inclusive Collection and Analysis of Public-Generated Data",
+            "authors": [
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+            ],
+            "description": "",
+            "date": "",
+            "url": "https://core.ac.uk/download/pdf/591821613.pdf",
+            "pdf":"https://core.ac.uk/download/pdf/591821613.pdf"
+          }
+          
         ]
       },
     
     {
       "year": "2022",
       "publications": [
+        {
+          "label": [""],
+          "venues":"EuroVis 2022",
+          "venuesname":"Eurographics Conference on Visualization",
+          "title": "Of course it's political! a critical inquiry into underemphasized dimensions in civic text visualization",
+          "authors": [
+              { "name": "Eric PS Baumer", "link": "" },
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+              { "name": "Ali Sarvghad", "link": "" },
+              { "name": "Narges Mahyar", "link": "" }
+          ],
+          "description": "",
+          "date": "June, 2022",
+          "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/cgf.14518",
+          "pdf":"https://diglib.eg.org/server/api/core/bitstreams/6356a36f-3915-46ae-9034-16b4f1c7decf/content"
+        },
         {
           "label": [""],
           "venues":"[Best Paper Award] EuroVis",
@@ -98,9 +254,27 @@
               { "name": "Narges Mahyar"}
             ],
           "description": "",
-          "date": "April 2022",
+          "date": "April, 2022",
           "url": "https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2022serendyze.pdf",
           "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2022serendyze.pdf"
+        },
+        {
+          "label": [""],
+          "venues":"CSCW3",
+          "venuesname":"Proceedings of the ACM on Human-Computer Interaction",
+          "title": "CommunityClick: Capturing and reporting community feedback from town halls to improve inclusivity",
+          "authors": [
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+              { "name": "Pooya Khaloo", "link": "" },
+              { "name": "Somin Wadhwa", "link": "" },
+              { "name": "Amy X Zhang", "link": "" },
+              { "name": "Ali Sarvghad", "link": "" },
+              { "name": "Narges Mahyar", "link": "" }
+          ],
+          "description": "",
+          "date": "January, 2022",
+          "url": "https://dl.acm.org/doi/abs/10.1145/3432912",
+          "pdf":"https://arxiv.org/pdf/2009.09053"
         }
       ]
     },
@@ -119,7 +293,7 @@
                   { "name": "Narges Mahyar"}
                 ],
               "description": "",
-              "date": "June 2021",
+              "date": "June, 2021",
               "url": "https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2021cpulse.pdf",
               "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2021cpulse.pdf"
             },
@@ -135,7 +309,7 @@
                 { "name": "Narges Mahyar"}
               ],
             "description": "",
-            "date": "June 2021",
+            "date": "June, 2021",
             "url": "https://csc.lsu.edu/~mjasim/publications/Publication-aragon2021re.pdf",
             "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-aragon2021re.pdf"
           }
@@ -158,7 +332,7 @@
                 { "name": "Narges Mahyar" }
             ],
           "description": "",
-          "date": "December 2020",
+          "date": "December, 2020",
           "url": "https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2020cclickfull.pdf",
           "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-mjasim2020cclickfull.pdf"
         },
@@ -173,9 +347,108 @@
                 { "name": "Ali Sarvghad" }
               ],
             "description": "",
-            "date": "December 2020",
+            "date": "December, 2020",
             "url": "https://csc.lsu.edu/~mjasim/publications/Publication-nmahyar2020social.pdf",
             "pdf":"https://csc.lsu.edu/~mjasim/publications/Publication-nmahyar2020social.pdf"
+          },
+          {
+            "label": [""],
+            "venues":"CSCW'20",
+            "venuesname":"Companion Publication of the 2020 Conference on Computer Supported Cooperative Work and Social Computing",
+            "title": "CommunityClick: Towards Improving Inclusivity in Town Halls",
+            "authors": [
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Pooya Khaloo", "link": "" },
+                { "name": "Somin Wadhwa", "link": "" },
+                { "name": "Amy X Zhang", "link": "" },
+                { "name": "Ali Sarvghad", "link": "" },
+                { "name": "Narges Mahyar", "link": "" }
+            ],
+            "description": "",
+            "date": "October, 2020",
+            "url": "https://dl.acm.org/doi/abs/10.1145/3406865.3418561",
+            "pdf":"https://groups.cs.umass.edu/wp-content/uploads/sites/33/2020/09/CSCW2020_CC_DEMO_CR.pdf"
+          },
+          {
+            "label": [""],
+            "venues":"CHI'20 Extended Abstracts",
+            "venuesname":"Extended Abstracts of the 2020 CHI Conference on Human Factors in Computing Systems",
+            "title": "Towards Understanding Desiderata for Large-Scale Civic Input Analysis",
+            "authors": [
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Ali Sarvghad", "link": "" },
+                { "name": "Enamul Hoque", "link": "" },
+                { "name": "Narges Mahyar", "link": "" }
+            ],
+            "description": "",
+            "date": "April, 2020",
+            "url": "https://dl.acm.org/doi/abs/10.1145/3334480.3382964",
+            "pdf":"https://groups.cs.umass.edu/wp-content/uploads/sites/33/2020/09/CP_CHI_LBW_2020_Final.pdf"
+          },
+          {
+            "label": [""],
+            "venues":"CHI'20 Extended Abstracts",
+            "venuesname":"Extended Abstracts of the 2020 CHI Conference on Human Factors in Computing Systems",
+            "title": "Exploring how international graduate students in the us seek support",
+            "authors": [
+                { "name": "Tamanna Motahar", "link": "" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Syed Ishtiaque Ahmed", "link": "" },
+                { "name": "Narges Mahyar", "link": "" }
+            ],
+            "description": "",
+            "date": "April, 2020",
+            "url": "https://dl.acm.org/doi/abs/10.1145/3334480.3383094",
+            "pdf":"https://bit.csc.lsu.edu/~mjasim/publications/Publication-tmotahar2020socialsupport.pdf"
+          },
+          {
+            "label": [""],
+            "venues":"IEEE Trans Biomed Eng. 2020",
+            "venuesname":"IEEE Transactions on Biomedical Engineering",
+            "title": "A simple low-cost wearable sensor for long-term ambulatory monitoring of knee joint kinematics",
+            "authors": [
+                { "name": "Brandon Oubre", "link": "" },
+                { "name": "Jean-Francois Daneault", "link": "" },
+                { "name": "Katherine Boyer", "link": "" },
+                { "name": "Jae Hyun Kim", "link": "" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Paolo Bonato", "link": "" },
+                { "name": "Sunghoon Ivan Lee", "link": "" }
+            ],
+            "description": "",
+            "date": "April, 2020",
+            "url": "https://ieeexplore.ieee.org/abstract/document/9072477",
+            "pdf":"https://pmc.ncbi.nlm.nih.gov/articles/PMC7709863/pdf/nihms-1648173.pdf"
+          },
+          {
+            "label": [""],
+            "venues":"Frontiers of Computer Science",
+            "venuesname":"Frontiers of Computer Science",
+            "title": "Bangla language modeling algorithm for automatic recognition of hand-sign-spelled Bangla sign language",
+            "authors": [
+                { "name": "Muhammad Aminur Rahaman", "link": "" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" },
+                { "name": "Md Haider Ali", "link": "" },
+                { "name": "Md Hasanuzzaman", "link": "" }
+            ],
+            "description": "",
+            "date": "June, 2020",
+            "url": "https://link.springer.com/article/10.1007/s11704-018-7253-3",
+            "pdf":"https://bit.csc.lsu.edu/~mjasim/publications/Publication-rahaman2020handspell.pdf"
+          },
+          {
+            "label": [""],
+            "venues":"ICCCA",
+            "venuesname":"2020 IEEE 5th International Conference on computing communication and automation (ICCCA)",
+            "title": "Unsupervised video summarization framework using keyframe extraction and video skimming",
+            "authors": [
+                { "name": "Shruti Jadon", "link": "" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+            ],
+            "description": "",
+            "date": "Octomber, 2020",
+            "url": "https://ieeexplore.ieee.org/abstract/document/9250764/",
+            "pdf":"https://arxiv.org/pdf/1910.04792"
           }
       ]
     }
