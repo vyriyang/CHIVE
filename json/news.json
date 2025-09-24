@@ -3,11 +3,24 @@
     {
       "year": "2025",
       "news": [
-        {
+          {
+            "label": ["Event"],
+            "category":"Event",
+            "content":"Nexus Cup 2025",
+            "title": "Huge congratulations to Mehrasa Amiri and Dr. Mahmood Jasim for earning second place at the 2025 Nexus Louisiana Technology Cup",
+            "description": "2025 Nexus Louisiana Technology Cup",
+            "imgSrc": "../img/news/NexusCup2025/NexusCup2025-2.jpeg",
+            "imgMore":["../img/news/NexusCup2025/NexusCup2025-1.jpeg","../img/news/NexusCup2025/NexusCup2025-2.jpeg","../img/news/NexusCup2025/NexusCup2025-3.jpeg","../img/news/NexusCup2025/NexusCup2025-4.jpeg"],
+            "news":"Their project, APNE, is a platform that combines artificial intelligence and human review to detect bias and misinformation in news media. It's a thoughtful and timely innovation we're incredibly proud to see coming out of LSU.<br><br>We are proud of their achievement and the way they represented Louisiana State University and the LSU College of Engineering.",
+            "date": "June, 2025",
+            "url": "",
+            "pdf":""
+          },
+          {
           "label": ["Publications"],
           "category":"Publications",
           "content":"CHI2025",
-          "title": "Three of our papers have been accepted to be published in the Extended Abstracts of the 2025 Conference on Human Factors in Computing Systems.",
+          "title": "Three of our papers have been accepted to be published in the Extended Abstracts of the 2025 Conference on Human Factors in Computing Systems",
           "description": "CHI2025",
           "imgSrc": "../img/news/CHI2025.png",
           "imgMore":[""],

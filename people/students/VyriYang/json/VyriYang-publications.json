@@ -3,19 +3,20 @@
     {
       "year": "2024",
       "publications": [
-        {
-          "venues":"IEEE VIS2024",
-          "venuesname":"2024 IEEE Visualization and Visual Analytics (VIS)",
-          "title": "Animating the Narrative: A Review of Animation Styles in Narrative Visualization",
-          "authors": [
-              { "name": "Vyri Yang", "link": "https://vyriyang.com" },
-              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
-          ],
-          "description": "We explore the design space of narrative visualization, focusing on animation styles. We categorize 80 papers from top visualization venues into six categories, including Animation Style, Interactivity, Methodology, Technology, Evaluation Type , and Application Domain. We discuss the interplay between different visualization techniques and elements and the trend to focus on domain-specific visualizations.",
-          "date": "Oct, 2024",
-          "url": "https://ieeevis.org/year/2024/program/paper_v-short-1192.html",
-          "pdf":"https://ieeevis.b-cdn.net/vis_2024/pdfs/v-short-1192.pdf"
-        }
+          {
+            "label": ["AnimatingTheNarrative"],
+            "venues":"IEEE VIS2024",
+            "venuesname":"2024 IEEE Visualization and Visual Analytics (VIS)",
+            "title": "Animating the Narrative: A Review of Animation Styles in Narrative Visualization",
+            "authors": [
+                { "name": "Vyri Yang", "link": "https://vyriyang.com" },
+                { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+            ],
+            "description": "We explore the design space of narrative visualization, focusing on animation styles. We categorize 80 papers from top visualization venues into six categories, including Animation Style, Interactivity, Methodology, Technology, Evaluation Type , and Application Domain. We discuss the interplay between different visualization techniques and elements and the trend to focus on domain-specific visualizations.",
+            "date": "Oct, 2024",
+            "url": "https://ieeevis.org/year/2024/program/paper_v-short-1192.html",
+            "pdf":"https://ieeevis.b-cdn.net/vis_2024/pdfs/v-short-1192.pdf"
+          }
       ]
     }
   ]

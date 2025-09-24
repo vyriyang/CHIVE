@@ -3,38 +3,161 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CHIVE &bull; News</title>
+  <title>CHIVE • News</title>
   <link rel="stylesheet" href="dist/css/scrollspy.css" />
   <link rel="stylesheet" href="dist/css/nav.css" />
-</head>
-<style>
+  <style>
     .back_link {
       font-size: 20px;
       color: #777;
       text-decoration: none;
       cursor: pointer;
     }
-
-    .back_link:hover {
-      color: #f36f24; /* 悬停时的颜色 */
-    }
+    .back_link:hover { color: #f36f24; }
 
     .paper_link {
       font-size: 20px;
       color: #777;
       cursor: pointer;
+      text-decoration: none;
+    }
+    .paper_link:hover { color: #3f44b6; }
+
+    .space { margin-top: 10px; margin-bottom: 20px; }
+
+    /* ===== 主圖 + 輔助圖樣式（與 research 頁一致） ===== */
+    @keyframes moveBg {
+      0%   { background-position: top; }
+      50%  { background-position: bottom; }
+      100% { background-position: top; }
     }
 
-    .paper_link:hover {
-      color: #3f44b6; /* 悬停时的颜色 */
+    .img-container {
+      display: flex;
+      flex-direction: column; /* 主圖在上，news 正文在中，輔助圖在下 */
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+      width: 100%;
     }
 
-
-    .space {
-      margin-top: 10px; 
-      margin-bottom: 20px;
+    .research-image {
+      width: 100%;
+      max-width: 1080px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-</style>
+    .research-image:hover { transform: scale(1.05); }
+
+    .centered-img { display: block; margin: 0 auto; }
+
+    .img-more-container {
+      display: flex;
+      flex-direction: row;
+      overflow-x: auto;
+      gap: 10px;
+      scroll-snap-type: x mandatory;
+      width: 100%;
+      margin-top: 10px;
+      justify-content: flex-start;
+    }
+    .img-more-container::-webkit-scrollbar { height: 8px; }
+    .img-more-container::-webkit-scrollbar-thumb {
+      background: linear-gradient(120deg, #f36f24, #12163f);
+      border-radius: 4px;
+    }
+    .img-more-container img {
+      height: 460px;
+      width: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .img-more-container:hover img {
+      filter: grayscale(100%);
+      transform: scale(1);
+    }
+    .img-more-container img:hover {
+      filter: none;
+      transform: scale(1.1);
+      z-index: 2;
+    }
+
+    /* 遮罩 Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      inset: 0;
+      overflow: auto;
+      background-color: rgba(37, 37, 37, 0.6);
+    }
+    .modal-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      max-width: 90vw;
+      max-height: 90vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.2s;
+      cursor: pointer;
+      z-index: 1002;
+    }
+    .close:hover, .close:focus { color: #bbb; text-decoration: none; }
+
+    .img_arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      color: #fff;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.2s ease;
+      user-select: none;
+      z-index: 1001;
+    }
+    .prev { left: 0; }
+    .next { right: 0; }
+    .img_arrow:hover { background-color: rgba(0, 0, 0, 0.8); }
+
+    body.modal-open { overflow: hidden; }
+
+    /* 內容塊 */
+    .news-body {
+      width: 100%;
+      max-width: 1080px;
+      line-height: 1.7;
+      color: #222;
+      font-size: 16px;
+    }
+    .news-body p { margin: 0; }
+    .news-meta { color: #666; margin: 8px 0 12px; }
+    .category-pill {
+      color: #ab2d05;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    /* 上下篇導航 */
+    .navigation-buttons { display: flex; justify-content: space-between; margin-top: 20px; }
+  </style>
+</head>
+
 <body>
   <header>
     <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
@@ -45,31 +168,28 @@
       <a class="scrollspy-link" href="index.html">Home</a>
       <a class="scrollspy-link" href="research.html">Research</a>
       <a class="scrollspy-link" href="publications.html">Publications</a>
-      <a class="scrollspy-link" href="people.html">People</a>     
+      <a class="scrollspy-link" href="people.html">People</a>
       <a class="scrollspy-link" href="news.html">News</a>
-      <!-- <a class="scrollspy-link" href="activity.html">Activity</a> -->
+      <a class="scrollspy-link" href="activity.html">Activity</a>
       <a class="scrollspy-link" href="resource.html">Resource</a>
     </nav>
   </header>
 
   <section class="scrollspy-section" id="NewsDetails">
     <div class="section_2">
-      <!-- Back to All News button -->
-      <div style="margin-bottom: 50px;"><a href="news.html" class="back_link">
-        << Back to All News
-      </a></div>
-      <div class="title" id="news-title">
+      <div style="margin-bottom: 50px;">
+        <a href="news.html" class="back_link">&lt;&lt; Back to All News</a>
       </div>
-      <div class="news-content">
-        <!-- JSON data will be displayed here -->
-      </div>
-      <div class="navigation-buttons" style="display: flex; justify-content: space-between; margin-top: 20px;">
-        <!-- Previous and Next buttons will be inserted here -->
-      </div>
+
+      <div class="title" id="news-title"></div>
+
+      <div class="news-content"><!-- 动态填充 --></div>
+
+      <div class="navigation-buttons"><!-- 上一篇 / 下一篇 --></div>
     </div>
   </section>
 
-  <section class="scrollspy-section" id="">
+  <section class="scrollspy-section">
     <div class="gray">
       <div class="section_2">
         <div class="title">Contact Us
@@ -83,91 +203,258 @@
 
   <div class="footer">
     <p>
-        <a href="#">About</a> | 
-        <a href="#">Contact Us</a> | 
-        <a href="#">Copyright</a> | 
-        <a href="#">Terms of Use</a> | 
-        <a href="#">Privacy Policy</a>
+      <a href="#">About</a> |
+      <a href="#">Contact Us</a> |
+      <a href="#">Copyright</a> |
+      <a href="#">Terms of Use</a> |
+      <a href="#">Privacy Policy</a>
     </p>
     <p>© 2024 All rights reserved</p>
   </div>
 
+  <!-- 遮罩 Modal（與 research 頁一致） -->
+  <div id="imgModal" class="modal" aria-hidden="true">
+    <span class="close" id="modalClose" aria-label="Close">&times;</span>
+    <span class="img_arrow prev" id="arrowPrev">&#10094;</span>
+    <img class="modal-content" id="modalImage" alt="News gallery image"/>
+    <span class="img_arrow next" id="arrowNext">&#10095;</span>
+  </div>
+
   <script>
+    // ===== 工具 & 解析 =====
     function getQueryParam(param) {
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
 
+    // 解析 "June, 2025" / "2025-06-01" 等，兜底按字典序
+    function parseDateSafe(s) {
+      if (!s || typeof s !== 'string') return 0;
+      const d = new Date(s);
+      if (!isNaN(d)) return d.getTime();
+      // 尝试 "Month, YYYY"
+      const m = s.match(/^\s*([A-Za-z]+)\s*,\s*(\d{4})\s*$/);
+      if (m) {
+        const tryDate = new Date(`${m[1]} 1, ${m[2]}`);
+        if (!isNaN(tryDate)) return tryDate.getTime();
+      }
+      // "YYYY" 兜底
+      const y = s.match(/^\s*(\d{4})\s*$/);
+      if (y) return new Date(`${y[1]}-01-01`).getTime();
+      return 0;
+    }
+
+    // 将任意结构的 news.json 扁平化为一个数组
+    function flattenNews(data) {
+      if (!data) return [];
+      // 1) { years:[ {year, news:[...]}, ... ] }
+      if (Array.isArray(data.years)) {
+        return data.years.flatMap(y => Array.isArray(y.news) ? y.news : []);
+      }
+      // 2) { year:"2025", news:[...] }
+      if (Array.isArray(data.news)) return data.news;
+      // 3) [ {year, news:[...]}, ... ]
+      if (Array.isArray(data)) {
+        // 如果元素里有 news 字段
+        if (data.length && data[0] && Array.isArray(data[0].news)) {
+          return data.flatMap(y => Array.isArray(y.news) ? y.news : []);
+        }
+        // 直接就是新闻项
+        return data;
+      }
+      return [];
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
-      const title = getQueryParam("title"); // 获取URL中的title参数
-      fetch("/json/news.json")
-        .then((response) => response.json())
-        .then((data) => {
-          // 将所有年份的数据整合到一个数组中，并进行扁平化处理
-          const allNews = data.years.flatMap((year) => year.news);
-          // 按日期排序，从最近的到最早的新闻
-          const sortedNews = allNews.sort((a, b) => new Date(b.date) - new Date(a.date));
-          // 查找当前新闻的索引
-          const currentIndex = sortedNews.findIndex((news) => news.title === title);
-          const newsData = sortedNews[currentIndex];
+      const titleParam = getQueryParam("title");
 
-          if (newsData) {
-            const newsContent = document.querySelector(".news-content");
-            const newsTitleElement = document.getElementById("news-title");
+      // 遮罩相关引用
+      const modal = document.getElementById("imgModal");
+      const modalImg = document.getElementById("modalImage");
+      const modalClose = document.getElementById("modalClose");
+      const arrowPrev = document.getElementById("arrowPrev");
+      const arrowNext = document.getElementById("arrowNext");
 
-            // 检查 newsData.imgSrc 是否存在
-            const imgContent = newsData.imgSrc
-              ? `<img src="${newsData.imgSrc}" alt="News Image" style="max-width: 100%; height: auto; object-fit: contain; margin-bottom: 20px;">`
-              : "";
+      let imgMoreList = [];
+      let currentImgIndex = 0;
 
-            // 检查 news.category 是否存在
-            const categoryContent = newsData.category
-                ? `<a style="color:#ab2d05;"><strong>${newsData.category}</strong></a> | `
-                : "";
+      function openModalAt(idx) {
+        if (!imgMoreList.length) return;
+        currentImgIndex = Math.max(0, Math.min(idx, imgMoreList.length - 1));
+        modalImg.src = imgMoreList[currentImgIndex];
+        modal.style.display = "block";
+        document.body.classList.add("modal-open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+      function closeModal() {
+        modal.style.display = "none";
+        document.body.classList.remove("modal-open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+      function showPrev() {
+        if (imgMoreList.length <= 1) return;
+        currentImgIndex = (currentImgIndex > 0) ? currentImgIndex - 1 : imgMoreList.length - 1;
+        modalImg.src = imgMoreList[currentImgIndex];
+      }
+      function showNext() {
+        if (imgMoreList.length <= 1) return;
+        currentImgIndex = (currentImgIndex < imgMoreList.length - 1) ? currentImgIndex + 1 : 0;
+        modalImg.src = imgMoreList[currentImgIndex];
+      }
 
-            // 设置标题内容
-            newsTitleElement.innerHTML += `
-              ${newsData.title}
-              
-            `;
+      modalClose.onclick = closeModal;
+      arrowPrev.onclick = showPrev;
+      arrowNext.onclick = showNext;
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (modal.style.display === "block") {
+          if (e.key === "ArrowLeft") showPrev();
+          else if (e.key === "ArrowRight") showNext();
+          else if (e.key === "Escape") closeModal();
+        }
+      });
 
-            newsContent.innerHTML = `
-              <div class="abstract-container" style="margin-bottom: 5px;">${categoryContent}${newsData.description}</div>
-              <div class="abstract-container"style="margin-bottom: 15px;"><strong>Date:</strong> ${newsData.date || "N/A"}</div>
-             <div class="line" style="margin-top:10px; margin-bottom:20px;"></div>
-              <div>${imgContent}</div>
-              <div class="abstract-container"><p>${newsData.news || ""}</p>
-              ${newsData.pdf ? `<a href="${newsData.pdf}" target="_blank" class="paper_link">View Full Paper</a>` : ""}</div>
-            `;
+      fetch("/json/news.json", { cache: "no-store" })
+        .then((res) => {
+          if (!res.ok) throw new Error("Failed to load /json/news.json: " + res.status);
+          return res.json();
+        })
+        .then((raw) => {
+          const allNews = flattenNews(raw);
+          if (!allNews.length) throw new Error("Empty news data.");
 
-            // 设置上一页和下一页按钮
-            const navButtons = document.querySelector(".navigation-buttons");
+          // 按日期从新到旧排序
+          const sortedNews = [...allNews].sort((a, b) => parseDateSafe(b.date) - parseDateSafe(a.date));
 
-            // Previous button
-            if (currentIndex > 0) {
-              const prevNews = sortedNews[currentIndex - 1];
-              navButtons.innerHTML += `
-                <a href="newsPage.html?title=${encodeURIComponent(prevNews.title)}" class="back_link">
-                  << Previous
-                </a>
-              `;
-            }
+          // 找到当前新闻
+          const currentIndex = sortedNews.findIndex((n) => n.title === titleParam);
+          const newsData = currentIndex >= 0 ? sortedNews[currentIndex] : null;
 
-            // Next button
-            if (currentIndex < sortedNews.length - 1) {
-              const nextNews = sortedNews[currentIndex + 1];
-              navButtons.innerHTML += `
-                <a href="newsPage.html?title=${encodeURIComponent(nextNews.title)}" class="back_link">
-                  Next >>
-                </a>
-              `;
-            }
-          } else {
+          if (!newsData) {
             document.querySelector(".news-content").innerHTML = "<p>News not found.</p>";
+            return;
           }
+
+          // 填标题
+          const newsTitleElement = document.getElementById("news-title");
+          newsTitleElement.textContent = newsData.title || "";
+
+          // 构建内容骨架：meta + 主图 + (news 正文) + 辅图容器 + PDF 链接
+          const newsContent = document.querySelector(".news-content");
+
+          // 类别 + 描述 + 日期
+          const categoryHTML = newsData.category ? `<span class="category-pill">${newsData.category}</span>` : "";
+          const descHTML = newsData.description ? `<span>${newsData.description}</span>` : "";
+          const dateHTML = newsData.date ? `<div class="news-meta"><strong>Date:</strong> ${newsData.date}</div>` : "";
+
+          // 主容器
+          const container = document.createElement("div");
+          container.className = "img-container";
+
+          // 主图
+          if (newsData.imgSrc) {
+            const mainImage = document.createElement("img");
+            mainImage.id = "mainImage";
+            mainImage.src = newsData.imgSrc;
+            mainImage.className = "research-image centered-img";
+            mainImage.alt = newsData.title || "News image";
+            mainImage.onclick = function () { openModalAt(0); };
+            container.appendChild(mainImage);
+          }
+
+          // ===== 在主图和辅图之间插入 news 正文（保留 HTML）=====
+          const newsBody = document.createElement("div");
+          newsBody.className = "news-body";
+          newsBody.innerHTML = newsData.news || "";
+          container.appendChild(newsBody);
+
+          // 辅图容器
+          const imgMoreContainer = document.createElement("div");
+          imgMoreContainer.id = "imgMoreContainer";
+
+          // 组装列表：主图 + imgMore
+          const more = Array.isArray(newsData.imgMore) ? newsData.imgMore.filter(Boolean) : [];
+          imgMoreList = newsData.imgSrc ? [newsData.imgSrc, ...more] : [...more];
+
+          function buildThumbnails() {
+            // 清空
+            imgMoreContainer.innerHTML = "";
+
+            if (imgMoreList.length === 2) {
+              const img = document.createElement("img");
+              img.src = imgMoreList[1];
+              img.className = "research-image centered-img";
+              img.alt = "More image";
+              img.onclick = function () { openModalAt(1); };
+              imgMoreContainer.appendChild(img);
+            } else if (imgMoreList.length > 2) {
+              imgMoreContainer.classList.add("img-more-container");
+              imgMoreList.slice(1).forEach((src, index) => {
+                const img = document.createElement("img");
+                img.src = src;
+                img.alt = `More image ${index + 1}`;
+                img.onclick = function () { openModalAt(index + 1); };
+                imgMoreContainer.appendChild(img);
+              });
+            }
+            // 若只有 1 张图（只有主图），不渲染缩略带
+          }
+
+          buildThumbnails();
+          container.appendChild(imgMoreContainer);
+
+          // 头部 meta 与分隔线
+          const metaWrap = document.createElement("div");
+          metaWrap.innerHTML = `
+            <div class="abstract-container" style="margin-bottom:5px;">
+              ${categoryHTML}${categoryHTML && descHTML ? " | " : ""}${descHTML}
+            </div>
+            ${dateHTML}
+            <div class="line" style="margin-top:10px; margin-bottom:20px;"></div>
+          `;
+
+          // PDF 链接（如有）
+          const pdfWrap = document.createElement("div");
+          if (newsData.pdf) {
+            pdfWrap.innerHTML = `<div class="space"><a href="${newsData.pdf}" target="_blank" class="paper_link">View Full Paper</a></div>`;
+          }
+
+          // 写入页面
+          newsContent.innerHTML = ""; // 清空旧内容
+          newsContent.appendChild(metaWrap);
+          newsContent.appendChild(container);
+          newsContent.appendChild(pdfWrap);
+
+          // 上一篇 / 下一篇
+          const nav = document.querySelector(".navigation-buttons");
+          nav.innerHTML = "";
+          if (currentIndex > 0) {
+            const prev = sortedNews[currentIndex - 1];
+            const a = document.createElement("a");
+            a.className = "back_link";
+            a.href = "newsPage.html?title=" + encodeURIComponent(prev.title);
+            a.textContent = "<< Previous";
+            nav.appendChild(a);
+          } else {
+            const span = document.createElement("span");
+            span.textContent = " ";
+            nav.appendChild(span);
+          }
+          if (currentIndex < sortedNews.length - 1) {
+            const next = sortedNews[currentIndex + 1];
+            const a = document.createElement("a");
+            a.className = "back_link";
+            a.href = "newsPage.html?title=" + encodeURIComponent(next.title);
+            a.textContent = "Next >>";
+            nav.appendChild(a);
+          }
+
         })
         .catch((error) => {
           console.error("Error fetching news data:", error);
+          document.querySelector(".news-content").innerHTML = "<p>Failed to load news.</p>";
         });
     });
   </script>

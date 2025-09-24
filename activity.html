@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CHIVE &bull; Activity</title>
+  <title>CHIVE • Activity</title>
   <link rel="stylesheet" href="dist/css/scrollspy.css"/>
   <link rel="stylesheet" href="dist/css/nav.css"/>
   <style>
-    /* 限制 content 显示的行数 */
+    /* 限制 content 顯示的行數 */
     .cont_bottom {
       display: -webkit-box;
       -webkit-line-clamp: 4;
@@ -36,7 +36,6 @@
       object-fit: cover;
       object-position: top;
       max-height: 300px;
-      object-position: top;
       cursor: pointer;
     }
 
@@ -45,16 +44,13 @@
       color: #5f5d5d;
     }
 
-    /* 悬浮窗口样式 */
+    /* 懸浮窗口樣式 */
     .modal {
       display: none;
       position: fixed;
       z-index: 1000;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(37, 37, 37, 0.6);
+      inset: 0;
+      background-color: rgba(37,37,37,0.6);
       justify-content: center;
       align-items: center;
       flex-direction: column;
@@ -63,20 +59,20 @@
     .modal-content {
       margin: auto;
       position: relative;
-      max-height: 80vh; /* 图片最大高度为视口高度的 80% */
+      max-height: 80vh;
       width: auto;
       height: auto;
       text-align: center;
     }
 
     .modal img {
-      height: 80vh; /* 高度固定为视口高度的 80% */
-      width: auto;  /* 宽度根据高度自动调整 */
-      max-width: 80%; /* 确保宽度不会超过原始图片的大小 */
+      height: 80vh;
+      width: auto;
+      max-width: 80%;
       object-fit: contain;
     }
 
-    /* 关闭按钮 */
+    /* 關閉按鈕 */
     .close {
       position: absolute;
       top: 10px;
@@ -85,12 +81,9 @@
       font-size: 40px;
       cursor: pointer;
     }
+    .close:hover { color: #bbb; }
 
-    .close:hover {
-      color: #bbb;
-    }
-
-    /* 左右箭头 */
+    /* 左右箭頭 */
     .arrow {
       cursor: pointer;
       position: absolute;
@@ -100,68 +93,48 @@
       color: white;
       font-size: 18px;
       user-select: none;
-      transition: 0.6s ease;
+      transition: 0.2s ease;
     }
+    .prev { left: 0; }
+    .next { right: 0; }
+    .arrow:hover { background-color: rgba(0,0,0,0.5); }
 
-    .prev {
-      left: 0;
-    }
-
-    .next {
-      right: 0;
-    }
-
-    .arrow:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
-
-    /* 信息显示容器，背景通屏，但文字部分保持宽度 */
+    /* 信息容器：背景通屏，內層限制寬度 */
     .modal-info {
-      position: relative; /* 将 .modal-info 设置为相对定位，避免覆盖图片 */
-      background-color: rgba(0, 0, 0, 0.7); /* 设置半透明深灰色背景 */
+      position: relative;
+      background-color: rgba(0,0,0,0.7);
       padding: 20px 0;
       text-align: center;
       width: 100%;
-      margin-top: 20px; /* 让信息部分位于图片下方 */
+      margin-top: 20px;
     }
-
-    /* 用于限制文字宽度的内层容器 */
     .modal-info-content {
       margin: 0 auto;
-      width: 80%; /* 保持和图片相同的宽度 */
+      width: 80%;
       max-width: 1080px;
       text-align: left;
     }
-
-    .modal-info-content h2 {
-      font-size: 24px;
-      color: white;
-    }
-
-    .modal-info-content p {
-      font-size: 16px;
-      margin: 5px 0;
-      color: white;
-    }
+    .modal-info-content h2 { font-size: 24px; color: #fff; }
+    .modal-info-content p  { font-size: 16px; margin: 5px 0; color: #fff; }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
-      <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
+      <img src="img/logo/CHIVE-2.svg" alt="Logo">
       <div class="logo-text">Research Lab at LSU</div>
     </div>
     <nav class="scrollspy-nav">
       <a class="scrollspy-link" href="index.html">Home</a>
       <a class="scrollspy-link" href="research.html">Research</a>
       <a class="scrollspy-link" href="publications.html">Publications</a>
-      <a class="scrollspy-link" href="people.html">People</a>     
+      <a class="scrollspy-link" href="people.html">People</a>
       <a class="scrollspy-link" href="news.html">News</a>
       <a class="scrollspy-link" href="activity.html">Activity</a>
       <a class="scrollspy-link" href="resource.html">Resource</a>
-    </nav>   
+    </nav>
   </header>
-  
+
   <section class="scrollspy-section" id="Research">
     <div class="section_2">
       <div class="title">Activity
@@ -171,7 +144,7 @@
     </div>
   </section>
 
-  <section class="scrollspy-section" id="">
+  <section class="scrollspy-section">
     <div class="gray">
       <div class="section_2">
         <div class="title">Contact Us
@@ -182,25 +155,24 @@
       </div>
     </div>
   </section>
-  
+
   <div class="footer">
     <p>
-      <a href="#">About</a> | 
-      <a href="#">Contact Us</a> | 
-      <a href="#">Copyright</a> | 
-      <a href="#">Terms of Use</a> | 
+      <a href="#">About</a> |
+      <a href="#">Contact Us</a> |
+      <a href="#">Copyright</a> |
+      <a href="#">Terms of Use</a> |
       <a href="#">Privacy Policy</a>
     </p>
     <p>© 2025 All rights reserved</p>
   </div>
 
-  <!-- 悬浮窗口 -->
-  <div id="modal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImage">
-    <span class="arrow prev">&#10094;</span>
-    <span class="arrow next">&#10095;</span>
-    <!-- 新增信息容器 -->
+  <!-- 懸浮窗口 -->
+  <div id="modal" class="modal" aria-modal="true" role="dialog">
+    <span class="close" aria-label="Close">&times;</span>
+    <img class="modal-content" id="modalImage" alt="">
+    <span class="arrow prev" aria-label="Previous">&#10094;</span>
+    <span class="arrow next" aria-label="Next">&#10095;</span>
     <div class="modal-info" id="modalInfo">
       <div class="modal-info-content">
         <h2 id="modalTitle"></h2>
@@ -213,154 +185,146 @@
   <script src="dist/js/mn-accordion.js"></script>
   <script src="dist/js/scrollspy.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const modal = document.getElementById('modal');
-      const modalImage = document.getElementById('modalImage');
-      const closeBtn = document.querySelector('.close');
-      const prevArrow = document.querySelector('.prev');
-      const nextArrow = document.querySelector('.next');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalDate = document.getElementById('modalDate');
-      const modalContent = document.getElementById('modalContent');
-      let currentImageIndex = 0;
-      let images = [];
-      let imageDetails = [];  // 存储每张图片的详情信息
+    document.addEventListener('DOMContentLoaded', function () {
+      const modal       = document.getElementById('modal');
+      const modalImage  = document.getElementById('modalImage');
+      const closeBtn    = document.querySelector('.close');
+      const prevArrow   = document.querySelector('.prev');
+      const nextArrow   = document.querySelector('.next');
+      const modalTitle  = document.getElementById('modalTitle');
+      const modalDate   = document.getElementById('modalDate');
+      const modalContent= document.getElementById('modalContent');
 
-      // 关闭按钮
-      closeBtn.onclick = function() {
-        modal.style.display = 'none';
-      };
+      const safeArray = (v) => Array.isArray(v) ? v : (v ? [v] : []);
 
-      // 处理长内容，最多显示三行，找到第三行的最后一个句号
-      function truncateContent(content) {
-        const maxLines = 3;
-        const words = content.split(' ');
-        let truncatedContent = '';
-        let lineCount = 0;
-        let sentenceEnd = '';
+      let currentImageIndex = 0; // 全局索引（允許跨活動）
+      let images = [];           // 全部圖片 URL（跨活動）
+      let imageDetails = [];     // 與 images 對應的詳情（含本活動內序號/總數）
 
+      // 關閉
+      const closeModal = () => { modal.style.display = 'none'; };
+      closeBtn.onclick = closeModal;
+      // 點擊遮罩背景關閉（避免點擊圖片本體關閉）
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      // 最多三行的內容截斷（以單詞粗略估行）
+      function truncateContent(content = '') {
+        const maxLines = 3, words = String(content).split(/\s+/);
+        let buf = '', lines = 0, sentenceEnd = '';
         for (let i = 0; i < words.length; i++) {
-          truncatedContent += words[i] + ' ';
-
-          // 假设每 10 个单词为一行
-          if ((i + 1) % 10 === 0) {
-            lineCount++;
-          }
-
-          // 在第三行找到最后的句号
-          if (lineCount >= maxLines && words[i].includes('.')) {
-            sentenceEnd = truncatedContent.slice(0, truncatedContent.lastIndexOf('.') + 1);
+          buf += words[i] + ' ';
+          if ((i + 1) % 10 === 0) lines++;
+          if (lines >= maxLines && /[.!?。！？]$/.test(words[i])) {
+            sentenceEnd = buf.slice(0, buf.trimEnd().lastIndexOf(words[i]) + words[i].length);
             break;
           }
         }
-
-        // 如果没有句号且行数超出三行，直接截断
-        if (lineCount >= maxLines && !sentenceEnd) {
-          return truncatedContent.trim();
-        }
-
-        // 返回截断后的句子或完整的内容
-        return sentenceEnd || truncatedContent.trim();
+        if (lines >= maxLines && !sentenceEnd) return buf.trim();
+        return sentenceEnd || buf.trim();
       }
 
-      // 显示图片的悬浮窗口
-      function openModal(imageArray, detailsArray, index) {
-        images = imageArray;
-        imageDetails = detailsArray;
-        currentImageIndex = index;
-        modalImage.src = images[currentImageIndex];
+      // 依索引刷新彈窗內容（含標題「(當前/總數)」）
+      function renderModalByIndex(idx) {
+        const d = imageDetails[idx];
+        if (!d) return;
+        modalImage.src = images[idx];
+        modalTitle.textContent = `${d.title} (${d.localIndex + 1}/${d.localTotal})`;
+        modalDate.textContent  = d.date || '';
+        modalContent.textContent = truncateContent(d.content || 'No content available.');
+        // 箭頭顯示
+        if (images.length > 1) { prevArrow.style.display = 'block'; nextArrow.style.display = 'block'; }
+        else { prevArrow.style.display = 'none'; nextArrow.style.display = 'none'; }
+      }
+
+      // 顯示彈窗
+      function openModal(startIndex) {
+        currentImageIndex = startIndex;
         modal.style.display = 'flex';
-
-        // 填充悬浮窗中的信息
-        const currentDetail = imageDetails[currentImageIndex];
-        modalTitle.textContent = currentDetail.title;
-        modalDate.textContent = currentDetail.date;
-        modalContent.textContent = truncateContent(currentDetail.content);
-
-        // 检查是否显示箭头
-        if (images.length > 1) {
-          prevArrow.style.display = 'block';
-          nextArrow.style.display = 'block';
-        } else {
-          prevArrow.style.display = 'none';
-          nextArrow.style.display = 'none';
-        }
+        renderModalByIndex(currentImageIndex);
       }
 
-      // 左箭头
-      prevArrow.onclick = function() {
+      // 左右箭頭
+      prevArrow.onclick = function () {
         currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : images.length - 1;
-        modalImage.src = images[currentImageIndex];
-        updateModalContent(currentImageIndex);
+        renderModalByIndex(currentImageIndex);
       };
-
-      // 右箭头
-      nextArrow.onclick = function() {
+      nextArrow.onclick = function () {
         currentImageIndex = (currentImageIndex < images.length - 1) ? currentImageIndex + 1 : 0;
-        modalImage.src = images[currentImageIndex];
-        updateModalContent(currentImageIndex);
+        renderModalByIndex(currentImageIndex);
       };
 
-      // 更新悬浮窗口内容
-      function updateModalContent(index) {
-        const currentDetail = imageDetails[index];
-        modalTitle.textContent = currentDetail.title;
-        modalDate.textContent = currentDetail.date;
-        modalContent.textContent = truncateContent(currentDetail.content);
-      }
+      // 鍵盤：← → 切換，Esc 關閉
+      document.addEventListener('keydown', (e) => {
+        if (modal.style.display !== 'flex') return;
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); prevArrow.click(); }
+        if (e.key === 'ArrowRight') { e.preventDefault(); nextArrow.click(); }
+        if (e.key === 'Escape')     { e.preventDefault(); closeModal(); }
+      });
 
-      // 获取 JSON 数据并填充活动列表
+      // 讀取 JSON 並填充
       fetch('/json/activity.json')
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
           const activityGrids = document.getElementById('activityGrids');
-          
-          // 根据时间降序排序
+
+          // 按時間降序
           data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-          const allImages = [];   // 用于存储所有图片
-          const allDetails = [];  // 用于存储每张图片对应的详情信息
+          const allImages = [];
+          const allDetails = [];
 
           data.forEach(item => {
-            if (item.label.includes('last')) {
-              return;
-            }
+            // 跳過 last
+            if (Array.isArray(item.label) && item.label.includes('last')) return;
 
+            // 建立卡片
             const activityList = document.createElement('div');
             activityList.className = 'activity_list';
-            
             activityList.innerHTML = `
               <img src="${item.imgSrc}" alt="" class="list_img">
               <div class="research_padding">
                 <div class="sub-title-news">${item.title}</div>
-                <div class="cont-activity-name">${item.date}</div>
+                <div class="cont-activity-name">${item.date || ''}</div>
               </div>
             `;
 
-            // 创建图片和其对应的详细信息
-            const activityImages = [item.imgSrc].concat(item.imgMore.filter(Boolean));  // 过滤掉空的 imgMore 值
-            activityImages.forEach((imgSrc, index) => {
-              allImages.push(imgSrc);
+            // 該活動的所有圖片（主圖 + 其他）
+            const activityImages = [item.imgSrc, ...safeArray(item.imgMore).filter(Boolean)];
+            // 將每張圖與其「本活動內的序號與總數」對齊後推入全域列表
+            activityImages.forEach((src, localIndex) => {
+              allImages.push(src);
               allDetails.push({
                 title: item.title,
                 date: item.date,
-                content: item.content || "No content available."
+                content: item.content || '',
+                localIndex,                 // 本活動內序號（0-based）
+                localTotal: activityImages.length // 本活動內總數
               });
             });
 
-            // 点击整个活动项，显示悬浮窗口
-            activityList.addEventListener('click', function() {
-              const firstImageIndex = allImages.indexOf(item.imgSrc);
-              openModal(allImages, allDetails, firstImageIndex);
+            // 點擊卡片：從該活動主圖的全域位置打開彈窗
+            activityList.addEventListener('click', function () {
+              const firstGlobalIndex = allImages.indexOf(item.imgSrc);
+              openModal(firstGlobalIndex >= 0 ? firstGlobalIndex : 0);
             });
 
             activityGrids.appendChild(activityList);
           });
+
+          // 彙總到外層變數（保留跨活動輪播）
+          images = allImages;
+          imageDetails = allDetails;
+        })
+        .catch(err => {
+          console.error('Failed to load /json/activity.json:', err);
         });
     });
   </script>
 </body>
 </html>
+
 
 
 

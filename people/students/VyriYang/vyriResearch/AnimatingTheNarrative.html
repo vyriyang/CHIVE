@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- 使用首頁樣式（保留你的樣式與路徑） -->
+  <link rel="stylesheet" href="../scrollspy.min.v.css"/>
+  <link rel="stylesheet" href="../style.v.css"/>
+  <title>Animating the Narrative</title>
+    <style>
+    .main-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-image: 
+        linear-gradient(rgba(4, 55, 83, 0.7), rgba(4, 83, 40, 0.7)), 
+        url('../img/research/AnimatingTheNarrative/AnimatingTheNarrative-home.webp');
+      background-size: cover;
+      background-position: top;
+      animation: moveBg 280s infinite alternate;
+      color: white;
+      min-height: 60vh;
+      box-sizing: border-box;
+    }
+
+    @keyframes moveBg {
+      0% {
+        background-position: top;
+      }
+      50% {
+        background-position: bottom;
+      }
+      100% {
+        background-position: top;
+      }
+    }
+
+    /* 父容器样式，居中显示图片 */
+    .img-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 80px;
+    }
+
+    /* 图片样式，固定宽度为1080px，自适应容器 */
+    .research-image {
+      width: 100%;
+      max-width: 1080px;
+      height: auto;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* 悬停时图片放大 1.1 倍 */
+    .research-image:hover {
+      transform: scale(1.1);
+    }
+
+    /* 悬浮框样式 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(37, 37, 37, 0.6);
+    }
+
+    /* 原图显示在悬浮框中，上下左右居中 */
+    .modal-content {
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: block;
+      width: 80%;
+      max-width: 1080px;
+    }
+
+    /* 缩放功能 
+    .modal-content.zoom-in {
+      transform: translate(-50%, -50%) scale(1.5);
+      transition: transform 0.3s ease;
+    }
+
+    .modal-content.zoom-out {
+      transform: translate(-50%, -50%) scale(1);
+      transition: transform 0.3s ease;
+    }
+      */
+
+    /* 关闭按钮样式 */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: white;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* 左右箭头样式 */
+    .img_arrow {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      user-select: none;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    /* 悬停箭头变亮 */
+    .img_arrow:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    /* imgMore 图片左右拉动显示 */
+    .img-more-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      scroll-snap-type: x mandatory;
+      margin-top: 80px;
+    }
+
+    .img-more-container::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .img-more-container::-webkit-scrollbar-thumb {
+      background: linear-gradient(120deg, #f36f24, #12163f);
+      border-radius: 4px;
+    }
+
+    .img-more-container img {
+      width: auto;
+      height: 460px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+/* 當鼠標懸停在任意圖片時，未被懸停的圖片變灰 */
+.img-more-container:hover img {
+  filter: grayscale(100%); /* 所有圖片變灰 */
+}
+
+/* 取消懸停圖片的灰色蒙版 */
+.img-more-container img:hover {
+  filter: none; /* 保持懸停圖片的原色 */
+}
+
+    .centered-img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    .cursor:hover {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <!-- 首頁風格導覽列 -->
+  <nav id="sticky-navbar" class="research-navbar">
+    <ul class="nav-links">
+      <li><a href="../VyriYang.html">VYRI YANG</a></li>
+      <li><a href="../VyriYang.html#Projects">Projects</a></li>
+      <li><a href="../VyriYang.html#Publications" id="publications-link">Publications</a></li>
+      <!--li><a href="../VyriYang.html#Videos" id="videos-link">Videos</a></li-->
+      <li><a href="../VyriYang.html#Awards" id="awards-link">Awards</a></li>
+      <li>
+  <a href="https://vyriyang.wixsite.com/vyri-yang/fashion" 
+     id="design" 
+     target="_blank" 
+     rel="noopener noreferrer">
+    Design
+  </a>
+</li>
+      <li><a href="../VyriYang.html#Contact" id="contact-link">Contact</a></li>
+      <li><a href="../VYRI YANG Resume.pdf" target="_blank">Resume</a></li>
+      <!-- <li><a href="https://chive.cse.lsu.edu">CHIVE Home</a></li> -->
+      
+    </ul>
+  </nav>
+
+  <section class="content-section">
+    
+  </section>
+
+  <!-- 主內容 -->
+  <section class="content-section" id="Top">
+    <div class="section-inner">
+      <div class="about">
+        <div class="sec_sub_title_s" id="researchTitle"></div>
+        <div class="project-title-text-data" id="researchName" ></div>
+        <div class="sec_sub_title_s" id="researchContent" ></div>
+        <div id="researchers-info" style="margin-top: 10px; margin-bottom: 20px;"></div>
+        <div class="keywords-container"></div>
+        <div class="download-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News（保留你的內容） -->
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="section-title-text-data">Latest News</div>
+      <div class="about">
+      <div class="sec_sub_title_s">
+        ● Our paper, 'Animating the Narrative: A Review of Animation Styles in Narrative Visualization,' has been accepted for presentation at
+        <a href="https://ieeevis.org/year/2024/welcome" style="text-decoration: none; color:#357132;" rel="alternate bookmark" target="_blank">IEEE VIS2024</a>.
+        Join us in Tampa, Florida, on October 17th, 2024!<br>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="content-section" id="Abstract">
+    <div class="section-inner">
+      <div class="section-title-text-data">Abstract</div>
+      <div class="about">
+      <div class="abstract-container">
+        <div id="researchAbstract"></div>
+        <div class="img-container">
+          <img src="" id="mainImage" class="research-image centered-img" alt="Main Image"/>
+          <div id="imgMoreContainer"></div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 懸浮框 -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <span class="prev img_arrow">&#10094;</span>
+    <img class="modal-content" id="modalImage" alt="modal image">
+    <span class="next img_arrow">&#10095;</span>
+  </div>
+
+  <!-- Publications -->
+  <section class="content-section" id="Publications">
+  <div class="section-inner">
+    <div class="section-title-text-data">Publications</div>
+    <div class="mn-acc-app">
+      <div class="mn-accordion" id="accordion-2">
+        <!-- JSON data will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Videos -->
+  <section class="video-section" id="Videos">
+    <div class="section-inner">
+      <div class="section-title-text-data">Videos</div>
+      <div id="info-content">
+        <!-- JSON data will be inserted here by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact-section" id="Contact">
+    <div class="section-inner">
+      <div class="section-title-text-data">Contact</div>
+      <div class="about">
+      <div id="contact-details">
+        <!-- Contact details will be loaded here by JavaScript -->
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer_v">
+    <div class="cont_footer_v">© 2025 All rights reserved</div>
+  </div>
+
+  <!-- 保留你的腳本路徑 -->
+  <script src="../mn-accordion.v.js"></script>
+  <script src="../scrollspy.min.v.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // ===== 工具 =====
+  const byId = (id) => document.getElementById(id);
+  const safeArray = (x) => Array.isArray(x) ? x : [];
+  const isHttp = location.protocol === "http:" || location.protocol === "https:";
+  if (!isHttp) {
+    console.warn("[Hint] 建議用本機伺服器（http://）開啟此頁，避免瀏覽器在 file:// 封鎖 fetch。");
+  }
+
+  // ===== Modal（保留你的行為） =====
+  const modal = byId("myModal");
+  const modalImg = byId("modalImage");
+  const closeBtn = document.getElementsByClassName("close")[0];
+  const prevArrow = document.querySelector(".prev");
+  const nextArrow = document.querySelector(".next");
+  let zoomedIn = false;
+  let currentImgIndex = 0;
+  let imgMoreList = [];
+
+  // ===== Projects：讀入單筆 AnimatingTheNarrative =====
+  fetch("../json/VyriYang-project.json", { cache: "no-store" })
+    .then((res) => {
+      if (!res.ok) throw new Error("Failed to load ../json/VyriYang-project.json: " + res.status);
+      return res.json();
+    })
+    .then((data) => {
+      const list = Array.isArray(data?.projects) ? data.projects : (Array.isArray(data) ? data : []);
+      if (!list.length) {
+        console.warn("[Projects] JSON 為空或結構不符。");
+        return;
+      }
+
+      const research = list.find((item) => safeArray(item?.label).includes("AnimatingTheNarrative"));
+      if (!research) {
+        console.warn('[Projects] 找不到 label 含 "AnimatingTheNarrative" 的專案。');
+        return;
+      }
+
+      // ===== 主圖與更多圖片 =====
+const mainImage = byId("mainImage");
+const imgMoreContainer = byId("imgMoreContainer");
+
+if (research.imgSrc) {
+  mainImage.src = research.imgSrc;
+  mainImage.classList.add("centered-img");
+  mainImage.onclick = function () {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    currentImgIndex = 0;
+    modalImg.classList.remove("zoom-in", "zoom-out");
+  };
+}
+
+// 收集所有圖片（主圖 + 更多圖片）
+const more = safeArray(research.imgMore).filter(Boolean);
+imgMoreList = research.imgSrc ? [research.imgSrc, ...more] : [...more];
+
+// 更新箭頭顯示狀態
+function updateArrowState() {
+  if (imgMoreList.length <= 1) {
+    prevArrow.style.display = "none";
+    nextArrow.style.display = "none";
+  } else {
+    prevArrow.style.display = "block";
+    nextArrow.style.display = "block";
+  }
+}
+
+// 建立額外圖片縮圖
+if (imgMoreList.length > 1) {
+  if (imgMoreList.length === 2) {
+    const img = document.createElement("img");
+    img.src = imgMoreList[1];
+    img.className = "research-image centered-img";
+    img.onclick = function () {
+      modal.style.display = "block";
+      modalImg.src = img.src;
+      currentImgIndex = 1;
+      modalImg.classList.remove("zoom-in", "zoom-out");
+    };
+    imgMoreContainer.appendChild(img);
+  } else {
+    imgMoreContainer.classList.add("img-more-container");
+    imgMoreList.slice(1).forEach((src, idx) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = src;
+        currentImgIndex = idx + 1;
+        modalImg.classList.remove("zoom-in", "zoom-out");
+      };
+      imgMoreContainer.appendChild(img);
+    });
+  }
+}
+updateArrowState();
+
+// 箭頭切換
+prevArrow.onclick = function () {
+  if (imgMoreList.length > 1) {
+    currentImgIndex = currentImgIndex > 0 ? currentImgIndex - 1 : imgMoreList.length - 1;
+    modalImg.src = imgMoreList[currentImgIndex];
+  }
+};
+nextArrow.onclick = function () {
+  if (imgMoreList.length > 1) {
+    currentImgIndex = currentImgIndex < imgMoreList.length - 1 ? currentImgIndex + 1 : 0;
+    modalImg.src = imgMoreList[currentImgIndex];
+  }
+};
+
+// 🔹 確保 X 按鈕永遠可用
+closeBtn.onclick = function () {
+  modal.style.display = "none";
+  zoomedIn = false; // reset zoom 狀態
+  modalImg.classList.remove("zoom-in", "zoom-out");
+};
+
+
+      // ===== 標題/內容 =====
+      byId("researchTitle").textContent = research.info ?? "";
+      byId("researchName").textContent = research.title ?? "";
+      byId("researchContent").textContent = research.content ?? "";
+
+      // ===== 研究者 =====
+      const researchers = safeArray(research.researchers);
+      if (researchers.length) {
+        const researchersInfo = researchers
+          .map((r) => {
+            const name = r?.name ?? "";
+            let link = r?.link ?? "";
+            if (link && !/^https?:\/\//i.test(link)) {
+              link = `https://chive.cse.lsu.edu/${link.replace(/^\/+/, "")}`;
+            }
+            return `<span class="cont-researcher-name" data-link="${link}" style="cursor:pointer;">${name}</span>`;
+          })
+          .join(", ");
+
+        byId("researchers-info").innerHTML =
+          `<span class="cont-researcher-name_" style="cursor:default;">Researchers:</span> ${researchersInfo}`;
+
+        // 修正：要用 .cont-researcher-name
+        document.querySelectorAll(".cont-researcher-name").forEach((el) => {
+          el.addEventListener("mouseover", function () {
+            this.style.color = "#f36f24";
+          });
+          el.addEventListener("mouseout", function () {
+            this.style.color = "";
+          });
+          el.addEventListener("click", function () {
+            const link = this.getAttribute("data-link");
+            if (link) window.open(link, "_blank");
+          });
+        });
+      }
+
+// ===== 關鍵詞 =====
+const keywordsContainer = document.querySelector(".keywords-container");
+
+// 確保容器存在
+if (keywordsContainer) {
+  // 先清空，避免重複插入
+  keywordsContainer.innerHTML = "";
+
+  // 套用橫向排列的樣式
+  keywordsContainer.style.display = "flex";
+  keywordsContainer.style.flexWrap = "wrap"; // 超出自動換行
+  keywordsContainer.style.gap = "10px";      // 控制間距
+
+  safeArray(research.keywords)
+    .slice(0, 5)
+    .forEach((kw) => {
+      const div = document.createElement("div");
+      div.className = "sec_sub_title_s";
+      div.style.whiteSpace = "nowrap"; // 關鍵詞不要拆行
+      div.textContent = `#${kw}`;
+      keywordsContainer.appendChild(div);
+    });
+}
+
+
+      // ===== View Full Paper =====
+      const downloadContainer = document.querySelector(".download-container");
+      if (research.pdf) {
+        const btn = document.createElement("a");
+        btn.className = "sec_sub_title_sp";
+        btn.href = research.pdf;
+        btn.target = "_blank";
+        btn.textContent = "View Full Paper";
+        btn.style.textDecoration = "none";
+        downloadContainer.appendChild(btn);
+      }
+
+      // ===== Abstract =====
+      if (research.abstract) {
+        byId("researchAbstract").innerHTML =
+          `<span class="sec_sub_title_s">${String(research.abstract).replace(/\n/g, "<br>")}</span>`;
+      }
+
+      // ===== Contact =====
+      const contactDetails = byId("contact-details");
+      const contactSection = byId("Contact");
+      const office = research.office ?? "";
+      const school = research.school ?? "";
+      const num = research.num ?? "";
+      const email = research.email ?? "";
+      let contactHTML = "";
+
+      if (researchers.length) {
+        const first = researchers[0];
+        const name = first?.name ?? "";
+        let link = first?.link ?? "";
+        if (link && !/^https?:\/\//i.test(link)) {
+          link = `https://chive.cse.lsu.edu/${link.replace(/^\/+/, "")}`;
+        }
+        if (name) {
+          contactHTML += `
+            <div class="sec_sub_title_s">
+              <a href="${link || "#"}" target="_blank" style="cursor:pointer; text-decoration: none;">
+                ${name}
+              </a>
+            </div>`;
+        }
+      }
+      if (office) contactHTML += `<div class="sec_sub_title_s">${office}</div>`;
+      if (school) contactHTML += `<div class="sec_sub_title_s">${school}</div>`;
+      if (num) contactHTML += `<div class="sec_sub_title_s">${num}</div>`;
+      if (email) {
+        contactHTML += `
+          <div class="sec_sub_title_s">
+            <a href="mailto:${email}" style="color: #3f44b6;">${email}</a>
+          </div>`;
+      }
+
+      if (contactHTML.trim()) {
+        contactDetails.innerHTML = contactHTML;
+      } else {
+        contactSection.style.display = "none";
+      }
+
+      // Contact 區塊 hover 色
+      const style = document.createElement("style");
+      style.innerHTML = `
+        #contact-details a { color: #5f5d5d; }
+        #contact-details a:hover { color: #357132; }
+      `;
+      document.head.appendChild(style);
+
+// 更新 Videos 部分的内容 —— 與其他頁面同樣寫法，但先把來源轉成陣列
+{
+  const infoContent = document.getElementById('info-content');
+  const videoSection = document.getElementById('Videos');
+  if (!infoContent || !videoSection) return;
+
+  // 把 data 轉成可迭代陣列（相容 {projects:[...]} 或直接 [...]）
+  const src = Array.isArray(data?.projects) ? data.projects
+            : Array.isArray(data) ? data
+            : [];
+
+  // 僅挑 label 含 AnimatingTheNarrative 且有影片連結（url 或 videoSrc）
+  const candidates = src.filter(infoItem =>
+    Array.isArray(infoItem?.label) &&
+    infoItem.label.includes("AnimatingTheNarrative") &&
+    (infoItem.url || infoItem.videoSrc)
+  );
+
+  // 若沒有任何影片 → 整個 section（含標題）一起隱藏
+  if (!candidates.length) {
+    videoSection.style.display = 'none';
+    return;
+  }
+
+  // 有影片 → 顯示區塊並渲染
+  videoSection.style.display = '';
+
+  // 工具：轉換 YouTube URL 為嵌入格式
+  function toEmbedUrl(u) {
+    if (!u) return '';
+    if (u.includes('youtube.com') || u.includes('youtu.be')) {
+      let videoId = '';
+      let start = '';
+
+      // youtu.be 短鏈
+      if (u.includes('youtu.be/')) {
+        videoId = u.split('youtu.be/')[1].split(/[?&]/)[0];
+      }
+      // live 影片
+      else if (u.includes('/live/')) {
+        videoId = u.split('/live/')[1].split(/[?&]/)[0];
+      }
+      // 普通 watch?v=
+      else if (u.includes('watch?v=')) {
+        videoId = u.split('watch?v=')[1].split('&')[0];
+      }
+
+      // 起始秒數 t=xxx
+      const tMatch = u.match(/[?&]t=(\d+)/);
+      if (tMatch) start = `?start=${tMatch[1]}`;
+
+      return `https://www.youtube.com/embed/${videoId}${start}`;
+    }
+    return '';
+  }
+
+  candidates.forEach(infoItem => {
+    const infoDiv = document.createElement('div');
+    infoDiv.classList.add('news_card');
+    infoDiv.style.paddingTop = '30px';
+
+    // 限制 Speakers 顯示數量 + and N more（安全處理 researchers）
+    const maxSpeakersToShow = 2;
+    const researchers = Array.isArray(infoItem.researchers) ? infoItem.researchers : [];
+    const displayedSpeakers = researchers.slice(0, maxSpeakersToShow);
+
+    // ⭐ 這裡檢測名字是否為「Vyri Yang」，若是則 <strong> 加粗
+    const speakersHTML = displayedSpeakers
+      .map(r => {
+        const nm = r?.name || '';
+        const link = r?.link || '#';
+        const nmHTML = nm === 'Vyri Yang' ? `<strong>${nm}</strong>` : nm;
+        return `<a href="${link}" target="_blank" rel="noopener noreferrer" class="cont-researcher-name" style="text-decoration:none;">${nmHTML}</a>`;
+      })
+      .join(', ');
+
+    const remain = Math.max(researchers.length - maxSpeakersToShow, 0);
+    const moreSpeakers = remain > 0 ? ` <span class="sec_sub_title_s">and ${remain} more</span>` : '';
+
+    // 處理主 URL + 其他 url-x
+    const rawUrl = infoItem.url || infoItem.videoSrc || '';
+    const extraUrls = Object.keys(infoItem)
+      .filter(k => k.startsWith('url-') && infoItem[k])
+      .map(k => infoItem[k]);
+    const allUrls = [rawUrl, ...extraUrls].filter(Boolean);
+
+    // 生成所有影片區塊
+    const videoBlocks = allUrls.map(u => {
+      const embedUrl = toEmbedUrl(u);
+      return embedUrl
+        ? `
+          <div class="video-container" style="margin-top: 20px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
+            <iframe src="${embedUrl}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>`
+        : `<div class="sec_sub_title_s"><a href="${u}" target="_blank" rel="noopener noreferrer" style="color:#357132; text-decoration:none;">Watch Video</a></div>`;
+    }).join('');
+
+    // 保留你原本的 HTML 樣式與結構
+    infoDiv.innerHTML = `
+      <div class="sec_sub_title_s">${infoItem.info ?? ''}${infoItem.place ? ' | ' + infoItem.place : ''}</div>
+      <div class="sub-title_ss">
+        <a href="${rawUrl || '#'}" style="text-decoration: none; color:#357132;" rel="alternate bookmark" target="_blank">
+          ${infoItem.fullTitel ?? ''}
+        </a>
+      </div>
+      <div class="sec_sub_title_s overflow">${infoItem.date ?? ''}</div>
+      ${speakersHTML ? `<div class="cont-researcher-name_ overflow cursor">Speakers: ${speakersHTML}${moreSpeakers}</div>` : ''}
+      ${videoBlocks}
+    `;
+    infoContent.appendChild(infoDiv);
+  });
+}
+
+
+
+
+
+
+
+
+
+      // ===== 關閉/縮放 Modal（保留你的行為） =====
+      closeBtn.onclick = function () { modal.style.display = "none"; };
+      modalImg.onclick = function () {
+        zoomedIn = !zoomedIn;
+        if (zoomedIn) {
+          modalImg.classList.add("zoom-in");
+          modalImg.classList.remove("zoom-out");
+        } else {
+          modalImg.classList.add("zoom-out");
+          modalImg.classList.remove("zoom-in");
+        }
+      };
+
+      
+
+      // ===== Publications =====
+      return fetch("../json/VyriYang-publications.json", { cache: "no-store" });
+    })
+    .then((res) => {
+      if (!res) return; 
+      if (!res.ok) throw new Error("Failed to load ../json/VyriYang-publications.json: " + res.status);
+      return res.json();
+    })
+    .then((data) => {
+      const pubSection = document.getElementById("Publications");
+      const accordionContainer = document.getElementById("accordion-2");
+      if (!pubSection || !accordionContainer) return;
+
+      // 🔹 如果 data 不存在或沒有年份 → 直接隱藏整個 Section
+      if (!data || !Array.isArray(data.years) || !data.years.length) {
+        pubSection.style.display = "none";
+        return;
+      }
+
+      const asArray = (v) => Array.isArray(v) ? v : (v == null ? [] : [v]);
+      const hasTag = (labels, tag) => {
+        if (!labels) return false;
+        if (Array.isArray(labels)) return labels.includes(tag);
+        if (typeof labels === "string") return labels.includes(tag);
+        return false;
+      };
+      const parseTS = (s) => {
+        if (!s) return NaN;
+        const d = new Date(s);
+        if (!isNaN(d)) return d.getTime();
+        const m = String(s).match(/^([A-Za-z]+),?\s+(\d{4})$/); // e.g., "Oct, 2024"
+        if (m) {
+          const d2 = new Date(`${m[1]} 1, ${m[2]}`);
+          return isNaN(d2) ? NaN : d2.getTime();
+        }
+        return NaN;
+      };
+
+      let totalRendered = 0;
+
+      (data?.years || []).forEach((year) => {
+        const pubs = (year?.publications || []).filter((pub) => hasTag(pub?.label, "AnimatingTheNarrative"));
+        if (!pubs.length) return;
+
+        const item = document.createElement("div");
+        item.className = "accordion-item";
+
+        const heading = document.createElement("div");
+        heading.className = "accordion-heading";
+        heading.innerHTML = `<h3>${year?.year || ""}</h3><div class="icon"><i class="arrow right"></i></div>`;
+        item.appendChild(heading);
+
+        const content = document.createElement("div");
+        content.className = "accordion-content";
+
+        pubs.sort((a, b) => {
+          const tb = parseTS(b?.date);
+          const ta = parseTS(a?.date);
+          if (isNaN(tb) && isNaN(ta)) return 0;
+          if (isNaN(tb)) return 1;
+          if (isNaN(ta)) return -1;
+          return tb - ta;
+        });
+
+        pubs.forEach((pub) => {
+          const pubDiv = document.createElement("div");
+          pubDiv.style.paddingBottom = "30px";
+
+          let awardIcon = "";
+          const venuesStr = pub?.venues || "";
+          if (venuesStr.includes("Best Paper Award")) {
+            awardIcon = `<img src="../img/icons/trophy.png" alt="Trophy" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+          } else if (venuesStr.includes("Best Paper Honorable Mention Award")) {
+            awardIcon = `<img src="../img/icons/medal.png" alt="Medal" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+          }
+
+          const venuesHTML = venuesStr
+            ? `${awardIcon}<a href="${pub?.url || "#"}" style="text-decoration:none;color:#EBBA4D;" rel="alternate bookmark" target="_blank"><strong>${venuesStr}</strong></a><span style="color:#357132;"> | </span>`
+            : "";
+
+          const authorsHTML = asArray(pub?.authors)
+            .map((a) => {
+              const nm = a?.name || "";
+              const link = a?.link || "#";
+              const nmHTML = nm === "Vyri Yang" ? `<strong>${nm}</strong>` : nm;
+              return `<a href="${link}" class="cont-researcher-name" style="text-decoration:none;">${nmHTML}</a>`;
+            })
+            .join(", ");
+
+          const pdfHTML = pub?.pdf
+            ? `<div class="sec_sub_title_a" style="margin-top:5px;margin-bottom:5px;"><a href="${pub.pdf}" style="color:#357132;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
+            : "";
+
+          pubDiv.innerHTML = `
+            <div class="sub-title_ss">
+              ${venuesHTML}
+              <a href="${pub?.url || "#"}" style="text-decoration:none;color:#357132;" rel="alternate bookmark" target="_blank">${pub?.title || ""}</a>
+            </div>
+            <div class="cont-researche overflow" style="margin-top:5px;margin-bottom:5px;">${authorsHTML}</div>
+            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub?.venuesname || ""} | ${pub?.date || ""}</div>
+            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub?.description || ""}</div>
+            ${pdfHTML}
+          `;
+          content.appendChild(pubDiv);
+          totalRendered++;
+        });
+
+        if (content.children.length) {
+          item.appendChild(content);
+          document.getElementById("accordion-2").appendChild(item);
+        }
+      });
+
+      if (totalRendered === 0) {
+        const empty = document.createElement("div");
+        empty.className = "sec_sub_title_s";
+        empty.style.marginTop = "10px";
+        empty.textContent = "No publications available for this project.";
+        document.getElementById("accordion-2").appendChild(empty);
+      } else {
+        new Accordion(document.getElementById("accordion-2"), {
+          multiple: true,
+          defaultOpenedIndexes: [0],
+        });
+      }
+    })
+    .catch((err) => {
+      console.error("[Projects/Publications] 載入或解析失敗：", err);
+      // 若 Publications 失敗，仍顯示錯誤提示
+      const pubSection = document.getElementById("Publications");
+      const accordionContainer = document.getElementById("accordion-2");
+      if (pubSection && accordionContainer) {
+        pubSection.style.display = "";
+        const msg = document.createElement("div");
+        msg.className = "sec_sub_title_s";
+        msg.style.marginTop = "10px";
+        msg.textContent = "Failed to load publications.";
+        accordionContainer.appendChild(msg);
+      }
+    });
+});
+</script>
+
+</body>
+</html>

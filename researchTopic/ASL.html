@@ -22,170 +22,148 @@
       box-sizing: border-box;
     }
 
-    @keyframes moveBg {
-      0% {
-        background-position: top;
-      }
-      50% {
-        background-position: bottom;
-      }
-      100% {
-        background-position: top;
-      }
-    }
 
-    /* 父容器样式，居中显示图片 */
-    .img-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 80px;
-    }
+  @keyframes moveBg {
+    0%   { background-position: top; }
+    50%  { background-position: bottom; }
+    100% { background-position: top; }
+  }
 
-    /* 图片样式，固定宽度为1080px，自适应容器 */
-    .research-image {
-      width: 100%;
-      max-width: 1080px;
-      height: auto;
-      cursor: pointer;
-      justify-content: center;
-      align-items: center;
-    }
+  /* ===== 主圖 + 輔助圖容器 ===== */
+  .img-container {
+    display: flex;
+    flex-direction: column; /* 主圖在上，輔助圖在下 */
+    align-items: center;
+    gap: 20px;
+    margin-top: 80px;
+    width: 100%;
+  }
 
-    /* 悬停时图片放大 1.1 倍 */
-    .research-image:hover {
-      transform: scale(1.1);
-    }
+  /* 主圖 */
+  .research-image {
+    width: 100%;
+    max-width: 1080px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
 
-    /* 悬浮框样式 */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(37, 37, 37, 0.6);
-    }
+  .research-image:hover {
+    transform: scale(1.05);
+  }
 
-    /* 原图显示在悬浮框中，上下左右居中 */
-    .modal-content {
-      margin: auto;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: block;
-      width: 80%;
-      max-width: 1080px;
-    }
+  /* ===== 輔助圖容器（橫向滾動） ===== */
+  .img-more-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    scroll-snap-type: x mandatory;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: flex-start;
+  }
 
-    /* 缩放功能 
-    .modal-content.zoom-in {
-      transform: translate(-50%, -50%) scale(1.5);
-      transition: transform 0.3s ease;
-    }
+  .img-more-container::-webkit-scrollbar {
+    height: 8px;
+  }
 
-    .modal-content.zoom-out {
-      transform: translate(-50%, -50%) scale(1);
-      transition: transform 0.3s ease;
-    }
-      */
+  .img-more-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(120deg, #f36f24, #12163f);
+    border-radius: 4px;
+  }
 
-    /* 关闭按钮样式 */
-    .close {
-      position: absolute;
-      top: 15px;
-      right: 35px;
-      color: white;
-      font-size: 40px;
-      font-weight: bold;
-      transition: 0.3s;
-      cursor: pointer;
-    }
+  /* 輔助圖 */
+  .img-more-container img {
+    height: 460px;
+    width: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
 
-    .close:hover,
-    .close:focus {
-      color: #bbb;
-      text-decoration: none;
-      cursor: pointer;
-    }
+  /* 當滑鼠在容器上：全部圖片變灰 */
+  .img-more-container:hover img {
+    filter: grayscale(100%);
+    transform: scale(1); /* 確保非 hover 圖片保持原大小 */
+  }
 
-    /* 左右箭头样式 */
-    .img_arrow {
-      cursor: pointer;
-      position: absolute;
-      top: 50%;
-      width: auto;
-      padding: 16px;
-      margin-top: -22px;
-      color: white;
-      font-weight: bold;
-      font-size: 18px;
-      transition: 0.6s ease;
-      user-select: none;
-    }
+  /* 滑鼠在單張圖片上：恢復原色並放大 */
+  .img-more-container img:hover {
+    filter: none;
+    transform: scale(1.1);
+    z-index: 2; /* 放大時在最上層，避免被遮住 */
+  }
 
-    .prev {
-      left: 0;
-    }
+  .centered-img { display: block; margin: 0 auto; }
+  .cursor:hover { cursor: pointer; }
 
-    .next {
-      right: 0;
-    }
+  /* ===== 遮罩 (Modal) ===== */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    overflow: auto;
+    background-color: rgba(37, 37, 37, 0.6);
+  }
 
-    /* 悬停箭头变亮 */
-    .img_arrow:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-    }
+  /* 遮罩內圖片：置中，限制不超過視窗大小 */
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
 
-    /* imgMore 图片左右拉动显示 */
-    .img-more-container {
-      display: flex;
-      overflow-x: auto;
-      gap: 10px;
-      scroll-snap-type: x mandatory;
-      margin-top: 80px;
-    }
+    max-width: 90vw;
+    max-height: 90vh;
 
-    .img-more-container::-webkit-scrollbar {
-      height: 8px;
-    }
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+  }
 
-    .img-more-container::-webkit-scrollbar-thumb {
-      background: linear-gradient(120deg, #f36f24, #12163f);
-      border-radius: 4px;
-    }
+  /* 關閉按鈕 */
+  .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 1002;
+  }
 
-    .img-more-container img {
-      width: auto;
-      height: 460px;
-      cursor: pointer;
-      transition: 0.3s ease;
-    }
+  .close:hover, .close:focus {
+    color: #bbb;
+    text-decoration: none;
+  }
 
-/* 當鼠標懸停在任意圖片時，未被懸停的圖片變灰 */
-.img-more-container:hover img {
-  filter: grayscale(100%); /* 所有圖片變灰 */
-}
+  /* 左右切換箭頭 */
+  .img_arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.2s ease;
+    user-select: none;
+    z-index: 1001;
+  }
 
-/* 取消懸停圖片的灰色蒙版 */
-.img-more-container img:hover {
-  filter: none; /* 保持懸停圖片的原色 */
-}
+  .prev { left: 0; }
+  .next { right: 0; }
+  .img_arrow:hover { background-color: rgba(0, 0, 0, 0.8); }
 
-    .centered-img {
-      display: block;
-      margin: 0 auto;
-    }
-
-    .cursor:hover {
-      cursor: pointer;
-    }
-  </style>
+  /* 打開遮罩時禁用背景滾動 */
+  body.modal-open { overflow: hidden; }
+</style>
 </head>
 <body>
   <header>
@@ -196,7 +174,7 @@
       <a class="scrollspy-link" href="../publications.html">Publications</a>
       <a class="scrollspy-link" href="../people.html">People</a>     
       <a class="scrollspy-link" href="../news.html">News</a>
-      <!-- <a class="scrollspy-link" href="../activity.html">Activity</a> -->
+      <a class="scrollspy-link" href="../activity.html">Activity</a>
       <a class="scrollspy-link" href="resource.html">Resource</a>
     </nav>   
   </header>
@@ -214,24 +192,20 @@
     </div>
   </section>
 
-  <!--div class="gray">
+  <div class="gray">
     <div class="section_1">
       <div class="title">Latest News
         <div class="line"></div>
       </div>
       <div class="cont margin_left">
-        ● What is Lorem Ipsum?<br>
-        ● Lorem Ipsum is simply dummy text of the printing and typesetting industry.  <a href="https://www.lipsum.com" 
+        ● Our Late-breaking Work have been accepted to be published in the Extended Abstracts of the <a href="https://chi2025.acm.org" 
         style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
-        when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
-        ● It has survived not only five centuries<a href="https://www.lipsum.com" 
-        style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-        but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
+        2025 Conference on Human Factors in Computing Systems</a>. <br>
       </div>
     </div>
-  </div-->
+  </div>
 
+  <!-- Abstract（保留原標題樣式與主圖） -->
   <section class="scrollspy-section" id="Abstract">
     <div class="section_2">
       <div class="title">Abstract
@@ -241,19 +215,38 @@
         <div id="researchAbstract"></div>
         <div class="img-container">
           <img src="" id="mainImage" class="research-image centered-img" alt="Main Image"/>
-          <div id="imgMoreContainer"></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 悬浮框结构 -->
+  <!-- 新增：Introduction（樣式與 Abstract 相同；僅當有 intro 時顯示） -->
+  <section class="scrollspy-section" id="Introduction">
+    <div class="section_2">
+      <div class="title">Introduction
+        <div class="line"></div>
+      </div>
+      <div class="abstract-container">
+        <div id="researchIntro"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 輔圖滾動欄：緊接在 Introduction 後面（若 Introduction 隱藏，這塊仍會出現在其位置） -->
+  <section class="scrollspy-section" id="MoreImages">
+    <div class="section_2">
+      <div id="imgMoreContainer"></div>
+    </div>
+  </section>
+
+  <!-- 懸浮框 -->
   <div id="myModal" class="modal">
     <span class="close">&times;</span>
     <span class="prev img_arrow">&#10094;</span>
     <img class="modal-content" id="modalImage">
     <span class="next img_arrow">&#10095;</span>
   </div>
+
 
   <section class="scrollspy-section" id="Publications">
     <div class="section_2">
@@ -305,373 +298,435 @@
 
   <script src="../../dist/js/mn-accordion.js"></script>
   <script src="../../dist/js/scrollspy.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const modal = document.getElementById("myModal");
-        const modalImg = document.getElementById("modalImage");
-        const closeBtn = document.getElementsByClassName("close")[0];
-        let zoomedIn = false;
-        let currentImgIndex = 0;
-        let imgMoreList = [];
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("myModal");
+  const modalImg = document.getElementById("modalImage");
+  const closeBtn = document.getElementsByClassName("close")[0];
+  let zoomedIn = false;
+  let currentImgIndex = 0;
+  let imgMoreList = [];
 
-        // 加载 imgSrc 主图片
-        const mainImage = document.getElementById("mainImage");
-        fetch('/json/research/research.json')
-            .then(response => response.json())
-            .then(data => {
-                const research = data.find(item => item.label.includes("ASL"));
-                if (research) {
-                    // 添加主图片到 imgMoreList 的第一项
-                    imgMoreList.push(research.imgSrc);
+  // 1) 載入研究主內容
+  fetch('/json/research/research.json')
+    .then(response => response.json())
+    .then(data => {
+      const research = (Array.isArray(data) ? data : []).find(item => Array.isArray(item.label) && item.label.includes("ASL"));
+      if (!research) return;
 
-                    // 设置主图像
-                    mainImage.src = research.imgSrc;
+// 主圖
+const mainImage = document.getElementById("mainImage");
+imgMoreList = [
+  research.imgSrc,
+  ...(Array.isArray(research.imgMore) ? research.imgMore.filter(Boolean) : [])
+];
+mainImage.src = research.imgSrc;
+mainImage.classList.add("centered-img");
 
-                    // 单张图片居中
-                    mainImage.classList.add("centered-img");
+// 開啟遮罩
+function openModalWithIndex(idx) {
+  currentImgIndex = idx;
+  modalImg.src = imgMoreList[currentImgIndex];
+  modal.style.display = "block";
+  modalImg.classList.remove('zoom-in', 'zoom-out');
+  document.body.classList.add('modal-open');
+}
 
-                    // 点击图片时显示模态框
-                    mainImage.onclick = function() {
-                        modal.style.display = "block";
-                        modalImg.src = this.src;
-                        currentImgIndex = 0;
-                        modalImg.classList.remove('zoom-in', 'zoom-out');
-                    };
+// 關閉遮罩（恢復滾動）
+function closeModal() {
+  modal.style.display = "none";
+  document.body.classList.remove('modal-open');
+  modalImg.classList.remove('zoom-in', 'zoom-out');
+}
 
-                    // 处理 imgMore 部分
+mainImage.onclick = () => openModalWithIndex(0);
+
+// 綁定關閉事件
+const closeBtn = document.querySelector('.close');
+if (closeBtn) closeBtn.onclick = closeModal;
+
+// 點擊遮罩背景也關閉
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+// Esc 鍵也能關閉
+document.addEventListener('keydown', (e) => {
+  if (modal.style.display === 'block' && (e.key === 'Escape' || e.key === 'Esc')) {
+    closeModal();
+  }
+});
+
+// ===== Introduction 區塊：只有有 intro 才顯示 =====
+const introSection = document.getElementById('Introduction');
+const introHolder  = document.getElementById('researchIntro');
+if (research.intro && String(research.intro).trim()) {
+  const formattedIntro = String(research.intro).replace(/\n/g, '<br>');
+  introHolder.innerHTML = formattedIntro;
+  introSection.style.display = ''; // 顯示
+} else {
+  introSection.style.display = 'none'; // 整塊隱藏（含標題）
+}
+
+// ===== 輔圖（滾動欄放在 Introduction 後面）=====
 const imgMoreContainer = document.getElementById('imgMoreContainer');
 
-// 将主图片作为 imgMoreList 的第一项，如果 imgMore 为空或只有空字符串，则不添加其他图片
-imgMoreList = [research.imgSrc, ...research.imgMore.filter(img => img)]; // 主图片加上有效的 imgMore 图片
-
-// 检查是否需要禁用左右箭头
 function updateArrowState() {
-    const prevArrow = document.querySelector('.prev');
-    const nextArrow = document.querySelector('.next');
-    
-    if (imgMoreList.length <= 1) { // 如果只有主图片或没有额外图片
-        prevArrow.style.display = 'none'; // 隐藏左箭头
-        nextArrow.style.display = 'none'; // 隐藏右箭头
-    } else {
-        prevArrow.style.display = 'block'; // 显示左箭头
-        nextArrow.style.display = 'block'; // 显示右箭头
-    }
+  const prevArrow = document.querySelector('.prev');
+  const nextArrow = document.querySelector('.next');
+  if (!prevArrow || !nextArrow) return;
+  if (imgMoreList.length <= 1) {
+    prevArrow.style.display = 'none';
+    nextArrow.style.display = 'none';
+  } else {
+    prevArrow.style.display = 'block';
+    nextArrow.style.display = 'block';
+  }
 }
 
-// 如果 imgMoreList 只有主图片或为空，则不显示 imgMore 图片
-if (imgMoreList.length === 2) { // 主图片和一张 imgMore 图片
+// 清空容器後再渲染
+imgMoreContainer.innerHTML = '';
+
+if (imgMoreList.length === 2) {
+  // 只有 1 張輔圖 → 直接置中顯示
+  const img = document.createElement('img');
+  img.src = imgMoreList[1];
+  img.className = 'research-image centered-img';
+  img.onclick = () => openModalWithIndex(1);
+  imgMoreContainer.appendChild(img);
+
+} else if (imgMoreList.length > 2) {
+  // 多張 → 使用橫向滾動容器
+  imgMoreContainer.classList.add('img-more-container');
+  imgMoreList.slice(1).forEach((imgSrc, index) => {
     const img = document.createElement('img');
-    img.src = imgMoreList[1]; // imgMore 的图片
-    img.className = 'research-image centered-img';
-    img.onclick = function() {
-        modal.style.display = "block";
-        modalImg.src = img.src;
-        currentImgIndex = 1; // imgMore 图片的索引是 1
-    };
+    img.src = imgSrc;
+    img.onclick = () => openModalWithIndex(index + 1);
     imgMoreContainer.appendChild(img);
-} else if (imgMoreList.length > 2) { // 主图片和多张 imgMore 图片
-    imgMoreContainer.classList.add('img-more-container');
-    imgMoreList.slice(1).forEach((imgSrc, index) => { // 从 imgMoreList 的第二项开始循环
-        const img = document.createElement('img');
-        img.src = imgSrc;
-        img.onclick = function() {
-            modal.style.display = "block";
-            modalImg.src = imgSrc;
-            currentImgIndex = index + 1; // 当前图片的索引为 index + 1，因为主图片占用了第一个位置
-        };
-        imgMoreContainer.appendChild(img);
-    });
+  });
 }
 
-// 悬浮窗左右箭头切换
-document.querySelector('.prev').onclick = function() {
-    if (imgMoreList.length > 1) { // 只有在 imgMoreList 超过 1 时才能切换
-        currentImgIndex = (currentImgIndex > 0) ? currentImgIndex - 1 : imgMoreList.length - 1;
-        modalImg.src = imgMoreList[currentImgIndex];
-    }
-};
-document.querySelector('.next').onclick = function() {
-    if (imgMoreList.length > 1) { // 只有在 imgMoreList 超过 1 时才能切换
-        currentImgIndex = (currentImgIndex < imgMoreList.length - 1) ? currentImgIndex + 1 : 0;
-        modalImg.src = imgMoreList[currentImgIndex];
-    }
-};
+// 左右箭頭
+const prevBtn = document.querySelector('.prev');
+const nextBtn = document.querySelector('.next');
 
-// 初始化时更新箭头状态
+if (prevBtn) {
+  prevBtn.onclick = function () {
+    if (imgMoreList.length > 1) {
+      currentImgIndex = (currentImgIndex > 0)
+        ? currentImgIndex - 1
+        : imgMoreList.length - 1;
+      modalImg.src = imgMoreList[currentImgIndex];
+    }
+  };
+}
+if (nextBtn) {
+  nextBtn.onclick = function () {
+    if (imgMoreList.length > 1) {
+      currentImgIndex = (currentImgIndex < imgMoreList.length - 1)
+        ? currentImgIndex + 1
+        : 0;
+      modalImg.src = imgMoreList[currentImgIndex];
+    }
+  };
+}
+
 updateArrowState();
 
 
-                    // 更新标题和内容
-                    document.getElementById('researchTitle').textContent = research.info;
-                    document.getElementById('researchName').textContent = research.title;
-                    document.getElementById('researchContent').textContent = research.content;
+      // 更新标题和内容
+      document.getElementById('researchTitle').textContent = research.info;
+      document.getElementById('researchName').textContent = research.title;
+      document.getElementById('researchContent').textContent = research.content;
 
-                    // 更新研究者信息
-                    const researchersInfo = research.researchers.map(r =>
-                        `<span class="researcher-link" data-link="${r.link}" style="cursor:pointer;">${r.name}</span>`
-                    ).join(', ');
-                    document.getElementById('researchers-info').innerHTML = `Researchers: ${researchersInfo}`;
+      // 更新研究者信息
+      const researchersInfo = research.researchers.map(r =>
+        `<span class="researcher-link" data-link="${r.link}" style="cursor:pointer;">${r.name}</span>`
+      ).join(', ');
+      document.getElementById('researchers-info').innerHTML = `Researchers: ${researchersInfo}`;
 
-                    // 为研究者名字添加 hover 效果和点击事件
-                    document.querySelectorAll('.researcher-link').forEach(item => {
-                        item.addEventListener('mouseover', function() {
-                            this.style.color = '#f36f24'; // 鼠标悬停时变色
-                        });
-                        item.addEventListener('mouseout', function() {
-                            this.style.color = ''; // 鼠标移出后恢复默认颜色
-                        });
-                        item.addEventListener('click', function() {
-                            const link = this.getAttribute('data-link');
-                            window.open(link, '_blank'); // 在新标签页中打开对应链接
-                        });
-                    });
-
-                    // 更新关键词
-                    const keywordsContainer = document.querySelector('.keywords-container');
-                    research.keywords.slice(0, 3).forEach(keyword => {
-                        const keywordDiv = document.createElement('div');
-                        keywordDiv.className = 'label_key_btn';
-                        keywordDiv.style.marginRight = '10px';
-                        keywordDiv.textContent = `#${keyword}`;
-                        keywordsContainer.appendChild(keywordDiv);
-                    });
-
-                    // 添加 "View Full Paper" 按钮
-                    const downloadContainer = document.querySelector('.download-container');
-                    if (research.pdf) {
-                        const viewFullPaperBtn = document.createElement('a');
-                        viewFullPaperBtn.className = 'label_btn';
-                        viewFullPaperBtn.href = research.pdf;
-                        viewFullPaperBtn.target = '_blank';
-                        viewFullPaperBtn.textContent = 'View Full Paper';
-                        viewFullPaperBtn.style.textDecoration = 'none';
-                        downloadContainer.appendChild(viewFullPaperBtn);
-                    }
-
-                    // 更新摘要和图片
-                    if (research.abstract) {
-                        const formattedAbstract = research.abstract.replace(/\n/g, '<br>');
-                        document.getElementById('researchAbstract').innerHTML = formattedAbstract;
-                    }
-
-                    // 更新 Contact 部分
-                    const contactDetails = document.getElementById('contact-details');
-                    const { office, school, num, email } = research;
-                    const contactSection = document.getElementById('Contact');
-
-                    let contactHTML = '';
-
-// Check if there's a researcher and add the name with a link
-if (research.researchers && research.researchers.length > 0 && research.researchers[0].name) {
-    let researcherName = research.researchers[0].name;
-    let researcherLink = research.researchers[0].link;
-
-    // 检查是否为相对路径
-    if (!researcherLink.startsWith('http://') && !researcherLink.startsWith('https://')) {
-        researcherLink = `https://chive.cse.lsu.edu/${researcherLink}`;
-    }
-
-    contactHTML += `
-        <div>
-            <a href="${researcherLink}" target="_blank" style="cursor:pointer; text-decoration: none;">
-                ${researcherName}
-            </a>
-        </div>
-    `;
-}
-
-                    // Check for office, school, number, and email, and add them to the contact details if available
-                    if (office) contactHTML += `<div>${office}</div>`;
-                    if (school) contactHTML += `<div>${school}</div>`;
-                    if (num) contactHTML += `<div>${num}</div>`;
-                    if (email) contactHTML += `<div><a href="mailto:${email}" style="color: #3f44b6;">${email}</a></div>`;
-
-                    // If there are contact details, display them. Otherwise, hide the contact section.
-                    if (contactHTML.trim()) {
-                        contactDetails.innerHTML = contactHTML;
-                    } else {
-                        contactSection.style.display = 'none';
-                    }
-
-                    // Add hover effect for the researcher's name link
-                    const style = document.createElement('style');
-                    style.innerHTML = `
-                        #contact-details a {
-                            color: #5f5d5d;
-                        }
-                        #contact-details a:hover {
-                            color: #3f44b6; /* Change hover color */
-                            cursor: pointer;
-                        }
-                    `;
-                    document.head.appendChild(style);
-
-                    // 更新 Videos 部分的内容
-                    const infoContent = document.getElementById('info-content');
-                    const videoSection = document.getElementById('Videos');
-                    const hasVideos = data.some(infoItem => infoItem.label.includes("ASL") && infoItem.url);
-
-                    if (!hasVideos) {
-                        videoSection.style.display = 'none';
-                        return;
-                    }
-
-                    data.forEach(infoItem => {
-                        if (infoItem.label.includes("ASL") && infoItem.url) {
-                            const infoDiv = document.createElement('div');
-                            infoDiv.classList.add('news_card');
-                            infoDiv.style.paddingTop = '30px';
-
-                            // 限制显示的Speakers数量，设定最大显示数量为n
-                            const maxSpeakersToShow = 2;
-                            const displayedSpeakers = infoItem.researchers.slice(0, maxSpeakersToShow);
-                            const speakersHTML = displayedSpeakers.map(r =>
-                                `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name">${r.name}</a>`
-                            ).join(', ');
-
-                            // 如果有更多Speakers，显示“and more”
-                            const moreSpeakers = infoItem.researchers.length > maxSpeakersToShow ? '' : '';
-
-                            infoDiv.innerHTML = `
-                                <div class="sec_sub_title">${infoItem.info} | ${infoItem.place}</div>
-                                <div class="sub-title_s">
-                                    <a href="${infoItem.url}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-                                    ${infoItem.title}</a>
-                                </div>
-                                <div class="cont overflow">${infoItem.date}</div>
-                                <div class="cont overflow cursor">
-                                    Speakers: ${speakersHTML}${moreSpeakers}
-                                </div>
-                                ${infoItem.url.includes('youtube.com') ? `
-                                    <div class="video-container" style="margin-top: 20px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
-                                        <iframe src="${infoItem.url.replace('watch?v=', 'embed/')}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </div>` : ''}
-                            `;
-                            infoContent.appendChild(infoDiv);
-                        }
-
-                    });
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching research data:', error);
-            });
-
-        // 关闭悬浮框
-        closeBtn.onclick = function() {
-            modal.style.display = "none";
-        };
-
-        // 点击图片进行缩放
-        modalImg.onclick = function() {
-            zoomedIn = !zoomedIn;
-            if (zoomedIn) {
-                modalImg.classList.add('zoom-in');
-                modalImg.classList.remove('zoom-out');
-            } else {
-                modalImg.classList.add('zoom-out');
-                modalImg.classList.remove('zoom-in');
-            }
-        };
-
-// Fetch publications data
-fetch('/json/research/publications.json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok ' + response.statusText);
-        }
-        return response.json();
-    })
-    .then(data => {
-        const accordionContainer = document.getElementById('accordion-2');
-        let firstAccordionOpened = false;
-
-        // 检查是否存在 "ASL" 标签的出版物
-        const hasPublications = data.years.some(year => year.publications.some(pub => pub.label.includes('ASL')));
-
-        if (!hasPublications) {
-            document.getElementById('Publications').style.display = 'none';
-            return;
-        }
-
-        // 遍历每一年
-        data.years.forEach((year, index) => {
-            // 筛选出含 "ASL" 标签的出版物
-            const filteredPublications = year.publications.filter(pub => pub.label.includes('ASL'));
-
-            if (filteredPublications.length === 0) {
-                return;
-            }
-
-            const accordionItem = document.createElement('div');
-            accordionItem.classList.add('accordion-item');
-
-            const accordionHeading = document.createElement('div');
-            accordionHeading.classList.add('accordion-heading');
-            accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
-            accordionItem.appendChild(accordionHeading);
-
-            const accordionContent = document.createElement('div');
-            accordionContent.classList.add('accordion-content');
-
-            // 默认展开第一个手风琴
-            if (!firstAccordionOpened) {
-                accordionContent.style.display = 'block';
-                firstAccordionOpened = true;
-            }
-
-            // 按照日期排序，最新的排在最前面
-            const sortedPublications = filteredPublications.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-            sortedPublications.forEach(pub => {
-                const pubDiv = document.createElement('div');
-                pubDiv.style.paddingBottom = '30px';
-
-                // 奖杯或奖牌图标逻辑
-                let awardIcon = '';
-                if (pub.venues.includes('Best Paper Award')) {
-                    awardIcon = `<img src="../img/icons/trophy.png" alt="Trophy" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
-                } else if (pub.venues.includes('Best Paper Honorable Mention Award')) {
-                    awardIcon = `<img src="../img/icons/medal.png" alt="Medal" style="height: 1em; vertical-align: middle; margin-right: 5px;">`;
-                }
-
-                // 如果 venues 存在，生成对应的 HTML，否则不生成
-                const venuesContent = pub.venues
-                    ? `${awardIcon}<a href="${pub.url}" style="text-decoration: none; color:#ab2d05;" rel="alternate bookmark" target="_blank" ><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
-                    : '';
-
-                // 检查 pub.pdf，如果存在则生成 "View Publication" 链接
-                const pdfContent = pub.pdf
-                    ? `<div class="sec_sub_title_a" style="margin-top: 5px; margin-bottom: 5px;"><a href="${pub.pdf}" style=" color:#3f44b6;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
-                    : '';
-
-                pubDiv.innerHTML = `
-                    <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration: none; color: #3f44b6;" rel="alternate bookmark" target="_blank">${pub.title}</a></div>
-                    <div class="cont-researche overflow">${pub.authors.map(author => `<a href="${author.link}" class="cont-researcher-name" style="text-decoration: none; color:#5d5d5d;">${author.name}</a>`).join(', ')}</div>
-                    <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.venuesname} | ${pub.date}</div>
-                    <div class="sec_sub_title_s" style="margin-top: 5px; margin-bottom: 5px;">${pub.description}</div>
-                    ${pdfContent}  <!-- 仅当 pub.pdf 存在时才显示 -->
-                `;
-                accordionContent.appendChild(pubDiv);
-            });
-
-            accordionItem.appendChild(accordionContent);
-            accordionContainer.appendChild(accordionItem);
+      // 为研究者名字添加 hover 效果和点击事件
+      document.querySelectorAll('.researcher-link').forEach(item => {
+        item.addEventListener('mouseover', function() {
+          this.style.color = '#f36f24';
         });
-
-        // Initialize accordion
-        var accordion_2 = new Accordion(accordionContainer, {
-            multiple: true,
-            defaultOpenedIndexes: [0, 1, 2]
+        item.addEventListener('mouseout', function() {
+          this.style.color = '';
         });
+        item.addEventListener('click', function() {
+          const link = this.getAttribute('data-link');
+          window.open(link, '_blank');
+        });
+      });
+
+      // 更新关键词
+      const keywordsContainer = document.querySelector('.keywords-container');
+      research.keywords.slice(0, 5).forEach(keyword => {
+        const keywordDiv = document.createElement('div');
+        keywordDiv.className = 'label_key_btn';
+        keywordDiv.style.marginRight = '10px';
+        keywordDiv.textContent = `#${keyword}`;
+        keywordsContainer.appendChild(keywordDiv);
+      });
+
+      // 添加 "View Full Paper" 按钮
+      const downloadContainer = document.querySelector('.download-container');
+      if (research.pdf) {
+        const viewFullPaperBtn = document.createElement('a');
+        viewFullPaperBtn.className = 'label_btn';
+        viewFullPaperBtn.href = research.pdf;
+        viewFullPaperBtn.target = '_blank';
+        viewFullPaperBtn.textContent = 'View Full Paper';
+        viewFullPaperBtn.style.textDecoration = 'none';
+        downloadContainer.appendChild(viewFullPaperBtn);
+      }
+
+      // 更新摘要
+      if (research.abstract) {
+        const formattedAbstract = research.abstract.replace(/\n/g, '<br>');
+        document.getElementById('researchAbstract').innerHTML = formattedAbstract;
+      }
+
+      // contact
+      const contactDetails = document.getElementById('contact-details');
+      const contactSection = document.getElementById('Contact');
+      const { office, school, num, email } = research;
+      let contactHTML = '';
+      if (Array.isArray(research.researchers) && research.researchers[0]?.name) {
+        let link = research.researchers[0].link || '#';
+        if (!/^https?:\/\//i.test(link)) link = `https://chive.cse.lsu.edu/${link}`;
+        contactHTML += `<div><a href="${link}" target="_blank" style="cursor:pointer;text-decoration:none;">${research.researchers[0].name}</a></div>`;
+      }
+      if (office) contactHTML += `<div>${office}</div>`;
+      if (school) contactHTML += `<div>${school}</div>`;
+      if (num)    contactHTML += `<div>${num}</div>`;
+      if (email)  contactHTML += `<div><a href="mailto:${email}" style="color:#3f44b6;">${email}</a></div>`;
+      if (contactHTML.trim()) contactDetails.innerHTML = contactHTML; else contactSection.style.display = 'none';
+
+      // contact hover style
+      const style = document.createElement('style');
+      style.innerHTML = `
+        #contact-details a { color:#5f5d5d; }
+        #contact-details a:hover { color:#3f44b6; }
+      `;
+      document.head.appendChild(style);
     })
     .catch(error => {
-        console.error('Error fetching publications data:', error);
+      console.error('Error fetching research data:', error);
     });
 
+  // 關閉/縮放
+  closeBtn.onclick = function() { modal.style.display = "none"; };
+  modalImg.onclick = function() {
+    zoomedIn = !zoomedIn;
+    modalImg.classList.toggle('zoom-in', zoomedIn);
+    modalImg.classList.toggle('zoom-out', !zoomedIn);
+  };
 
+  // 2) 影片工具函式
+const safeArray = v => Array.isArray(v) ? v : (v == null ? [] : [v]);
+const hasTag = (labels, tag) =>
+  Array.isArray(labels) ? labels.includes(tag)
+  : (typeof labels === 'string' ? labels.includes(tag) : false);
+
+function parseStartSeconds(urlObj) {
+  const t = urlObj.searchParams.get('t') || '';
+  if (!t) return 0;
+  if (/^\d+$/.test(t)) return parseInt(t, 10);
+  if (/^\d+s?$/i.test(t)) return parseInt(t, 10);
+  const m = t.match(/(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?/i);
+  if (!m) return 0;
+  return (parseInt(m[1]||'0',10)*3600) + (parseInt(m[2]||'0',10)*60) + parseInt(m[3]||'0',10);
+}
+
+function isYouTubeUrl(url) {
+  try {
+    const u = new URL(url);
+    return /(^|\.)youtube\.com$/i.test(u.hostname) || /(^|\.)youtu\.be$/i.test(u.hostname);
+  } catch { return false; }
+}
+
+function toYouTubeEmbed(url) {
+  const u = new URL(url);
+  const start = parseStartSeconds(u);
+  let videoId = '';
+  if (/youtu\.be$/i.test(u.hostname)) {
+    videoId = u.pathname.replace(/^\//, '');
+  } else if (/youtube\.com$/i.test(u.hostname)) {
+    if (u.pathname === '/watch') videoId = u.searchParams.get('v') || '';
+    else if (u.pathname.startsWith('/live/'))   videoId = u.pathname.split('/live/')[1] || '';
+    else if (u.pathname.startsWith('/shorts/')) videoId = u.pathname.split('/shorts/')[1] || '';
+  }
+  if (!videoId) return '';
+
+  // 統一加入確保有聲音播放的參數（不自動播放時也不會被靜音）
+  // 如需自動播放，將 autoplay=1；否則維持 0。
+  const params = new URLSearchParams({
+    start: String(start || 0),
+    mute: '0',
+    playsinline: '1',
+    // 若你想自動播放：把下一行改成 '1'
+    autoplay: '0',
+    // 其他常用：
+    rel: '0',
+    iv_load_policy: '3'
+  });
+  // 移除 start=0 以免多餘
+  if (!start) params.delete('start');
+
+  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+}
+
+function canUseHtml5Video(url) {
+  return /\.(mp4|webm|ogg)(\?.*)?$/i.test(url);
+}
+
+// 抽出：依據 URL 產生內嵌區塊（沿用你的樣式）
+// 重要：不加 muted、不設置靜音，確保播放時有聲音
+function renderEmbed(videoUrl) {
+  if (!videoUrl) return '';
+  if (isYouTubeUrl(videoUrl)) {
+    const embed = toYouTubeEmbed(videoUrl);
+    return embed
+      ? `<div class="video-container" style="margin-top:20px;position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;background:#000;">
+           <iframe
+             src="${embed}"
+             style="position:absolute;top:0;left:0;width:100%;height:100%;"
+             frameborder="0"
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+             allowfullscreen
+           ></iframe>
+         </div>`
+      : `<div style="margin-top:12px;"><a href="${videoUrl}" target="_blank" rel="noopener" style="text-decoration:none;color:#3f44b6;">Open video</a></div>`;
+  } else if (canUseHtml5Video(videoUrl)) {
+    // HTML5 影片：預設不靜音，顯示控制列
+    return `<video controls playsinline preload="metadata" style="width:100%;max-width:100%;margin-top:12px;">
+              <source src="${videoUrl}">
+              Your browser does not support the video tag.
+            </video>`;
+  } else {
+    return `<div style="margin-top:12px;"><a href="${videoUrl}" target="_blank" rel="noopener" style="text-decoration:none;color:#3f44b6;">Open video</a></div>`;
+  }
+}
+
+// 3) 渲染影片（支援 url-2）
+function updateVideos(list) {
+  const infoContent = document.getElementById('info-content');
+  const videoSection = document.getElementById('Videos');
+  if (!infoContent || !videoSection) return;
+
+  const hasVideos = safeArray(list).some(item =>
+    hasTag(item?.label, 'ASL') && (item?.url || item?.videoSrc || item?.['url-2'])
+  );
+  if (!hasVideos) { videoSection.style.display = 'none'; return; }
+  videoSection.style.display = '';
+
+  safeArray(list).forEach(infoItem => {
+    if (!(hasTag(infoItem?.label, 'ASL') && (infoItem?.url || infoItem?.videoSrc || infoItem?.['url-2']))) return;
+
+    const infoDiv = document.createElement('div');
+    infoDiv.classList.add('news_card');
+    infoDiv.style.paddingTop = '30px';
+
+    const speakers = safeArray(infoItem?.researchers).slice(0,2)
+      .map(r => `<a href="${r?.link || '#'}" target="_blank" class="cont-researcher-name" style="text-decoration:none;">${r?.name ?? ''}</a>`)
+      .filter(Boolean).join(', ');
+
+    const primaryUrl   = infoItem?.videoSrc || infoItem?.url || '';
+    const secondaryUrl = infoItem?.['url-2'] || '';
+
+    const embedHTML1 = renderEmbed(primaryUrl);
+    const embedHTML2 = secondaryUrl ? renderEmbed(secondaryUrl) : '';
+
+    infoDiv.innerHTML = `
+      <div class="sec_sub_title">${infoItem?.info ?? ''}${infoItem?.place ? (' | ' + infoItem.place) : ''}</div>
+      <div class="sub-title_s">
+        <a href="${infoItem?.url || primaryUrl}" style="text-decoration:none;color:#3f44b6;" rel="alternate bookmark" target="_blank">${infoItem?.title ?? ''}</a>
+      </div>
+      <div class="cont overflow">${infoItem?.date ?? ''}</div>
+      ${speakers ? `<div class="cont overflow cursor">Speakers: ${speakers}</div>` : ''}
+      ${embedHTML1}
+      ${embedHTML2}
+    `;
+    infoContent.appendChild(infoDiv);
+  });
+
+  // （選擇性）確保所有 HTML5 <video> 都不靜音
+  //infoContent.querySelectorAll('video').forEach(v => { try { v.muted = false; } catch {} });
+}
+
+// 影片資料載入（保持你原本路徑）
+fetch('/json/research/research.json', { cache: 'no-store' })
+  .then(r => r.json())
+  .then(videoList => { updateVideos(videoList); })
+  .catch(err => console.error('Error fetching videos data:', err));
+
+  // 4) Publications
+  fetch('/json/research/publications.json')
+    .then(response => {
+      if (!response.ok) throw new Error('Network response was not ok ' + response.statusText);
+      return response.json();
+    })
+    .then(data => {
+      const accordionContainer = document.getElementById('accordion-2');
+      let firstAccordionOpened = false;
+      const hasPublications = data.years?.some(y => y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('ASL')));
+      if (!hasPublications) { document.getElementById('Publications').style.display = 'none'; return; }
+
+      data.years.forEach((year) => {
+        const filtered = (year.publications || []).filter(pub => Array.isArray(pub.label) && pub.label.includes('ASL'));
+        if (!filtered.length) return;
+
+        const item = document.createElement('div');
+        item.classList.add('accordion-item');
+
+        const heading = document.createElement('div');
+        heading.classList.add('accordion-heading');
+        heading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
+        item.appendChild(heading);
+
+        const content = document.createElement('div');
+        content.classList.add('accordion-content');
+        if (!firstAccordionOpened) { content.style.display = 'block'; firstAccordionOpened = true; }
+
+        filtered.sort((a,b) => new Date(b.date) - new Date(a.date)).forEach(pub => {
+          const div = document.createElement('div');
+          div.style.paddingBottom = '30px';
+          let awardIcon = '';
+          if ((pub.venues || '').includes('Best Paper Award')) awardIcon = `<img src="../img/icons/trophy.png" alt="Trophy" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+          else if ((pub.venues || '').includes('Best Paper Honorable Mention Award')) awardIcon = `<img src="../img/icons/medal.png" alt="Medal" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+
+          const venuesContent = pub.venues
+            ? `${awardIcon}<a href="${pub.url}" style="text-decoration:none;color:#ab2d05;" target="_blank"><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
+            : '';
+
+          const pdfContent = pub.pdf
+            ? `<div class="sec_sub_title_a" style="margin-top:5px;margin-bottom:5px;"><a href="${pub.pdf}" style="color:#3f44b6;" target="_blank">View Publication</a></div>`
+            : '';
+
+          div.innerHTML = `
+            <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration:none;color:#3f44b6;" target="_blank">${pub.title}</a></div>
+            <div class="cont-researche overflow">${(pub.authors || []).map(a => `<a href="${a.link}" class="cont-researcher-name" style="text-decoration:none;">${a.name}</a>`).join(', ')}</div>
+            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.venuesname || ''} | ${pub.date || ''}</div>
+            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.description || ''}</div>
+            ${pdfContent}
+          `;
+          content.appendChild(div);
+        });
+
+        item.appendChild(content);
+        accordionContainer.appendChild(item);
+      });
+
+      // Accordion（注意 mn-accordion.js 是否正確載入）
+      var accordion_2 = new Accordion(accordionContainer, { multiple: true, defaultOpenedIndexes: [0] });
+    })
+    .catch(error => {
+      console.error('Error fetching publications data:', error);
     });
-  </script>
+});
+</script>
+
 
 
 </body>

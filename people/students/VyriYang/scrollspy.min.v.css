@@ -76,6 +76,7 @@ body {
 
 .about {
     margin-left: 60px;
+    margin-right: 60px;
 }
 
 .intro_text {
@@ -122,6 +123,12 @@ body {
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
+.cont-researcher-name_ {
+    text-decoration: none;
+    color: #5d5d5d;
+    transition: color 0.3s ease; /* 使颜色变化有平滑过渡效果 */
+  }
 
 .cont-researcher-name {
     text-decoration: none;
@@ -222,7 +229,7 @@ body {
     text-align: left;
     font-size: 28px;
     margin-bottom: 40px;
-    color: #3f44b6;
+    color: #357132;
 }
 
 .overflow {
@@ -282,6 +289,16 @@ body {
     padding: 25px;
 }
 
+  .keywords-container {
+  display: flex;
+  flex-wrap: wrap; /* 如果超出寬度就換行 */
+  gap: 8px;        /* 關鍵詞之間的間距 */
+}
+
+.keywords-container .sec_sub_title_s {
+  white-space: nowrap; /* 防止斷行 */
+}
+
 .news_card {
     padding: 20px;
     border-bottom: 1px solid #cacbcc;
@@ -330,6 +347,17 @@ body {
     color: #5f5d5d;
     margin-bottom: 1px;
     line-height: 1.6;
+}
+
+.sec_sub_title_sp {
+    font-size: 14px;
+    color: #357132;
+    margin-bottom: 1px;
+    line-height: 1.6;
+}
+
+.sec_sub_title_sp:hover {
+    color: #f36f24;
 }
 
 .sec_sub_title_a {
