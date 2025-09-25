@@ -504,17 +504,26 @@ if (!projectsGrid) {
           const pubDiv = document.createElement('div');
           pubDiv.style.paddingBottom = '30px';
 
-          // 作者處理：取消下劃線；若為「Vyri Yang」→加粗
-          const authors = safeArray(pub?.authors);
-          const authorsContent = authors.map(raw => {
-            const aName = (typeof raw === 'string') ? raw : (raw?.name ?? '');
-            const aLink = (raw && typeof raw === 'object') ? (raw.link || '') : '';
-            const isVyri = aName.trim().toLowerCase() === 'vyri yang';
-            const nameHTML = isVyri ? `<strong>${aName}</strong>` : aName;
-            const hrefAttr = aLink ? ` href="${aLink}" target="_blank" rel="noopener noreferrer"` : '';
-            // 以 <a> 包裹，統一使用 class，並保證不帶下劃線
-            return `<a${hrefAttr} class="cont-researcher-name-v" style="text-decoration:none;">${nameHTML}</a>`;
-          }).join(', ');
+// 作者處理：取消下劃線；若為「Vyri Yang」→加粗
+const authors = safeArray(pub?.authors);
+const authorsContent = authors.map(raw => {
+  const aName = (typeof raw === 'string') ? raw : (raw?.name ?? '');
+  const aLink = (raw && typeof raw === 'object') ? (raw.link || '').trim() : '';
+  const isVyri = aName.trim().toLowerCase() === 'vyri yang';
+  const nameHTML = isVyri ? `<strong>${aName}</strong>` : aName;
+
+  if (!aLink) {
+    // 🔹 沒有 link → 灰色字 + 無 pointer
+    return `<span class="cont-researcher-name-v" style="color:#5d5d5d; cursor:default; text-decoration:none;">${nameHTML}</span>`;
+  } else if (isVyri) {
+    // 🔹 Vyri Yang → 同頁開啟
+    return `<a href="${aLink}" class="cont-researcher-name-v" style="text-decoration:none;">${nameHTML}</a>`;
+  } else {
+    // 🔹 其他作者 → 新頁面開啟
+    return `<a href="${aLink}" target="_blank" rel="noopener noreferrer" class="cont-researcher-name-v" style="text-decoration:none;">${nameHTML}</a>`;
+  }
+}).join(', ');
+
 
           // 獎項圖示
           let awardIcon = '';

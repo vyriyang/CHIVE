@@ -1,7 +1,7 @@
 {
   "projects": [
     {
-        "label": ["CyberbullyingData", "current"],
+      "label": ["CyberbullyingData", "current"],
       "title": "Complex Data Representation",
       "image": "img/CyberbullyingVisualization.png",
       "alt": "Card Image 1",
@@ -16,11 +16,16 @@
       "content": "The project blends hybrid physical-digital experiences with data-driven storytelling, enabling users to explore multiple outcomes through interactive choices. Sound and motion elements amplify immersion, enhancing user engagement with dynamic narratives.",
       "abstract": "",
       "keywords": ["Narrative Visualizations","Data Storytelling","Big Data"],
+      "intro":"",
+      "method":"",
+      "result":"",
       "short-description": "",
       "url": "",
       "date": "",
       "researchers": [
-          { "name": "Vyri Yang", "link": "https://vyriyang.com" }
+          { "name": "Vyri Yang", "link": "https://vyriyang.com" },
+          { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" },
+          { "name": "Mahmood Jasim", "link": "" }
       ],
       "place": "St. Pete Beach, Florida, USA",
       "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
@@ -44,6 +49,9 @@
       "content": "This study investigates the roles and design decisions of animation in narrative visualization through a literature review of 148 papers and interviews with 23 researchers, designers, and users.",
       "abstract": "Design Implications for Animation in Narrative Visualization: Insights from Literature Review and Stakeholders’ Perspectives explores how animation shapes data storytelling. The study combines a review of 148 papers (2010–2024) with interviews of 23 researchers, designers, and users to examine what roles animation is expected to play and what factors influence design decisions. It highlights how animation supports comprehension, emotional engagement, and information granularity, while also revealing practical challenges around pacing, interaction, cultural adaptation, and AI–human collaboration.",
       "keywords": ["Narrative Visualizations","Data Storytelling","Animated Visualization","Interview","Qualitative Methods"],
+      "intro":"",
+      "method":"",
+      "result":"",
       "short-description": "",
       "url": "",
       "date": "",
@@ -72,11 +80,11 @@
       "link": "vyriResearch/AnimatingTheNarrative.html",
       "pdf": "https://ieeevis.b-cdn.net/vis_2024/pdfs/v-short-1192.pdf",
       "content": "We explore the design space of narrative visualization, focusing on animation styles. We categorize 80 papers from top visualization venues into six categories, including Animation Style, Interactivity, Methodology, Technology, Evaluation Type , and Application Domain. We discuss the interplay between different visualization techniques and elements and the trend to focus on domain-specific visualizations.",
-      "abstract": "Narrative visualization has become a crucial tool in data presentation, merging storytelling with data visualization to convey complex information in an engaging and accessible manner. In this study, we review the design space for narrative visualizations, focusing on animation style, through a comprehensive analysis of 80 papers from key visualization venues. We categorize these papers into six broad themes: Animation Style, Interactivity, Technology Usage, Methodology Development, Evaluation Type, and Application Domain. Our findings reveal a significant evolution in the field, marked by a growing preference for animated and non-interactive techniques. This trend reflects a shift towards minimizing user interaction while enhancing the clarity and impact of data presentation. We also identified key trends and technologies shaping the field, highlighting the role of technologies, such as machine learning in driving these changes. We offer insights into the dynamic interrelations within the narrative visualization domains, and suggest future research directions, including exploring non-interactive techniques, examining the interplay between different visualization elements, and developing domain-specific visualizations.<br><br>",
+      "abstract": "Narrative visualization has become a crucial tool in data presentation, merging storytelling with data visualization to convey complex information in an engaging and accessible manner. In this study, we review the design space for narrative visualizations, focusing on animation style, through a comprehensive analysis of 80 papers from key visualization venues. We categorize these papers into six broad themes: Animation Style, Interactivity, Technology Usage, Methodology Development, Evaluation Type, and Application Domain. Our findings reveal a significant evolution in the field, marked by a growing preference for animated and non-interactive techniques. This trend reflects a shift towards minimizing user interaction while enhancing the clarity and impact of data presentation. We also identified key trends and technologies shaping the field, highlighting the role of technologies, such as machine learning in driving these changes. We offer insights into the dynamic interrelations within the narrative visualization domains, and suggest future research directions, including exploring non-interactive techniques, examining the interplay between different visualization elements, and developing domain-specific visualizations.",
+      "keywords": ["Narrative visualizations", "Static and animated visualization", "Categorization", "Design space"],
+      "intro":"In the increasingly complex domain of data presentation, narrative visualization has emerged as a vital tool by enhancing communication through rich and engaging data interpretation [15], increasing user engagement with intuitive information representation [25], [20], and improving accessibility with user-friendly designs [25]. It merges storytelling with data visualization, aiming to transform intricate data sets into engaging, informative, and comprehensible stories for a broad audience [14], [35]. Furthermore, narrative visualizations can elicit and establish emotional connections through dynamic and interactive storytelling methods [13], [22], [32]. Recent advancements in technology and visualization techniques have propelled the growth of narrative visualization, particularly through animations [26], [28]. Prior research explored various methods to animate static charts [35], [13] and integrate interactivity [22], significantly enriching the user experience and understanding [19]. These approaches made data representations more dynamic and accessible while introducing new ways to engage and educate viewers.<br><br> Despite the broad usage of animation in narrative visualization, prior works highlighting the importance of animation styles are scattered across various publications and research projects. While some works categorized narrative visualization, many of these studies predominantly focused on narrative intents, organizing data facts, and selecting visual design techniques [34]. Others focused on how different narrative structures can be utilized in data storytelling to affect audience understanding and memory [4]. However, how the animation style interacts with these elements to create a cohesive and effective narrative remains underexplored.<br><br> In this work, we address this gap by categorizing narrative visualization design space, focusing on animation style. We reviewed 80 papers from prominent visualization venues including IEEE Visualization (VIS), Transaction on Visualization and Computer Graphics (TVCG), ACM CHI Conference on Human Factors in Computing Systems, and EuroVIS. We performed multiple reading passes through each collected paper. First, we identified three initial categories based on prior works and our initial reading passes including animation style, workflow, and application domain. Then, we thoroughly reviewed the papers to assign them to initial categories and added new categories following inductive and deductive coding approaches [7]. We refined the emergent categories across several iterations and finalized them into six broad categories: Animation Style, Interactivity, Technology Usage, Methodology Development, Evaluation Type, and Application Domain.<br><br> We further analyzed the papers to identify key trends, technologies, and methodologies using linear regression and Person’s correlation, which led to a deeper understanding of how dynamic and static elements influence narrative effectiveness. Our findings reveal a significant growth in the use of animations in narrative visualizations, with a notable increase in animated and non-interactive techniques. This evolution reflects a trend towards enhancing storytelling and audience engagement while minimizing user interaction. Furthermore, a trend toward survey-centric evaluation for visualizations suggests the importance of user feedback in refining visualization techniques. Our Pearson’s correlation revealed the complementary use of animated and non-interactive elements to enhance user understanding and engagement. Furthermore, we found a strong correlation between animated elements and case studies, which underscores the importance of combining dynamic elements with practical examples to validate theoretical models. Based on these insights, we suggest future research directions, including further exploration of non-interactive techniques, examining the interplay between different visualization elements, and developing domain-specific visualizations tailored to unique user needs.",
       "method":"",
       "result":"",
-      "keywords": ["Narrative visualizations", "Static and animated visualization", "Categorization", "Design space"],
-      "short-description": "We explore the design space of narrative visualization, focusing on animation styles.",
       "url": "https://youtu.be/6oCqQbTXScg?si=FgRhI-OQ7rpezu9U",
       "url-2":"https://www.youtube.com/live/7Y2cPfXGiAY?si=U3O9zLpMNboPVIV1&t=4158",
       "date": "October 17, 2024",

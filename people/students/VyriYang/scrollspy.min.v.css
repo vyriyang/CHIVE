@@ -115,7 +115,7 @@ body {
 }
 
 .download_btn:hover {
-    color: #f36f24;
+    color: #EBBA4D;
 }
 
 .gray {
@@ -137,7 +137,7 @@ body {
   }
   
   .cont-researcher-name:hover {
-    color: #f36f24; /* 当鼠标悬停时改变颜色 */
+    color: #EBBA4D; /* 当鼠标悬停时改变颜色 */
   }
 
   .cont-data{
