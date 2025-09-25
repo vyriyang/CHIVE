@@ -24,8 +24,7 @@
       "date": "",
       "researchers": [
           { "name": "Vyri Yang", "link": "https://vyriyang.com" },
-          { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" },
-          { "name": "Mahmood Jasim", "link": "" }
+          { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
       ],
       "place": "St. Pete Beach, Florida, USA",
       "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
