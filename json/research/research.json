@@ -1,6 +1,33 @@
 [
     
-  {
+    {
+        "label": ["DesignImplications", "current"],
+        "venues": "",
+        "info": "Ongoing Research",
+        "imgSrc": "../img/research/DesignImplications/CHI2026_.jpg",
+        "videoSrc":"",
+        "imgMore":["",""],
+        "title": "Design Implications for Animation in Narrative Visualization",
+        "link": "../researchTopic/DesignImplications.html",
+        "pdf": "",
+        "content": "This study investigates the roles and design decisions of animation in narrative visualization through a literature review of 148 papers and interviews with 23 researchers, designers, and users.",
+        "abstract": "Design Implications for Animation in Narrative Visualization: Insights from Literature Review and Stakeholders’ Perspectives explores how animation shapes data storytelling. The study combines a review of 148 papers (2010–2024) with interviews of 23 researchers, designers, and users to examine what roles animation is expected to play and what factors influence design decisions. It highlights how animation supports comprehension, emotional engagement, and information granularity, while also revealing practical challenges around pacing, interaction, cultural adaptation, and AI–human collaboration.<br><br>",
+        "keywords": ["Narrative Visualizations","Data Storytelling","Animated Visualization","Interview","Qualitative Methods"],
+        "intro":"",
+        "description": "",
+        "url": "",
+        "date": "June, 2025",
+        "researchers": [
+            { "name": "Vyri Yang", "link": "https://vyriyang.com" },
+            { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
+        ],
+        "place": "",
+        "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+        "school": "Louisiana State University",
+        "num": "",
+        "email": ""
+      },
+    {
     "label": ["AINEWs","current"],
     "venues": "CHI2025",
     "info": "CHI2025 Late-breaking Work",
@@ -21,7 +48,7 @@
         { "name": "Mehrasa Amiri", "link": "" },
         { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
     ],
-    "place":"USA",
+    "place":"Yokohama, Japan",
     "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
     "school": "Louisiana State University",
     "num": "",
@@ -79,7 +106,7 @@
             { "name": "Vimal Joseph", "link": "https://chive.cse.lsu.edu/people/students/VimalThomasJoseph/VimalThomasJoseph.html" },
             { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
         ],
-        "place":"USA",
+        "place":"Yokohama, Japan",
         "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
         "school": "Louisiana State University",
         "num": "",
@@ -106,7 +133,7 @@
           { "name": "Nushrat Ria", "link": "https://chive.cse.lsu.edu/people/students/NushratJahanRia/nush.html" },
           { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
       ],
-      "place":"USA",
+      "place":"Yokohama, Japan",
       "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
       "school": "Louisiana State University",
       "num": "",
@@ -133,7 +160,7 @@
         { "name": "Saramsh Gautam", "link": "https://chive.cse.lsu.edu/people/students/SaramshGautam/Saramsh.html" },
         { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
     ],
-    "place":"USA",
+    "place":"",
     "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
     "school": "Louisiana State University",
     "num": "",
@@ -193,8 +220,34 @@
     "school": "Louisiana State University",
     "num": "",
     "email": ""
-  },
-
+  },  
+  {
+      "label": ["last"],
+      "venues": "VENUES",
+      "info": "VENUES Full Name or any info about your research you wanna show on page",
+      "imgSrc": "",
+      "videoSrc":"",
+      "imgMore":["",""],
+      "title": "",
+      "link": "",
+      "pdf": "",
+      "content": "",
+      "abstract": "<br><br>",
+      "keywords": [""],
+      "intro":"",
+      "description": "",
+      "url": "",
+      "date": "June, 2025",
+      "researchers": [
+          { "name": "", "link": "" },
+          { "name": "", "link": "" }
+      ],
+      "place": "Baton Rouge, USA",
+      "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+      "school": "Louisiana State University",
+      "num": "",
+      "email": ""
+    },
   
   {
       "label": ["current", "last"],
