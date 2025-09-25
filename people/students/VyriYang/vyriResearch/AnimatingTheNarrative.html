@@ -448,7 +448,7 @@ closeBtn.onclick = function () {
             if (link && !/^https?:\/\//i.test(link)) {
               link = `https://chive.cse.lsu.edu/${link.replace(/^\/+/, "")}`;
             }
-            return `<span class="cont-researcher-name" data-link="${link}" style="cursor:pointer;">${name}</span>`;
+            return `<span class="cont-researcher-name-v" data-link="${link}" style="cursor:pointer;">${name}</span>`;
           })
           .join(", ");
 
@@ -634,7 +634,7 @@ if (keywordsContainer) {
         const nm = r?.name || '';
         const link = r?.link || '#';
         const nmHTML = nm === 'Vyri Yang' ? `<strong>${nm}</strong>` : nm;
-        return `<a href="${link}" target="_blank" rel="noopener noreferrer" class="cont-researcher-name" style="text-decoration:none;">${nmHTML}</a>`;
+        return `<a href="${link}" target="_blank" rel="noopener noreferrer" class="cont-researcher-name-v" style="text-decoration:none;">${nmHTML}</a>`;
       })
       .join(', ');
 
@@ -784,7 +784,7 @@ if (keywordsContainer) {
               const nm = a?.name || "";
               const link = a?.link || "#";
               const nmHTML = nm === "Vyri Yang" ? `<strong>${nm}</strong>` : nm;
-              return `<a href="${link}" class="cont-researcher-name" style="text-decoration:none;">${nmHTML}</a>`;
+              return `<a href="${link}" class="cont-researcher-name-v" style="text-decoration:none;">${nmHTML}</a>`;
             })
             .join(", ");
 

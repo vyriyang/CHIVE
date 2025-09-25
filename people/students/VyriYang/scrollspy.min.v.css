@@ -333,7 +333,7 @@ body {
 }
 
 .sub-title_ss:hover {
-    color: #f36f24;
+    color: #EBBA4D;
     transform: scale(1.1); /* 使用 transform 替代 scale */
     transform-origin: left; /* 设置缩放的原点为左侧 */
     transition: transform 0.3s ease, color 0.3s ease; /* 添加平滑过渡 */
@@ -357,7 +357,7 @@ body {
 }
 
 .sec_sub_title_sp:hover {
-    color: #f36f24;
+    color: #EBBA4D;
 }
 
 .sec_sub_title_a {
