@@ -275,15 +275,46 @@
   </section>
 
   <!-- Footer -->
-  <div class="footer_v">
-    <div class="cont_footer_v">© 2025 All rights reserved</div>
-  </div>
+<div class="footer_v">
+  <div id="footer-text" class="cont_footer_v"></div>
+</div>
 
   <!-- 保留你的腳本路徑 -->
   <script src="../mn-accordion.v.js"></script>
   <script src="../scrollspy.min.v.js"></script>
 
   <script>
+
+//footer
+
+(function loadFooterText() {
+    const el = document.getElementById('footer-text');
+    if (!el) return;
+
+    fetch('../json/VyriYang-footer.json', { cache: 'no-store' })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load json/footer.json: ' + res.status);
+        return res.json();
+      })
+      .then(data => {
+        // 依照常用格式 data.footer.copyright
+        const text =
+          (data && data.footer && data.footer.copyright)
+            ? String(data.footer.copyright)
+            // 後備：試著找常見字段；最後才用預設
+            : (data?.copyright || data?.text || '© 2025 All rights reserved by VYRI YANG');
+
+        el.textContent = text;
+      })
+      .catch(err => {
+        console.error(err);
+        el.textContent = '© 2025 All rights reserved by VYRI YANG';
+      });
+  })();
+
+
+
+
   document.addEventListener("DOMContentLoaded", function () {
     // ===== 工具 =====
     const byId = (id) => document.getElementById(id);

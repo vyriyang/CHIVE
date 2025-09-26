@@ -6,6 +6,31 @@
   <link rel="stylesheet" href="scrollspy.min.v.css"/>
   <link rel="stylesheet" href="style.v.css"/>
   <title>VYRI YANG</title>
+  <style>
+    /* ====== 通用載入圖標 ====== */
+    .loading-box{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px 0;
+    }
+    .loader{
+      width:34px;
+      height:34px;
+      border-radius:50%;
+      border:4px solid rgba(0,0,0,.12);
+      border-top-color:#3f44b6; /* 主色 */
+      animation:spin 0.9s linear infinite;
+    }
+    @keyframes spin{
+      to{ transform:rotate(360deg); }
+    }
+    /* 載入中的淡化（可選） */
+    .is-loading{ opacity:.65; pointer-events:none; }
+    /* 小一點的行內載入器（目前沒用到，留備用） */
+    .loader--sm{ width:20px; height:20px; border-width:3px; }
+  </style>
 </head>
 <body>
     <nav id="sticky-navbar" class="clean-navbar">
@@ -15,26 +40,21 @@
         <li><a href="#Publications" id="publications-link">Publications</a></li>
         <li><a href="#Awards" id="awards-link">Awards</a></li>
         <li>
-  <a href="https://vyriyang.wixsite.com/vyri-yang/fashion" 
-     id="design" 
-     target="_blank" 
-     rel="noopener noreferrer">
-    Design
-  </a>
-</li>
+          <a href="https://vyriyang.wixsite.com/vyri-yang/fashion" 
+             id="design" 
+             target="_blank" 
+             rel="noopener noreferrer">Design</a>
+        </li>
         <li><a href="#Contact" id="contact-link">Contact</a></li>
         <li><a href="VYRI YANG Resume 2025 Intern.pdf" target="_blank">Resume</a></li>
-        <!----<li><a href="https://chive.cse.lsu.edu">CHIVE Home</a></li> -->
+        <!-- <li><a href="https://chive.cse.lsu.edu">CHIVE Home</a></li> -->
         <li><a href="#Videos" id="videos-link">Videos</a></li>
-        
       </ul>
     </nav>
 
     <section class="homesection" id="VYRI">
       <div><a href="#Publications" class="top-nav">PUBLICATIONS</a></div>
-      <div>
-  <a class="vertical-text right" href="VYRI YANG Resume.pdf" target="_blank">RESUME</a>
-</div>
+      <div><a class="vertical-text right" href="VYRI YANG Resume.pdf" target="_blank">RESUME</a></div>
       <div><a href="#Contact" class="vertical-text left">CONTACT</a></div>
 
       <!-- portrait 改為背景容器 -->
@@ -68,79 +88,30 @@
       <div><a href="#Projects" class="bottom-nav">PROJECTS</a></div>
     </section>
 
-  
-  
-  
-  <!--div class="divider"></div-->
-    
     <section class="video-section">
       <video id="intro-video" autoplay muted loop playsinline>
         <source src="img/webbackgroundHCIShort-upload.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       <div class="video-overlay"></div>
-      <div class="video-news">Our paper, 'Animating the Narrative: <br>A Review of Animation Styles in Narrative Visualization,' <br>has been accepted for presentation at<a href="https://ieeevis.org/year/2024/welcome"
-          style="text-decoration: none; color:#EBBA4D;" rel="alternate bookmark" target="_blank">
-         IEEE VIS2024</a>. <br>Join us in Tampa, Florida, on October 17th, 2024!<br></div>
+      <div class="video-news">
+        Our paper, 'Animating the Narrative: <br>
+        A Review of Animation Styles in Narrative Visualization,' <br>
+        has been accepted for presentation at
+        <a href="https://ieeevis.org/year/2024/welcome"
+           style="text-decoration: none; color:#EBBA4D;"
+           rel="alternate bookmark" target="_blank">IEEE VIS2024</a>.
+        <br>Join us in Tampa, Florida, on October 17th, 2024!<br>
+      </div>
     </section>
 
-
-  
-  <!-- Projects Section -->
-  <!--section id="Projects" class="content-section">
-    <div class="section-inner">
-      <div class="section-title-text">CURRENT PROJECTS</div>
-      <div class="card-grid">
-        <div class="card">
-          <div class="card-image-wrapper">
-              <div class="card-overlay"></div>
-            <img src="img/CyberbullyingVisualization.png" alt="Card Image 1" class="card-image" />
-          </div>
-          <div class="card-title-text">Complex Data Representation</div>
-          <p class="card-text">
-          The project blends hybrid physical-digital experiences with data-driven storytelling, enabling users to explore multiple outcomes through interactive choices. Sound and motion elements amplify immersion, enhancing user engagement with dynamic narratives.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-image-wrapper">
-              <div class="card-overlay"></div>
-            <img src="img/VisCIT.png" alt="Card Image 2" class="card-image" />
-          </div>
-          <div class="card-title-text">VisCIT: A Visualization-based Critical Incident Survey System</div>
-          <p class="card-text">
-          VisCIT is an interactive survey platform that combines critical incident methodology with dynamic visual feedback to elicit more accurate, context-rich responses. Through scenario-driven narratives and reflection prompts, it enhances recall and improves the reliability of self-reported data in complex domains.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-image-wrapper">
-              <div class="card-overlay"></div>
-            <img src="img/2025paper_Select.png" alt="Card Image 3" class="card-image" />
-          </div>
-          <div class="card-title-text">Decoding Data Storytelling</div>
-          <p class="card-text">
-          Using AI-assisted clustering and manual coding, we identified two major categories—animation styles and practice—along with 11 subcategories and 49 classifications. Regression and correlation analyses revealed how different animations support comprehension and balance coherence with flexibility.
-          </p>
-        </div>
-        <div class="card">
-          <div class="card-image-wrapper">
-              <div class="card-overlay"></div>
-            <img src="img/49.webp" alt="Card Image 4" class="card-image" />
-          </div>
-          <div class="card-title-text">Coming Soon</div>
-          <p class="card-text">
-          Additional research projects are currently underway and will be presented in future updates.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section-->
-
-  <!-- Projects Section（卡片由 JSON 動態生成） -->
+    <!-- Projects Section（卡片由 JSON 動態生成） -->
     <section id="Projects" class="content-section">
       <div class="section-inner">
         <div class="section-title-text">CURRENT PROJECTS</div>
         <div class="card-grid" id="projects-grid">
-          <!-- JSON data will be inserted here by JavaScript -->
+          <!-- 🔄 加載圖標（初始就放一個，腳本會替換/移除） -->
+          <div class="loading-box" id="projects-loader"><div class="loader"></div></div>
           <noscript>
             <p class="card-text">Please enable JavaScript to view projects.</p>
           </noscript>
@@ -148,580 +119,569 @@
       </div>
     </section>
   
-  <!-- Publications Section -->
-  <section class="content-section" id="Publications" style="display: none;">
-    <div class="section-inner">
-      <div class="section-title-text-data"><div class="text_v">PUBLICATIONS</div>
-      </div>
-
-      <div class="mn-acc-app">
-        <div class="mn-accordion" id="accordion-2">
-          <!-- JSON data will be inserted here by JavaScript -->
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Videos Section -->
-  <section class="content-section" id="Videos" style="display: none;">
-    <div class="section-inner">
-      <div class="section-title-text-data">Videos
-      </div>
-      <div class="grids" id="videosGrids"></div>
-    </div>
-  </section>
-
-  <!-- Awards Section -->
-  <section class="content-section" id="Awards" style="display: none;">
-    <div class="section-inner">
-      <div class="section-title-text-data">AWARDS
-      </div>
-      <div id="awards-content">
-        <!-- JSON data will be inserted here by JavaScript -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <!--section class="content-section" id="Contact">
-    <div class="gray">
+    <!-- Publications Section（開始就顯示，用 loader 佔位；若無資料再隱藏） -->
+    <section class="content-section" id="Publications">
       <div class="section-inner">
-        <div class="section-title-text-data">Contact
-        </div>
-        <div class=".sec_sub_title" id="contact-details">
-          
-        </div>
-      </div>
-    </div>
-  </section-->
-  
-  <!-- Fashion Designer Section -->
- <section class="fashion-designer-section">
-  <!-- 左上角介紹 -->
-  <div class="fashion-intro"
-       role="link" tabindex="0" aria-label="Open fashion portfolio"
-       style="cursor:pointer"
-       onclick="window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer')"
-       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer');}">
-    <p>A multidisciplinary designer uniting fashion sensibility with digital design thinking, grounded in HCI, big data visualization, and narrative visualization.</p>
-    <p>My work also spans fashion design, film production, UI/UX, visual storytelling, and web development.</p>
-  </div>
+        <div class="section-title-text-data"><div class="text_v">PUBLICATIONS</div></div>
 
-  <!-- 下方主標題 -->
-  <div class="fashion-title"
-       role="link" tabindex="0" aria-label="Open fashion portfolio"
-       style="cursor:pointer"
-       onclick="window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer')"
-       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer');}">
-    <div class="fashion-subtitle">CROSSFIELD</div>
-    <h1>DESIGNER</h1>
-  </div>
-
-  <!-- 右下圓圈箭頭 -->
-  <div class="scroll-down-indicator"
-       role="link" tabindex="0" aria-label="Open fashion portfolio"
-       style="cursor:pointer"
-       onclick="window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer')"
-       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer');}">
-    <div class="circle">
-      <span>&rarr;</span>
-    </div>
-  </div>
-</section>
-
-
-  
-  
-  
-  
-  <section class="banner-section" id="Contact">
-    <div class="banner-overlay"></div>
-    <div class="banner-content">
-      <div class="banner-left">
-        <h1 class="banner-title">VYRI YANG</h1>
-        <!--p class="banner-subtitle">PhD RESEARCHER</p-->
-        <div class="contact-info banner-description-left"><p style="margin-top: 10px;">I'm currently a PhD researcher in the Division of Computer Science and Engineering at Louisiana State University. My research focuses on merging the artistic with the scientific to develop impactful, user-centered technologies that redefine the boundaries of human-computer interaction. My work spans across areas such as Human-Computer Interaction (HCI), Narrative Visualization, Applied Machine Learning, and Data-driven Interactive Agent, aiming to enhance user experiences and foster deeper engagement through innovative, data-driven designs, and narrative-driven technologies.</p></div>
-      </div>
-      <div class="banner-right">
-        <div class="contact-info banner-description">
-          2329 Patrick F Taylor Building, Baton Rouge, LA 70803<br>
-          Louisiana State University
-          <a href="mailto:jyang44@lsu.edu">jyang44@lsu.edu</a>
-        </div>
-        <div class="banner-social-icons">
-          <a href="https://twitter.com/vyriyang"><img src="img/twitter.png" alt="Twitter" /></a>
-          <a href=""><img src="img/linkedin.png" alt="LinkedIn" /></a>
-          <a href="https://www.instagram.com/vyriyang"><img src="img/instagram.png" alt="Instagram" /></a>
+        <div class="mn-acc-app">
+          <!-- 🔄 區塊級載入器 -->
+          <div class="loading-box" id="pubs-loader"><div class="loader"></div></div>
+          <div class="mn-accordion" id="accordion-2"></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
+    <!-- Videos Section（開始顯示；若無資料再隱藏） -->
+    <section class="content-section" id="Videos">
+      <div class="section-inner">
+        <div class="section-title-text-data">Videos</div>
+        <!-- 🔄 區塊級載入器 -->
+        <div class="loading-box" id="videos-loader"><div class="loader"></div></div>
+        <div class="grids" id="videosGrids"></div>
+      </div>
+    </section>
 
-  <div class="footer_v">
-    <div class="cont_footer_v">© 2025 All rights reserved by VYRI YANG</div>
-  </div>
-  
+    <!-- Awards Section（開始顯示；若無資料再隱藏） -->
+    <section class="content-section" id="Awards">
+      <div class="section-inner">
+        <div class="section-title-text-data">AWARDS</div>
+        <!-- 🔄 區塊級載入器 -->
+        <div class="loading-box" id="awards-loader"><div class="loader"></div></div>
+        <div id="awards-content"></div>
+      </div>
+    </section>
+
+    <!-- Fashion Designer Section -->
+    <section class="fashion-designer-section">
+      <div class="fashion-intro"
+           role="link" tabindex="0" aria-label="Open fashion portfolio"
+           style="cursor:pointer"
+           onclick="window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer');}">
+        <p>A multidisciplinary designer uniting fashion sensibility with digital design thinking, grounded in HCI, big data visualization, and narrative visualization.</p>
+        <p>My work also spans fashion design, film production, UI/UX, visual storytelling, and web development.</p>
+      </div>
+
+      <div class="fashion-title"
+           role="link" tabindex="0" aria-label="Open fashion portfolio"
+           style="cursor:pointer"
+           onclick="window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer');}">
+        <div class="fashion-subtitle">CROSSFIELD</div>
+        <h1>DESIGNER</h1>
+      </div>
+
+      <div class="scroll-down-indicator"
+           role="link" tabindex="0" aria-label="Open fashion portfolio"
+           style="cursor:pointer"
+           onclick="window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer')"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); window.open('https://vyriyang.wixsite.com/vyri-yang/fashion','_blank','noopener,noreferrer');}">
+        <div class="circle"><span>&rarr;</span></div>
+      </div>
+    </section>
+
+    <!-- Contact Banner Section（此區塊不從 JSON 填充，但仍示範 Contact JSON 讀取的載入器） -->
+    <section class="banner-section" id="Contact">
+      <div class="banner-overlay"></div>
+      <div class="banner-content">
+        <div class="banner-left">
+          <h1 class="banner-title">VYRI YANG</h1>
+          <div class="contact-info banner-description-left">
+            <p style="margin-top: 10px;">
+              I'm currently a PhD researcher in the Division of Computer Science and Engineering at Louisiana State University...
+            </p>
+          </div>
+        </div>
+        <div class="banner-right">
+          <div class="contact-info banner-description">
+            2329 Patrick F Taylor Building, Baton Rouge, LA 70803<br>
+            Louisiana State University
+            <a href="mailto:jyang44@lsu.edu">jyang44@lsu.edu</a>
+          </div>
+          <div class="banner-social-icons">
+            <a href="https://twitter.com/vyriyang"><img src="img/twitter.png" alt="Twitter" /></a>
+            <a href=""><img src="img/linkedin.png" alt="LinkedIn" /></a>
+            <a href="https://www.instagram.com/vyriyang"><img src="img/instagram.png" alt="Instagram" /></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<div class="footer_v">
+  <div id="footer-text" class="cont_footer_v">Loading…</div>
+</div>
 
   <!-- JavaScript -->
   <script src="mn-accordion.v.js"></script>
   <script src="scrollspy.min.v.js"></script>
-   <script>
-     const video = document.getElementById("intro-video");
-     video.play().catch(error => {
-       console.warn("Autoplay failed:", error);
-       document.body.addEventListener("click", () => {
-         video.play();
-       }, { once: true });
-     });
-       
-       document.addEventListener("DOMContentLoaded", function () {
-         const navbar = document.getElementById("sticky-navbar");
-         const homeSection = document.querySelector(".homesection");
-         const videoSection = document.querySelector(".video-section");
+  <script>
+//footer
 
-         let hasPassedHomeSection = false;
+(function loadFooterText() {
+    const el = document.getElementById('footer-text');
+    if (!el) return;
 
-         const showNavbar = () => {
-           if (!navbar.classList.contains("show")) {
-             navbar.classList.add("show");
-           }
-         };
+    fetch('json/VyriYang-footer.json', { cache: 'no-store' })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load json/footer.json: ' + res.status);
+        return res.json();
+      })
+      .then(data => {
+        // 依照常用格式 data.footer.copyright
+        const text =
+          (data && data.footer && data.footer.copyright)
+            ? String(data.footer.copyright)
+            // 後備：試著找常見字段；最後才用預設
+            : (data?.copyright || data?.text || '© 2025 All rights reserved by VYRI YANG');
 
-         const hideNavbar = () => {
-           if (navbar.classList.contains("show")) {
-             navbar.classList.remove("show");
-           }
-         };
-
-         // 觀察 homesection：一旦它離開畫面（下沿往上捲走），顯示 navbar
-         const homeObserver = new IntersectionObserver(
-           ([entry]) => {
-             if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-               hasPassedHomeSection = true;
-               showNavbar();
-             }
-
-             // 🔽 新增邏輯：只要 homeSection 進入畫面（跳轉回 home），就隱藏 navbar
-             if (entry.isIntersecting && entry.boundingClientRect.top >= 0) {
-               hideNavbar();
-               hasPassedHomeSection = false;
-             }
-           },
-           { threshold: 0.0 }
-         );
-         homeObserver.observe(homeSection);
-
-         // 觀察 video-section：當它再次進入畫面（例如向下捲動時），隱藏 navbar
-         const videoObserver = new IntersectionObserver(
-           ([entry]) => {
-             if (entry.isIntersecting && hasPassedHomeSection) {
-               hideNavbar();
-               hasPassedHomeSection = false;
-             }
-           },
-           { threshold: 0.5 }
-         );
-         videoObserver.observe(videoSection);
-       });
-
-
-
-         
-         // 控制 homesection 淡出
-         document.addEventListener("DOMContentLoaded", function () {
-             const homeSection = document.querySelector('.homesection');
-
-             const fadeObserver = new IntersectionObserver(
-               ([entry]) => {
-                 if (entry.intersectionRatio <= 0.3) {
-                   homeSection.classList.add('fade-out');
-                 } else {
-                   homeSection.classList.remove('fade-out');
-                 }
-               },
-               {
-                 threshold: Array.from({ length: 11 }, (_, i) => i / 10)
-               }
-             );
-
-             fadeObserver.observe(homeSection);
-           });
-         
-         document.addEventListener("DOMContentLoaded", function() {
-           // Fetch Project Data
-const projectsGrid = document.getElementById('projects-grid');
-if (!projectsGrid) {
-  console.warn('Missing container: #projects-grid');
-} else {
-  projectsGrid.replaceChildren();
-
-  fetch('json/VyriYang-project.json', { cache: 'no-store' })
-    .then(res => {
-      if (!res.ok) throw new Error('Failed to load json/VyriYang-project.json: ' + res.status);
-      return res.json();
-    })
-    .then(data => {
-      const list = Array.isArray(data?.projects) ? data.projects
-                 : Array.isArray(data) ? data
-                 : [];
-
-      if (!list.length) {
-        projectsGrid.innerHTML = '<p class="card-text">No projects available.</p>';
-        return;
-      }
-
-      list.forEach(p => {
-        const card = document.createElement('div');
-        card.className = 'card';
-
-        const imgWrap = document.createElement('div');
-        imgWrap.className = 'card-image-wrapper';
-
-        const overlay = document.createElement('div');
-        overlay.className = 'card-overlay';
-
-        const img = document.createElement('img');
-        img.className = 'card-image';
-        img.src = p.image || '';
-        img.alt = p.alt || p.title || 'Project image';
-        img.loading = 'lazy';
-
-        imgWrap.append(overlay, img);
-
-        const title = document.createElement('div');
-        title.className = 'card-title-text';
-        title.textContent = p.title || 'Untitled';
-
-        const desc = document.createElement('p');
-        desc.className = 'card-text';
-        desc.textContent = p.description || '';
-
-        // ✅ 如果有 link，整張卡片點擊打開新分頁
-        if (p.link) {
-          const link = document.createElement('a');
-          link.href = p.link;
-          link.target = '_self';   // 在新頁面打開
-          link.rel = 'noopener';    // 安全性最佳實踐
-          link.className = 'card-link no-style-link'; // 保持樣式
-          link.append(imgWrap, title, desc);
-          card.append(link);
-        } else {
-          card.append(imgWrap, title, desc);
-        }
-
-        projectsGrid.append(card);
+        el.textContent = text;
+      })
+      .catch(err => {
+        console.error(err);
+        el.textContent = '© 2025 All rights reserved by VYRI YANG';
       });
-    })
-    .catch(err => {
-      console.error(err);
-      projectsGrid.innerHTML = '<p class="card-text">Failed to load projects. Check server & JSON path/format.</p>';
-    });
-}
-
-
-
-          
-          
-          // ===== Publications（若無內容→整個區塊與導覽連結隱藏）=====
-(function () {
-  const pubSection = document.getElementById('Publications');
-  const pubLink = document.getElementById('publications-link');
-  const accordionContainer = document.getElementById('accordion-2');
-
-  // 追加樣式：作者名連結不顯示下劃線（含 hover/visited）
-  (function injectAuthorLinkStyle() {
-    const style = document.createElement('style');
-    style.textContent = `
-      .cont-researcher-name-v,
-      .cont-researcher-name-v:visited,
-      .cont-researcher-name-v:hover,
-      .cont-researcher-name-v:active,
-      .cont-researcher-name-v:focus {
-        text-decoration: none !important;
-      }
-    `;
-    document.head.appendChild(style);
   })();
 
-  const hidePubs = () => {
-    if (accordionContainer) accordionContainer.replaceChildren();
-    if (pubSection) pubSection.style.display = 'none';
-    if (pubLink) pubLink.style.display = 'none';
-  };
 
-  const safeArray = (v) => Array.isArray(v) ? v : (v == null ? [] : [v]);
-  const parseTS = (s) => {
-    // 容錯：沒有 date 或格式奇怪時，排在最後
-    const t = Date.parse(s || '');
-    return Number.isFinite(t) ? t : 0;
-  };
 
-  fetch('json/VyriYang-publications.json', { cache: 'no-store' })
-    .then(res => {
-      if (!res.ok) throw new Error('Failed to load json/VyriYang-publications.json: ' + res.status);
-      return res.json();
-    })
-    .then(data => {
-      const years = Array.isArray(data?.years) ? data.years : [];
 
-      // 只保留「有 publications 且長度 > 0」的年份；並且把 null/undefined 過濾掉
-      const yearsWithItems = years
-        .map(y => ({
-          year: y?.year ?? '',
-          publications: safeArray(y?.publications).filter(Boolean)
-        }))
-        .filter(y => y.publications.length > 0);
+    // 視訊自動播放保護
+    const video = document.getElementById("intro-video");
+    video.play().catch(error => {
+      console.warn("Autoplay failed:", error);
+      document.body.addEventListener("click", () => video.play(), { once: true });
+    });
 
-      // 若完全沒有可顯示內容 → 隱藏整個 section & 導覽連結
-      if (yearsWithItems.length === 0) {
-        hidePubs();
-        return;
-      }
+    // ===== 工具：載入器插入 / 移除 =====
+    function showLoader(target, id){
+      // target 可以是節點或節點 id
+      const el = (typeof target === 'string') ? document.getElementById(target) : target;
+      if (!el) return null;
+      // 若已有就不重覆插入
+      const exists = id && document.getElementById(id);
+      if (exists) return exists;
+      const box = document.createElement('div');
+      box.className = 'loading-box';
+      if (id) box.id = id;
+      box.innerHTML = '<div class="loader"></div>';
+      el.classList && el.classList.add('is-loading');
+      // 預設加在內容容器的最前方
+      if (el.firstChild) el.insertBefore(box, el.firstChild);
+      else el.appendChild(box);
+      return box;
+    }
+    function hideLoader(target, id){
+      const el = (typeof target === 'string') ? document.getElementById(target) : target;
+      if (!el) return;
+      const box = id ? document.getElementById(id) : el.querySelector('.loading-box');
+      if (box) box.remove();
+      el.classList && el.classList.remove('is-loading');
+    }
 
-      // 有內容 → 顯示區塊與導覽連結
+    // ===== 導覽欄顯示/隱藏（原樣） =====
+    document.addEventListener("DOMContentLoaded", function () {
+      const navbar = document.getElementById("sticky-navbar");
+      const homeSection = document.querySelector(".homesection");
+      const videoSection = document.querySelector(".video-section");
+      let hasPassedHomeSection = false;
+
+      const showNavbar = () => { if (!navbar.classList.contains("show")) navbar.classList.add("show"); };
+      const hideNavbar = () => { if (navbar.classList.contains("show")) navbar.classList.remove("show"); };
+
+      const homeObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+            hasPassedHomeSection = true; showNavbar();
+          }
+          if (entry.isIntersecting && entry.boundingClientRect.top >= 0) {
+            hideNavbar(); hasPassedHomeSection = false;
+          }
+        }, { threshold: 0.0 }
+      );
+      homeObserver.observe(homeSection);
+
+      const videoObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && hasPassedHomeSection) {
+            hideNavbar(); hasPassedHomeSection = false;
+          }
+        }, { threshold: 0.5 }
+      );
+      videoObserver.observe(videoSection);
+    });
+
+    // Home 區塊淡出（原樣）
+    document.addEventListener("DOMContentLoaded", function () {
+      const homeSection = document.querySelector('.homesection');
+      const fadeObserver = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.intersectionRatio <= 0.3) homeSection.classList.add('fade-out');
+          else homeSection.classList.remove('fade-out');
+        },
+        { threshold: Array.from({ length: 11 }, (_, i) => i / 10) }
+      );
+      fadeObserver.observe(homeSection);
+    });
+
+    // ===== Projects JSON =====
+    document.addEventListener("DOMContentLoaded", function(){
+      const projectsGrid = document.getElementById('projects-grid');
+      if (!projectsGrid) return;
+
+      // 🔄 加載圖標
+      showLoader('projects-grid', 'projects-loader');
+
+      projectsGrid.replaceChildren(); // 清空，保留 loader
+
+      fetch('json/VyriYang-project.json', { cache: 'no-store' })
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load json/VyriYang-project.json: ' + res.status);
+          return res.json();
+        })
+        .then(data => {
+          const list = Array.isArray(data?.projects) ? data.projects
+                   : Array.isArray(data) ? data
+                   : [];
+          projectsGrid.replaceChildren(); // 清一次，準備放內容
+          if (!list.length) {
+            projectsGrid.innerHTML = '<p class="card-text">No projects available.</p>';
+            return;
+          }
+          list.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            const imgWrap = document.createElement('div');
+            imgWrap.className = 'card-image-wrapper';
+            const overlay = document.createElement('div');
+            overlay.className = 'card-overlay';
+            const img = document.createElement('img');
+            img.className = 'card-image';
+            img.src = p.image || '';
+            img.alt = p.alt || p.title || 'Project image';
+            img.loading = 'lazy';
+            imgWrap.append(overlay, img);
+            const title = document.createElement('div');
+            title.className = 'card-title-text';
+            title.textContent = p.title || 'Untitled';
+            const desc = document.createElement('p');
+            desc.className = 'card-text';
+            desc.textContent = p.description || '';
+            if (p.link) {
+              const link = document.createElement('a');
+              link.href = p.link;
+              link.target = '_self';
+              link.rel = 'noopener';
+              link.className = 'card-link no-style-link';
+              link.append(imgWrap, title, desc);
+              card.append(link);
+            } else {
+              card.append(imgWrap, title, desc);
+            }
+            projectsGrid.append(card);
+          });
+        })
+        .catch(err => {
+          console.error(err);
+          projectsGrid.innerHTML = '<p class="card-text">Failed to load projects. Check server & JSON path/format.</p>';
+        })
+        .finally(() => {
+          // ✅ 清除圖標
+          hideLoader('projects-grid', 'projects-loader');
+        });
+    });
+
+    // ===== Publications JSON =====
+    (function () {
+      const pubSection = document.getElementById('Publications');
+      const pubLink = document.getElementById('publications-link');
+      const accordionContainer = document.getElementById('accordion-2');
+
+      // 追加樣式：作者名連結不顯示下劃線（含 hover/visited）
+      (function injectAuthorLinkStyle() {
+        const style = document.createElement('style');
+        style.textContent = `
+          .cont-researcher-name-v,
+          .cont-researcher-name-v:visited,
+          .cont-researcher-name-v:hover,
+          .cont-researcher-name-v:active,
+          .cont-researcher-name-v:focus {
+            text-decoration: none !important;
+          }
+        `;
+        document.head.appendChild(style);
+      })();
+
+      const hidePubs = () => {
+        if (accordionContainer) accordionContainer.replaceChildren();
+        if (pubSection) pubSection.style.display = 'none';
+        if (pubLink) pubLink.style.display = 'none';
+      };
+
+      const safeArray = (v) => Array.isArray(v) ? v : (v == null ? [] : [v]);
+      const parseTS = (s) => {
+        const t = Date.parse(s || '');
+        return Number.isFinite(t) ? t : 0;
+      };
+
+      // 🔄 顯示區塊 + 顯示載入圖標
       if (pubSection) pubSection.style.display = 'block';
-      if (pubLink) pubLink.style.display = 'inline';
-      if (accordionContainer) accordionContainer.replaceChildren();
+      showLoader('Publications', 'pubs-loader');
 
-      yearsWithItems.forEach((year, index) => {
-        const accordionItem = document.createElement('div');
-        accordionItem.classList.add('accordion-item');
+      fetch('json/VyriYang-publications.json', { cache: 'no-store' })
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load json/VyriYang-publications.json: ' + res.status);
+          return res.json();
+        })
+        .then(data => {
+          const years = Array.isArray(data?.years) ? data.years : [];
+          const yearsWithItems = years
+            .map(y => ({ year: y?.year ?? '', publications: safeArray(y?.publications).filter(Boolean) }))
+            .filter(y => y.publications.length > 0);
 
-        const accordionHeading = document.createElement('div');
-        accordionHeading.classList.add('accordion-heading');
-        accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
-        accordionItem.appendChild(accordionHeading);
-
-        const accordionContent = document.createElement('div');
-        accordionContent.classList.add('accordion-content');
-        if (index === 0) accordionContent.style.display = 'block';
-
-        // 依日期新→舊
-        const sortedPublications = [...year.publications].sort((a, b) => parseTS(b?.date) - parseTS(a?.date));
-
-        sortedPublications.forEach(pub => {
-          const pubDiv = document.createElement('div');
-          pubDiv.style.paddingBottom = '30px';
-
-// 作者處理：取消下劃線；若為「Vyri Yang」→加粗
-const authors = safeArray(pub?.authors);
-const authorsContent = authors.map(raw => {
-  const aName = (typeof raw === 'string') ? raw : (raw?.name ?? '');
-  const aLink = (raw && typeof raw === 'object') ? (raw.link || '').trim() : '';
-  const isVyri = aName.trim().toLowerCase() === 'vyri yang';
-  const nameHTML = isVyri ? `<strong>${aName}</strong>` : aName;
-
-  if (!aLink) {
-    // 🔹 沒有 link → 灰色字 + 無 pointer
-    return `<span class="cont-researcher-name-v" style="color:#5d5d5d; cursor:default; text-decoration:none;">${nameHTML}</span>`;
-  } else if (isVyri) {
-    // 🔹 Vyri Yang → 同頁開啟
-    return `<a href="${aLink}" class="cont-researcher-name-v" style="text-decoration:none;">${nameHTML}</a>`;
-  } else {
-    // 🔹 其他作者 → 新頁面開啟
-    return `<a href="${aLink}" target="_blank" rel="noopener noreferrer" class="cont-researcher-name-v" style="text-decoration:none;">${nameHTML}</a>`;
-  }
-}).join(', ');
-
-
-          // 獎項圖示
-          let awardIcon = '';
-          const venuesStr = String(pub?.venues || '');
-          if (venuesStr.includes('Best Paper Award')) {
-            awardIcon = `<img src="../../../img/icons/trophy.png" alt="Trophy" style="height:1em;vertical-align:middle;margin-right:5px;">`;
-          } else if (venuesStr.includes('Best Paper Honorable Mention Award')) {
-            awardIcon = `<img src="../../../img/icons/medal.png" alt="Medal" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+          if (yearsWithItems.length === 0) {
+            hidePubs();
+            return;
           }
 
-          const venuesContent = pub?.venues
-            ? `${awardIcon}<a href="${pub?.url || '#'}" style="text-decoration:none;color:#EBBA4D;" rel="alternate bookmark" target="_blank"><strong>${pub.venues}</strong></a> <a style="color:#357132;"> | </a>`
-            : '';
+          if (pubSection) pubSection.style.display = 'block';
+          if (pubLink) pubLink.style.display = 'inline';
+          if (accordionContainer) accordionContainer.replaceChildren();
 
-          const pdfContent = pub?.pdf
-            ? `<div class="sec_sub_title_a" style="margin-top:5px;margin-bottom:5px;"><a href="${pub.pdf}" style="color:#357132;text-decoration:none;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
-            : '';
+          yearsWithItems.forEach((year, index) => {
+            const accordionItem = document.createElement('div');
+            accordionItem.classList.add('accordion-item');
 
-          pubDiv.innerHTML = `
-            <div class="sub-title_ss">
-              ${venuesContent}
-              <a href="${pub?.url || '#'}" style="text-decoration:none;color:#357132;" rel="alternate bookmark" target="_blank">${pub?.title || ''}</a>
-            </div>
-            <div class="sec_sub_title_aa" style="margin-top:5px;margin-bottom:5px;">
-              ${authorsContent}
-            </div>
-            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">
-              ${pub?.venuesname || ''} ${pub?.venuesname && pub?.date ? ' | ' : ''} ${pub?.date || ''}
-            </div>
-            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub?.description || ''}</div>
-            ${pdfContent}
-          `;
-          accordionContent.appendChild(pubDiv);
+            const accordionHeading = document.createElement('div');
+            accordionHeading.classList.add('accordion-heading');
+            accordionHeading.innerHTML = `<h3>${year.year}</h3><div class="icon"><i class="arrow right"></i></div>`;
+            accordionItem.appendChild(accordionHeading);
+
+            const accordionContent = document.createElement('div');
+            accordionContent.classList.add('accordion-content');
+            if (index === 0) accordionContent.style.display = 'block';
+
+            const sortedPublications = [...year.publications].sort((a, b) => parseTS(b?.date) - parseTS(a?.date));
+
+            sortedPublications.forEach(pub => {
+              const pubDiv = document.createElement('div');
+              pubDiv.style.paddingBottom = '30px';
+
+              const authors = safeArray(pub?.authors);
+              const authorsContent = authors.map(raw => {
+                const aName = (typeof raw === 'string') ? raw : (raw?.name ?? '');
+                const aLink = (raw && typeof raw === 'object') ? (raw.link || '').trim() : '';
+                const isVyri = aName.trim().toLowerCase() === 'vyri yang';
+                const nameHTML = isVyri ? `<strong>${aName}</strong>` : aName;
+
+                if (!aLink) {
+                  return `<span class="cont-researcher-name-v" style="color:#5d5d5d; cursor:default; text-decoration:none;">${nameHTML}</span>`;
+                } else if (isVyri) {
+                  return `<a href="${aLink}" class="cont-researcher-name-v" style="text-decoration:none;">${nameHTML}</a>`;
+                } else {
+                  return `<a href="${aLink}" target="_blank" rel="noopener noreferrer" class="cont-researcher-name-v" style="text-decoration:none;">${nameHTML}</a>`;
+                }
+              }).join(', ');
+
+              let awardIcon = '';
+              const venuesStr = String(pub?.venues || '');
+              if (venuesStr.includes('Best Paper Award')) {
+                awardIcon = `<img src="../../../img/icons/trophy.png" alt="Trophy" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+              } else if (venuesStr.includes('Best Paper Honorable Mention Award')) {
+                awardIcon = `<img src="../../../img/icons/medal.png" alt="Medal" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+              }
+
+              const venuesContent = pub?.venues
+                ? `${awardIcon}<a href="${pub?.url || '#'}" style="text-decoration:none;color:#EBBA4D;" rel="alternate bookmark" target="_blank"><strong>${pub.venues}</strong></a> <a style="color:#357132;"> | </a>`
+                : '';
+
+              const pdfContent = pub?.pdf
+                ? `<div class="sec_sub_title_a" style="margin-top:5px;margin-bottom:5px;"><a href="${pub.pdf}" style="color:#357132;text-decoration:none;" rel="alternate bookmark" target="_blank">View Publication</a></div>`
+                : '';
+
+              pubDiv.innerHTML = `
+                <div class="sub-title_ss">
+                  ${venuesContent}
+                  <a href="${pub?.url || '#'}" style="text-decoration:none;color:#357132;" rel="alternate bookmark" target="_blank">${pub?.title || ''}</a>
+                </div>
+                <div class="sec_sub_title_aa" style="margin-top:5px;margin-bottom:5px;">
+                  ${authorsContent}
+                </div>
+                <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">
+                  ${pub?.venuesname || ''} ${pub?.venuesname && pub?.date ? ' | ' : ''} ${pub?.date || ''}
+                </div>
+                <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub?.description || ''}</div>
+                ${pdfContent}
+              `;
+              accordionContent.appendChild(pubDiv);
+            });
+
+            accordionItem.appendChild(accordionContent);
+            accordionContainer.appendChild(accordionItem);
+          });
+
+          if (typeof Accordion === 'function') {
+            new Accordion(accordionContainer, { multiple: true, defaultOpenedIndexes: [0] });
+          }
+        })
+        .catch(err => {
+          console.error('Error fetching publications data:', err);
+          hidePubs();
+        })
+        .finally(() => {
+          // ✅ 清除圖標
+          hideLoader('Publications', 'pubs-loader');
         });
+    })();
 
-        accordionItem.appendChild(accordionContent);
-        accordionContainer.appendChild(accordionItem);
-      });
+    // ===== Awards JSON =====
+    document.addEventListener("DOMContentLoaded", function () {
+      const awardsSection = document.getElementById('Awards');
+      const awardsLink = document.getElementById('awards-link');
+      const awardsContent = document.getElementById('awards-content');
 
-      // 初始化手風琴
-      if (typeof Accordion === 'function') {
-        new Accordion(accordionContainer, {
-          multiple: true,
-          defaultOpenedIndexes: [0]
+      // 🔄 顯示區塊 + 顯示載入圖標
+      if (awardsSection) awardsSection.style.display = 'block';
+      showLoader('Awards', 'awards-loader');
+
+      fetch('json/VyriYang-awards.json', { cache: 'no-store' })
+        .then(response => response.json())
+        .then(data => {
+          awardsContent.replaceChildren();
+          if (data.awards && data.awards.length > 0) {
+            if (awardsLink) awardsLink.style.display = 'inline';
+
+            const sortedAwards = data.awards.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+            sortedAwards.forEach(award => {
+              const awardDiv = document.createElement('div');
+              awardDiv.classList.add('news_card');
+              awardDiv.style.paddingTop = '30px';
+
+              let awardsTitleContent = '';
+              if (award.url) {
+                awardsTitleContent = `
+                  <div class="sub-title_ss">
+                    ${award.awards ? `<span style="color:#EBBA4D;"><strong>${award.awards}</strong></span>` : ''}
+                    ${award.awards && award.title ? '<span style="color:#357132;"> | </span>' : ''}
+                    <a href="${award.url}" style="text-decoration: none; color:#357132;" rel="alternate bookmark" target="_blank">${award.title}</a>
+                  </div>
+                `;
+              } else {
+                const awardContent = award.awards ? `<span class="sub-title_ss"  style="color:#EBBA4D;"><strong>${award.awards}</strong></span>` : '';
+                const titleContent = award.title ? `<span class="sub-title_ss" style="color:#357132;">${award.title}</span>` : '';
+                awardsTitleContent = `${awardContent}${titleContent}`;
+              }
+
+              const descriptionContent = award.description ? `<div class="sec_sub_title_a overflow">${award.description}</div>` : '';
+              const placeContent = award.place ? `<div class="sec_sub_title_a overflow" style="margin-top: 5px;">${award.place}</div>` : '';
+              const dateContent = award.date ? `<div class="sec_sub_title_a overflow" style="margin-top: 5px;">${award.date}</div>` : '';
+
+              awardDiv.innerHTML = `
+                <div class="sub-title_ssa">${awardsTitleContent}</div>
+                <div class="sec_sub_title_a">${descriptionContent}</div>
+                ${placeContent}
+                ${dateContent}
+              `;
+              awardsContent.appendChild(awardDiv);
+            });
+          } else {
+            if (awardsSection) awardsSection.style.display = 'none';
+            if (awardsLink) awardsLink.style.display = 'none';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching awards data:', error);
+          if (awardsSection) awardsSection.style.display = 'none';
+          if (awardsLink) awardsLink.style.display = 'none';
+        })
+        .finally(() => {
+          // ✅ 清除圖標
+          hideLoader('Awards', 'awards-loader');
         });
-      }
-    })
-    .catch(err => {
-      console.error('Error fetching publications data:', err);
-      hidePubs();
     });
-})();
-       
 
+    // ===== Videos JSON =====
+    document.addEventListener("DOMContentLoaded", function () {
+      const videosSection = document.getElementById('Videos');
+      const videosLink = document.getElementById('videos-link');
+      const videosGrids = document.getElementById('videosGrids');
 
+      // 🔄 顯示區塊 + 顯示載入圖標
+      if (videosSection) videosSection.style.display = 'block';
+      showLoader('Videos', 'videos-loader');
 
-             // Fetch Awards Data
-     fetch('json/VyriYang-awards.json')
-       .then(response => response.json())
-       .then(data => {
-         if (data.awards && data.awards.length > 0) {
-           document.getElementById('Awards').style.display = 'block';
-           document.getElementById('awards-link').style.display = 'inline';
+      fetch('json/VyriYang-videos.json', { cache: 'no-store' })
+        .then(response => response.json())
+        .then(data => {
+          videosGrids.replaceChildren();
+          if (data && data.length > 0) {
+            if (videosLink) videosLink.style.display = 'inline';
+            const sortedVideos = data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-           const awardsContent = document.getElementById('awards-content');
-           const sortedAwards = data.awards.sort((a, b) => new Date(b.date) - new Date(a.date));
+            sortedVideos.forEach(item => {
+              const videosList = document.createElement('div');
+              videosList.className = 'video_list';
+              videosList.innerHTML = `
+                <img src="${item.imgSrc}" alt="" class="list_img">
+                <div class="video_padding">
+                  <div class="sub-title">${item.title} ></div>
+                  <div class="cont overflow">${item.date}</div>
+                  <div class="cont overflow">Researchers: ${item.researchers.map(r => `<a href="${r.link}" class="cont-researcher-name">${r.name}</a>`).join(', ')}</div>
+                </div>
+              `;
+              videosList.addEventListener('click', function() {
+                window.open(item.link, '_blank');
+              });
+              videosGrids.appendChild(videosList);
+            });
+          } else {
+            if (videosSection) videosSection.style.display = 'none';
+            if (videosLink) videosLink.style.display = 'none';
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching videos data:', error);
+          if (videosSection) videosSection.style.display = 'none';
+          if (videosLink) videosLink.style.display = 'none';
+        })
+        .finally(() => {
+          // ✅ 清除圖標
+          hideLoader('Videos', 'videos-loader');
+        });
+    });
 
-           sortedAwards.forEach(award => {
-             const awardDiv = document.createElement('div');
-             awardDiv.classList.add('news_card');
-             awardDiv.style.paddingTop = '30px';
+    // ===== Contact JSON（此頁面已有靜態資訊；這段僅示範載入器） =====
+    document.addEventListener("DOMContentLoaded", function () {
+      // 在 Contact banner 下方臨時放一個載入器示意
+      const contactSection = document.getElementById('Contact');
+      if (contactSection) showLoader('Contact', 'contact-loader');
 
-             // award.awards 和 award.title 如果 url 存在，放在同一个 div 中
-             let awardsTitleContent = '';
-             if (award.url) {
-               awardsTitleContent = `
-                 <div class="sub-title_ss">
-                   ${award.awards ? `<span style="color:#EBBA4D;"><strong>${award.awards}</strong></span>` : ''}
-                   ${award.awards && award.title ? '<span style="color:#357132;"> | </span>' : ''}
-                   <a href="${award.url}" style="text-decoration: none; color:#357132;" rel="alternate bookmark" target="_blank">${award.title}</a>
-                 </div>
-               `;
-             } else {
-               // 如果没有 url，分别放在不同的 div 中
-               const awardContent = award.awards ? `<span class="sub-title_ss"  style="color:#EBBA4D;"><strong>${award.awards}</strong></span>` : '';
-               const titleContent = award.title ? `<span class="sub-title_ss" style="color:#357132;">${award.title}</span>` : '';
-               awardsTitleContent = `${awardContent}${titleContent}`;
-             }
+      fetch('json/VyriYang-contact.json', { cache: 'no-store' })
+        .then(response => response.json())
+        .then(data => {
+          // 你的頁面目前沒有 #contact-details 的動態插入容器，此段僅示範“載入器”行為
+          // 若未來你要把 JSON 寫回頁面，這裡可以補一個容器並寫入
+          // 例如：document.querySelector('.banner-description').innerHTML += ...
+          // 目前只在 console 確認
+          console.log('Contact JSON loaded:', data);
+        })
+        .catch(err => {
+          console.error('Error fetching contact data:', err);
+        })
+        .finally(() => {
+          // ✅ 清除圖標
+          hideLoader('Contact', 'contact-loader');
+        });
+    });
 
-             // 仅在 award.description 存在时显示
-             const descriptionContent = award.description
-               ? `<div class="sec_sub_title_a overflow">${award.description}</div>`
-               : '';
-
-             // 仅在 award.place 存在时显示
-             const placeContent = award.place
-               ? `<div class="sec_sub_title_a overflow" style="margin-top: 5px;">${award.place}</div>`
-               : '';
-
-             // 仅在 award.date 存在时显示
-             const dateContent = award.date
-               ? `<div class="sec_sub_title_a overflow" style="margin-top: 5px;">${award.date}</div>`
-               : '';
-
-             // 构建 HTML 内容，仅显示非空的项
-             awardDiv.innerHTML = `
-               <div class="sub-title_ssa">
-                 ${awardsTitleContent}
-               </div>
-               <div class="sec_sub_title_a">
-                 ${descriptionContent}
-               </div>
-               ${placeContent}
-               ${dateContent}
-             `;
-
-             awardsContent.appendChild(awardDiv);
-           });
-         } else {
-           document.getElementById('Awards').style.display = 'none';
-           document.getElementById('awards-link').style.display = 'none';
-         }
-       })
-       .catch(error => {
-         console.error('Error fetching awards data:', error);
-         document.getElementById('Awards').style.display = 'none';
-         document.getElementById('awards-link').style.display = 'none';
-       });
-
-
-
-           // Fetch Videos Data
-           fetch('json/VyriYang-videos.json')
-             .then(response => response.json())
-             .then(data => {
-               if (data && data.length > 0) {
-                 document.getElementById('Videos').style.display = 'block';
-                 document.getElementById('videos-link').style.display = 'inline';
-
-                 const videosGrids = document.getElementById('videosGrids');
-                 const sortedVideos = data.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-                 sortedVideos.forEach(item => {
-                   const videosList = document.createElement('div');
-                   videosList.className = 'video_list';
-                   videosList.innerHTML = `
-                     <img src="${item.imgSrc}" alt="" class="list_img">
-                     <div class="video_padding">
-                       <div class="sub-title">${item.title} ></div>
-                       <div class="cont overflow">${item.date}</div>
-                       <div class="cont overflow">Researchers: ${item.researchers.map(r => `<a href="${r.link}" class="cont-researcher-name">${r.name}</a>`).join(', ')}</div>
-                     </div>
-                   `;
-                   videosList.addEventListener('click', function() {
-                     window.open(item.link, '_blank');
-                   });
-                   videosGrids.appendChild(videosList);
-                 });
-               } else {
-                 document.getElementById('Videos').style.display = 'none';
-                 document.getElementById('videos-link').style.display = 'none';
-               }
-             })
-             .catch(error => {
-               console.error('Error fetching videos data:', error);
-               document.getElementById('Videos').style.display = 'none';
-               document.getElementById('videos-link').style.display = 'none';
-             });
-
-           // Fetch and Display Contact Data
-           fetch('json/VyriYang-contact.json')
-             .then(response => response.json())
-             .then(data => {
-               const contactDetails = document.getElementById('contact-details');
-               const contact = data[0];
-               let contactInfo = '';
-
-               if (contact.office) contactInfo += `<div>${contact.office}</div>`;
-               if (contact.school) contactInfo += `<div>${contact.school}</div>`;
-               if (contact.num) contactInfo += `<div>${contact.num}</div>`;
-               if (contact.email) contactInfo += `<div><a href="mailto:${contact.email}" style="color: #357132;">${contact.email}</a></div>`;
-
-               if (contactInfo) {
-                 contactDetails.innerHTML = contactInfo;
-               } else {
-                 document.getElementById('Contact').style.display = 'none';
-               }
-             });
-         });
-       
-       // 清除 sessionStorage/localStorage 當使用者退出網頁時
-       window.addEventListener("beforeunload", function () {
-         sessionStorage.clear();
-         localStorage.clear();
-       });
-       
-   </script>
-
+    // ===== 清 cache（原樣） =====
+    window.addEventListener("beforeunload", function () {
+      sessionStorage.clear();
+      localStorage.clear();
+    });
+  </script>
 </body>
 </html>
+
 
