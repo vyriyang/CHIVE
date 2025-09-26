@@ -349,6 +349,9 @@
             color:#f36f24;
         }
 
+        .cont-researcher-name[data-has-link="false"]{cursor:default !important}
+        .cont-researcher-name[data-has-link="false"]:hover{color:inherit !important;text-decoration:none !important}
+
         .research_list:hover img {
             transform: scale(1.1);
         }
@@ -463,241 +466,230 @@
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo-container">
-        </div>
-        <nav class="scrollspy-nav">
-            <a class="scrollspy-link" href="index.html">Home</a>
-            <a class="scrollspy-link" href="research.html">Research</a>
-            <a class="scrollspy-link" href="publications.html">Publications</a>
-            <a class="scrollspy-link" href="people.html">People</a>            
-            <a class="scrollspy-link" href="news.html">News</a>
-            <a class="scrollspy-link" href="activity.html">Activity</a> 
-            <a class="scrollspy-link" href="resource.html">Resource</a>
-        </nav>  
-    </header>
-    <section class="section-1">
-        <div class="logo-content">
-            <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
-                <img src="img/logo/CHIVE-3.svg" alt="Logo"> 
-                <div class="logo-text">Research Lab at LSU</div>
-            </div>
-        </div>
-        <!--div class="main-content">
-            <div class="main-content-color">
-                <div>
-                    <h1>Computer Human Interaction and Visualization Experience</h1>
-                    <p>Welcome to the Computer Human Interaction and Visualization Experience (CHIVE) Lab at Louisiana State University. Our research focuses on the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.</p>
-                </div>
-            </div>
-        </div-->
-        <!--div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
-            <img src="img/logo/CHIVE-2.svg" alt="Logo"> 
-        </div-->
+  <header>
+    <div class="logo-container"></div>
+    <nav class="scrollspy-nav">
+      <a class="scrollspy-link" href="index.html">Home</a>
+      <a class="scrollspy-link" href="research.html">Research</a>
+      <a class="scrollspy-link" href="publications.html">Publications</a>
+      <a class="scrollspy-link" href="people.html">People</a>
+      <a class="scrollspy-link" href="news.html">News</a>
+      <a class="scrollspy-link" href="activity.html">Activity</a>
+      <a class="scrollspy-link" href="resource.html">Resource</a>
+    </nav>
+  </header>
 
-        <section class="banner-section">
-           
-                
-            <!-- 左上角介紹 -->
-            <div class="banner-intro">
-                
-              <p>Welcome to the Computer Human Interaction and Visualization Experience (CHIVE) Lab at Louisiana State University.</p>
-              <p>Our research focuses on the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.</p>
-            </div>
-
-            <div class="banner-title">
-            <!-- 下方主標題 -->
-            
-              <!--div class="banner-subtitle">CROSSFIELD</div-->
-              <div class="banner-subtitle">Computer Human</div>
-              <div class="banner-subtitle">Interaction and Visualization Experience</div>
-              <!--div class="banner-subtitle">Research Lab at LSU</div-->
-              <!--h1>Research Lab at LSU</h1-->
-              
-         
-            </div>
-        
-            <!-- 右下圓圈箭頭 -->
-            <div class="scroll-down-indicator">
-              <div class="circle">
-                <!--span>&rarr;</span-->
-                <span>
-                    ● Important submission deadline:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IEEE VIS, End of March<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM UIST, Early April<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM CSCW, Mid-May<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM CHI, Early September<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM IUI, Early October<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM DIS, Early January<br>
-                    ● Journals submission:<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TVCG, invited to present at VIS<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ToCHI, invited to present at CHI<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TiiS, invited to present at IUI<br>
-                    
-                </span>
-
-              </div>
-            </div>
-          </section>
-
-        <div class="features">
-            <div class="feature" onclick="navigateTo('research.html')">
-                <img src="img/logo/research.png" alt="research">
-                <h2>Research</h2>
-                <p> Explore our lab's cutting-edge work in human-computer interaction, visualization, AI, ML, and etc.</p>
-            </div>
-            <div class="feature" onclick="navigateTo('publications.html')">
-                <img src="img/logo/publications.png" alt="publications">
-                <h2>Publications</h2>
-                <p>Discover our latest contributions to academic research through our published papers and conference presentations.</p>
-            </div>
-            <div class="feature" onclick="navigateTo('people.html')">
-                <img src="img/logo/people.png" alt="people">
-                <h2>People</h2>
-                <p>Meet the diverse team of researchers driving innovation at the CHIVE Lab.</p>
-            </div>
-            <div class="feature" onclick="navigateTo('news.html')">
-                <img src="img/logo/news.png" alt="news">
-                <h2>News</h2>
-                <p>Stay updated on the latest happenings, achievements, and events in our lab.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section-2" id="current-research-section">
-        <div class="title">
-            Current Research
-            <div class="line"></div>
-        </div>
-        <div class="scroll-container" id="scroll-container">
-            <!-- JavaScript will inject research lists here -->
-        </div>
-    </section>
-
-    <div class="footer">
-        <p>
-            <a href="#">About</a> | 
-            <a href="#">Contact Us</a> | 
-            <a href="#">Copyright</a> | 
-            <a href="#">Terms of Use</a> | 
-            <a href="#">Privacy Policy</a>
-        </p>
-        <p>© 2025 All rights reserved</p>
+  <section class="section-1">
+    <div class="logo-content">
+      <div class="logo-container" onclick="window.location.href='index.html';" style="cursor:pointer;">
+        <img src="img/logo/CHIVE-3.svg" alt="Logo">
+        <div class="logo-text">Research Lab at LSU</div>
+      </div>
     </div>
-    <script>
-        function navigateTo(url) {
-            window.location.href = url;
+
+    <section class="banner-section">
+      <div class="banner-intro">
+        <p>Welcome to the Computer Human Interaction and Visualization Experience (CHIVE) Lab at Louisiana State University.</p>
+        <p>Our research focuses on the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.</p>
+      </div>
+      <div class="banner-title">
+        <div class="banner-subtitle">Computer Human</div>
+        <div class="banner-subtitle">Interaction and Visualization Experience</div>
+      </div>
+      <div class="scroll-down-indicator">
+        <div class="circle">
+          <span>
+            ● Important submission deadline:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IEEE VIS, End of March<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM UIST, Early April<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM CSCW, Mid-May<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM CHI, Early September<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM IUI, Early October<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ACM DIS, Early January<br>
+            ● Journals submission:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TVCG, invited to present at VIS<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ToCHI, invited to present at CHI<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TiiS, invited to present at IUI<br>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <div class="features">
+      <div class="feature" onclick="navigateTo('research.html')">
+        <img src="img/logo/research.png" alt="research">
+        <h2>Research</h2>
+        <p>Explore our lab's cutting-edge work in human-computer interaction, visualization, AI, ML, and etc.</p>
+      </div>
+      <div class="feature" onclick="navigateTo('publications.html')">
+        <img src="img/logo/publications.png" alt="publications">
+        <h2>Publications</h2>
+        <p>Discover our latest contributions to academic research through our published papers and conference presentations.</p>
+      </div>
+      <div class="feature" onclick="navigateTo('people.html')">
+        <img src="img/logo/people.png" alt="people">
+        <h2>People</h2>
+        <p>Meet the diverse team of researchers driving innovation at the CHIVE Lab.</p>
+      </div>
+      <div class="feature" onclick="navigateTo('news.html')">
+        <img src="img/logo/news.png" alt="news">
+        <h2>News</h2>
+        <p>Stay updated on the latest happenings, achievements, and events in our lab.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-2" id="current-research-section">
+    <div class="title">
+      Current Research
+      <div class="line"></div>
+    </div>
+    <div class="scroll-container" id="scroll-container"></div>
+  </section>
+
+  <div class="footer">
+    <p>
+      <a href="#">About</a> |
+      <a href="#">Contact Us</a> |
+      <a href="#">Copyright</a> |
+      <a href="#">Terms of Use</a> |
+      <a href="#">Privacy Policy</a>
+    </p>
+    <p>© 2025 All rights reserved</p>
+  </div>
+
+  <script>
+    function navigateTo(url){window.location.href=url}
+    function openInNewTab(url){window.open(url,'_blank','noopener,noreferrer')?.focus()}
+
+    const safeArray = v => Array.isArray(v) ? v : (v == null ? [] : [v]);
+
+    // 有連結→<a>；無連結→<span>
+    function renderResearcherName(r){
+      const name = r?.name ? String(r.name) : '';
+      const link = (r?.link || '').trim();
+      const hasLink = !!(link && link !== '#' && link.toLowerCase() !== 'javascript:;');
+      if (!name) return '';
+
+      if (hasLink){
+        // 直接使用 a/href，新分頁開啟
+        return `<a class="cont-researcher-name"
+                   data-has-link="true"
+                   href="${link}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   style="text-decoration:none; cursor:pointer;">${name}</a>`;
+        // 若一定要用 openInNewTab，可改為：
+        // return `<a class="cont-researcher-name" data-has-link="true"
+        //            href="javascript:;" onclick="openInNewTab('${link.replace(/'/g, "\\'")}')"
+        //            style="text-decoration:none; cursor:pointer;">${name}</a>`;
+      } else {
+        return `<span class="cont-researcher-name"
+                     data-has-link="false"
+                     aria-disabled="true" tabindex="-1"
+                     style="text-decoration:none; cursor:default;">${name}</span>`;
+      }
+    }
+
+    async function fetchResearchData(){
+      const res = await fetch('/json/research/research.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error('Failed to load research.json: ' + res.status);
+      return await res.json();
+    }
+
+    function renderResearchData(data){
+      const scrollContainer = document.getElementById('scroll-container');
+      const currentResearchSection = document.getElementById('current-research-section');
+
+      // label 允許是字串或陣列
+      const isCurrent = r => Array.isArray(r?.label) ? r.label.includes('current') : (typeof r?.label === 'string' && r.label.includes('current'));
+
+      const currentResearch = safeArray(data)
+        .filter(isCurrent)
+        .sort((a,b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+      if (currentResearch.length > 0){
+        currentResearchSection.style.display = 'block';
+      } else {
+        return;
+      }
+
+      currentResearch.forEach(research => {
+        const researchList = document.createElement('div');
+        researchList.classList.add('research_list');
+
+        // 「View All Research」特例
+        if (research.title === 'View All Research'){
+          researchList.innerHTML = `
+            <div class="research_list_last">
+              <a href="research.html">
+                <img src="${research.imgSrc || ''}" alt="" class="list_img_last">
+              </a>
+            </div>`;
+        } else {
+          // 媒體：有 videoSrc → video；否則 img
+          let mediaContent = '';
+          if (research.videoSrc){
+            const v = research.videoSrc;
+            mediaContent = `
+              <video class="list_video" autoplay muted loop playsinline>
+                <source src="${v}" type="video/mp4">
+                <source src="${v}" type="video/webm">
+                <source src="${v}" type="video/ogg">
+                <source src="${v}" type="video/quicktime">
+                Your browser does not support the video tag.
+              </video>`;
+          } else {
+            mediaContent = `
+              <a href="${research.link || '#'}">
+                <img src="${research.imgSrc || ''}" alt="" class="list_img">
+              </a>`;
+          }
+
+          // 研究者：>3 顯示前2 + ", and more"；≤3 顯示最多3
+          const rlist = safeArray(research?.researchers);
+          let researchersHTML = '';
+          if (rlist.length > 3){
+            researchersHTML = rlist.slice(0,2).map(renderResearcherName).filter(Boolean).join(', ') + ', and more';
+          } else {
+            researchersHTML = rlist.slice(0,3).map(renderResearcherName).filter(Boolean).join(', ');
+          }
+
+          researchList.innerHTML = `
+            <div class="research_item">
+              ${mediaContent}
+              <div class="research_padding">
+                <div class="sub-title">
+                  <a href="${research.link || '#'}" style="text-decoration:none;color:#3f44b6;" rel="alternate bookmark">
+                    ${research.title || ''}
+                  </a>
+                </div>
+                <div class="cont overflow">
+                  <a href="${research.link || '#'}" style="text-decoration:none;color:#5d5d5d;cursor:pointer;" rel="alternate bookmark">
+                    ${research.content || ''}
+                  </a>
+                </div>
+                <div class="cont-researcher overflow">
+                  ${research.date || ''}
+                  <br>Researcher: ${researchersHTML}
+                </div>
+              </div>
+            </div>`;
         }
-    
-        function openInNewTab(url) {
-            window.open(url, '_blank').focus();
-        }
-    
-        async function fetchResearchData() {
-            const response = await fetch('/json/research/research.json');
-            const data = await response.json();
-            return data;
-        }
-    
-        function renderResearchData(data) {
-            const scrollContainer = document.getElementById('scroll-container');
-            const currentResearchSection = document.getElementById('current-research-section');
-            
-            // 对研究数据按照日期降序排序
-            const currentResearch = data
-                .filter(research => research.label.includes("current"))
-                .sort((a, b) => new Date(b.date) - new Date(a.date));
-    
-            if (currentResearch.length > 0) {
-                currentResearchSection.style.display = 'block'; // 显示"Current Research"部分
-            } else {
-                return; // 没有"current"标签的研究时，直接返回
-            }
-    
-            currentResearch.forEach(research => {
-                const researchList = document.createElement('div');
-                researchList.classList.add('research_list');
-    
-                // "View All Research" 不进行视频或图片的判定
-                if (research.title === "View All Research") {
-                    researchList.innerHTML = `
-                        <div class="research_list_last">
-                            <a href="research.html">
-                                <img src="${research.imgSrc}" alt="" class="list_img_last">
-                            </a>
-                        </div>
-                    `;
-                } else {
-                    // 判断 videoSrc 是否为空，决定是显示图片还是视频
-                    let mediaContent;
-                    if (research.videoSrc) {
-                        mediaContent = `
-                            <video class="list_video" autoplay muted loop playsinline>
-                                <source src="${research.videoSrc}" type="video/mp4">
-                                <source src="${research.videoSrc}" type="video/webm">
-                                <source src="${research.videoSrc}" type="video/ogg">
-                                <source src="${research.videoSrc}" type="video/quicktime">
-                                Your browser does not support the video tag.
-                            </video>
-                        `;
-                    } else {
-                        mediaContent = `
-                            <a href="${research.link}">
-                                <img src="${research.imgSrc}" alt="" class="list_img">
-                            </a>
-                        `;
-                    }
-    
-                    // 判断研究者的数量
-                    let researchersHTML;
-    
-                    if (research.researchers.length > 3) {
-                        // 超过 3 个时，只显示前 2 个研究者名字，并添加 ", and more"
-                        researchersHTML = research.researchers
-                            .slice(0, 2)
-                            .map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`)
-                            .join(', ') + ', and more';
-                    } else {
-                        // 不超过 3 个时，显示所有研究者名字
-                        researchersHTML = research.researchers
-                            .slice(0, 3)  // 显示最多 3 个研究者
-                            .map(r => `<a onclick="openInNewTab('${r.link}')" class="cont-researcher-name" style="cursor: pointer;">${r.name}</a>`)
-                            .join(', ');
-                    }
-    
-                    researchList.innerHTML = `
-                        <div class="research_item">
-                            ${mediaContent}
-                            <div class="research_padding">
-                                <div class="sub-title">
-                                    <a href="${research.link}" style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark">
-                                    ${research.title}</a>
-                                </div>
-                                <div class="cont overflow">
-                                    <a href="${research.link}" style="text-decoration: none; color:#5d5d5d; cursor: pointer;" rel="alternate bookmark">
-                                    ${research.content}</a>
-                                </div>
-                                <div class="cont-researcher overflow">
-                                    ${research.date}
-                                    <br>Researcher: ${researchersHTML}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                }
-    
-                scrollContainer.appendChild(researchList);
-            });
-        }
-    
-        window.onload = async function() {
-            document.getElementById('scroll-container').scrollLeft = 0;
-            const researchData = await fetchResearchData();
-            renderResearchData(researchData);
-        };
-    </script>
-    
+
+        scrollContainer.appendChild(researchList);
+      });
+    }
+
+    window.onload = async function(){
+      document.getElementById('scroll-container').scrollLeft = 0;
+      try{
+        const researchData = await fetchResearchData();
+        renderResearchData(researchData);
+      }catch(err){
+        console.error(err);
+      }
+    };
+  </script>
 </body>
 </html>
-
-

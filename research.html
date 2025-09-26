@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="dist/css/scrollspy.css"/>
   <link rel="stylesheet" href="dist/css/nav.css"/>
   <style>
-    /* 限制 content 显示的行数 */
+    /* 限制 content 顯示的行數 */
     .cont_bottom {
       display: -webkit-box;
-      -webkit-line-clamp: 4; /* 限制显示4行 */
+      -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -22,7 +22,7 @@
       text-overflow: ellipsis;
     }
 
-    /* 添加 cursor 样式，表示标题和图片可以点击 */
+    /* 標題可點 */
     .sub-title {
       cursor: pointer;
       color: #3f44b6;
@@ -35,7 +35,6 @@
       object-fit: cover;
       object-position: top;
       max-height: 300px;
-      object-position: top;
       cursor: pointer;
     }
 
@@ -44,18 +43,34 @@
       height: auto;
       object-fit: cover;
       max-height: 300px;
+      cursor: pointer;
     }
 
-    /* 移除研究者姓名链接的下划线 */
+    /* 研究者姓名基礎樣式 */
     .cont-researcher-name {
       text-decoration: none;
-      color: #5f5d5d; /* 可选，设置颜色 */
+      color: #5f5d5d;
+    }
+    .cont-researcher-name:hover {
+      color: #f36f24;
+    }
+    /* —— 覆蓋規則：無連結時不變色、非 pointer —— */
+    .cont-researcher-name[data-has-link="false"] {
+      cursor: default !important;
+    }
+    .cont-researcher-name[data-has-link="false"]:hover {
+      color: inherit !important;
+      text-decoration: none !important;
     }
 
-    /* 可选：悬停时显示不同颜色 */
-    .cont-researcher-name:hover {
-      color: #f36f24; /* 悬停时的颜色 */
+    /* 基本卡片排版（若需要） */
+    .research_list { 
+      background: #fff; 
+      box-shadow: 0 0 25px 0 rgba(0,0,0,.1);
+      margin-bottom: 24px;
+      overflow: hidden;
     }
+    .research_padding { padding: 18px; }
   </style>
 </head>
 <body>
@@ -110,112 +125,98 @@
   <script src="dist/js/mn-accordion.js"></script>
   <script src="dist/js/scrollspy.min.js"></script>
   <script>
+    // —— 小工具：安全轉陣列、標籤檢查 —— 
+    const safeArray = v => Array.isArray(v) ? v : (v == null ? [] : [v]);
+    const hasLabel = (labels, key) => Array.isArray(labels) ? labels.includes(key)
+                        : (typeof labels === 'string' ? labels.includes(key) : false);
+
+    // —— 小工具：渲染研究者（有 link→<a>，無 link→<span>）——
+    function renderResearcherName(r) {
+      const name = r?.name ? String(r.name) : '';
+      const link = (r?.link || '').trim();
+      const hasLink = !!(link && link !== '#' && link.toLowerCase() !== 'javascript:;');
+
+      if (!name) return '';
+      if (hasLink) {
+        return `<a class="cont-researcher-name"
+                   data-has-link="true"
+                   href="${link}"
+                   target="_blank"
+                   rel="noopener noreferrer">${name}</a>`;
+      } else {
+        return `<span class="cont-researcher-name"
+                     data-has-link="false"
+                     aria-disabled="true"
+                     tabindex="-1">${name}</span>`;
+      }
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
-      fetch('/json/research/research.json')
+      fetch('/json/research/research.json', { cache: 'no-store' })
         .then(response => response.json())
         .then(data => {
           const researchGrids = document.getElementById('researchGrids');
-          
-          // 根据时间降序排序
-          data.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-          data.forEach(item => {
-            // 检查 "label" 中是否包含 "last"
-            if (item.label.includes('last')) {
-              return;  // 跳过包含 "last" 的项目
-            }
+          // 根據時間降序排序
+          safeArray(data).sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+
+          safeArray(data).forEach(item => {
+            // 跳過 label 含 'last' 的項目
+            if (hasLabel(item?.label, 'last')) return;
 
             const researchList = document.createElement('div');
-researchList.className = 'research_list';
+            researchList.className = 'research_list';
 
-// 判断研究者数量
-let displayedResearchers;
-let moreResearchers = ''; // 默认没有'and more'
-
-// 如果研究者数量超过 3 个，只显示前两个研究者，后面加上 'and more'
-if (item.researchers.length > 3) {
-    displayedResearchers = item.researchers.slice(0, 2); // 取前两个研究者
-    moreResearchers = 'and more'; // 超过 3 个时添加 'and more'
-} else {
-    // 不超过 3 个时，显示所有研究者
-    displayedResearchers = item.researchers;
-}
-
-// 生成显示的研究者 HTML
-const researchersHTML = displayedResearchers.map(r => 
-  `<a href="${r.link}" target="_blank" class="cont-researcher-name">${r.name}</a>`
-).join(', ') + (moreResearchers ? `, ${moreResearchers}` : '');
-
-// 将研究者内容插入到研究项的 HTML 中
-researchList.innerHTML = `
-  <img src="${item.imgSrc}" alt="" class="list_img">
-  <div class="research_padding">
-    <div class="sub-title">
-      ${item.title}
-    </div>
-    <div class="cont cont_bottom overflow">
-      ${item.content}
-    </div>
-    <div class="cont-researcher overflow">
-      ${item.date}
-      <br>Researcher: ${researchersHTML}
-    </div>
-  </div>
-`;
-
-
-            // 判断是否有 videoSrc
-            let mediaContent;
-            if (item.videoSrc) {
+            // 媒體內容：優先 video，其次 image
+            let mediaContent = '';
+            if (item?.videoSrc) {
+              const v = item.videoSrc;
               mediaContent = `
                 <video class="list_video" autoplay muted loop playsinline>
-                  <source src="${item.videoSrc}" type="video/mp4">
-                  <source src="${item.videoSrc}" type="video/webm">
-                  <source src="${item.videoSrc}" type="video/ogg">
-                  <source src="${item.videoSrc}" type="video/quicktime">
+                  <source src="${v}" type="video/mp4">
+                  <source src="${v}" type="video/webm">
+                  <source src="${v}" type="video/ogg">
+                  <source src="${v}" type="video/quicktime">
                   Your browser does not support the video tag.
-                </video>
-              `;
+                </video>`;
             } else {
-              mediaContent = `
-                <img src="${item.imgSrc}" alt="" class="list_img">
-              `;
+              mediaContent = `<img src="${item?.imgSrc || ''}" alt="" class="list_img">`;
             }
 
+            // 研究者：>3 → 前2 + ", and more"；≤3 → 最多3 位
+            const researchers = safeArray(item?.researchers);
+            const display = researchers.length > 3 ? researchers.slice(0, 2) : researchers.slice(0, 3);
+            let researchersHTML = display.map(renderResearcherName).filter(Boolean).join(', ');
+            if (researchers.length > 3) {
+              researchersHTML += ', and more';
+            }
+
+            // 組裝卡片
             researchList.innerHTML = `
               ${mediaContent}
               <div class="research_padding">
-                <div class="sub-title">
-                  ${item.title}
-                </div>
-                <div class="cont cont_bottom overflow">
-                  ${item.content}
-                </div>
+                <div class="sub-title">${item?.title || ''}</div>
+                <div class="cont cont_bottom overflow">${item?.content || ''}</div>
                 <div class="cont-researcher">
-                  ${item.date}
+                  ${item?.date || ''}
                   <br>Researcher: ${researchersHTML}
                 </div>
               </div>
             `;
 
-            // 为图片/视频和标题分别添加点击事件，跳转到 research 页面
-            researchList.querySelector('.list_img, .list_video').addEventListener('click', function() {
-              window.location.href = item.link;  // 点击图片/视频跳转
-            });
-
-            researchList.querySelector('.sub-title').addEventListener('click', function() {
-              window.location.href = item.link;  // 点击标题跳转
-            });
-
-            researchList.querySelector('.cont_bottom').addEventListener('click', function() {
-              window.location.href = item.link;  // 点击内容部分跳转
-            });
+            // 點擊圖片/影片/標題/內文 → 跳到 item.link
+            const go = () => { if (item?.link) window.location.href = item.link; };
+            researchList.querySelector('.list_img, .list_video')?.addEventListener('click', go);
+            researchList.querySelector('.sub-title')?.addEventListener('click', go);
+            researchList.querySelector('.cont_bottom')?.addEventListener('click', go);
 
             researchGrids.appendChild(researchList);
           });
-        });
+        })
+        .catch(err => console.error('Failed to load research.json:', err));
     });
   </script>
 </body>
 </html>
+
 

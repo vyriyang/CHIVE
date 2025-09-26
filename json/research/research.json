@@ -1,6 +1,35 @@
 [
     
     {
+        "label": ["Spreadsheet", "current"],
+        "venues": "",
+        "info": "Ongoing Research",
+        "imgSrc": "../img/research/Spreadsheet/project2.png",
+        "videoSrc":"",
+        "imgMore":["",""],
+        "title": "Multimodal Interaction Methods for Manipulating Spreadsheet Data",
+        "link": "../researchTopic/Spreadsheet.html",
+        "pdf": "",
+        "content": "Our prototype is a reimagination of spreadsheet interaction where multimodal interactions are incorporated to simplify the tasks that would otherwise require several steps using the mouse and the pointer.",
+        "abstract": "Conventional WIMP spreadsheet user interfaces involve multi-step processes to accomplish seemingly simple operations like sorting a column and thus hinder early data exploration and analysis. The prototype presented will incorporate a multimodal interaction model that will integrate multimodal inputs to allow the user to perform the same functions more intuitively and effectively. This method provides a way to speed up data work without compromising approachability and flexibility through the reduction of cognitive and operational load, and natural, human-centered interaction speed.<br><br>",
+        "keywords": ["Spreadsheets","Multimodal interactions"],
+        "intro":"",
+        "description": "",
+        "url": "",
+        "date": "July, 2025",
+        "researchers": [
+            { "name": "Nushrat Ria", "link": "https://chive.cse.lsu.edu/people/students/NushratJahanRia/nush.html" },
+            { "name": "Narges Mahyar", "link": "" },
+            { "name": "Matthew Brehmer", "link": "" },
+            { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
+        ],
+        "place": "",
+        "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+        "school": "Louisiana State University",
+        "num": "",
+        "email": ""
+      },
+    {
         "label": ["DesignImplications", "current"],
         "venues": "",
         "info": "Ongoing Research",
@@ -213,7 +242,8 @@
     "date": "June, 2024",
     "researchers": [
         { "name": "Name", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" },
-        { "name": "Name", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" }
+        { "name": "Name", "link": "https://chive.cse.lsu.edu/people/DemoPeoplePage/DemoPeoplePage.html" },
+        { "name": "Name", "link": "" }
     ],
     "place": "place demo, USA",
     "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",

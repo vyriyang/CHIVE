@@ -163,6 +163,24 @@
 
   /* 打開遮罩時禁用背景滾動 */
   body.modal-open { overflow: hidden; }
+
+  /* 無連結時，強制 hover 不變色、不顯示手型游標 */
+  .researcher-link[data-has-link="false"]:hover {
+    color: inherit !important;
+    cursor: default !important;
+    text-decoration: none !important;
+  }
+
+  /* 作者：無連結時，強制 hover 不變色、游標非 pointer */
+  .author-link[data-has-link="false"],
+  .cont-researcher-name[data-has-link="false"] {
+    cursor: default !important;
+  }
+  .author-link[data-has-link="false"]:hover,
+  .cont-researcher-name[data-has-link="false"]:hover {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
 </style>
 </head>
 <body>
@@ -439,25 +457,50 @@ updateArrowState();
       document.getElementById('researchName').textContent = research.title;
       document.getElementById('researchContent').textContent = research.content;
 
-      // 更新研究者信息
-      const researchersInfo = research.researchers.map(r =>
-        `<span class="researcher-link" data-link="${r.link}" style="cursor:pointer;">${r.name}</span>`
-      ).join(', ');
-      document.getElementById('researchers-info').innerHTML = `Researchers: ${researchersInfo}`;
+      // ========= 更新研究者資訊 =========
+  (function () {
+    const el = document.getElementById('researchers-info');
+    const list = Array.isArray(research?.researchers) ? research.researchers : [];
 
-      // 为研究者名字添加 hover 效果和点击事件
-      document.querySelectorAll('.researcher-link').forEach(item => {
-        item.addEventListener('mouseover', function() {
-          this.style.color = '#f36f24';
-        });
-        item.addEventListener('mouseout', function() {
-          this.style.color = '';
-        });
-        item.addEventListener('click', function() {
-          const link = this.getAttribute('data-link');
-          window.open(link, '_blank');
-        });
+    const html = list.map(r => {
+      const name = (r && r.name) ? String(r.name) : '';
+      const link = (r && r.link) ? String(r.link).trim() : '';
+      const hasLink = !!(link && link !== '#' && link.toLowerCase() !== 'javascript:;');
+
+      const common = `class="researcher-link" data-has-link="${hasLink}"`;
+      if (hasLink) {
+        // 可點：pointer、帶 data-link
+        return `<span ${common} data-link="${link}" style="cursor:pointer;">${name}</span>`;
+      } else {
+        // 不可點：預設游標、可加 aria 提示
+        return `<span ${common} aria-disabled="true" tabindex="-1" style="cursor:default;">${name}</span>`;
+      }
+    }).join(', ');
+
+    el.innerHTML = `Researchers: ${html}`;
+
+    // 僅對「有連結」的項目綁定互動
+    document.querySelectorAll('.researcher-link[data-has-link="true"]').forEach(item => {
+      item.addEventListener('mouseover', function () {
+        this.style.color = '#f36f24';
       });
+      item.addEventListener('mouseout', function () {
+        this.style.color = '';
+      });
+      item.addEventListener('click', function () {
+        const link = this.getAttribute('data-link');
+        if (link) window.open(link, '_blank', 'noopener');
+      });
+    });
+
+    // 可選：明確阻止「無連結」時的點擊（即使被誤綁事件也不動作）
+    document.querySelectorAll('.researcher-link[data-has-link="false"]').forEach(item => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    });
+  })();
 
       // 更新关键词
       const keywordsContainer = document.querySelector('.keywords-container');
@@ -523,12 +566,18 @@ updateArrowState();
     modalImg.classList.toggle('zoom-out', !zoomedIn);
   };
 
-  // 2) 影片工具函式
+// 2) 影片工具函式（完整）
+// =======================
+
+// 安全轉陣列
 const safeArray = v => Array.isArray(v) ? v : (v == null ? [] : [v]);
+
+// 判斷 labels 是否包含指定 tag（支援陣列或字串）
 const hasTag = (labels, tag) =>
   Array.isArray(labels) ? labels.includes(tag)
   : (typeof labels === 'string' ? labels.includes(tag) : false);
 
+// 解析 YouTube URL 參數 t=（支援數字/帶 s/或 h m s 格式）
 function parseStartSeconds(urlObj) {
   const t = urlObj.searchParams.get('t') || '';
   if (!t) return 0;
@@ -539,50 +588,54 @@ function parseStartSeconds(urlObj) {
   return (parseInt(m[1]||'0',10)*3600) + (parseInt(m[2]||'0',10)*60) + parseInt(m[3]||'0',10);
 }
 
+// 是否為 YouTube 網址
 function isYouTubeUrl(url) {
   try {
     const u = new URL(url);
     return /(^|\.)youtube\.com$/i.test(u.hostname) || /(^|\.)youtu\.be$/i.test(u.hostname);
-  } catch { return false; }
+  } catch {
+    return false;
+  }
 }
 
+// 轉換為 YouTube <iframe> 可用的 embed URL（保留起始秒數）
 function toYouTubeEmbed(url) {
   const u = new URL(url);
   const start = parseStartSeconds(u);
   let videoId = '';
-  if (/youtu\.be$/i.test(u.hostname)) {
+
+  if (/(^|\.)youtu\.be$/i.test(u.hostname)) {
     videoId = u.pathname.replace(/^\//, '');
-  } else if (/youtube\.com$/i.test(u.hostname)) {
-    if (u.pathname === '/watch') videoId = u.searchParams.get('v') || '';
-    else if (u.pathname.startsWith('/live/'))   videoId = u.pathname.split('/live/')[1] || '';
-    else if (u.pathname.startsWith('/shorts/')) videoId = u.pathname.split('/shorts/')[1] || '';
+  } else if (/(^|\.)youtube\.com$/i.test(u.hostname)) {
+    if (u.pathname === '/watch') {
+      videoId = u.searchParams.get('v') || '';
+    } else if (u.pathname.startsWith('/live/')) {
+      videoId = u.pathname.split('/live/')[1] || '';
+    } else if (u.pathname.startsWith('/shorts/')) {
+      videoId = u.pathname.split('/shorts/')[1] || '';
+    }
   }
   if (!videoId) return '';
 
-  // 統一加入確保有聲音播放的參數（不自動播放時也不會被靜音）
-  // 如需自動播放，將 autoplay=1；否則維持 0。
   const params = new URLSearchParams({
     start: String(start || 0),
-    mute: '0',
+    mute: '0',          // 不靜音
     playsinline: '1',
-    // 若你想自動播放：把下一行改成 '1'
-    autoplay: '0',
-    // 其他常用：
+    autoplay: '0',      // 如需自動播放改為 '1'
     rel: '0',
     iv_load_policy: '3'
   });
-  // 移除 start=0 以免多餘
   if (!start) params.delete('start');
 
   return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
 }
 
+// 是否為瀏覽器可直接播放的影片檔
 function canUseHtml5Video(url) {
   return /\.(mp4|webm|ogg)(\?.*)?$/i.test(url);
 }
 
-// 抽出：依據 URL 產生內嵌區塊（沿用你的樣式）
-// 重要：不加 muted、不設置靜音，確保播放時有聲音
+// 依據 URL 產生嵌入區塊（保留你的樣式）
 function renderEmbed(videoUrl) {
   if (!videoUrl) return '';
   if (isYouTubeUrl(videoUrl)) {
@@ -599,7 +652,6 @@ function renderEmbed(videoUrl) {
          </div>`
       : `<div style="margin-top:12px;"><a href="${videoUrl}" target="_blank" rel="noopener" style="text-decoration:none;color:#3f44b6;">Open video</a></div>`;
   } else if (canUseHtml5Video(videoUrl)) {
-    // HTML5 影片：預設不靜音，顯示控制列
     return `<video controls playsinline preload="metadata" style="width:100%;max-width:100%;margin-top:12px;">
               <source src="${videoUrl}">
               Your browser does not support the video tag.
@@ -609,45 +661,106 @@ function renderEmbed(videoUrl) {
   }
 }
 
-// 3) 渲染影片（支援 url-2）
+// 取得所有 url 欄位（含 url-2、url-3…url-n），並依數字排序
+function getAllUrls(infoItem) {
+  if (!infoItem || typeof infoItem !== 'object') return [];
+  const entries = Object.keys(infoItem)
+    .filter(k => /^url(?:-\d+)?$/i.test(k)) // 匹配 url 或 url-數字
+    .map(k => {
+      const m = k.match(/^url(?:-(\d+))?$/i);
+      const n = m && m[1] ? parseInt(m[1], 10) : 1; // 無數字者視為 1（即 url）
+      return { n, v: infoItem[k] };
+    })
+    .filter(x => typeof x.v === 'string' && x.v.trim().length > 0);
+
+  entries.sort((a, b) => a.n - b.n);
+  return entries.map(x => x.v.trim());
+}
+
+// =======================
+// 3) 渲染影片（完整）
+// =======================
+// 規則：
+// 1) 若有任何 url* → 主影片 = 第一個 url，其餘依序追加（url-2…url-n）。
+// 2) 若完全沒有 url* → 使用 videoSrc 作為主影片（不追加）。
+// 3) 區塊維持你的既有樣式與結構。
 function updateVideos(list) {
   const infoContent = document.getElementById('info-content');
   const videoSection = document.getElementById('Videos');
   if (!infoContent || !videoSection) return;
 
+  // 先檢查是否有影片可顯示
   const hasVideos = safeArray(list).some(item =>
-    hasTag(item?.label, 'ASL') && (item?.url || item?.videoSrc || item?.['url-2'])
+    hasTag(item?.label, 'ASL') &&
+    (getAllUrls(item).length > 0 || item?.videoSrc)
   );
-  if (!hasVideos) { videoSection.style.display = 'none'; return; }
+  if (!hasVideos) {
+    videoSection.style.display = 'none';
+    return;
+  }
   videoSection.style.display = '';
 
+  // 逐筆渲染
   safeArray(list).forEach(infoItem => {
-    if (!(hasTag(infoItem?.label, 'ASL') && (infoItem?.url || infoItem?.videoSrc || infoItem?.['url-2']))) return;
+    if (!hasTag(infoItem?.label, 'ASL')) return;
+
+    const urls = getAllUrls(infoItem);   // 所有 url、url-2…url-n
+    const hasAnyUrl = urls.length > 0;
+
+    // 主/附加影片決策
+    const primaryUrl = hasAnyUrl ? urls[0] : (infoItem?.videoSrc || '');
+    const extraUrls  = hasAnyUrl ? urls.slice(1) : [];
+
+    if (!primaryUrl) {
+      // 既沒有 url* 也沒有 videoSrc → 不渲染
+      return;
+    }
 
     const infoDiv = document.createElement('div');
     infoDiv.classList.add('news_card');
     infoDiv.style.paddingTop = '30px';
 
-    const speakers = safeArray(infoItem?.researchers).slice(0,2)
-      .map(r => `<a href="${r?.link || '#'}" target="_blank" class="cont-researcher-name" style="text-decoration:none;">${r?.name ?? ''}</a>`)
-      .filter(Boolean).join(', ');
+    // Speakers（最多 1 位，沿用你的 slice(0,1)）
+  const speakers = safeArray(infoItem?.researchers).slice(0, 1)
+    .map(r => {
+      const name = r?.name ?? '';
+      const link = (r?.link || '').trim();
+      const hasLink = !!(link && link !== '#' && link.toLowerCase() !== 'javascript:;');
 
-    const primaryUrl   = infoItem?.videoSrc || infoItem?.url || '';
-    const secondaryUrl = infoItem?.['url-2'] || '';
+      if (hasLink) {
+        return `<a href="${link}" target="_blank" rel="noopener noreferrer"
+                  class="cont-researcher-name"
+                  data-has-link="true"
+                  style="text-decoration:none;">${name}</a>`;
+      } else {
+        return `<span class="cont-researcher-name"
+                     data-has-link="false"
+                     aria-disabled="true" tabindex="-1"
+                     style="text-decoration:none;">${name}</span>`;
+      }
+    })
+    .filter(Boolean)
+    .join(', ');
 
-    const embedHTML1 = renderEmbed(primaryUrl);
-    const embedHTML2 = secondaryUrl ? renderEmbed(secondaryUrl) : '';
+    // 內嵌影片 HTML
+    const embedHTMLPrimary = renderEmbed(primaryUrl);
+    const embedHTMLExtras  = extraUrls.map(u => renderEmbed(u)).join('');
 
+    // 標題連結：有 url* 時連到第一個 url；否則連到 videoSrc（若是直連檔亦可）
+    const titleHref = hasAnyUrl ? primaryUrl : (infoItem?.videoSrc || '#');
+
+    // 組裝卡片
     infoDiv.innerHTML = `
       <div class="sec_sub_title">${infoItem?.info ?? ''}${infoItem?.place ? (' | ' + infoItem.place) : ''}</div>
       <div class="sub-title_s">
-        <a href="${infoItem?.url || primaryUrl}" style="text-decoration:none;color:#3f44b6;" rel="alternate bookmark" target="_blank">${infoItem?.title ?? ''}</a>
+        <a href="${titleHref}" style="text-decoration:none;color:#3f44b6;" rel="alternate bookmark" target="_blank">${infoItem?.title ?? ''}</a>
       </div>
       <div class="cont overflow">${infoItem?.date ?? ''}</div>
       ${speakers ? `<div class="cont overflow cursor">Speakers: ${speakers}</div>` : ''}
-      ${embedHTML1}
-      ${embedHTML2}
+      ${embedHTMLPrimary}
+      ${embedHTMLExtras}
     `;
+
     infoContent.appendChild(infoDiv);
   });
 
@@ -670,11 +783,40 @@ fetch('/json/research/research.json', { cache: 'no-store' })
     .then(data => {
       const accordionContainer = document.getElementById('accordion-2');
       let firstAccordionOpened = false;
-      const hasPublications = data.years?.some(y => y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('ASL')));
-      if (!hasPublications) { document.getElementById('Publications').style.display = 'none'; return; }
+
+      const hasPublications = data.years?.some(y =>
+        y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('ASL'))
+      );
+
+      if (!hasPublications) {
+        const pubsSec = document.getElementById('Publications');
+        if (pubsSec) pubsSec.style.display = 'none';
+        return;
+      }
+
+      // 小工具：渲染作者（有 link 用 <a>，無 link 用 <span>）
+      const renderAuthor = (a) => {
+        const name = (a && a.name) ? String(a.name) : '';
+        const link = (a && a.link) ? String(a.link).trim() : '';
+        const hasLink = !!(link && link !== '#' && link.toLowerCase() !== 'javascript:;');
+
+        if (hasLink) {
+          return `<a href="${link}" target="_blank" rel="noopener noreferrer"
+                     class="cont-researcher-name author-link"
+                     data-has-link="true"
+                     style="text-decoration:none;">${name}</a>`;
+        } else {
+          return `<span class="cont-researcher-name author-link"
+                       data-has-link="false"
+                       aria-disabled="true" tabindex="-1"
+                       style="text-decoration:none;">${name}</span>`;
+        }
+      };
 
       data.years.forEach((year) => {
-        const filtered = (year.publications || []).filter(pub => Array.isArray(pub.label) && pub.label.includes('ASL'));
+        const filtered = (year.publications || []).filter(pub =>
+          Array.isArray(pub.label) && pub.label.includes('ASL')
+        );
         if (!filtered.length) return;
 
         const item = document.createElement('div');
@@ -687,32 +829,45 @@ fetch('/json/research/research.json', { cache: 'no-store' })
 
         const content = document.createElement('div');
         content.classList.add('accordion-content');
-        if (!firstAccordionOpened) { content.style.display = 'block'; firstAccordionOpened = true; }
+        if (!firstAccordionOpened) {
+          content.style.display = 'block';
+          firstAccordionOpened = true;
+        }
 
-        filtered.sort((a,b) => new Date(b.date) - new Date(a.date)).forEach(pub => {
-          const div = document.createElement('div');
-          div.style.paddingBottom = '30px';
-          let awardIcon = '';
-          if ((pub.venues || '').includes('Best Paper Award')) awardIcon = `<img src="../img/icons/trophy.png" alt="Trophy" style="height:1em;vertical-align:middle;margin-right:5px;">`;
-          else if ((pub.venues || '').includes('Best Paper Honorable Mention Award')) awardIcon = `<img src="../img/icons/medal.png" alt="Medal" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+        filtered
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .forEach(pub => {
+            const div = document.createElement('div');
+            div.style.paddingBottom = '30px';
 
-          const venuesContent = pub.venues
-            ? `${awardIcon}<a href="${pub.url}" style="text-decoration:none;color:#ab2d05;" target="_blank"><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
-            : '';
+            let awardIcon = '';
+            if ((pub.venues || '').includes('Best Paper Award')) {
+              awardIcon = `<img src="../img/icons/trophy.png" alt="Trophy" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+            } else if ((pub.venues || '').includes('Best Paper Honorable Mention Award')) {
+              awardIcon = `<img src="../img/icons/medal.png" alt="Medal" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+            }
 
-          const pdfContent = pub.pdf
-            ? `<div class="sec_sub_title_a" style="margin-top:5px;margin-bottom:5px;"><a href="${pub.pdf}" style="color:#3f44b6;" target="_blank">View Publication</a></div>`
-            : '';
+            const venuesContent = pub.venues
+              ? `${awardIcon}<a href="${pub.url}" style="text-decoration:none;color:#ab2d05;" target="_blank" rel="noopener noreferrer"><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
+              : '';
 
-          div.innerHTML = `
-            <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration:none;color:#3f44b6;" target="_blank">${pub.title}</a></div>
-            <div class="cont-researche overflow">${(pub.authors || []).map(a => `<a href="${a.link}" class="cont-researcher-name" style="text-decoration:none;">${a.name}</a>`).join(', ')}</div>
-            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.venuesname || ''} | ${pub.date || ''}</div>
-            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.description || ''}</div>
-            ${pdfContent}
-          `;
-          content.appendChild(div);
-        });
+            const pdfContent = pub.pdf
+              ? `<div class="sec_sub_title_a" style="margin-top:5px;margin-bottom:5px;"><a href="${pub.pdf}" style="color:#3f44b6;" target="_blank" rel="noopener noreferrer">View Publication</a></div>`
+              : '';
+
+            const authorsHTML = (pub.authors || []).map(renderAuthor).join(', ');
+
+            div.innerHTML = `
+              <div class="sub-title_ss">
+                ${venuesContent}<a href="${pub.url}" style="text-decoration:none;color:#3f44b6;" target="_blank" rel="noopener noreferrer">${pub.title}</a>
+              </div>
+              <div class="cont-researche overflow">${authorsHTML}</div>
+              <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.venuesname || ''} | ${pub.date || ''}</div>
+              <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.description || ''}</div>
+              ${pdfContent}
+            `;
+            content.appendChild(div);
+          });
 
         item.appendChild(content);
         accordionContainer.appendChild(item);

@@ -163,6 +163,24 @@
 
   /* 打開遮罩時禁用背景滾動 */
   body.modal-open { overflow: hidden; }
+
+  /* 無連結時，強制 hover 不變色、不顯示手型游標 */
+  .researcher-link[data-has-link="false"]:hover {
+    color: inherit !important;
+    cursor: default !important;
+    text-decoration: none !important;
+  }
+
+  /* 作者：無連結時，強制 hover 不變色、游標非 pointer */
+  .author-link[data-has-link="false"],
+  .cont-researcher-name[data-has-link="false"] {
+    cursor: default !important;
+  }
+  .author-link[data-has-link="false"]:hover,
+  .cont-researcher-name[data-has-link="false"]:hover {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
 </style>
 
 
@@ -441,25 +459,50 @@ updateArrowState();
       document.getElementById('researchName').textContent = research.title;
       document.getElementById('researchContent').textContent = research.content;
 
-      // 更新研究者信息
-      const researchersInfo = research.researchers.map(r =>
-        `<span class="researcher-link" data-link="${r.link}" style="cursor:pointer;">${r.name}</span>`
-      ).join(', ');
-      document.getElementById('researchers-info').innerHTML = `Researchers: ${researchersInfo}`;
+      // ========= 更新研究者資訊 =========
+  (function () {
+    const el = document.getElementById('researchers-info');
+    const list = Array.isArray(research?.researchers) ? research.researchers : [];
 
-      // 为研究者名字添加 hover 效果和点击事件
-      document.querySelectorAll('.researcher-link').forEach(item => {
-        item.addEventListener('mouseover', function() {
-          this.style.color = '#f36f24';
-        });
-        item.addEventListener('mouseout', function() {
-          this.style.color = '';
-        });
-        item.addEventListener('click', function() {
-          const link = this.getAttribute('data-link');
-          window.open(link, '_blank');
-        });
+    const html = list.map(r => {
+      const name = (r && r.name) ? String(r.name) : '';
+      const link = (r && r.link) ? String(r.link).trim() : '';
+      const hasLink = !!(link && link !== '#' && link.toLowerCase() !== 'javascript:;');
+
+      const common = `class="researcher-link" data-has-link="${hasLink}"`;
+      if (hasLink) {
+        // 可點：pointer、帶 data-link
+        return `<span ${common} data-link="${link}" style="cursor:pointer;">${name}</span>`;
+      } else {
+        // 不可點：預設游標、可加 aria 提示
+        return `<span ${common} aria-disabled="true" tabindex="-1" style="cursor:default;">${name}</span>`;
+      }
+    }).join(', ');
+
+    el.innerHTML = `Researchers: ${html}`;
+
+    // 僅對「有連結」的項目綁定互動
+    document.querySelectorAll('.researcher-link[data-has-link="true"]').forEach(item => {
+      item.addEventListener('mouseover', function () {
+        this.style.color = '#f36f24';
       });
+      item.addEventListener('mouseout', function () {
+        this.style.color = '';
+      });
+      item.addEventListener('click', function () {
+        const link = this.getAttribute('data-link');
+        if (link) window.open(link, '_blank', 'noopener');
+      });
+    });
+
+    // 可選：明確阻止「無連結」時的點擊（即使被誤綁事件也不動作）
+    document.querySelectorAll('.researcher-link[data-has-link="false"]').forEach(item => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      });
+    });
+  })();
 
       // 更新关键词
       const keywordsContainer = document.querySelector('.keywords-container');
@@ -679,10 +722,27 @@ function updateVideos(list) {
     infoDiv.classList.add('news_card');
     infoDiv.style.paddingTop = '30px';
 
-    // Speakers（最多 2 位）
-    const speakers = safeArray(infoItem?.researchers).slice(0, 2)
-      .map(r => `<a href="${r?.link || '#'}" target="_blank" class="cont-researcher-name" style="text-decoration:none;">${r?.name ?? ''}</a>`)
-      .filter(Boolean).join(', ');
+    // Speakers（最多 1 位，沿用你的 slice(0,1)）
+  const speakers = safeArray(infoItem?.researchers).slice(0, 1)
+    .map(r => {
+      const name = r?.name ?? '';
+      const link = (r?.link || '').trim();
+      const hasLink = !!(link && link !== '#' && link.toLowerCase() !== 'javascript:;');
+
+      if (hasLink) {
+        return `<a href="${link}" target="_blank" rel="noopener noreferrer"
+                  class="cont-researcher-name"
+                  data-has-link="true"
+                  style="text-decoration:none;">${name}</a>`;
+      } else {
+        return `<span class="cont-researcher-name"
+                     data-has-link="false"
+                     aria-disabled="true" tabindex="-1"
+                     style="text-decoration:none;">${name}</span>`;
+      }
+    })
+    .filter(Boolean)
+    .join(', ');
 
     // 內嵌影片 HTML
     const embedHTMLPrimary = renderEmbed(primaryUrl);
@@ -725,11 +785,40 @@ fetch('/json/research/research.json', { cache: 'no-store' })
     .then(data => {
       const accordionContainer = document.getElementById('accordion-2');
       let firstAccordionOpened = false;
-      const hasPublications = data.years?.some(y => y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('ReviewVideo')));
-      if (!hasPublications) { document.getElementById('Publications').style.display = 'none'; return; }
+
+      const hasPublications = data.years?.some(y =>
+        y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('ReviewVideo'))
+      );
+
+      if (!hasPublications) {
+        const pubsSec = document.getElementById('Publications');
+        if (pubsSec) pubsSec.style.display = 'none';
+        return;
+      }
+
+      // 小工具：渲染作者（有 link 用 <a>，無 link 用 <span>）
+      const renderAuthor = (a) => {
+        const name = (a && a.name) ? String(a.name) : '';
+        const link = (a && a.link) ? String(a.link).trim() : '';
+        const hasLink = !!(link && link !== '#' && link.toLowerCase() !== 'javascript:;');
+
+        if (hasLink) {
+          return `<a href="${link}" target="_blank" rel="noopener noreferrer"
+                     class="cont-researcher-name author-link"
+                     data-has-link="true"
+                     style="text-decoration:none;">${name}</a>`;
+        } else {
+          return `<span class="cont-researcher-name author-link"
+                       data-has-link="false"
+                       aria-disabled="true" tabindex="-1"
+                       style="text-decoration:none;">${name}</span>`;
+        }
+      };
 
       data.years.forEach((year) => {
-        const filtered = (year.publications || []).filter(pub => Array.isArray(pub.label) && pub.label.includes('ReviewVideo'));
+        const filtered = (year.publications || []).filter(pub =>
+          Array.isArray(pub.label) && pub.label.includes('ReviewVideo')
+        );
         if (!filtered.length) return;
 
         const item = document.createElement('div');
@@ -742,32 +831,45 @@ fetch('/json/research/research.json', { cache: 'no-store' })
 
         const content = document.createElement('div');
         content.classList.add('accordion-content');
-        if (!firstAccordionOpened) { content.style.display = 'block'; firstAccordionOpened = true; }
+        if (!firstAccordionOpened) {
+          content.style.display = 'block';
+          firstAccordionOpened = true;
+        }
 
-        filtered.sort((a,b) => new Date(b.date) - new Date(a.date)).forEach(pub => {
-          const div = document.createElement('div');
-          div.style.paddingBottom = '30px';
-          let awardIcon = '';
-          if ((pub.venues || '').includes('Best Paper Award')) awardIcon = `<img src="../img/icons/trophy.png" alt="Trophy" style="height:1em;vertical-align:middle;margin-right:5px;">`;
-          else if ((pub.venues || '').includes('Best Paper Honorable Mention Award')) awardIcon = `<img src="../img/icons/medal.png" alt="Medal" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+        filtered
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .forEach(pub => {
+            const div = document.createElement('div');
+            div.style.paddingBottom = '30px';
 
-          const venuesContent = pub.venues
-            ? `${awardIcon}<a href="${pub.url}" style="text-decoration:none;color:#ab2d05;" target="_blank"><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
-            : '';
+            let awardIcon = '';
+            if ((pub.venues || '').includes('Best Paper Award')) {
+              awardIcon = `<img src="../img/icons/trophy.png" alt="Trophy" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+            } else if ((pub.venues || '').includes('Best Paper Honorable Mention Award')) {
+              awardIcon = `<img src="../img/icons/medal.png" alt="Medal" style="height:1em;vertical-align:middle;margin-right:5px;">`;
+            }
 
-          const pdfContent = pub.pdf
-            ? `<div class="sec_sub_title_a" style="margin-top:5px;margin-bottom:5px;"><a href="${pub.pdf}" style="color:#3f44b6;" target="_blank">View Publication</a></div>`
-            : '';
+            const venuesContent = pub.venues
+              ? `${awardIcon}<a href="${pub.url}" style="text-decoration:none;color:#ab2d05;" target="_blank" rel="noopener noreferrer"><strong>${pub.venues}</strong></a> <a style="color:#3f44b6;"> | `
+              : '';
 
-          div.innerHTML = `
-            <div class="sub-title_ss">${venuesContent}<a href="${pub.url}" style="text-decoration:none;color:#3f44b6;" target="_blank">${pub.title}</a></div>
-            <div class="cont-researche overflow">${(pub.authors || []).map(a => `<a href="${a.link}" class="cont-researcher-name" style="text-decoration:none;">${a.name}</a>`).join(', ')}</div>
-            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.venuesname || ''} | ${pub.date || ''}</div>
-            <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.description || ''}</div>
-            ${pdfContent}
-          `;
-          content.appendChild(div);
-        });
+            const pdfContent = pub.pdf
+              ? `<div class="sec_sub_title_a" style="margin-top:5px;margin-bottom:5px;"><a href="${pub.pdf}" style="color:#3f44b6;" target="_blank" rel="noopener noreferrer">View Publication</a></div>`
+              : '';
+
+            const authorsHTML = (pub.authors || []).map(renderAuthor).join(', ');
+
+            div.innerHTML = `
+              <div class="sub-title_ss">
+                ${venuesContent}<a href="${pub.url}" style="text-decoration:none;color:#3f44b6;" target="_blank" rel="noopener noreferrer">${pub.title}</a>
+              </div>
+              <div class="cont-researche overflow">${authorsHTML}</div>
+              <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.venuesname || ''} | ${pub.date || ''}</div>
+              <div class="sec_sub_title_s" style="margin-top:5px;margin-bottom:5px;">${pub.description || ''}</div>
+              ${pdfContent}
+            `;
+            content.appendChild(div);
+          });
 
         item.appendChild(content);
         accordionContainer.appendChild(item);

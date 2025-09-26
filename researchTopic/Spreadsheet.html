@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Design Implications for Animation in Narrative Visualization</title>
+  <title>Research Demo</title>
   <link rel="stylesheet" href="../dist/css/scrollspy.dark.css"/>
   <style>
     .main-content {
@@ -12,8 +12,8 @@
       align-items: center;
       justify-content: center;
       background-image: 
-        linear-gradient(rgba(4, 36, 83, 0.8), rgba(27, 57, 91, 0.7)), 
-        url('../img/research/DesignImplications/DesignImplications-home.png');
+        linear-gradient(rgba(1, 36, 55, 0.7), rgba(12, 62, 115, 0.7)), 
+        url('../img/research/Spreadsheet/Spreadsheet-home.webp');
       background-size: cover;
       background-position: top;
       animation: moveBg 280s infinite alternate;
@@ -164,7 +164,8 @@
   /* 打開遮罩時禁用背景滾動 */
   body.modal-open { overflow: hidden; }
 
-  /* 無連結時，強制 hover 不變色、不顯示手型游標 */
+
+/* 無連結時，強制 hover 不變色、不顯示手型游標 */
   .researcher-link[data-has-link="false"]:hover {
     color: inherit !important;
     cursor: default !important;
@@ -333,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function() {
   fetch('/json/research/research.json')
     .then(response => response.json())
     .then(data => {
-      const research = (Array.isArray(data) ? data : []).find(item => Array.isArray(item.label) && item.label.includes("DesignImplications"));
+      const research = (Array.isArray(data) ? data : []).find(item => Array.isArray(item.label) && item.label.includes("Spreadsheet"));
       if (!research) return;
 
 // 主圖
@@ -695,7 +696,7 @@ function updateVideos(list) {
 
   // 先檢查是否有影片可顯示
   const hasVideos = safeArray(list).some(item =>
-    hasTag(item?.label, 'DesignImplications') &&
+    hasTag(item?.label, 'Spreadsheet') &&
     (getAllUrls(item).length > 0 || item?.videoSrc)
   );
   if (!hasVideos) {
@@ -706,7 +707,7 @@ function updateVideos(list) {
 
   // 逐筆渲染
   safeArray(list).forEach(infoItem => {
-    if (!hasTag(infoItem?.label, 'DesignImplications')) return;
+    if (!hasTag(infoItem?.label, 'Spreadsheet')) return;
 
     const urls = getAllUrls(infoItem);   // 所有 url、url-2…url-n
     const hasAnyUrl = urls.length > 0;
@@ -789,7 +790,7 @@ fetch('/json/research/research.json', { cache: 'no-store' })
       let firstAccordionOpened = false;
 
       const hasPublications = data.years?.some(y =>
-        y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('DesignImplications'))
+        y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('Spreadsheet'))
       );
 
       if (!hasPublications) {
@@ -819,7 +820,7 @@ fetch('/json/research/research.json', { cache: 'no-store' })
 
       data.years.forEach((year) => {
         const filtered = (year.publications || []).filter(pub =>
-          Array.isArray(pub.label) && pub.label.includes('DesignImplications')
+          Array.isArray(pub.label) && pub.label.includes('Spreadsheet')
         );
         if (!filtered.length) return;
 
