@@ -61,6 +61,46 @@
       margin-bottom: 5px; /* 减少内容和日期之间的间距 */
     }
 
+         .modal {
+  display: none; /* 隱藏 */
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+  background: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  width: 60%;
+  border-radius: 8px;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}   
+
+.footer a {
+  color: white;   /* 預設文字顏色 */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer a:hover {
+  color: #f36f24;   /* 滑鼠懸停顏色 */
+}
+/* 只作用在本頁渲染出的彈窗 */
+#modals .modal-content--align-right {
+  text-align: left;
+}
+
   </style>
 </head>
 <body>
@@ -101,19 +141,59 @@
     </div>
   </section>
   
-  <div class="footer">
-    <p>
-      <a href="#">About</a> | 
-      <a href="#">Contact Us</a> | 
-      <a href="#">Copyright</a> | 
-      <a href="#">Terms of Use</a> | 
-      <a href="#">Privacy Policy</a>
-    </p>
-    <p>© 2025 All rights reserved</p>
-  </div>
+  <div id="footer"></div>
+<div id="modals"></div>
   
   <script src="dist/js/scrollspy.min.js"></script>
   <script>
+<!-- ====== JS footer====== -->
+fetch('json/footer.json')
+  .then(res => res.json())
+  .then(data => {
+    // 1) 渲染 footer links
+    const footer = document.getElementById('footer');
+    const linksHtml = data.footer.links.map((link) => {
+      if (link.type === 'modal') {
+        return `<a href="javascript:void(0)" onclick="openModal('${link.target}')">${link.title}</a>`;
+      } else {
+        return `<a href="${link.href}">${link.title}</a>`;
+      }
+    }).join(' | ');
+
+    footer.innerHTML = `
+      <div class="footer">
+        <p class="footer-links">${linksHtml}</p>
+        <p class="footer-copy">${data.footer.copyright}</p>
+      </div>
+    `;
+
+    // 2) 渲染 Modals（加上專用對齊 class，不影響全站）
+    const modalsContainer = document.getElementById('modals');
+    modalsContainer.innerHTML = data.modals.map(m => `
+      <div id="${m.id}" class="modal" role="dialog" aria-modal="true" aria-labelledby="${m.id}-title">
+        <div class="modal-content modal-content--align-right">
+          <span class="close" onclick="closeModal('${m.id}')" aria-label="Close">&times;</span>
+          <h2 id="${m.id}-title">${m.title}</h2>
+          <p>${m.content}</p>
+        </div>
+      </div>
+    `).join('');
+  });
+
+// modal 控制函式
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+window.onclick = function(event) {
+  document.querySelectorAll('.modal').forEach(m => {
+    if (event.target === m) m.style.display = "none";
+  });
+}
+
+
     document.addEventListener("DOMContentLoaded", function() {
       fetch("/json/news.json")
         .then((response) => response.json())

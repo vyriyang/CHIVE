@@ -1,0 +1,39 @@
+{
+  "footer": {
+    "links": [
+      { "title": "About", "type": "modal", "target": "aboutModal" },
+      { "title": "Contact Us", "type": "modal", "target": "contactModal" },
+      { "title": "Copyright", "type": "modal", "target": "copyrightModal" },
+      { "title": "Terms of Use", "type": "modal", "target": "termsModal" },
+      { "title": "Privacy Policy", "type": "modal", "target": "privacyModal" }
+    ],
+    "copyright": "© 2025 All rights reserved"
+  },
+  "modals": [
+    {
+      "id": "aboutModal",
+      "title": "About CHIVE Research Lab at LSU",
+      "content": "We are excited to announce the official launch of the Computer Human Interaction and Visualization Experience (CHIVE) Lab, established in August 2023 at the Division of Computer Science and Engineering, Louisiana State University.<br><br> Under the guidance of Dr. Mahmood Jasim, our lab explores cutting-edge research at the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.<br><br> At CHIVE, we aim to design impactful, user-centered technologies that bridge the gap between data, people, and society.<br><br> Stay tuned for updates, projects, and opportunities to collaborate!"
+    },
+    {
+        "id": "contactModal",
+        "title": "Contact Us",
+        "content": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803<br><br> Louisiana State University"
+      },
+    {
+      "id": "copyrightModal",
+      "title": "Copyright",
+      "content": "All text, graphics, images, and other content on this website are protected under applicable copyright laws.<br><br>You may not copy, reproduce, distribute, or modify any material without prior written permission from CHIVE Lab."
+    },
+    {
+      "id": "termsModal",
+      "title": "Terms of Use",
+      "content": "By accessing and using this website, you agree to the following terms:<br><br>1. The website content is provided for informational and academic purposes only.<br>2. Users may not engage in activities that harm the integrity, security, or availability of the website.<br>3. CHIVE Lab reserves the right to modify or remove content without prior notice.<br>4. Continued use of this site constitutes acceptance of these terms."
+    },
+    {
+      "id": "privacyModal",
+      "title": "Privacy Policy",
+      "content": "Your privacy is important to us. This website may collect limited information such as browser type, access time, and visited pages for analytical purposes only.<br><br>We do not sell, trade, or share your personal information with third parties. Any collected data will be used solely to improve the website’s usability and user experience.<br><br>If you have any questions about how your information is handled, please contact us."
+    }
+  ]
+}

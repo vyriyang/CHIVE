@@ -181,6 +181,52 @@
     color: inherit !important;
     text-decoration: none !important;
   }
+
+/* ===== researchProject 專用 Footer Modal ===== */
+.modal-footer-rp {
+  position: fixed;
+  inset: 0;
+  display: none;
+  background: rgba(0,0,0,0.5);
+  z-index: 9000;
+}
+
+/* 彈窗居中偏上 */
+.modal-content-footer-rp {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  width: min(720px, 92vw);
+  max-height: 80vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 10px;
+  padding: 22px 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* 關閉按鈕 */
+.modal-footer-rp .footer-close-rp {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  font-size: 24px;
+  color: #000;
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.modal-footer-rp .footer-close-rp:hover { color: #555; }
+
+/* Footer links hover 色 */
+#footer .footer a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+#footer .footer a:hover {
+  color: #f36f24;
+}
 </style>
 </head>
 <body>
@@ -193,7 +239,7 @@
       <a class="scrollspy-link" href="../people.html">People</a>     
       <a class="scrollspy-link" href="../news.html">News</a>
       <a class="scrollspy-link" href="../activity.html">Activity</a>
-      <a class="scrollspy-link" href="resource.html">Resource</a>
+      <a class="scrollspy-link" href="../resource.html">Resource</a>
     </nav>   
   </header>
 
@@ -307,20 +353,86 @@
     </div>
   </section>
   
-  <div class="footer">
-    <p>
-      <a href="#">About</a> | 
-      <a href="#">Contact Us</a> | 
-      <a href="#">Copyright</a> | 
-      <a href="#">Terms of Use</a> | 
-      <a href="#">Privacy Policy</a>
-    </p>
-    <p>© 2025 All rights reserved</p>
-  </div>
+<div id="footer"></div>
+<div id="modals"></div>
 
   <script src="../../dist/js/mn-accordion.js"></script>
   <script src="../../dist/js/scrollspy.min.js"></script>
   <script>
+
+    /* ===== researchProject 專屬 Footer（與主頁功能等同） ===== */
+(function () {
+  // 1) 讀取 footer.json（用絕對路徑，避免子資料夾路徑錯誤）
+  fetch('/json/footer.json', { cache: 'no-store' })
+    .then(res => {
+      if (!res.ok) throw new Error('Failed to load /json/footer.json');
+      return res.json();
+    })
+    .then(data => {
+      // 2) 渲染 footer 連結（與主頁一致，但 modal 走本頁專用 API）
+      const footer = document.getElementById('footer') || (function () {
+        // 若頁面沒有 #footer，動態創建一個，避免你改 HTML
+        const f = document.createElement('div');
+        f.id = 'footer';
+        document.body.appendChild(f);
+        return f;
+      })();
+
+      const linksHtml = (data?.footer?.links || []).map(link => {
+        if (link.type === 'modal') {
+          // 對應本頁專用的 open 函式
+          return `<a href="javascript:void(0)" onclick="openModal_footerRP('rp-${link.target}')">${link.title}</a>`;
+        } else {
+          const href = link?.href || '#';
+          return `<a href="${href}">${link.title}</a>`;
+        }
+      }).join(' | ');
+
+      footer.innerHTML = `
+        <div class="footer">
+          <p class="footer-links">${linksHtml}</p>
+          <p class="footer-copy">${data?.footer?.copyright || ''}</p>
+        </div>
+      `;
+
+      // 3) 渲染「本頁專用」footer modals 到獨立容器（避免動到你的 #modals）
+      let modalsContainer = document.getElementById('modals-footer-rp');
+      if (!modalsContainer) {
+        modalsContainer = document.createElement('div');
+        modalsContainer.id = 'modals-footer-rp';
+        document.body.appendChild(modalsContainer);
+      }
+
+      modalsContainer.innerHTML = (data?.modals || []).map(m => `
+        <div id="rp-${m.id}" class="modal-footer-rp" role="dialog" aria-modal="true" aria-labelledby="rp-${m.id}-title" style="display:none;">
+          <div class="modal-content-footer-rp">
+            <span class="footer-close-rp" onclick="closeModal_footerRP('rp-${m.id}')" aria-label="Close">&times;</span>
+            <h2 id="rp-${m.id}-title">${m.title || ''}</h2>
+            <p>${m.content || ''}</p>
+          </div>
+        </div>
+      `).join('');
+    })
+    .catch(err => console.error(err));
+})();
+
+/* ===== 僅供 researchProject footer 使用的控制函式（不會覆蓋全域） ===== */
+function openModal_footerRP(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = 'block';
+}
+function closeModal_footerRP(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = 'none';
+}
+// 只關閉「本頁 footer」的彈窗，不影響你的其它 modal
+window.addEventListener('click', (e) => {
+  if (e.target.classList && e.target.classList.contains('modal-footer-rp')) {
+    e.target.style.display = 'none';
+  }
+});
+
+
 document.addEventListener("DOMContentLoaded", function() {
   const modal = document.getElementById("myModal");
   const modalImg = document.getElementById("modalImage");

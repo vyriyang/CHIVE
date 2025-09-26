@@ -90,15 +90,15 @@
         }
 
         .logo-container img {
-            height: 100%; /* Make image height 100% of logo-container */
-            max-height: 90px; /* Ensure it doesn't exceed the height of logo-content */
+            height: 100%;
+            max-height: 90px;
         }
 
         .logo-text {
             color: white;
             font-size: 33px;
             margin-left: 15px;
-            white-space: nowrap; /* Prevent text from wrapping */
+            white-space: nowrap;
         }
 
         .main-content {
@@ -107,7 +107,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background-image: url('img/Home/19-1.webp'); /* replace with actual URL */
+            background-image: url('img/Home/19-1.webp');
             background-size: cover;
             background-position: top;
             color: white;
@@ -138,28 +138,28 @@
             padding: 15px 25px;
             font-size: 1em;
             color: white;
-            background-color: #FF7F0E; /* Orange */
+            background-color: #FF7F0E;
             text-decoration: none;
             border-radius: 5px;
         }
         .buttons a:hover{
-            background-color: #924603; /* Orange */
+            background-color: #924603;
         }
         .buttons a.b2 {
             font-family: 'Oswald', sans-serif;
-            background-color: #2CA02C; /* Green */
+            background-color: #2CA02C;
         }
         .buttons a.b2:hover {
-            background-color: #056105; /* Green */
+            background-color: #056105;
         } 
-
         .buttons a.b3 {
             font-family: 'Oswald', sans-serif;
-            background-color: #0300be; /* Green */
+            background-color: #0300be;
         }
         .buttons a.b3:hover {
-            background-color: #03025e; /* Green */
+            background-color: #03025e;
         }
+
         .fratures-title{
             padding-left:80px;
             padding-right:80px;
@@ -188,27 +188,32 @@
 
         .feature {
             text-align: center;
-            cursor: pointer;
+            cursor: default;               /* 預設非 pointer */
         }
+
+        /* 只有有連結時才套用互動效果 */
+        .feature.is-clickable { cursor: pointer; }
+        .feature.is-clickable:hover img { transform: scale(1.1); }
+        .feature.is-clickable:hover h2 { color: #f36f24; }
 
         .feature img {
             width: 100px;
             height: 100px;
-            border-radius: 50%; /* 使图片显示为圆形 */
-            transition: transform 0.3s; /* 添加過渡效果 */
-            cursor: pointer;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            cursor: inherit;               /* 跟隨父層 */
         }
 
         .feature h2 {
             font-family: 'Oswald', sans-serif;
-            margin-bottom: 5px; /* 增加與 h3 之間的距離 */
-            transition: color 0.3s; /* 添加過渡效果 */
+            margin-bottom: 5px;
+            transition: color 0.3s;
         }
 
         .feature h3 {
             color: #8d8b8b;
-            margin-top: 0; /* 移除 h3 與 h2 之間的距離 */
-            margin-bottom: 10px; /* 可根據需要調整 */
+            margin-top: 0;
+            margin-bottom: 10px;
         }
 
         .feature p {
@@ -217,73 +222,92 @@
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* 設置顯示行數，這裡設置為3行，可以根據需要調整 */
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
         }
 
-        .feature:hover img {
-            transform: scale(1.1); /* 放大圖片 */
-        }
-
-        .feature:hover h2 {
-            color: #f36f24;
-        }
-
-
         .features-a {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* 縮小項目的最小寬度 */
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             padding-left:70px;
             padding-right:70px;
-            gap: 10px; /* 減少間距 */
+            gap: 10px;
             padding: 50px 80px;
             background-color: #f9f9f9;
-            cursor: pointer;
+            cursor: default;               /* 預設非 pointer */
         }
-
-        .feature-a:hover {
-            color: #f36f24;
-        }
-
 
         .feature-a {
             text-align: center;
+            cursor: inherit;
         }
+
+        /* 只有有連結時才套用互動效果 */
+        .feature-a.is-clickable { cursor: pointer; }
+        .feature-a.is-clickable:hover img { transform: scale(1.1); }
+        .feature-a.is-clickable:hover h2 { color: #f36f24; }
+
         .feature-a img {
             width: 100px;
             height: 100px;
-            border-radius: 50%; /* 使图片显示为圆形 */
-        }
-
-        .feature-a:hover img {
-            transform: scale(1.1); /* 放大圖片 */
+            border-radius: 50%;
+            transition: transform 0.3s;
+            cursor: inherit;
         }
 
         .feature-a h2 {
             font-family: 'Oswald', sans-serif;
-            margin-bottom: 5px; /* 增加與 h3 之間的距離 */
+            margin-bottom: 5px;
+            transition: color 0.3s;
         }
         .feature-a h3 {
             color: #8d8b8b;
-            margin-top: 0; /* 移除 h3 與 h2 之間的距離 */
-            margin-bottom: 10px; /* 可根據需要調整 */
+            margin-top: 0;
+            margin-bottom: 10px;
         }
 
-        .footer {
-            text-align: center;
-            padding: 10px; /* Adjusted padding */
-            background-color: #333;
-            color: white;
-            max-height: 80px; /* Maximum height */
-            overflow: hidden; /* Hide overflow */
+        /* ===== Modals ===== */
+        .modal {
+          display: none;
+          position: fixed;
+          z-index: 9999;
+          left: 0; top: 0;
+          width: 100%; height: 100%;
+          background: rgba(0,0,0,0.5);
         }
-        .footer p {
-            margin: 5px 0; /* Adjusted margin */
+
+        .modal-content {
+          background: #fff;
+          margin: 10% auto;
+          padding: 20px;
+          width: 60%;
+          border-radius: 8px;
+          position: relative;
+          text-align: left; /* 預設左對齊 */
         }
+
+        .close {
+          position: absolute;
+          right: 15px;
+          top: 10px;
+          font-size: 24px;
+          cursor: pointer;
+          color: #000; /* 關閉按鈕初始為黑色 */
+        }
+
         .footer a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
+          color: white;
+          text-decoration: none;
+          transition: color 0.2s ease-in-out;
+        }
+
+        .footer a:hover {
+          color: #f36f24;
+        }
+
+        /* 只作用在本頁渲染出的彈窗：維持左對齊 */
+        #modals .modal-content--align-right {
+          text-align: left;
         }
     </style>
 </head>
@@ -301,6 +325,7 @@
             <a class="scrollspy-link" href="resource.html">Resource</a>
         </nav>   
     </header>
+
     <div class="logo-content">
         <div class="logo-container" onclick="window.location.href='index.html';" style="cursor: pointer;">
             <img src="img/logo/CHIVE-3.svg" alt="Logo"> 
@@ -309,6 +334,7 @@
     </div>
 
     <div id="people" class="features"></div>
+
     <div class="fratures-title" id="alumni-title">
         <div class="title">Alumni
             <div class="line"></div>
@@ -326,94 +352,159 @@
             <div class="sec_sub_title" style="margin-bottom: 60px;">Louisiana State University</div>
           </div>
         </div>
-      </section>
+    </section>
     
-    <div class="footer">
-        <p>
-            <a href="#">About</a> | 
-            <a href="#">Contact Us</a> | 
-            <a href="#">Copyright</a> | 
-            <a href="#">Terms of Use</a> | 
-            <a href="#">Privacy Policy</a>
-        </p>
-        <p>© 2025 All rights reserved</p>
-    </div>
+    <div id="footer"></div>
+    <div id="modals"></div>
 
     <script>
-        function openInNewTab(url) {
-            window.open(url, '_blank').focus();
-        }
+/* ====== JS footer ====== */
+fetch('json/footer.json')
+  .then(res => res.json())
+  .then(data => {
+    // 1) 渲染 footer links
+    const footer = document.getElementById('footer');
+    const linksHtml = data.footer.links.map((link) => {
+      if (link.type === 'modal') {
+        return `<a href="javascript:void(0)" onclick="openModal('${link.target}')">${link.title}</a>`;
+      } else {
+        return `<a href="${link.href}">${link.title}</a>`;
+      }
+    }).join(' | ');
 
-        function createFeature(person) {
-            return `
-                <div class="feature" onclick="openInNewTab('${person.link}')">
-                    <img src="${person.image}" alt="${person.name}">
-                    <h2>${person.name}</h2>
-                    <h3>${person.title}</h3>
-                    <p>${person.description}</p>
-                </div>
-            `;
-        }
+    footer.innerHTML = `
+      <div class="footer">
+        <p class="footer-links">${linksHtml}</p>
+        <p class="footer-copy">${data.footer.copyright}</p>
+      </div>
+    `;
 
-        function createFeatureA(person) {
-            return `
-                <div class="feature-a" onclick="openInNewTab('${person.link}')">
-                    <img src="${person.image}" alt="${person.name}">
-                    <h2>${person.name}</h2>
-                    <h3>${person.title}</h3>
-                </div>
-            `;
-        }
+    // 2) 渲染 Modals（加上專用對齊 class，不影響全站）
+    const modalsContainer = document.getElementById('modals');
+    modalsContainer.innerHTML = data.modals.map(m => `
+      <div id="\${m.id}" class="modal" role="dialog" aria-modal="true" aria-labelledby="\${m.id}-title">
+        <div class="modal-content modal-content--align-right">
+          <span class="close" onclick="closeModal('\${m.id}')" aria-label="Close">&times;</span>
+          <h2 id="\${m.id}-title">\${m.title}</h2>
+          <p>\${m.content}</p>
+        </div>
+      </div>
+    `).join('');
+  });
 
-        function loadPeopleData() {
-            fetch('/json/people/people.json')
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('people');
-                    
-                    // 对 people 数组按姓氏进行排序
-                    const sortedPeople = data.people.sort((a, b) => {
-                        const lastNameA = a.name.split(' ').slice(-1)[0]; // 获取姓氏
-                        const lastNameB = b.name.split(' ').slice(-1)[0]; // 获取姓氏
-                        return lastNameA.localeCompare(lastNameB);
-                    });
+// modal 控制函式
+function openModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = "block";
+}
+function closeModal(id) {
+  const el = document.getElementById(id);
+  if (el) el.style.display = "none";
+}
+window.onclick = function(event) {
+  document.querySelectorAll('.modal').forEach(m => {
+    if (event.target === m) m.style.display = "none";
+  });
+};
 
-                    sortedPeople.forEach(person => {
-                        container.innerHTML += createFeature(person);
-                    });
-                })
-                .catch(error => console.error('Error loading students data:', error));
+/* ===== People cards ===== */
+function openInNewTab(url) {
+  if (!url || !String(url).trim()) return;
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
 
-            fetch('/json/people/alumni.json')
-                .then(response => response.json())
-                .then(data => {
-                    const alumniContainer = document.getElementById('alumni');
-                    const alumniTitle = document.getElementById('alumni-title');
-                    
-                    if (data.people.length === 0) {
-                        alumniContainer.style.display = 'none';
-                        alumniTitle.style.display = 'none';
-                    } else {
-                        // 对 alumni 数组按姓氏进行排序
-                        const sortedAlumni = data.people.sort((a, b) => {
-                            const lastNameA = a.name.split(' ').slice(-1)[0]; // 获取姓氏
-                            const lastNameB = b.name.split(' ').slice(-1)[0]; // 获取姓氏
-                            return lastNameA.localeCompare(lastNameB);
-                        });
+function createFeature(person) {
+  const hasLink = !!(person && person.link && String(person.link).trim());
+  const cls = `feature${hasLink ? ' is-clickable' : ''}`;
+  const common = `
+      <img src="${person.image}" alt="${person.name}">
+      <h2>${person.name}</h2>
+      <h3>${person.title || ''}</h3>
+      <p>${person.description || ''}</p>
+  `;
 
-                        sortedAlumni.forEach(person => {
-                            alumniContainer.innerHTML += createFeatureA(person);
-                        });
-                    }
-                })
-                .catch(error => console.error('Error loading alumni data:', error));
-        }
+  if (hasLink) {
+    return `
+      <div class="${cls}"
+           role="button"
+           tabindex="0"
+           onclick="openInNewTab('${person.link}')"
+           onkeydown="if(event.key==='Enter'){ openInNewTab('${person.link}'); }">
+        ${common}
+      </div>
+    `;
+  } else {
+    return `<div class="${cls}">${common}</div>`;
+  }
+}
 
-        document.addEventListener('DOMContentLoaded', loadPeopleData);
+function createFeatureA(person) {
+  const hasLink = !!(person && person.link && String(person.link).trim());
+  const cls = `feature-a${hasLink ? ' is-clickable' : ''}`;
+  const common = `
+      <img src="${person.image}" alt="${person.name}">
+      <h2>${person.name}</h2>
+      <h3>${person.title || ''}</h3>
+  `;
 
+  if (hasLink) {
+    return `
+      <div class="${cls}"
+           role="button"
+           tabindex="0"
+           onclick="openInNewTab('${person.link}')"
+           onkeydown="if(event.key==='Enter'){ openInNewTab('${person.link}'); }">
+        ${common}
+      </div>
+    `;
+  } else {
+    return `<div class="${cls}">${common}</div>`;
+  }
+}
+
+function loadPeopleData() {
+  fetch('/json/people/people.json')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('people');
+      const sortedPeople = data.people.sort((a, b) => {
+        const lastNameA = (a.name || '').split(' ').slice(-1)[0];
+        const lastNameB = (b.name || '').split(' ').slice(-1)[0];
+        return lastNameA.localeCompare(lastNameB);
+      });
+      sortedPeople.forEach(person => {
+        container.insertAdjacentHTML('beforeend', createFeature(person));
+      });
+    })
+    .catch(error => console.error('Error loading students data:', error));
+
+  fetch('/json/people/alumni.json')
+    .then(response => response.json())
+    .then(data => {
+      const alumniContainer = document.getElementById('alumni');
+      const alumniTitle = document.getElementById('alumni-title');
+      if (!Array.isArray(data.people) || data.people.length === 0) {
+        alumniContainer.style.display = 'none';
+        alumniTitle.style.display = 'none';
+        return;
+      }
+      const sortedAlumni = data.people.sort((a, b) => {
+        const lastNameA = (a.name || '').split(' ').slice(-1)[0];
+        const lastNameB = (b.name || '').split(' ').slice(-1)[0];
+        return lastNameA.localeCompare(lastNameB);
+      });
+      sortedAlumni.forEach(person => {
+        alumniContainer.insertAdjacentHTML('beforeend', createFeatureA(person));
+      });
+    })
+    .catch(error => console.error('Error loading alumni data:', error));
+}
+
+document.addEventListener('DOMContentLoaded', loadPeopleData);
     </script>
 </body>
 </html>
+
 
 
 
