@@ -1,72 +1,109 @@
 {
   "years": [
     {
-      "year": "2025",
+      "year": "2026",
       "news": [
-          {
-            "label": ["Event"],
-            "category":"Event",
-            "content":"Nexus Cup 2025",
-            "title": "Huge congratulations to Mehrasa Amiri and Dr. Mahmood Jasim for earning second place at the 2025 Nexus Louisiana Technology Cup",
-            "description": "2025 Nexus Louisiana Technology Cup",
-            "imgSrc": "../img/news/NexusCup2025/NexusCup2025-1.jpeg",
-            "imgMore":["../img/news/NexusCup2025/NexusCup2025-1.jpeg","../img/news/NexusCup2025/NexusCup2025-2.jpeg","../img/news/NexusCup2025/NexusCup2025-3.jpeg","../img/news/NexusCup2025/NexusCup2025-4.jpeg"],
-            "news":"Their project, APNE, is a platform that combines artificial intelligence and human review to detect bias and misinformation in news media. It's a thoughtful and timely innovation we're incredibly proud to see coming out of LSU.<br><br>We are proud of their achievement and the way they represented Louisiana State University and the LSU College of Engineering.",
-            "date": "June, 2025",
-            "url": "",
-            "pdf":""
-          },
-          {
+        {
           "label": ["Publications"],
-          "category":"Publications",
-          "content":"CHI2025",
-          "title": "Three of our papers have been accepted to be published in the Extended Abstracts of the 2025 Conference on Human Factors in Computing Systems",
-          "description": "CHI2025",
-          "imgSrc": "../img/news/CHI2025.png",
-          "imgMore":[""],
-          "news":"",
-          "date": "April 26, 2025",
-          "url": "https://chi2025.acm.org",
-          "pdf":""
+          "category": "Publications",
+          "content": "CUI2026",
+          "title": "Our paper, 'SPARC: Exploring Interaction, Sensemaking, and Engagement in AI-Augmented News Reading,' was published at ACM CUI 2026",
+          "description": "The authors developed SPARC, an AI-augmented browser extension designed to support deeper engagement with online news through conversational assistance, visual highlights, summaries, and alternative news coverage. Their studies with 272 participants explored how readers use AI to assess credibility, seek diverse perspectives, and make sense of news while maintaining the flow of reading.",
+          "imgSrc": "",
+          "imgMore": [""],
+          "news": "",
+          "date": "July 21, 2026",
+          "url": "https://doi.org/10.1145/3816046.3816213",
+          "pdf": ""
+        },
+        {
+          "label": ["Publications"],
+          "category": "Publications",
+          "content": "GROUP2027",
+          "title": "Our paper, 'From Artifacts to Coordination: Exploring How Shared Canvases Drive Collaboration during Group Ideation,' has been accepted for publication at GROUP 2027",
+          "description": "Through a study with seven groups of three participants, the authors explored how remote collaborators use shared infinite canvases to develop ideas together. Their findings show how artifact placement supports implicit coordination, how exploratory and shared working regions emerge, and how collaborative roles develop through repeated contributions.",
+          "imgSrc": "",
+          "imgMore": [""],
+          "news": "",
+          "date": "September 13, 2026",
+          "url": "",
+          "pdf": ""
         }
       ]
     },
     {
-        "year": "2024",
-        "news": [
-          {
-            "label": ["Publications"],
-            "category":"Publications",
-            "content":"IEEE VIS2024",
-            "title": "Our paper, 'Animating the Narrative: A Review of Animation Styles in Narrative Visualization,' has been accepted for presentation at IEEE VIS2024",
-            "description": "IEEE VIS2024",
-            "imgSrc": "../img/research/AnimatingTheNarrative/vis24b-sub1192-Animating the Narrative-Representative Image.png",
-            "imgMore":["../img/research/AnimatingTheNarrative/Animating the Narrative Representative Image and Caption.png"],
-            "news":"",
-            "date": "June 15, 2024",
-            "url": "https://ieeevis.org/year/2024/welcome",
-            "pdf":""
-          }
-        ]
-      },
+      "year": "2025",
+      "news": [
+        {
+          "label": ["Event"],
+          "category": "Event",
+          "content": "Nexus Cup 2025",
+          "title": "Huge congratulations to Mehrasa Amiri and Dr. Mahmood Jasim for earning second place at the 2025 Nexus Louisiana Technology Cup",
+          "description": "2025 Nexus Louisiana Technology Cup",
+          "imgSrc": "../img/news/NexusCup2025/NexusCup2025-1.jpeg",
+          "imgMore": [
+            "../img/news/NexusCup2025/NexusCup2025-1.jpeg",
+            "../img/news/NexusCup2025/NexusCup2025-2.jpeg",
+            "../img/news/NexusCup2025/NexusCup2025-3.jpeg",
+            "../img/news/NexusCup2025/NexusCup2025-4.jpeg"
+          ],
+          "news": "Their project, APNE, is a platform that combines artificial intelligence and human review to detect bias and misinformation in news media. It's a thoughtful and timely innovation we're incredibly proud to see coming out of LSU.<br><br>We are proud of their achievement and the way they represented Louisiana State University and the LSU College of Engineering.",
+          "date": "June, 2025",
+          "url": "",
+          "pdf": ""
+        },
+        {
+          "label": ["Publications"],
+          "category": "Publications",
+          "content": "CHI2025",
+          "title": "Three of our papers have been accepted to be published in the Extended Abstracts of the 2025 Conference on Human Factors in Computing Systems",
+          "description": "CHI2025",
+          "imgSrc": "../img/news/CHI2025.png",
+          "imgMore": [""],
+          "news": "",
+          "date": "April 26, 2025",
+          "url": "https://chi2025.acm.org",
+          "pdf": ""
+        }
+      ]
+    },
+    {
+      "year": "2024",
+      "news": [
+        {
+          "label": ["Publications"],
+          "category": "Publications",
+          "content": "IEEE VIS2024",
+          "title": "Our paper, 'Animating the Narrative: A Review of Animation Styles in Narrative Visualization,' has been accepted for presentation at IEEE VIS2024",
+          "description": "IEEE VIS2024",
+          "imgSrc": "../img/research/AnimatingTheNarrative/vis24b-sub1192-Animating the Narrative-Representative Image.png",
+          "imgMore": [
+            "../img/research/AnimatingTheNarrative/Animating the Narrative Representative Image and Caption.png"
+          ],
+          "news": "",
+          "date": "June 15, 2024",
+          "url": "https://ieeevis.org/year/2024/welcome",
+          "pdf": ""
+        }
+      ]
+    },
     {
       "year": "2023",
       "news": [
         {
-            "label": [""],
-            "category":"",
-            "content":"",
-            "title": "Welcome to CHIVE",
-            "description": "",
-            "imgSrc": "../img/logo/CHIVE-4Full.png",
-            "imgMore":[""],
-            "news":"We are excited to announce the official launch of the Computer Human Interaction and Visualization Experience (CHIVE) Lab, established in August 2023 at the Division of Computer Science and Engineering, Louisiana State University.<br><br> Under the guidance of Dr. Mahmood Jasim, our lab explores cutting-edge research at the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.<br><br> At CHIVE, we aim to design impactful, user-centered technologies that bridge the gap between data, people, and society.<br><br> Stay tuned for updates, projects, and opportunities to collaborate!",
-            "date": "August, 2023",
-            "url": "",
-            "pdf":""
+          "label": [""],
+          "category": "",
+          "content": "",
+          "title": "Welcome to CHIVE",
+          "description": "",
+          "imgSrc": "../img/logo/CHIVE-4Full.png",
+          "imgMore": [""],
+          "news": "We are excited to announce the official launch of the Computer Human Interaction and Visualization Experience (CHIVE) Lab, established in August 2023 at the Division of Computer Science and Engineering, Louisiana State University.<br><br> Under the guidance of Dr. Mahmood Jasim, our lab explores cutting-edge research at the intersection of Human-Computer Interaction, Information and Data Visualization, Digital Civics, Applied Machine Learning, Natural Language Processing, and Social Computing.<br><br> At CHIVE, we aim to design impactful, user-centered technologies that bridge the gap between data, people, and society.<br><br> Stay tuned for updates, projects, and opportunities to collaborate!",
+          "date": "August, 2023",
+          "url": "",
+          "pdf": ""
         }
       ]
     }
   ]
 }
-
