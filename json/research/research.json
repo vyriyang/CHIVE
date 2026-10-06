@@ -18,7 +18,7 @@
         "url": "",
         "date": "July, 2025",
         "researchers": [
-            { "name": "Nushrat Ria", "link": "https://chive.cse.lsu.edu/people/students/NushratJahanRia/nush.html" },
+            { "name": "Nushrat Ria", "link": "https://nushratria.github.io" },
             { "name": "Narges Mahyar", "link": "" },
             { "name": "Matthew Brehmer", "link": "" },
             { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
@@ -84,28 +84,27 @@
     "email": "mamiri2@lsu.edu"
   },
   {
-      "label": ["ImmersiveTheNarrative", "current"],
+      "label": ["NarVisFormat", "current"],
       "venues": "",
-      "info": "Ongoing Research: Innovative Research to Enhance User Immersion",
-      "imgSrc": "../img/research/ImmersiveTheNarrative/Poster-Dec12.jpg",
-      "videoSrc":"../img/research/ImmersiveTheNarrative/ImmersiveTheNarrative.mp4",
-      "imgMore":[""],
-      "title": "Application Narrative Visualization for Complex Data Representation",
+      "info": "Ongoing Research: Narrative Visualization Format",
+      "imgSrc": "../img/research/NarVisFormat/CHI2027.png",
+      "videoSrc":"",
+      "imgMore":["../img/research/NarVisFormat/CHI2027flow.pdf","../img/research/NarVisFormat/Stimuli-1.pdf"],
+      "title": "How Narrative Visualization Format Shapes Readers' Understanding of Public-Facing Data",
       "link": "../researchTopic/ImmersiveTheNarrative.html",
       "pdf": "",
-      "content": "This research leverages narrative-driven visualizations to effectively present cyberbullying data. By employing data-driven designs, the platform layers and categorizes various forms of bullying (verbal, physical, cyberbullying) and user responses, helping audiences better understand the information. The integration of real-life hybrid physical and digital experiences with data-driven content enhances the immersive experience, allowing users to make informed choices and explore different outcomes. Interactive sound and motion elements further engage users, fostering a deeper connection with the narratives.",
-      "abstract": "The project blends hybrid physical-digital experiences with data-driven storytelling, enabling users to explore multiple outcomes through interactive choices. Sound and motion elements amplify immersion, enhancing user engagement with dynamic narratives. It's also including an interactive survey platform that combines critical incident methodology with dynamic visual feedback to elicit more accurate, context-rich responses. Through scenario-driven narratives and reflection prompts, it enhances recall and improves the reliability of self-reported data in complex domains.<br><br>",
-      "keywords": ["Narrative visualizations", "Static and animated visualization", "Categorization", "Design space"],
+      "content": "Empirical studies in visualization examine how people perceive, understand, and interact with visual representations.",
+      "abstract": "Information about public-facing data is increasingly communicated through digital media. Yet, we know less about how readers develop understanding when the same underlying information is presented through different narrative formats. We conducted semi-structured interviews with 24 participants to investigate this question. Participants either experienced a real-world article communicating public-facing data or the same information translated into one of three narrative visualization formats: scrollytelling, data comic, or data video. Our thematic analysis revealed that narrative format shaped how understanding developed even when largely the same evidence was available. We observed that participants differed in how their interpretations developed, which parts of the available information became relevant to them, and when particular evidence prompted closer inspection or reconsideration. We contribute empirical evidence that presenting the same evidence through different narrative formats can produce different processes of understanding and identify considerations for studying how understanding unfolds in public-facing data stories.<br><br>",
+      "keywords": ["Narrative visualizations", "Empirical studies in visualization"],
       "intro":"",
       "description": "",
       "url": "",
       "url-2": "",
       "url-3": "",
       "url-4": "",
-      "date": "May, 2024",
+      "date": "January, 2026",
       "researchers": [
           { "name": "Vyri Yang", "link": "https://vyriyang.com" },
-          { "name": "Fiona Ju", "link": "https://xjcomposer.com" },
           { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
       ],
       "place": "",
@@ -159,7 +158,7 @@
       "url": "https://youtu.be/C5uQsA3aS1I?si=BB8JSsBwzYstLM2h",
       "date": "April 29, 2025",
       "researchers": [
-          { "name": "Nushrat Ria", "link": "https://chive.cse.lsu.edu/people/students/NushratJahanRia/nush.html" },
+          { "name": "Nushrat Ria", "link": "https://nushratria.github.io" },
           { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
       ],
       "place":"Yokohama, Japan",
@@ -186,7 +185,7 @@
     "url": "",
     "date": "Dec, 2024",
     "researchers": [
-        { "name": "Saramsh Gautam", "link": "https://chive.cse.lsu.edu/people/students/SaramshGautam/Saramsh.html" },
+        { "name": "Saramsh Gautam", "link": "https://saramshgautam.github.io/profile/" },
         { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
     ],
     "place":"",
