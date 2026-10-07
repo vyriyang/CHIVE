@@ -41,6 +41,13 @@
             "description": "Human-Computer Interaction, Proactive Conversational Agents, and Serious Games for Accessibility.",
             "image": "img/people/MehrasaAmiri/MehrasaAmiri.jpg",
             "link": "https://mobiusss3.github.io/"
+        },
+        {
+            "name": "Showmik Dhar",
+            "title": "PhD Researcher",
+            "description": "",
+            "image": "img/people/ShowmikDhar/ShowmikDhar.png",
+            "link": ""
         }
     ]
 }
