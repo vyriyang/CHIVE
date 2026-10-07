@@ -4,7 +4,7 @@
       "year": "2026",
       "publications": [
         {
-          "label": [""],
+          "label": ["SPARC"],
           "venues":"CUI '26",
           "venuesname":"Proceedings of the 8th ACM Conference on Conversational User Interfaces",
           "title": "SPARC: Exploring Interaction, Sensemaking, and Engagement in AI-Augmented News Reading",
