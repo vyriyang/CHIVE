@@ -12,8 +12,8 @@
       align-items: center;
       justify-content: center;
       background-image: 
-        linear-gradient(rgba(66, 7, 61, 0.7), rgba(52, 6, 60, 0.7)), 
-        url('../img/research/ImmersiveTheNarrative/ImmersiveTheNarrative-home.webp');
+        linear-gradient(rgba(165, 80, 15, 0.7), rgba(165, 80, 60, 0.7)), 
+        url('../img/research/NarVisFormat/NarVisFormat-home.webp');
       background-size: cover;
       background-position: top;
       animation: moveBg 280s infinite alternate;
@@ -446,16 +446,16 @@ document.addEventListener("DOMContentLoaded", function() {
   fetch('/json/research/research.json')
     .then(response => response.json())
     .then(data => {
-      const research = (Array.isArray(data) ? data : []).find(item => Array.isArray(item.label) && item.label.includes("ImmersiveTheNarrative"));
+      const research = (Array.isArray(data) ? data : []).find(item => Array.isArray(item.label) && item.label.includes("NarVisFormat"));
       if (!research) return;
 
 // 主圖
 const mainImage = document.getElementById("mainImage");
 imgMoreList = [
-  research.imgSrc,
+  research.flowImg,
   ...(Array.isArray(research.imgMore) ? research.imgMore.filter(Boolean) : [])
 ];
-mainImage.src = research.imgSrc;
+mainImage.src = research.flowImg;
 mainImage.classList.add("centered-img");
 
 // 開啟遮罩
@@ -808,7 +808,7 @@ function updateVideos(list) {
 
   // 先檢查是否有影片可顯示
   const hasVideos = safeArray(list).some(item =>
-    hasTag(item?.label, 'ImmersiveTheNarrative') &&
+    hasTag(item?.label, 'NarVisFormat') &&
     (getAllUrls(item).length > 0 || item?.videoSrc)
   );
   if (!hasVideos) {
@@ -819,7 +819,7 @@ function updateVideos(list) {
 
   // 逐筆渲染
   safeArray(list).forEach(infoItem => {
-    if (!hasTag(infoItem?.label, 'ImmersiveTheNarrative')) return;
+    if (!hasTag(infoItem?.label, 'NarVisFormat')) return;
 
     const urls = getAllUrls(infoItem);   // 所有 url、url-2…url-n
     const hasAnyUrl = urls.length > 0;
@@ -902,7 +902,7 @@ fetch('/json/research/research.json', { cache: 'no-store' })
       let firstAccordionOpened = false;
 
       const hasPublications = data.years?.some(y =>
-        y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('ImmersiveTheNarrative'))
+        y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('NarVisFormat'))
       );
 
       if (!hasPublications) {
@@ -932,7 +932,7 @@ fetch('/json/research/research.json', { cache: 'no-store' })
 
       data.years.forEach((year) => {
         const filtered = (year.publications || []).filter(pub =>
-          Array.isArray(pub.label) && pub.label.includes('ImmersiveTheNarrative')
+          Array.isArray(pub.label) && pub.label.includes('NarVisFormat')
         );
         if (!filtered.length) return;
 
