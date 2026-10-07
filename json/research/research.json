@@ -1,6 +1,33 @@
 [
     
       {
+    "label": ["SPARC", "current"],
+    "venues": "CUI '26",
+    "info": "Proceedings of the 8th ACM Conference on Conversational User Interfaces",
+    "imgSrc": "../img/research/SPARC/2026MehrasaCUIPaper.png",
+    "videoSrc": "",
+    "imgMore": ["", ""],
+    "title": "SPARC: Exploring Interaction, Sensemaking, and Engagement in AI-Augmented News Reading",
+    "link": "../researchTopic/SPARC.html",
+    "pdf": "https://dl.acm.org/doi/epdf/10.1145/3816046.3816213",
+    "content": "SPARC is an AI-assisted reading tool that supports deeper engagement with online news by helping readers assess credibility, find relevant information, explore diverse perspectives, and improve comprehension without disrupting reading flow.",
+    "abstract": "Recent advancements in AI assistants have sparked growing interest in how they can support everyday reading tasks. However, how AI can help readers deeply engage with online news articles remains underexplored. To understand online news readers’ needs and how AI can support them, we conducted a formative survey (N=100), in which participants expressed the desire for credible, accurate information, exposure to diverse perspectives, and low-friction assistance that augments reading flow. In response, we designed and developed SPARC, a web extension that enables readers to assess article credibility, find relevant information, and explore others’ perspectives through conversations and visual cues. A user study (N=172) with Fox and CNN readers suggests that SPARC helped participants with comprehension and information-seeking through conversational explanations, and enabled focused attention by providing highlights as a reading scaffold. We also found that participants’ pre-existing positive or negative perception of trust in AI did not significantly influence their engagement with our tool.",
+    "keywords": ["Conversational Assistant", "Web Extension", "News Articles", "Sensemaking"],
+    "intro":"8 out of 10 adults in the U.S. rely on online news as a primary source of information [55], which influences how they understand major topics such as politics, public health, and social issues [15, 63, 74]. Despite its importance, online news consumption presents substantial challenges for readers. They must navigate an overwhelming volume of content, in which partisan framing and sensational headlines complicate the distinction between verified information and misleading claims [64, 69]. Additionally, obtaining a comprehensive range of perspectives on a given issue is challenging because readers are frequently exposed to a narrow selection of coverage determined by platform algorithms, habitual source selection [9], and constraints related to time and attention [47]. <br><br> In response to these challenges, prior research has proposed a range of computational and interface-based interventions to support online news consumption[18, 57, 58]. Much of this work has focused on credibility assessment [4, 77], including automated fact-checking labels [1, 57], and misinformation flags [65, 80]. However, much of the existing literature treats news reading as a classification problem, focusing on determining whether information is true or false. This approach often overlooks the broader, exploratory sensemaking process in which readers may navigate multiple perspectives, contextualize claims, and construct their own understanding. Recent advances in conversational AI systems provide new opportunities to support sensemaking tasks in various domains, such as healthcare [37] and e-commerce [27], and data analytics [48]. These systems are designed to help readers ask questions, retrieve contextual information, and explore alternative perspectives. However, how conversational AI should be designed to support online news reading remains largely underexplored. In particular, it is unclear what kinds of support readers expect from AI during news reading, how conversational assistance should integrate with the reading interface, and how such systems influence readers’ engagement with news articles and comments. Our work addresses the following research questions: <br><br> RQ1: What informational and reflective support do readers seek from an AI assistant during online news reading? <br><br> RQ2: How do readers incorporate an AI assistant into their news-reading process, and how does such assistance influence their sensemaking and engagement behaviors? <br><br> 100 online news readers to understand how people engage with news and what kinds of support they would want from an AI assistant embedded within the reading environment. Our findings reveal that readers seek help verifying claims, understanding how other readers interpret the article, and gaining diverse perspectives through articles and comments. Participants also emphasized the importance of low-friction assistance that integrates directly into the reading flow, rather than interrupting the reading process. Based on these insights, we designed and developed SPARC (Sensemaking, Perspective, Assisted Reading and Conversation), a web-based news-reading browser extension tool that augments online news articles with conversational AI support and visual highlights. SPARC integrates four components within the reading interface: a conversational AI assistant, interactive highlights that distinguish claims and opinions, links to additional coverage from other news outlets, and summaries of the article content. The tool allows readers to explore information through both conversation and visual cues, enabling contextual explanations, reference grounding, and access to diverse perspectives without leaving the article page. We evaluated SPARC through a controlled study with 172 participants, comparing news-reading experiences with and without the extension. Our findings suggest that readers’ pre-existing trust in AI had little influence on how they interacted with the system, indicating that engagement may be driven more by immediate information needs than by prior attitudes toward AI. Visual highlights emerged as the most frequently used feature, suggesting that conversational interfaces can be augmented with visual scaffolds to communicate information effectively during reading. Furthermore, access to the conversational assistant appeared to increase engagement with comment sections, allowing readers to extract useful insights from reader discussions without directly navigating potentially toxic conversations. ",
+    "description": "",
+    "url": "",
+    "date": "July 21, 2026",
+    "researchers": [
+        { "name": "Mehrasa Amiri", "link": "https://mobiusss3.github.io/" },
+        { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
+    ],
+    "place": "Baton Rouge, USA",
+    "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+    "school": "Louisiana State University",
+    "num": "",
+    "email": "mamiri2@lsu.edu"
+},
+{
     "label": ["PolyFlux", "current"],
     "venues": "GROUP 2027",
     "info": "ACM GROUP 2027",
@@ -133,7 +160,7 @@
     "url": "https://youtu.be/NrX6ls3cnXk?si=rshinbuEBcEgkg7w",
     "date": "April 29, 2025",
     "researchers": [
-        { "name": "Mehrasa Amiri", "link": "" },
+        { "name": "Mehrasa Amiri", "link": "https://mobiusss3.github.io/" },
         { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
     ],
     "place":"Yokohama, Japan",
