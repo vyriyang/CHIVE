@@ -1,5 +1,36 @@
 [
     
+      {
+      "label": ["NarVisFormat", "current"],
+      "venues": "",
+      "info": "Ongoing Research: Narrative Visualization Format",
+      "imgSrc": "../img/research/NarVisFormat/CHI2027.png",
+      "flowImg":"../img/research/NarVisFormat/CHI2027flow.png",
+      "videoSrc":"",
+      "imgMore":["../img/research/NarVisFormat/Stimuli-1.png"],
+      "title": "How Narrative Visualization Format Shapes Readers' Understanding of Public-Facing Data",
+      "link": "../researchTopic/NarVisFormat.html",
+      "pdf": "",
+      "content": "Empirical studies in visualization examine how people perceive, understand, and interact with visual representations.",
+      "abstract": "Information about public-facing data is increasingly communicated through digital media. Yet, we know less about how readers develop understanding when the same underlying information is presented through different narrative formats. We conducted semi-structured interviews with 24 participants to investigate this question. Participants either experienced a real-world article communicating public-facing data or the same information translated into one of three narrative visualization formats: scrollytelling, data comic, or data video. Our thematic analysis revealed that narrative format shaped how understanding developed even when largely the same evidence was available. We observed that participants differed in how their interpretations developed, which parts of the available information became relevant to them, and when particular evidence prompted closer inspection or reconsideration. We contribute empirical evidence that presenting the same evidence through different narrative formats can produce different processes of understanding and identify considerations for studying how understanding unfolds in public-facing data stories.<br><br>",
+      "keywords": ["Narrative visualizations", "Empirical studies in visualization"],
+      "intro":"",
+      "description": "",
+      "url": "",
+      "url-2": "",
+      "url-3": "",
+      "url-4": "",
+      "date": "January, 2026",
+      "researchers": [
+          { "name": "Vyri Yang", "link": "https://vyriyang.com" },
+          { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
+      ],
+      "place": "",
+      "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+      "school": "Louisiana State University",
+      "num": "",
+      "email": "jyang44@lsu.edu"
+    },
     {
         "label": ["Spreadsheet", "current"],
         "venues": "",
@@ -83,37 +114,6 @@
     "num": "",
     "email": "mamiri2@lsu.edu"
   },
-  {
-      "label": ["NarVisFormat", "current"],
-      "venues": "",
-      "info": "Ongoing Research: Narrative Visualization Format",
-      "imgSrc": "../img/research/NarVisFormat/CHI2027.png",
-      "flowImg":"../img/research/NarVisFormat/CHI2027flow.png",
-      "videoSrc":"",
-      "imgMore":["../img/research/NarVisFormat/Stimuli-1.png"],
-      "title": "How Narrative Visualization Format Shapes Readers' Understanding of Public-Facing Data",
-      "link": "../researchTopic/NarVisFormat.html",
-      "pdf": "",
-      "content": "Empirical studies in visualization examine how people perceive, understand, and interact with visual representations.",
-      "abstract": "Information about public-facing data is increasingly communicated through digital media. Yet, we know less about how readers develop understanding when the same underlying information is presented through different narrative formats. We conducted semi-structured interviews with 24 participants to investigate this question. Participants either experienced a real-world article communicating public-facing data or the same information translated into one of three narrative visualization formats: scrollytelling, data comic, or data video. Our thematic analysis revealed that narrative format shaped how understanding developed even when largely the same evidence was available. We observed that participants differed in how their interpretations developed, which parts of the available information became relevant to them, and when particular evidence prompted closer inspection or reconsideration. We contribute empirical evidence that presenting the same evidence through different narrative formats can produce different processes of understanding and identify considerations for studying how understanding unfolds in public-facing data stories.<br><br>",
-      "keywords": ["Narrative visualizations", "Empirical studies in visualization"],
-      "intro":"",
-      "description": "",
-      "url": "",
-      "url-2": "",
-      "url-3": "",
-      "url-4": "",
-      "date": "January, 2026",
-      "researchers": [
-          { "name": "Vyri Yang", "link": "https://vyriyang.com" },
-          { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
-      ],
-      "place": "",
-      "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
-      "school": "Louisiana State University",
-      "num": "",
-      "email": "jyang44@lsu.edu"
-    },
     {
         "label": ["ASL","current"],
         "venues": "CHI2025",
