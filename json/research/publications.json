@@ -1,6 +1,25 @@
 {
   "years": [
     {
+      "year": "2026",
+      "publications": [
+        {
+          "label": [""],
+          "venues":"CUI '26",
+          "venuesname":"Proceedings of the 8th ACM Conference on Conversational User Interfaces",
+          "title": "SPARC: Exploring Interaction, Sensemaking, and Engagement in AI-Augmented News Reading",
+          "authors": [
+              { "name": "Mehrasa Amiri", "link": "https://mobiusss3.github.io/"  },
+              { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
+          ],
+          "description": "SPARC is an AI-assisted reading tool that supports deeper engagement with online news by helping readers assess credibility, find relevant information, explore diverse perspectives, and improve comprehension without disrupting reading flow.",
+          "date": "July 21, 2026",
+          "url": "https://dl.acm.org/doi/full/10.1145/3816046.3816213",
+          "pdf":"https://dl.acm.org/doi/epdf/10.1145/3816046.3816213"
+        }
+        ]
+    },
+    {
       "year": "2025",
       "publications": [
         {
@@ -37,7 +56,7 @@
           "venuesname":"Extended Abstracts of the 2025 CHI Conference on Human Factors in Computing Systems",
           "title": "Combining AI and Crowdsourcing to Identify Misinformation in Online News",
           "authors": [
-              { "name": "Mehrasa Amiri", "link": "" },
+              { "name": "Mehrasa Amiri", "link": "https://mobiusss3.github.io/" },
               { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/index.html" }
           ],
           "description": "",
