@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Combining AI and Crowdsourcing to Identify Misinformation in Online News</title>
+  <title>PolyFlux</title>
   <link rel="stylesheet" href="../dist/css/scrollspy.dark.css"/>
   <style>
     .main-content {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-image: 
-        /* linear-gradient(rgba(4, 55, 83, 0.8), rgba(2, 15, 8, 0.8)),*/
-        linear-gradient(rgba(71, 40, 3, 0.7), rgba(83, 49, 4, 0.7)), 
-        url('../img/research/AINEWs/AINEWs.jpg');
-      background-size: cover;
-      background-position: top;
-      animation: moveBg 280s infinite alternate;
-      color: white;
-      min-height: 60vh;
-      box-sizing: border-box;
-    }
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image:
+    linear-gradient(rgba(8, 25, 99, 0.7), rgba(8, 25, 99, 0.7)),
+    url('../img/research/PolyFlux/PolyFlux-home.webp');
+  background-size: 100% 100%; /* 确保动画从这个起始值开始 */
+  background-position: center top;
+  background-repeat: no-repeat;
+  animation: moveBg 180s infinite alternate;
+  color: white;
+  min-height: 60vh;
+  box-sizing: border-box;
+}
 
 
   @keyframes moveBg {
@@ -164,7 +164,7 @@
 
   /* 打開遮罩時禁用背景滾動 */
   body.modal-open { overflow: hidden; }
-  
+
   /* 無連結時，強制 hover 不變色、不顯示手型游標 */
   .researcher-link[data-has-link="false"]:hover {
     color: inherit !important;
@@ -228,7 +228,6 @@
 #footer .footer a:hover {
   color: #f36f24;
 }
-
 </style>
 </head>
 <body>
@@ -238,7 +237,7 @@
       <a class="scrollspy-link" href="../index.html">Home</a>
       <a class="scrollspy-link" href="../research.html">Research</a>
       <a class="scrollspy-link" href="../publications.html">Publications</a>
-      <a class="scrollspy-link" href="../people.html">People</a>     
+      <a class="scrollspy-link" href="../people.html">People</a>      
       <a class="scrollspy-link" href="../news.html">News</a>
       <a class="scrollspy-link" href="../activity.html">Activity</a>
       <a class="scrollspy-link" href="../resource.html">Resource</a>
@@ -258,18 +257,23 @@
     </div>
   </section>
 
-  <div class="gray">
+  <!--div class="gray">
     <div class="section_1">
       <div class="title">Latest News
         <div class="line"></div>
       </div>
       <div class="cont margin_left">
-        ● Our Late-breaking Work have been accepted to be published in the Extended Abstracts of the <a href="https://chi2025.acm.org" 
+        ● What is Lorem Ipsum?<br>
+        ● Lorem Ipsum is simply dummy text of the printing and typesetting industry.  <a href="https://www.lipsum.com" 
         style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
-        2025 Conference on Human Factors in Computing Systems</a>. <br>
+        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</a> 
+        when an unknown printer took a galley of type and scrambled it to make a type specimen book.<br>
+        ● It has survived not only five centuries<a href="https://www.lipsum.com" 
+        style="text-decoration: none; color:#3f44b6;" rel="alternate bookmark" target="_blank">
+        but also the leap into electronic typesetting, remaining essentially unchanged.</a> <br>
       </div>
     </div>
-  </div>
+  </div-->
 
   <!-- Abstract（保留原標題樣式與主圖） -->
   <section class="scrollspy-section" id="Abstract">
@@ -430,6 +434,7 @@ window.addEventListener('click', (e) => {
   }
 });
 
+
 document.addEventListener("DOMContentLoaded", function() {
   const modal = document.getElementById("myModal");
   const modalImg = document.getElementById("modalImage");
@@ -442,7 +447,7 @@ document.addEventListener("DOMContentLoaded", function() {
   fetch('/json/research/research.json')
     .then(response => response.json())
     .then(data => {
-      const research = (Array.isArray(data) ? data : []).find(item => Array.isArray(item.label) && item.label.includes("AINEWs"));
+      const research = (Array.isArray(data) ? data : []).find(item => Array.isArray(item.label) && item.label.includes("PolyFlux"));
       if (!research) return;
 
 // 主圖
@@ -804,7 +809,7 @@ function updateVideos(list) {
 
   // 先檢查是否有影片可顯示
   const hasVideos = safeArray(list).some(item =>
-    hasTag(item?.label, 'AINEWs') &&
+    hasTag(item?.label, 'PolyFlux') &&
     (getAllUrls(item).length > 0 || item?.videoSrc)
   );
   if (!hasVideos) {
@@ -815,7 +820,7 @@ function updateVideos(list) {
 
   // 逐筆渲染
   safeArray(list).forEach(infoItem => {
-    if (!hasTag(infoItem?.label, 'AINEWs')) return;
+    if (!hasTag(infoItem?.label, 'PolyFlux')) return;
 
     const urls = getAllUrls(infoItem);   // 所有 url、url-2…url-n
     const hasAnyUrl = urls.length > 0;
@@ -898,7 +903,7 @@ fetch('/json/research/research.json', { cache: 'no-store' })
       let firstAccordionOpened = false;
 
       const hasPublications = data.years?.some(y =>
-        y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('AINEWs'))
+        y.publications?.some(pub => Array.isArray(pub.label) && pub.label.includes('PolyFlux'))
       );
 
       if (!hasPublications) {
@@ -928,7 +933,7 @@ fetch('/json/research/research.json', { cache: 'no-store' })
 
       data.years.forEach((year) => {
         const filtered = (year.publications || []).filter(pub =>
-          Array.isArray(pub.label) && pub.label.includes('AINEWs')
+          Array.isArray(pub.label) && pub.label.includes('PolyFlux')
         );
         if (!filtered.length) return;
 
@@ -998,3 +1003,4 @@ fetch('/json/research/research.json', { cache: 'no-store' })
 
 </body>
 </html>
+

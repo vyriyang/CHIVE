@@ -1,6 +1,33 @@
 [
     
       {
+    "label": ["PolyFlux", "current"],
+    "venues": "GROUP 2027",
+    "info": "PolyFlux explores how multimodal infinite canvases support collaborative ideation, coordination, and participation. Building on research accepted at ACM GROUP 2027, the project investigates how spatial organization and shared artifacts shape collaboration, with ongoing work exploring context-aware AI support for group ideation.",
+    "imgSrc": "../img/research/PolyFlux/design_probe.pdf",
+    "videoSrc": "",
+    "imgMore": ["", ""],
+    "title": "PolyFlux: Multimodal Open-Canvas Collaboration",
+    "link": "../researchTopic/PolyFlux.html",
+    "pdf": "",
+    "content": "",
+    "abstract": "PolyFlux is a multimodal, open-canvas collaborative environment for exploring how groups externalize ideas, organize shared artifacts, and coordinate during collaborative ideation. The workspace allows collaborators to simultaneously contribute and spatially organize text, images, sketches, audio, video, and other artifacts within a persistent, flexible space. Our research examines how these spatial and multimodal interactions become part of the collaborative process itself. We find that collaborators use the placement and organization of artifacts to implicitly communicate intent, develop shared and exploratory regions, contribute without relying solely on verbal discussion, and establish collaborative roles through repeated patterns of activity. These findings position the canvas not simply as a surface for collecting ideas, but as an active coordination and participation medium. Building on this foundation, our ongoing work explores how intelligent, context-aware support might respond to emerging collaborative dynamics while preserving the human-driven, spatial, and multimodal practices through which teams organize their work.<br><br>",
+    "keywords": ["Collaborative Ideation", "Infinite Canvas", "Multimodal Collaboration", "Computer-Supported Cooperative Work", "Spatial Interaction", "Creativity Support Tools"],
+    "intro": "Collaborative ideation depends not only on generating ideas, but also on making those ideas visible, building on others' contributions, and coordinating how shared work develops. Many conventional collaboration tools separate conversation, content, and coordination across different interfaces or organize contributions through linear structures. PolyFlux explores an alternative: a persistent, multimodal open canvas where collaborators can simultaneously externalize ideas using text, images, sketches, audio, video, and other artifacts, and freely arrange these materials as their thinking develops.<br><br>Our research uses PolyFlux to investigate how the spatial organization of artifacts itself becomes part of collaboration. We found that collaborators communicate intent through placement and arrangement, gradually form shared and exploratory regions, and develop roles through recurring patterns of contribution rather than explicit assignment. The canvas also provides an alternative participation channel, allowing less vocal collaborators to make ideas visible through persistent artifacts. Building on these observations, we are exploring how future versions of PolyFlux can provide context-aware computational support for collaborative ideation while remaining sensitive to the spatial, social, and human-driven coordination already occurring on the canvas.",
+    "description": "PolyFlux is a web-based multimodal infinite-canvas environment for collaborative ideation. It enables multiple collaborators to simultaneously collect, create, annotate, and spatially organize text, images, sketches, audio, video, and other artifacts in a shared persistent workspace. Through PolyFlux, we study how spatial organization and artifact interaction support implicit coordination, participation, shared awareness, and the emergence of collaborative roles. Our ongoing work extends these insights toward intelligent support that can better understand and assist collaborative processes without replacing the ways people naturally coordinate through the shared workspace.",
+    "url": "",
+    "date": "June, 2026",
+    "researchers": [
+        {"name": "Saramsh Gautam", "link": "https://saramshgautam.github.io/profile"},
+        {"name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/"}
+        ],
+    "place": "Baton Rouge, USA",
+    "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+    "school": "Louisiana State University",
+    "num": "",
+    "email": "sgauta4@lsu.edu"
+},
+{
       "label": ["NarVisFormat", "current"],
       "venues": "",
       "info": "Ongoing Research: Narrative Visualization Format",
@@ -169,33 +196,32 @@
       "num": "",
       "email": "nria1@lsu.edu"
     },
-    {
+  {
     "label": ["LINC", "current"],
     "venues": "",
     "info": "Ongoing Research",
-    "imgSrc": "../img/research/LINC/LINC.png",
-    "videoSrc":"",
-    "imgMore":[""],
+    "imgSrc": "../img/research/LINC/user-interaction.png",
+    "videoSrc": "",
+    "imgMore": ["../img/research/LINC/real-time-module.pdf", "../img/research/LINC/post-meeting-dashboard.pdf"],
     "title": "LINC: Language INdependent Collaboration",
     "link": "../researchTopic/LINC.html",
     "pdf": "",
-    "content": "Researchers and students from diverse linguistic backgrounds often face challenges in effective communication during academic collaborations. To address these needs, LINC was developed as a multilingual collaboration tool that facilitates communication across languages and provides features for analyzing and reviewing research meetings.",
-    "abstract": "At international universities, researchers and students from diverse linguistic backgrounds collaborate on academic projects, often communicating in English—a second language for many. These ESL (English as a Second Language) scholars face specific challenges in effectively contributing to and understanding discussions. Through extensive literature review and need-finding surveys, we identified these obstacles, and the functionalities ESLs are looking for in collaborative tools. <br><br>This led to the creation of LINC, an application designed to support efficient, multilingual collaboration during research meetings. LINC allows communication across different languages and offers tools to analyze and review meetings afterward, helping participants contribute and understand the key points discussed.",
-    "keywords": ["Case study"],
-    "intro":"",
-    "description": "Yet another description of the award...",
-    "url": "",
-    "date": "Dec, 2024",
+    "content": "LINC explores how language-flexible technologies can support multilingual collaboration across the meeting lifecycle. The project connects real-time multilingual communication with post-meeting sensemaking, helping collaborators follow discussions, recover missed information, revisit decisions, and participate across language boundaries.",
+    "abstract": "LINC (Language INdependent Collaboration) is a language-flexible collaborative meeting environment designed to support multilingual teams across live discussion and post-meeting sensemaking. During meetings, LINC supports real-time multilingual transcription, translation, and flexible language use, allowing collaborators to communicate and follow discussion in languages that are comfortable for them. After meetings, the system transforms the conversation into a persistent multilingual record that includes searchable transcripts, summaries, action items, and participation visualizations. Our research examines multilingual collaboration as a continuous process in which understanding can be established, lost, and recovered across different stages of a meeting. Findings show that participants used LINC not only to overcome immediate language barriers, but also to revisit missed content, verify interpretations, recover decisions, and prepare for subsequent work. By connecting live communication with post-meeting review, LINC explores how collaborative systems can provide language support without requiring every communication breakdown to be resolved in the moment.<br><br>",
+    "keywords": ["Multilingual Collaboration", "Computer-Supported Cooperative Work", "AI-Mediated Communication", "Real-Time Translation", "Meeting Support Tools", "Inclusive Design"],
+    "intro": "Multilingual collaboration involves more than translating words between languages. During meetings, collaborators must follow rapidly evolving discussions, interpret others' contributions, formulate their own responses, and maintain awareness of decisions and responsibilities. Language differences can make these activities more difficult, particularly when collaborators must simultaneously listen, interpret, and participate. Existing communication tools often address individual moments of difficulty through features such as transcription or translation, but multilingual collaboration continues beyond the immediate conversation.<br><br>LINC approaches multilingual collaboration across the broader meeting lifecycle. It combines real-time multilingual communication support with persistent post-meeting resources, allowing collaborators to follow discussion during a meeting and later revisit transcripts, summaries, decisions, and action items in their preferred languages. This creates opportunities for collaborators to recover information they may have missed, verify their understanding, and prepare for subsequent work without requiring every misunderstanding to be resolved immediately. Through LINC, we investigate how language-flexible interfaces can support understanding, participation, and continuity across multilingual collaborative work.",
+    "description": "LINC is a language-flexible collaborative meeting environment that supports multilingual communication before, during, and after collaborative discussions. The system combines real-time multilingual transcription and translation with post-meeting transcripts, summaries, action items, and participation information. Through LINC, we study how collaborators navigate language differences, recover understanding, revisit decisions, and maintain continuity across the meeting lifecycle.",
+    "url": "https://youtu.be/Knz7DZ-z3DQ?si=JTFbZOSDP28STSSH",
+    "date": "June, 2025",
     "researchers": [
-        { "name": "Saramsh Gautam", "link": "https://saramshgautam.github.io/profile/" },
-        { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
-    ],
-    "place":"",
+        {"name": "Saramsh Gautam", "link": "https://saramshgautam.github.io/profile"},
+        {"name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/"}],
+    "place": "Baton Rouge, USA",
     "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
     "school": "Louisiana State University",
     "num": "",
     "email": "sgauta4@lsu.edu"
-  },
+},
   {
     "label": ["AnimatingTheNarrative", "current"],
     "venues": "IEEE VIS2024",
