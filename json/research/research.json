@@ -77,7 +77,7 @@
       "date": "January, 2026",
       "researchers": [
           { "name": "Vyri Yang", "link": "https://vyriyang.com" },
-          { "name": "Alyx Burns", "link": "https://https://www.alyxburns.com" },
+          { "name": "Alyx Burns", "link": "https://www.alyxburns.com" },
           { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
       ],
       "place": "",
@@ -86,35 +86,35 @@
       "num": "",
       "email": "jyang44@lsu.edu"
     },
-    {
-        "label": ["Spreadsheet", "current"],
-        "venues": "",
-        "info": "Ongoing Research",
-        "imgSrc": "../img/research/Spreadsheet/njr_p2.png",
-        "videoSrc":"",
-        "imgMore":["",""],
-        "title": "Multimodal Interaction Methods for Manipulating Spreadsheet Data",
-        "link": "../researchTopic/Spreadsheet.html",
-        "pdf": "",
-        "content": "Our prototype is a reimagination of spreadsheet interaction where multimodal interactions are incorporated to simplify the tasks that would otherwise require several steps using the mouse and the pointer.",
-        "abstract": "This research explores how collaborators build and maintain shared understanding across diverse artifacts, tools, and devices in hybrid settings. It examines how collaborators connect ideas, coordinate attention, and preserve meaning as discussions evolve, informing systems that sustain shared context across personal and shared workspaces.<br><br>",
-        "keywords": ["Spreadsheets","Multimodal interactions"],
-        "intro":"",
-        "description": "",
-        "url": "",
-        "date": "July, 2025",
-        "researchers": [
-            { "name": "Nushrat Ria", "link": "https://nushratria.github.io" },
-            { "name": "Narges Mahyar", "link": "" },
-            { "name": "Matthew Brehmer", "link": "" },
-            { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
+      {
+    "label": ["Spreadsheet", "current"],
+    "venues": "",
+    "info": "Ongoing Research",
+    "imgSrc": "../img/research/Spreadsheet/njr_p2.png",
+    "videoSrc": "",
+    "imgMore": ["", ""],
+    "title": "Multimodal Artifacts and Interactions for Collaborative Sensemaking",
+    "link": "../researchTopic/Spreadsheet.html",
+    "pdf": "",
+    "content": "This research explores how collaborators build and maintain shared understanding across diverse artifacts, tools, and devices in hybrid settings.",
+    "abstract": "This research explores how collaborators build and maintain shared understanding across diverse artifacts, tools, and devices in hybrid settings.<br><br>It examines how collaborators connect ideas, coordinate attention, and preserve meaning as discussions evolve, informing systems that sustain shared context across personal and shared workspaces.",
+    "keywords": [
+    "Collaborative Sensemaking", "Multimodal Interaction", "Hybrid Collaboration", "Shared Context", "Human-Computer Interaction", "Cross-Device Collaboration"],
+    "intro": "Collaborative work often happens across documents, notes, sketches, screens, devices, and conversations. This project studies how people coordinate meaning across these distributed artifacts and how interactive systems can better support shared understanding.",
+    "description": "This ongoing research investigates multimodal artifacts and interactions in collaborative sensemaking. It focuses on how collaborators connect ideas, manage attention, and preserve evolving meaning across personal and shared workspaces in hybrid settings.",
+    "url": "",
+    "date": "",
+    "researchers": [
+        { "name": "Nushrat Jahan Ria", "link": "https://nushratria.github.io/" },
+        { "name": "Narges Mahyar", "link": "https://diverse-cdt.ac.uk/team-member/dr-narges-mahyar/" },
+        { "name": "Mahmood Jasim", "link": "https://csc.lsu.edu/~mjasim/" }
         ],
-        "place": "",
-        "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
-        "school": "Louisiana State University",
-        "num": "",
-        "email": ""
-      },
+    "place": "Baton Rouge, USA",
+    "office": "2329 Patrick F Taylor Building, Baton Rouge, LA 70803",
+    "school": "Louisiana State University",
+    "num": "",
+    "email": ""
+},
     {
         "label": ["DesignImplications", "last"],
         "venues": "",
